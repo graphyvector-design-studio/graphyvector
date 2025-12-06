@@ -1,13 +1,23 @@
 document.addEventListener("DOMContentLoaded", function () {
   // ==========================
-  // 1. Mobile nav toggle
+  // 1. Mobile nav toggle + Apple-like animation
   // ==========================
   const navToggle = document.querySelector(".nav-toggle");
   const navLinks = document.querySelector(".nav-links");
+  const navLinkItems = document.querySelectorAll(".nav-link");
 
   if (navToggle && navLinks) {
     navToggle.addEventListener("click", () => {
-      navLinks.classList.toggle("open");
+      document.body.classList.toggle("nav-open");
+    });
+
+    // Close menu when clicking a link on mobile
+    navLinkItems.forEach((link) => {
+      link.addEventListener("click", () => {
+        if (window.innerWidth <= 720) {
+          document.body.classList.remove("nav-open");
+        }
+      });
     });
   }
 
@@ -61,32 +71,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // ==========================
   // 4. Scroll reveal animation
-  //    Usage: add class "reveal-on-scroll"
-  //    Optional: data-reveal-delay="120"
   // ==========================
   setupScrollReveal();
 
   // ==========================
   // 5. 3D hover / tilt effect
-  //    Usage: add class "hover-tilt"
   // ==========================
   setupHoverTilt();
 });
 
 /**
- * Scroll reveal: elements fade & slide up when they enter viewport.
- * CSS you can add in your stylesheet (at the end):
- *
- * .reveal-on-scroll {
- *   opacity: 0;
- *   transform: translateY(24px);
- *   transition: opacity 450ms ease-out, transform 450ms ease-out;
- * }
- *
- * .reveal-on-scroll.is-visible {
- *   opacity: 1;
- *   transform: translateY(0);
- * }
+ * Scroll reveal: fade + slide + blur to crisp.
  */
 function setupScrollReveal() {
   const revealEls = document.querySelectorAll(".reveal-on-scroll");
@@ -99,7 +94,6 @@ function setupScrollReveal() {
           const el = entry.target;
           const delay = parseFloat(el.dataset.revealDelay || "0");
 
-          // Stagger via timeout
           setTimeout(() => {
             el.classList.add("is-visible");
           }, delay);
@@ -114,18 +108,16 @@ function setupScrollReveal() {
     }
   );
 
-  // If no custom data-reveal-delay, auto stagger in DOM order
   revealEls.forEach((el, index) => {
     if (!el.dataset.revealDelay) {
-      el.dataset.revealDelay = index * 80; // 80ms stagger
+      el.dataset.revealDelay = index * 80;
     }
     observer.observe(el);
   });
 }
 
 /**
- * 3D hover tilt effect similar to n8n homepage cards.
- * Add class "hover-tilt" to any element (cards, service blocks, etc).
+ * 3D hover tilt (n8n-like).
  */
 function setupHoverTilt() {
   const cards = document.querySelectorAll(".hover-tilt");
@@ -151,7 +143,6 @@ function setupHoverTilt() {
 
       const rotateX = percentY * -maxTilt;
       const rotateY = percentX * maxTilt;
-
       const translateY = -Math.abs(percentY) * maxTranslate;
 
       card.style.transform = `
