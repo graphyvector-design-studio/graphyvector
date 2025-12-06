@@ -92,10 +92,8 @@ img {
 }
 
 .logo-mark {
-  width: 28px;
-  height: 28px;
-  border-radius: 999px;
-  border: 2px solid var(--text-light);
+  width: 40px;
+  height: 40px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -183,7 +181,15 @@ img {
   transform-origin: 10% 50%;
 }
 
+
+/* Prevent background scroll when mobile menu is open */
+body.nav-open {
+  overflow: hidden;
+}
+
 /* Morph into X when open */
+
+
 
 body.nav-open .nav-toggle span:nth-child(1) {
   transform: translateY(3px) rotate(45deg);
@@ -198,7 +204,7 @@ body.nav-open .nav-toggle span:nth-child(3) {
   transform: translateY(-3px) rotate(-45deg);
 }
 
-/* Mobile nav panel (uses blur, slide, fade) */
+/* Mobile nav panel */
 
 @media (max-width: 720px) {
   .nav-toggle {
@@ -360,10 +366,12 @@ body.nav-open .nav-toggle span:nth-child(3) {
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+/* 4 stats always in one row */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1.5rem;
+  align-items: flex-start;
 }
 
 .stat {
@@ -425,6 +433,20 @@ body.nav-open .nav-toggle span:nth-child(3) {
   font-size: 0.95rem;
 }
 
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* Main card grids – 2–3 per row depending on width */
+
+.services-grid,
+.team-grid,
+.testimonials-grid,
+.insights-grid {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
 /* WORKS cards – squares & organized */
 
 .works-grid {
@@ -470,20 +492,6 @@ body.nav-open .nav-toggle span:nth-child(3) {
     rgba(0, 0, 0, 0.4)
   );
   z-index: 0;
-}
-
-/* Generic grids */
-
-.grid {
-  display: grid;
-  gap: 1.5rem;
-}
-
-.services-grid,
-.team-grid,
-.testimonials-grid,
-.insights-grid {
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
 /* Placeholders */
@@ -787,8 +795,8 @@ select {
 }
 
 .footer-logo .logo-mark {
-  width: 24px;
-  height: 24px;
+  width: 40px;
+  height: 40px;
   font-size: 0.8rem;
 }
 
@@ -852,8 +860,9 @@ select {
     align-items: flex-start;
   }
 
+  /* still 4 stats in one row */
   .stats-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .about-grid,
@@ -871,13 +880,14 @@ select {
   }
 
   .works-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   }
 }
 
 @media (max-width: 540px) {
+  /* still 4 stats in one row */
   .stats-grid {
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .form-row {
@@ -892,12 +902,21 @@ select {
     padding-top: 72px;
   }
 
+  /* 2 cards per row on small screens */
+  .services-grid,
+  .team-grid,
+  .testimonials-grid,
+  .insights-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.9rem;
+  }
+
   .works-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
   }
 
   .work-card {
-    aspect-ratio: 4 / 5; /* slightly taller on tiny screens */
+    aspect-ratio: 4 / 5; /* a little taller on tiny screens */
   }
 }
