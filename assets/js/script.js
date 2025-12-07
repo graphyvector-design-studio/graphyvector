@@ -165,3 +165,26 @@ function setupHoverTilt() {
     card.addEventListener("mouseenter", (e) => handleMove(e));
   });
 }
+
+
+// PRELOADER HANDLING
+window.addEventListener("load", () => {
+  const preloader = document.getElementById("preloader");
+
+  // Fade out after video finishes OR after 2 seconds (fallback)
+  const video = document.getElementById("preloader-video");
+
+  function hidePreloader() {
+    preloader.classList.add("fade-out");
+
+    setTimeout(() => {
+      preloader.classList.add("hide");
+    }, 600); // matches fade-out transition
+  }
+
+  // If video ends naturally
+  video.addEventListener("ended", hidePreloader);
+
+  // Safety fallback: hide after 2.2 sec
+  setTimeout(hidePreloader, 2200);
+});
