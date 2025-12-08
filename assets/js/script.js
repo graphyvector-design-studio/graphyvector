@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
+  
+  
   // ==========================
   // 1. Mobile nav toggle + Apple-like animation
   // ==========================
@@ -47,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (!target) return;
 
             let current = 0;
-            const duration = 900;
+            const duration = 4000;
             const startTime = performance.now();
 
             function tick(now) {
@@ -188,3 +190,150 @@ window.addEventListener("load", () => {
   // Safety fallback: hide after 2.2 sec
   setTimeout(hidePreloader, 2200);
 });
+
+
+// --------------------------------------
+// Smooth Scrolling (Ease In / Ease Out)
+// --------------------------------------
+let scrollPosition = window.scrollY;
+let targetScroll = scrollPosition;
+const ease = 0.05; // smaller = slower, smoother
+
+function smoothScroll() {
+  scrollPosition += (targetScroll - scrollPosition) * ease;
+  window.scrollTo(0, scrollPosition);
+  requestAnimationFrame(smoothScroll);
+}
+
+window.addEventListener("wheel", (e) => {
+  targetScroll += e.deltaY;
+  targetScroll = Math.max(0, targetScroll);
+});
+
+// initialize
+smoothScroll();
+
+
+// ===== Infinite seamless carousel (robust no-gap loop) =====
+(function initSeamlessCarousel() {
+  const carousels = document.querySelectorAll(".carousel");
+  if (!carousels.length) return;
+
+  carousels.forEach((carousel) => {
+    // find the initial track (contains slides directly)
+    const originalTrack = carousel.querySelector(".carousel-track");
+    if (!originalTrack) return;
+
+    // build slides array from original markup, wrap slides into slide elements
+    const slides = Array.from(originalTrack.children).map((node) => {
+      const wrapper = document.createElement("div");
+      wrapper.className = "carousel-slide";
+      wrapper.appendChild(node.cloneNode(true));
+      return wrapper;
+    });
+
+    // clear existing content and create wrapper that will be animated
+    originalTrack.innerHTML = "";
+    const wrapper = document.createElement("div");
+    wrapper.className = "carousel-track-wrapper";
+
+    // append at least 2 copies of slides to guarantee seamless loop
+    function populateTracks() {
+      wrapper.innerHTML = "";
+      // append original set
+      slides.forEach((s) => wrapper.appendChild(s.cloneNode(true)));
+      // keep appending extra copies until wrapper width >= 2 * carousel width
+      // (we need content length >= 2x visible so translateX -50% equals one copy)
+      let tries = 0;
+      while (wrapper.scrollWidth < carousel.clientWidth * 2 && tries < 6) {
+        slides.forEach((s) => wrapper.appendChild(s.cloneNode(true)));
+        tries++;
+      }
+      // put the wrapper inside the track (so CSS selectors remain consistent)
+      originalTrack.appendChild(wrapper);
+    }
+
+    // create a second wrapper clone to double up content and ensure perfect looping (optional)
+    function ensureDouble() {
+      // if wrapper width is still less than 2x, duplicate appended nodes
+      if (wrapper.scrollWidth < carousel.clientWidth * 2) {
+        const more = wrapper.cloneNode(true);
+        originalTrack.appendChild(more);
+      }
+    }
+
+    populateTracks();
+    ensureDouble();
+
+    // compute animation duration from distance and speed
+    function setupAnimation() {
+      // total scrollable distance = wrapper.scrollWidth (we will move by half)
+      const totalPx = wrapper.scrollWidth;
+      const oneLoopDistance = totalPx / 2; // we will translate by -50%
+      const speed = 120; // px/sec, change if you want faster/slower
+      const durationSec = Math.max(8, Math.round(oneLoopDistance / speed));
+
+      // apply CSS animation via inline style for reliable timing
+      wrapper.style.animation = `carousel-scroll ${durationSec}s linear infinite`;
+      // create keyframes dynamically in case not present
+      const styleId = "carousel-seamless-keyframes";
+      if (!document.getElementById(styleId)) {
+        const styleEl = document.createElement("style");
+        styleEl.id = styleId;
+        styleEl.textContent = `
+@keyframes carousel-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}`;
+        document.head.appendChild(styleEl);
+      }
+
+      // expose wrapper for pause/resume
+      carousel._carouselWrapper = wrapper;
+    }
+
+    // run setup on load and resize
+    window.addEventListener("load", () => {
+      // Small timeout to let images load and cause correct measurements
+      setTimeout(() => {
+        populateTracks();
+        ensureDouble();
+        setupAnimation();
+      }, 80);
+    });
+
+    // Recalculate on resize (debounced)
+    let resizeTimer;
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        populateTracks();
+        ensureDouble();
+        setupAnimation();
+      }, 150);
+    });
+
+    // pause on hover/focus
+    carousel.addEventListener("mouseenter", () => {
+      if (carousel._carouselWrapper)
+        carousel._carouselWrapper.style.animationPlayState = "paused";
+    });
+    carousel.addEventListener("mouseleave", () => {
+      if (carousel._carouselWrapper)
+        carousel._carouselWrapper.style.animationPlayState = "running";
+    });
+    carousel.addEventListener("focusin", () => {
+      if (carousel._carouselWrapper)
+        carousel._carouselWrapper.style.animationPlayState = "paused";
+    });
+    carousel.addEventListener("focusout", () => {
+      if (carousel._carouselWrapper)
+        carousel._carouselWrapper.style.animationPlayState = "running";
+    });
+
+    // respect reduced-motion
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      if (wrapper) wrapper.style.animation = "none";
+    }
+  });
+})();

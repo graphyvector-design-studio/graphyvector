@@ -91,15 +91,25 @@
     </div>
   </section>
 
-  <!-- Mockup (Light) -->
-  <section class="section light reveal-on-scroll">
-    <div class="container">
-      <h2 class="section-title centered">Mockup Carousel</h2>
-      <div class="mockup-placeholder card-lg hover-tilt">
-        <p>Add your mockup slider / portfolio images here.</p>
-      </div>
+<!-- Infinite horizontal carousel -->
+<div class="carousel-wrap card-lg reveal-on-scroll">
+  <div class="carousel" role="region" aria-label="Portfolio carousel">
+    <div class="carousel-track">
+      <!-- Replace these image paths with your real images -->
+      <img src="./assets/img/Aboltabol_webDesign.jpg" alt="Project mockup 1" />
+      <img src="./assets/img/bark_logo1.jpg" alt="Project mockup 2" />
+      <img src="./assets/img/cloud.jpg" alt="Project mockup 3" />
+      <img src="./assets/img/designByIndia.jpg" alt="Project mockup 4" />
+      <img src="./assets/img/ghostGmaing.jpg" alt="Project mockup 5" />
+      <img src="./assets/img/social media post1.jpg" alt="Project mockup 6" />
+      <img src="./assets/img/side1.jpg" alt="Project mockup 7" />
     </div>
-  </section>
+
+    <!-- second track is visually identical and used to create the seamless loop -->
+    <div class="carousel-track" aria-hidden="true"></div>
+  </div>
+</div>
+
 
   <!-- Video (Dark) -->
   <section class="section dark reveal-on-scroll">
@@ -212,7 +222,7 @@
         </span>
       </div>
       <p class="trusted">Trusted by clients on</p>
-      <p class="trusted-icons">f  u p</p>
+      <p class="trusted-icons"><img src="./assets/icons/fiverr.svg" style="width: 45px; margin-right: 20px;" alt=""> <img src="./assets/icons/upwork.svg" style="width: 65px; margin-right: 20px;" alt=""></p>
       <p class="copyright">
         © 2025 Graphy Vector. All rights reserved
       </p>
@@ -221,11 +231,17 @@
     <div class="footer-column">
       <h4>Information</h4>
       <ul>
-        <li>📞 +91 70299 33095</li>
-        <li>✉️ graphyvector@gmail.com</li>
+        <li style="display: inline-flex; height: 20px;"><img src="./assets/icons/call.svg" style=" margin-right: 7px;" alt=""> +91 70299 33095</li>
+        <li style="display: inline-flex; height: 20px;"><img src="./assets/icons/email.svg" style=" margin-right: 7px;" alt=""> graphyvector@gmail.com</li>
       </ul>
       <h4>Follow Us On</h4>
-      <p class="social-icons">Behance · LinkedIn · Instagram · YouTube</p>
+      <p class="social-icons">
+        
+          <img src="./assets/icons/behance.svg" style="margin-right: 10px;" alt="">
+          <img src="./assets/icons/instagram.svg" style="margin-right: 10px;" alt="">
+          <img src="./assets/icons/linkedin.svg" style="margin-right: 10px;" alt="">
+
+      </p>
     </div>
 
     <div class="footer-column">

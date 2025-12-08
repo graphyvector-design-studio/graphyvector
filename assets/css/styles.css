@@ -73,11 +73,13 @@ body {
     "Inter", Arial, sans-serif;
   background: var(--bg-dark);
   color: var(--text-light);
+  overflow: hidden; /* prevents double scrollbars */
 }
 
 body {
   line-height: 1.5;
   overflow-x: hidden;
+  width: 100%;
 }
 
 img {
@@ -529,6 +531,76 @@ body.nav-open .nav-toggle span:nth-child(3) {
   z-index: 0;
 }
 
+/* ====== Infinite seamless carousel (REPLACE previous carousel CSS) ====== */
+.carousel-wrap {
+  overflow: hidden;
+  padding: 0;                 /* remove outer padding so images sit flush to edges */
+  background: inherit;
+  border-radius: var(--radius-lg);
+}
+
+/* container that masks overflow and shows rounded corners */
+.carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: inherit;     /* ensure edges are clipped by same radius */
+}
+
+/* single long flex container that will be animated */
+.carousel-track {
+  display: flex;
+  gap: 1rem;                  /* spacing between slides */
+  align-items: center;
+  will-change: transform;
+}
+
+/* ensure slides don't shrink and have consistent sizing */
+.carousel-slide {
+  flex: 0 0 auto;
+  display: block;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* images inside slides */
+.carousel-slide img {
+  display: block;
+  width: 100%;
+  height: 360px;              /* thumbnail height — adjust to taste */
+  object-fit: cover;
+  min-width: 240px;           /* keeps images substantial on wide screens */
+  box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+/* wrapper which will be animated (we set animation inline via JS) */
+.carousel-track-wrapper {
+  display: flex;
+}
+
+/* pause/resume */
+.carousel:hover .carousel-track-wrapper,
+.carousel:focus-within .carousel-track-wrapper {
+  animation-play-state: paused !important;
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .carousel-track-wrapper {
+    animation: none !important;
+  }
+}
+
+/* Responsive tweaks */
+@media (max-width: 900px) {
+  .carousel-slide img { height: 140px; min-width: 200px; }
+}
+@media (max-width: 540px) {
+  .carousel-slide img { height: 120px; min-width: 160px; }
+}
+
+
 /* Placeholders */
 
 .mockup-placeholder,
@@ -844,6 +916,8 @@ select {
 .trusted-icons {
   font-size: 0.8rem;
   color: var(--muted-light);
+  display: inline-flex;
+  margin-top: -15px;
 }
 
 .footer-column h4 {
@@ -877,6 +951,8 @@ select {
 .social-icons {
   font-size: 0.85rem;
   color: var(--muted-light);
+  display: inline-flex;
+  margin-top: 1px;
 }
 
 .copyright {
