@@ -93,6 +93,10 @@
 
 <!-- Infinite horizontal carousel -->
 <div class="carousel-wrap card-lg reveal-on-scroll">
+    <!-- inside .carousel-wrap, add these TWO fade overlays -->
+<div class="carousel-fade carousel-fade-left" aria-hidden="true"></div>
+<div class="carousel-fade carousel-fade-right" aria-hidden="true"></div>
+
   <div class="carousel" role="region" aria-label="Portfolio carousel">
     <div class="carousel-track">
       <!-- Replace these image paths with your real images -->
@@ -111,14 +115,67 @@
 </div>
 
 
-  <!-- Video (Dark) -->
-  <section class="section dark reveal-on-scroll">
-    <div class="container">
-      <div class="video-wrapper card-lg hover-tilt">
-        <p>Video</p>
+<section class="section roadmap">
+  <div class="container">
+    <h3 class="section-title centered">How We Work</h3>
+
+    <div class="roadmap-grid">
+      <div class="roadmap-step reveal-on-scroll" data-step="1">
+        <div class="step-num">1</div>
+        <h4>Discover</h4>
+        <p>Workshops, briefs, user research and clarity on outcomes.</p>
+      </div>
+
+      <div class="roadmap-step reveal-on-scroll" data-step="2">
+        <div class="step-num">2</div>
+        <h4>Design</h4>
+        <p>Concepts, visual direction, prototypes and internal reviews.</p>
+      </div>
+
+      <div class="roadmap-step reveal-on-scroll" data-step="3">
+        <div class="step-num">3</div>
+        <h4>Execute</h4>
+        <p>Production: vector, 3D, motion — optimized for platform use.</p>
+      </div>
+
+      <div class="roadmap-step reveal-on-scroll" data-step="4">
+        <div class="step-num">4</div>
+        <h4>Deliver</h4>
+        <p>Files, documentation and long-term care options.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+
+
+  <!-- Clients Logo Carousel -->
+<section class="section clients-section">
+  <div class="container">
+    <h3 class="section-title centered">Trusted by</h3>
+
+    <div class="clients-carousel-wrap">
+      <div class="clients-carousel" aria-label="Client logos carousel" role="region">
+        <div class="clients-track" aria-hidden="false">
+          <!-- Repeat these logo items -- use your logo images or SVGs -->
+          <div class="clients-slide"><img src="assets/logos/logo1.png" alt="Client A"></div>
+          <div class="clients-slide"><img src="assets/logos/logo2.png" alt="Client B"></div>
+          <div class="clients-slide"><img src="assets/logos/logo3.png" alt="Client C"></div>
+          <div class="clients-slide"><img src="assets/logos/logo4.png" alt="Client D"></div>
+          <div class="clients-slide"><img src="assets/logos/logo5.png" alt="Client E"></div>
+          <div class="clients-slide"><img src="assets/logos/logo6.png" alt="Client F"></div>
+          <!-- add more as needed -->
+        </div>
+      </div>
+
+      <!-- left/right fade masks (pure CSS fallback included) -->
+      <div class="clients-fade clients-fade-left" aria-hidden="true"></div>
+      <div class="clients-fade clients-fade-right" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
+
+
 
   <!-- Services (Light) -->
   <section class="section light reveal-on-scroll">

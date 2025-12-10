@@ -1,28 +1,55 @@
+/* =========================
+   FORCE single font (Inter) SITE-WIDE
+   Paste this at the TOP of styles.css
+   ========================= */
+
 :root {
+  /* main font family used everywhere */
+  --site-font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* existing theme vars (keep your values) */
   --bg-dark: #000000;
   --bg-light: #ffffff;
-
   --text-light: #f5f5f5;
   --text-dark: #111111;
-
   --muted-light: #b0b0b0;
   --muted-dark: #555555;
-
   --card-dark: #101010;
   --card-light: #f5f5f5;
-
   --border-dark: #303030;
   --border-light: #e0e0e0;
-
   --accent: #2f9dff;
   --accent-soft: rgba(47, 157, 255, 0.18);
-
   --radius: 18px;
   --radius-lg: 24px;
   --shadow-soft: 0 18px 60px rgba(0, 0, 0, 0.85);
   --max-width: 1120px;
   --transition: 0.2s ease-out;
 }
+
+/* Force the single font for everything (including headings, UI, code) */
+html, body, input, button, textarea, select, a {
+  font-family: var(--site-font) !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Make headings slightly heavier for contrast (still Inter) */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--site-font) !important;
+  font-weight: 700; /* change if you want lighter headings */
+  letter-spacing: 0; /* reset any serif-specific tracking */
+}
+
+/* Ensure UI elements use same font weight as body by default */
+button, .btn, .nav-link {
+  font-family: var(--site-font) !important;
+  font-weight: 500;
+}
+
+/* Preserve your existing font-size rules — only font-family/weight forced */
+
+
 
 *,
 *::before,
@@ -69,16 +96,18 @@ html,
 body {
   margin: 0;
   padding: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-    "Inter", Arial, sans-serif;
   background: var(--bg-dark);
   color: var(--text-light);
-  overflow: hidden; /* prevents double scrollbars */
+  overflow-x: hidden;
+  overflow-y: auto;   /* allow natural scrolling */
+  scroll-behavior: smooth;  /* smooth scroll effect */
 }
+
 
 body {
   line-height: 1.5;
-  overflow-x: hidden;
+  overflow-x: hidden;                 /* keep horizontal clipping */
+  -webkit-overflow-scrolling: touch;  /* smooth touch momentum on iOS */
   width: 100%;
 }
 
@@ -102,16 +131,42 @@ img {
    Header & Navigation
    ========================= */
 
+/* ===== Apple-style Dark Glass Navigation Bar ===== */
 .site-header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 40;
-  background: rgba(0, 0, 0, 0.96);
-  backdrop-filter: blur(14px);
+  height: 64px;
+
+  /* Better frosted glass effect */
+  background: rgba(10, 10, 10, 0.55); /* semi-transparent dark glass */
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+  /* Slight gradient for depth */
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.05),
+    rgba(0, 0, 0, 0.25)
+  );
+
+  z-index: 10050; /* stay above carousel */
 }
+
+/* Glass noise overlay */
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQIW2P4//8/AwAI/AL+FQfc4QAAAABJRU5ErkJggg==');
+  opacity: 0.08;
+}
+
 
 .nav-container {
   display: flex;
@@ -426,6 +481,108 @@ body.nav-open .nav-toggle span:nth-child(3) {
   color: var(--muted-light);
 }
 
+
+/* ===== Clients logo carousel (infinite smooth with dark fade masks) ===== */
+.clients-section {
+  padding: 2rem 0 3rem;
+  position: relative;
+  z-index: 2;
+}
+
+.clients-carousel-wrap {
+  position: relative;
+  margin-top: 1.2rem;
+  border-radius: 12px;
+  overflow: visible;
+}
+
+/* viewport */
+.clients-carousel {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+  background: transparent;
+  padding: 10px 0;
+}
+
+/* moving track - JS will clone to make seamless loop */
+.clients-track {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  will-change: transform;
+}
+
+/* each logo box */
+.clients-slide {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 160px;
+  height: 72px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.02);
+  transition: transform 260ms ease, box-shadow 260ms ease, filter 260ms ease;
+}
+
+/* logo image sizing */
+.clients-slide img {
+  max-height: 52px;
+  max-width: 140px;
+  object-fit: contain;
+  display: block;
+  filter: grayscale(0.05) saturate(0.9);
+  opacity: 0.95;
+}
+
+/* subtle hover pop (non-blocking) */
+.clients-slide:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.45);
+}
+
+/* fade masks on both sides (dark overlay that vanishes logos) */
+.clients-fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 14%;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  z-index: 10;
+}
+.clients-fade-left {
+  left: 0;
+  background: linear-gradient(90deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.6) 35%, rgba(0,0,0,0.0) 100%);
+}
+.clients-fade-right {
+  right: 0;
+  background: linear-gradient(270deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.6) 35%, rgba(0,0,0,0.0) 100%);
+}
+
+/* responsive */
+@media (max-width: 900px) {
+  .clients-slide { min-width: 140px; height: 64px; }
+  .clients-fade { width: 18%; }
+}
+@media (max-width: 540px) {
+  .clients-slide { min-width: 120px; height: 56px; }
+  .clients-fade { width: 22%; }
+}
+
+/* Freebies grid */
+.freebies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.freebie-item h3 { margin-top:0; margin-bottom:6px; }
+.freebie-item p.muted { color: var(--muted-dark); font-size:0.92rem; }
+
+
 /* =========================
    Cards & grids
    ========================= */
@@ -531,31 +688,33 @@ body.nav-open .nav-toggle span:nth-child(3) {
   z-index: 0;
 }
 
-/* ====== Infinite seamless carousel (REPLACE previous carousel CSS) ====== */
+/* ====== Carousel: no-pause on hover + drag offset support ====== */
 .carousel-wrap {
   overflow: hidden;
-  padding: 0;                 /* remove outer padding so images sit flush to edges */
+  padding: 0;
   background: inherit;
   border-radius: var(--radius-lg);
+  position: relative;
+  z-index: 1;
 }
 
-/* container that masks overflow and shows rounded corners */
+/* masking container */
 .carousel {
   position: relative;
   width: 100%;
   overflow: hidden;
-  border-radius: inherit;     /* ensure edges are clipped by same radius */
+  border-radius: inherit;
 }
 
-/* single long flex container that will be animated */
+/* track that is animated. NOTE: animation uses --drag variable */
 .carousel-track {
   display: flex;
-  gap: 1rem;                  /* spacing between slides */
+  gap: 1rem;
   align-items: center;
   will-change: transform;
 }
 
-/* ensure slides don't shrink and have consistent sizing */
+/* single slide */
 .carousel-slide {
   flex: 0 0 auto;
   display: block;
@@ -563,42 +722,55 @@ body.nav-open .nav-toggle span:nth-child(3) {
   overflow: hidden;
 }
 
-/* images inside slides */
+/* image sizing */
 .carousel-slide img {
   display: block;
   width: 100%;
-  height: 360px;              /* thumbnail height — adjust to taste */
+  height: 360px;
   object-fit: cover;
-  min-width: 240px;           /* keeps images substantial on wide screens */
+  min-width: 240px;
   box-shadow: 0 12px 30px rgba(0,0,0,0.18);
   border: 1px solid rgba(0,0,0,0.06);
 }
 
-/* wrapper which will be animated (we set animation inline via JS) */
+/* wrapper that we animate (it will be duplicated/cloned by JS) */
 .carousel-track-wrapper {
   display: flex;
+  /* default drag offset */
+  --drag: 0px;
+  transform: translateX(var(--drag));
+  /* animation will be applied inline by JS for correct duration */
 }
 
-/* pause/resume */
-.carousel:hover .carousel-track-wrapper,
-.carousel:focus-within .carousel-track-wrapper {
-  animation-play-state: paused !important;
+/* IMPORTANT: remove pause-on-hover entirely — user requested it must never stop */
+/* (previous rule '.carousel:hover .carousel-track-wrapper { animation-play-state: paused !important; }' must be removed) */
+
+/* Keyframes for the loop: note we animate from translateX(var(--drag)) → translateX(calc(var(--drag) - 50%))
+   This allows the JS to set --drag dynamically while animation keeps running */
+@keyframes carousel-scroll {
+  0% {
+    transform: translateX(var(--drag));
+  }
+  100% {
+    transform: translateX(calc(var(--drag) - 50%));
+  }
 }
 
-/* Reduced motion accessibility */
+/* reduced-motion accessibility still honored */
 @media (prefers-reduced-motion: reduce) {
   .carousel-track-wrapper {
     animation: none !important;
   }
 }
 
-/* Responsive tweaks */
+/* responsive tweaks */
 @media (max-width: 900px) {
   .carousel-slide img { height: 140px; min-width: 200px; }
 }
 @media (max-width: 540px) {
   .carousel-slide img { height: 120px; min-width: 160px; }
 }
+
 
 
 /* Placeholders */
@@ -1031,3 +1203,246 @@ select {
     aspect-ratio: 4 / 5; /* a little taller on tiny screens */
   }
 }
+
+
+/* ===== TEMPORARY / DEFENSIVE: make carousel sit above neighbors and avoid being clipped ===== */
+.carousel-wrap {
+  position: relative !important;
+  z-index: 1000 !important;          /* bring carousel above siblings that might overlap */
+  overflow: visible !important;      /* allow carousel contents to show (no clipping) */
+  margin-bottom: 0.8rem;             /* small gap so the next section doesn't bump into it */
+}
+
+/* the inner animated wrapper should stay clipped inside the wrap but we allowed visible above.
+   ensure the animated wrapper doesn't expand layout unexpectedly */
+.carousel-track-wrapper {
+  will-change: transform;
+  z-index: 1;
+}
+
+/* ensure the immediate following section does not overlap the carousel:
+   increases spacing and ensures it paints underneath */
+.carousel-wrap + .section,
+.carousel-wrap + .card-lg,
+.carousel-wrap + .mockup-placeholder {
+  margin-top: 1.25rem !important;
+  position: relative;
+  z-index: 0;
+}
+
+/* if the mockup below uses .card-lg or .mockup-placeholder, force it not to overlap */
+.card-lg,
+.mockup-placeholder {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* if you still want hard clipping within rounded corners but no outer overlap,
+   uncomment the following (keeps rounded stroke but removes visible background gap)
+*/
+/*
+.carousel {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+*/
+
+
+/* ===== HEADER ALWAYS ON TOP (fix overlap) ===== */
+
+/* Make sure header is in the top stacking context and above carousels */
+.site-header {
+  position: fixed;     /* should already be fixed, but ensure it */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10050;      /* much higher than carousel; adjust if needed */
+}
+
+/* Put carousel under the header (defensive) */
+.carousel-wrap {
+  z-index: 1;          /* keep carousel visible above normal content, but below header */
+  position: relative;
+}
+
+/* ---------- SEAMLESS CAROUSEL PATCH (replace previous carousel CSS) ---------- */
+
+/* outer mask: single rounded container that clips everything */
+.carousel-wrap {
+  position: relative;
+  overflow: hidden;              /* clip children to this rounded rect */
+  border-radius: var(--radius-lg); 
+  width: 100%;
+  z-index: 1;                    /* below header but above page content */
+  background: transparent;
+}
+
+/* inner carousel viewport (no own radius) */
+.carousel {
+  width: 100%;
+  overflow: visible;             /* allow track transforms, but wrap will clip */
+  border-radius: 0;              /* no radius here */
+  position: relative;
+}
+
+/* the moving track: no gap between slides so no seams */
+.carousel-track {
+  display: flex;
+  gap: 0;                        /* IMPORTANT: remove gap so slides butt up */
+  align-items: stretch;
+  will-change: transform;
+  /* keep animation applied via JS as before */
+}
+
+/* slide wrappers: remove border/border-radius so they don't show seams */
+.carousel-slide {
+  flex: 0 0 auto;
+  display: block;
+  border-radius: 0 !important;   /* ensure slides themselves have no rounding */
+  overflow: hidden;
+  margin: 0;
+  border: 0;
+  background: transparent;
+}
+
+/* image inside slide: remove border and rounding */
+.carousel-slide img {
+  display: block;
+  width: 100%;
+  height: 360px;                 /* keep your chosen height */
+  object-fit: cover;
+  border-radius: 0 !important;   /* critical */
+  border: 0 !important;          /* remove any thin outline */
+
+}
+
+/* If you previously added shadows on slides, move them to the track container
+   so shadows don't create extra visual edges. Example: (optional)
+*/
+.carousel-track .carousel-slide img {
+  box-shadow: none;
+}
+
+/* Overlay fade masks — ensure these are above the animated track */
+.carousel-fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 14%;
+  pointer-events: none;
+  z-index: 60;                    /* MUST be higher than track/animated elements */
+  transition: opacity 420ms cubic-bezier(.2,.9,.2,1), transform 420ms ease;
+  opacity: 0.7;
+  mix-blend-mode: multiply;
+}
+
+/* left / right gradients */
+.carousel-fade-left {
+  left: 0;
+  background: linear-gradient(90deg,
+    rgba(0,0,0,0.98) 0%,
+    rgba(0,0,0,0.72) 25%,
+    rgba(0,0,0,0.18) 60%,
+    rgba(0,0,0,0) 100%);
+}
+
+.carousel-fade-right {
+  right: 0;
+  background: linear-gradient(270deg,
+    rgba(0,0,0,0.98) 0%,
+    rgba(0,0,0,0.72) 25%,
+    rgba(0,0,0,0.18) 60%,
+    rgba(0,0,0,0) 100%);
+}
+
+/* stronger fade while interacting (optional) */
+.carousel-wrap.carousel-fade-active .carousel-fade {
+  opacity: 0.94;
+}
+
+/* responsive: smaller overlays and image heights */
+@media (max-width: 900px) {
+  .carousel-fade { width: 18%; }
+  .carousel-slide img { height: 220px; }
+}
+@media (max-width: 540px) {
+  .carousel-fade { width: 24%; }
+  .carousel-slide img { height: 140px; }
+}
+
+
+/* If any nearby card elements used transform to fix GPU rendering, make sure they don't create higher stacking above header.
+   Only apply if you added transform: translateZ(0) previously. If not needed, you can remove this override. */
+.card-lg,
+.mockup-placeholder {
+  transform: none !important;  /* remove transform stacking context if causing layering problems */
+  backface-visibility: hidden;
+}
+
+/* If you prefer not to remove transforms globally, instead lower the z-index of those stacking contexts */
+.card-lg[style], .card-lg {
+  z-index: 0;
+}
+
+/* Ensure mobile nav overlay still appears above everything when opened */
+body.nav-open .nav-links {
+  z-index: 10060; /* above header for the menu overlay */
+}
+
+
+/* Roadmap (How we work) */
+.roadmap-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem;
+  align-items: stretch;
+  margin-top: 1rem;
+}
+
+.roadmap-step {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  padding: 1.2rem;
+  border-radius: 12px;
+  text-align: center;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: center;
+  justify-content: center;
+  transition: transform 380ms cubic-bezier(.2,.9,.2,1), box-shadow 300ms ease;
+}
+
+.roadmap-step .step-num {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.04);
+  display: flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+  font-size:1rem;
+  color:var(--text-light);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+}
+
+.roadmap-step h4 { margin:0; font-size:1.05rem; }
+.roadmap-step p { margin:0; color:var(--muted-light); font-size:0.94rem; }
+
+/* reveal interaction */
+.roadmap-step:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 26px 80px rgba(0,0,0,0.56);
+}
+
+/* responsive */
+@media (max-width:980px) {
+  .roadmap-grid { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width:540px) {
+  .roadmap-grid { grid-template-columns: 1fr; }
+}
+
+
+
