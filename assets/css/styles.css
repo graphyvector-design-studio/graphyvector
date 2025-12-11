@@ -1446,3 +1446,75 @@ body.nav-open .nav-links {
 
 
 
+/* -------------------------
+   Preloader / header visibility fix
+   ------------------------- */
+
+/* Make sure preloader sits above everything (higher than header z-index) */
+#preloader {
+  z-index: 100500 !important; /* higher than .site-header (10050) */
+}
+
+/* Defensive selectors: if preloader exists/visible, hide header until preloader is gone.
+   Works whether #preloader is before or after header in DOM (sibling selector + explicit class). */
+#preloader:not(.hide) ~ .site-header,
+#preloader:not(.hide) + .site-header,
+.site-header.preloading {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 260ms ease-out, visibility 260ms ease-out;
+}
+
+/* When preloader removed (we will toggle .preloader-done via JS), show header */
+.site-header {
+  transition: opacity 260ms ease-out, visibility 260ms ease-out;
+}
+.site-header.preloader-done {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* -------------------------
+   Carousel seam & animation defaults
+   ------------------------- */
+
+/* Ensure the viewport clip is the canonical clipping container */
+.carousel-wrap {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+
+/* The moving track should have no gap between slides */
+.carousel-track {
+  gap: 0;                        /* force no gap so slides butt up exactly */
+  align-items: stretch;
+  display: flex;
+  will-change: transform;
+}
+
+/* The wrapper that is animated must use linear timing for perfect loop */
+.carousel-track-wrapper {
+  --drag: 0px;
+  transform: translateX(var(--drag));
+  will-change: transform;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-name: none; /* JS will assign animation with proper duration */
+}
+
+/* If animation is applied by JS, ensure it can't be paused by hover */
+.carousel, .carousel-track-wrapper {
+  -webkit-animation-play-state: running !important;
+  animation-play-state: running !important;
+}
+
+/* small responsive smoothing (keeps heights consistent on iPad/large screens) */
+.carousel-slide img {
+  height: 360px; /* keep your chosen height; JS calculates movement using rendered widths */
+  object-fit: cover;
+  display: block;
+  width: auto; /* allow images to keep intrinsic widths so track width is correct */
+  min-width: 240px; /* preserve your existing minimum */
+}
