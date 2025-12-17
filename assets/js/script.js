@@ -188,7 +188,7 @@
         el.dataset.animated = '1';
         const delay = parseInt(el.dataset.delay || '0', 10) || 0;
         setTimeout(() => {
-          const duration = 1800;
+          const duration = 4800;
           const start = performance.now();
           function step(now) {
             const p = Math.min((now - start)/duration, 1);

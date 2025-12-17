@@ -726,9 +726,9 @@ body.nav-open .nav-toggle span:nth-child(3) {
 .carousel-slide img {
   display: block;
   width: 100%;
-  height: 360px;
+
   object-fit: cover;
-  min-width: 240px;
+  min-width: 200px;
   box-shadow: 0 12px 30px rgba(0,0,0,0.18);
   border: 1px solid rgba(0,0,0,0.06);
 }
@@ -763,13 +763,6 @@ body.nav-open .nav-toggle span:nth-child(3) {
   }
 }
 
-/* responsive tweaks */
-@media (max-width: 900px) {
-  .carousel-slide img { height: 140px; min-width: 200px; }
-}
-@media (max-width: 540px) {
-  .carousel-slide img { height: 120px; min-width: 160px; }
-}
 
 
 
@@ -1323,52 +1316,46 @@ select {
   box-shadow: none;
 }
 
-/* Overlay fade masks — ensure these are above the animated track */
+/* =========================
+   CAROUSEL FADE — SOFT MASK (MATCHES TRUSTED BY)
+   ========================= */
+
 .carousel-fade {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 14%;
+  width: 6%;                /* narrow = premium */
   pointer-events: none;
-  z-index: 60;                    /* MUST be higher than track/animated elements */
-  transition: opacity 420ms cubic-bezier(.2,.9,.2,1), transform 420ms ease;
-  opacity: 0.7;
-  mix-blend-mode: multiply;
+  z-index: 60;
 }
 
-/* left / right gradients */
+
+/* LEFT fade */
 .carousel-fade-left {
   left: 0;
-  background: linear-gradient(90deg,
-    rgba(0,0,0,0.98) 0%,
-    rgba(0,0,0,0.72) 25%,
-    rgba(0,0,0,0.18) 60%,
-    rgba(0,0,0,0) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(0,0,0,0.88) 0%,
+    rgba(0,0,0,0.45) 40%,
+    rgba(0,0,0,0.0) 100%
+  );
 }
 
+/* RIGHT fade */
 .carousel-fade-right {
   right: 0;
-  background: linear-gradient(270deg,
-    rgba(0,0,0,0.98) 0%,
-    rgba(0,0,0,0.72) 25%,
-    rgba(0,0,0,0.18) 60%,
-    rgba(0,0,0,0) 100%);
+  background: linear-gradient(
+    270deg,
+    rgba(0,0,0,0.88) 0%,
+    rgba(0,0,0,0.45) 40%,
+    rgba(0,0,0,0.0) 100%
+  );
 }
 
-/* stronger fade while interacting (optional) */
-.carousel-wrap.carousel-fade-active .carousel-fade {
-  opacity: 0.94;
+/* Mobile: slightly stronger but still soft */
+@media (max-width: 600px) {
+  .carousel-fade {
+    width: 10%;
+  }
 }
 
-/* responsive: smaller overlays and image heights */
-@media (max-width: 900px) {
-  .carousel-fade { width: 18%; }
-  .carousel-slide img { height: 220px; }
-}
-@media (max-width: 540px) {
-  .carousel-fade { width: 24%; }
-  .carousel-slide img { height: 140px; }
-}
 
 
 /* If any nearby card elements used transform to fix GPU rendering, make sure they don't create higher stacking above header.
@@ -1512,9 +1499,41 @@ body.nav-open .nav-links {
 
 /* small responsive smoothing (keeps heights consistent on iPad/large screens) */
 .carousel-slide img {
-  height: 360px; /* keep your chosen height; JS calculates movement using rendered widths */
   object-fit: cover;
   display: block;
   width: auto; /* allow images to keep intrinsic widths so track width is correct */
-  min-width: 240px; /* preserve your existing minimum */
+  min-width: 200px; /* preserve your existing minimum */
+}
+
+
+/* === CAROUSEL IMAGE SIZE (DEVICE RESPONSIVE) === */
+.carousel-slide img {
+  display: block;
+  height: clamp(180px, 28vw, 420px); /* mobile → tablet → desktop */
+  width: auto;
+  min-width: 220px;
+  object-fit: cover;
+}
+
+
+/* =========================
+   FOOTER RESPONSIVE LOGIC FIX
+   ========================= */
+
+/* Tablets (iPad Air & iPad Pro) → KEEP DESKTOP FOOTER */
+@media (max-width: 1024px) and (min-width: 601px) {
+  .footer-grid {
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1fr);
+    gap: 2rem;
+    text-align: left;
+  }
+}
+
+/* Phones ONLY → stacked footer */
+@media (max-width: 600px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    text-align: left;
+  }
 }
