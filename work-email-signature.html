@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Custom HTML Email Signature & Template | Graphy Vector Studio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Graphy Vector Studio designs custom HTML email signatures and email templates for corporates, creatives and startups — pixel-perfect across Gmail, Outlook and Apple Mail." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="./assets/Favicon/favicon-small.svg">
+  <link rel="icon" type="image/png" sizes="512x512" href="./assets/Favicon/favicon-big.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/Favicon/apple-touch-icon.png">
+  <meta name="theme-color" content="#000000">
+  <style>
+
+    /* ── HERO ── */
+    .em-hero {
+      padding-top: 6rem;
+      padding-bottom: 5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .em-hero-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .em-hero-label::before {
+      content: '';
+      width: 28px;
+      height: 1px;
+      background: var(--accent);
+      display: inline-block;
+    }
+
+    .em-hero h1 {
+      font-size: clamp(2.6rem, 4.5vw, 4rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+      margin-bottom: 1.4rem;
+    }
+
+    .em-hero h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .em-hero-desc {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 2rem;
+    }
+
+    .em-hero-desc strong { color: #fff; }
+
+    .em-client-badges {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .em-badge {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* ── GMAIL MOCKUP — hero right ── */
+    .gmail-mockup {
+      background: #f2f3f4;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .gmail-topbar {
+      background: #fff;
+      padding: 0.7rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .gmail-dot { width: 10px; height: 10px; border-radius: 50%; }
+
+    .gmail-search {
+      flex: 1;
+      background: #f1f3f4;
+      border-radius: 999px;
+      padding: 0.35rem 0.8rem;
+      font-size: 0.72rem;
+      color: #999;
+      margin: 0 0.5rem;
+    }
+
+    .gmail-body {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+    }
+
+    .gmail-sidebar {
+      background: #fff;
+      padding: 0.8rem 0;
+      border-right: 1px solid #e0e0e0;
+    }
+
+    .gmail-sidebar-item {
+      height: 28px;
+      margin: 2px 6px;
+      border-radius: 999px;
+      background: #f1f3f4;
+    }
+
+    .gmail-sidebar-item.active { background: #fce8e6; }
+
+    .gmail-thread {
+      background: #fff;
+    }
+
+    .gmail-thread-header {
+      padding: 0.8rem 1rem;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .gmail-subject {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 0.3rem;
+    }
+
+    .gmail-from {
+      font-size: 0.68rem;
+      color: #888;
+    }
+
+    .gmail-email-body {
+      padding: 0.8rem 1rem;
+      font-size: 0.72rem;
+      color: #444;
+      line-height: 1.6;
+      border-bottom: 1px solid #f5f5f5;
+    }
+
+    /* ── SIGNATURE PREVIEW AREA ── */
+    .gmail-sig-area {
+      padding: 0.8rem 1rem;
+      border-top: 1px solid #e8e8e8;
+    }
+
+    .sig-divider {
+      width: 100%;
+      height: 1px;
+      background: #e0e0e0;
+      margin-bottom: 0.8rem;
+    }
+
+    /* Signature styles — switched by tabs */
+    .sig-preview { display: none; }
+    .sig-preview.active { display: block; }
+
+    /* Corporate signature */
+    .sig-corporate {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    .sig-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #000, #222);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .sig-name {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: #111;
+    }
+
+    .sig-role {
+      font-size: 0.65rem;
+      color: #777;
+      margin-top: 1px;
+    }
+
+    .sig-company {
+      font-size: 0.65rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-top: 1px;
+    }
+
+    .sig-divider-v {
+      width: 1px;
+      height: 28px;
+      background: #e0e0e0;
+      margin: 0 0.5rem;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .sig-contact {
+      font-size: 0.62rem;
+      color: #888;
+      margin-top: 0.4rem;
+      display: flex;
+      gap: 0.4rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .sig-link { color: var(--accent); text-decoration: none; }
+
+    .sig-socials {
+      display: flex;
+      gap: 0.3rem;
+      margin-top: 0.4rem;
+    }
+
+    .sig-social-icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      background: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.55rem;
+      color: #555;
+      font-weight: 700;
+    }
+
+    /* Creative signature */
+    .sig-creative {
+      background: linear-gradient(135deg, #0a0a1a, #111);
+      border-radius: 8px;
+      padding: 0.8rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    .sig-creative-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2f9dff, #a855f7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .sig-creative-name { font-size: 0.78rem; font-weight: 800; color: #fff; }
+    .sig-creative-role { font-size: 0.62rem; color: rgba(255,255,255,0.45); margin-top: 1px; }
+
+    .sig-creative-links {
+      display: flex;
+      gap: 0.4rem;
+      margin-top: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .sig-creative-link {
+      font-size: 0.58rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      background: rgba(47,157,255,0.15);
+      border: 1px solid rgba(47,157,255,0.25);
+      color: #2f9dff;
+      font-weight: 600;
+    }
+
+    /* Minimal signature */
+    .sig-minimal {
+      border-left: 3px solid var(--accent);
+      padding-left: 0.8rem;
+    }
+
+    .sig-minimal-name { font-size: 0.78rem; font-weight: 800; color: #111; }
+    .sig-minimal-info { font-size: 0.62rem; color: #888; margin-top: 0.2rem; line-height: 1.6; }
+    .sig-minimal-link { color: var(--accent); }
+
+    /* ── SIGNATURE SELECTOR TABS ── */
+    .sig-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .sig-tab {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.45rem 1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.45);
+      cursor: pointer;
+      transition: all 0.2s;
+      background: transparent;
+      font-family: inherit;
+    }
+
+    .sig-tab:hover {
+      border-color: rgba(47,157,255,0.4);
+      color: rgba(255,255,255,0.8);
+    }
+
+    .sig-tab.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #000;
+    }
+
+    /* ── BEFORE / AFTER ── */
+    .ba-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgba(255,255,255,0.06);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-top: 2rem;
+    }
+
+    .ba-item {
+      padding: 2rem;
+      background: #050505;
+    }
+
+    .ba-label {
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .ba-label.before { color: #666; }
+    .ba-label.after { color: var(--accent); }
+
+    .ba-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .ba-dot.before { background: #333; }
+    .ba-dot.after { background: var(--accent); }
+
+    .ba-before-sig {
+      font-size: 0.78rem;
+      color: #555;
+      line-height: 1.7;
+      font-family: monospace;
+    }
+
+    .ba-after-sig {
+      background: #fff;
+      border-radius: 10px;
+      padding: 1rem;
+    }
+
+    /* ── WHAT WE BUILD — ruled list ── */
+    .em-list {
+      display: flex;
+      flex-direction: column;
+      margin-top: 2rem;
+    }
+
+    .em-list-item {
+      display: grid;
+      grid-template-columns: 44px 1fr auto;
+      align-items: center;
+      gap: 1.4rem;
+      padding: 1.3rem 0;
+      border-bottom: 1px solid #ebebeb;
+      cursor: default;
+      transition: background 0.15s;
+    }
+
+    .em-list-item:first-child { border-top: 1px solid #ebebeb; }
+    .em-list-item:hover .em-list-title { color: var(--accent); }
+
+    .em-list-num {
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+    }
+
+    .em-list-title {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 0.15rem;
+      transition: color 0.15s;
+    }
+
+    .em-list-desc {
+      font-size: 0.8rem;
+      color: #888;
+      line-height: 1.55;
+    }
+
+    .em-list-tag {
+      font-size: 0.68rem;
+      color: #bbb;
+      white-space: nowrap;
+      text-align: right;
+    }
+
+    /* ── LAPTOP MOCKUP ── */
+    .laptop-wrap {
+      display: flex;
+      justify-content: center;
+      margin-top: 2.5rem;
+    }
+
+    .laptop {
+      width: 100%;
+      max-width: 640px;
+      position: relative;
+    }
+
+    .laptop-screen {
+      background: #1a1a1a;
+      border-radius: 14px 14px 0 0;
+      border: 2px solid #333;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .laptop-cam {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #333;
+      margin: 6px auto 0;
+    }
+
+    .laptop-display {
+      background: #f2f3f4;
+      min-height: 340px;
+      margin: 6px;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .laptop-base {
+      background: #222;
+      height: 14px;
+      border-radius: 0 0 8px 8px;
+      border: 2px solid #333;
+      border-top: none;
+    }
+
+    .laptop-stand {
+      width: 120px;
+      height: 8px;
+      background: #1a1a1a;
+      margin: 0 auto;
+      border-radius: 0 0 8px 8px;
+    }
+
+    /* Outlook-style email inside laptop */
+    .outlook-ui {
+      display: grid;
+      grid-template-columns: 48px 160px 1fr;
+      height: 100%;
+      min-height: 340px;
+    }
+
+    .outlook-nav {
+      background: #0078d4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0.6rem 0;
+      gap: 0.5rem;
+    }
+
+    .outlook-nav-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      color: #fff;
+    }
+
+    .outlook-nav-icon.active-nav { background: rgba(255,255,255,0.3); }
+
+    .outlook-sidebar {
+      background: #fff;
+      border-right: 1px solid #e0e0e0;
+      padding: 0.5rem 0;
+    }
+
+    .outlook-folder {
+      padding: 0.35rem 0.8rem;
+      font-size: 0.62rem;
+      color: #555;
+      border-radius: 4px;
+      margin: 1px 4px;
+    }
+
+    .outlook-folder.active-folder {
+      background: #e8f1fb;
+      color: #0078d4;
+      font-weight: 700;
+    }
+
+    .outlook-email-panel {
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .outlook-toolbar {
+      background: #fafafa;
+      border-bottom: 1px solid #e0e0e0;
+      padding: 0.4rem 0.8rem;
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .outlook-tool-btn {
+      font-size: 0.58rem;
+      color: #555;
+      background: #f0f0f0;
+      border-radius: 4px;
+      padding: 0.2rem 0.5rem;
+      white-space: nowrap;
+    }
+
+    .outlook-email-header {
+      padding: 0.7rem 0.8rem;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .outlook-subject-line {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 0.2rem;
+    }
+
+    .outlook-meta { font-size: 0.6rem; color: #999; }
+
+    .outlook-body {
+      padding: 0.7rem 0.8rem;
+      font-size: 0.68rem;
+      color: #444;
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .outlook-sig-area {
+      border-top: 1px solid #e8e8e8;
+      padding: 0.7rem 0.8rem;
+      background: #fafafa;
+    }
+
+    /* ── COMPATIBILITY STRIP ── */
+    .compat-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.06);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-top: 2rem;
+    }
+
+    .compat-item {
+      background: #000;
+      padding: 1.6rem 1.2rem;
+      text-align: center;
+    }
+
+    .compat-icon {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .compat-name {
+      font-size: 0.88rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+
+    .compat-note {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.35);
+    }
+
+    .compat-check {
+      display: inline-block;
+      color: #4caf50;
+      font-size: 0.72rem;
+      margin-top: 0.4rem;
+    }
+
+    /* ── SPECS TABLE ── */
+    .em-specs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+
+    .em-spec-card {
+      padding: 1.6rem;
+      border-radius: var(--radius);
+      background: #f7f7f7;
+      border: 1px solid #ebebeb;
+    }
+
+    .em-spec-card h3 {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #111;
+      margin-bottom: 0.8rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .em-spec-item {
+      font-size: 0.78rem;
+      color: #555;
+      padding: 0.35rem 0;
+      border-bottom: 1px solid #f0f0f0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .em-spec-item:last-child { border-bottom: none; }
+    .em-spec-item::before { content: '✓'; color: #4caf50; font-size: 0.7rem; font-weight: 800; }
+
+    /* ── CTA ── */
+    .em-cta {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 3rem;
+      padding: 3rem;
+      border-radius: var(--radius-lg);
+      background: #050505;
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .em-cta h2 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 0.5rem;
+    }
+
+    .em-cta p { font-size: 0.9rem; color: var(--muted-light); line-height: 1.65; }
+
+    .em-cta-price {
+      font-size: 0.76rem;
+      color: rgba(255,255,255,0.25);
+      margin-top: 0.8rem;
+    }
+
+    .em-cta-price strong { color: var(--accent); }
+
+    .em-cta-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      flex-shrink: 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .em-hero { grid-template-columns: 1fr; gap: 3rem; padding-top: 4rem; }
+      .ba-grid { grid-template-columns: 1fr; }
+      .compat-strip { grid-template-columns: repeat(2, 1fr); }
+      .em-specs { grid-template-columns: 1fr 1fr; }
+      .outlook-ui { grid-template-columns: 44px 1fr; }
+      .outlook-sidebar { display: none; }
+      .em-cta { grid-template-columns: 1fr; gap: 1.5rem; }
+      .em-cta-btns { flex-direction: row; flex-wrap: wrap; }
+    }
+
+    @media (max-width: 540px) {
+      .em-specs { grid-template-columns: 1fr; }
+      .compat-strip { grid-template-columns: repeat(2, 1fr); }
+      .em-list-item { grid-template-columns: 36px 1fr; }
+      .em-list-tag { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<gv-header page="works"></gv-header>
+
+<main class="page">
+<main class="page">
+
+  <!-- ─── HERO ─── -->
+  <section class="section dark reveal-on-scroll">
+    <div class="container">
+      <div class="em-hero">
+
+        <div class="em-hero-left">
+          <div class="em-hero-label">Custom HTML Email Signature</div>
+          <h1>Your email<br>is your<br><em style="font-size: 133%;">BRAND.</em></h1>
+          <p class="em-hero-desc">
+            Every email you send is a <strong>brand touchpoint</strong>. A plain-text sign-off wastes it. A custom HTML signature turns every message into a micro-billboard — your name, role, links and logo, pixel-perfect across every client.
+          </p>
+          <div class="em-client-badges">
+            <span class="em-badge">Executives</span>
+            <span class="em-badge">Creative Studios</span>
+            <span class="em-badge">Startups</span>
+            <span class="em-badge">Law Firms</span>
+            <span class="em-badge">Agencies</span>
+            <span class="em-badge">Consultants</span>
+          </div>
+          <div style="margin-top:1.8rem;display:flex;gap:0.8rem;flex-wrap:wrap;">
+            <a href="contact.html" class="btn primary">Get Your Signature</a>
+            <a href="#preview" class="btn ghost">See Live Preview ↓</a>
+          </div>
+        </div>
+
+        <!-- GMAIL MOCKUP -->
+        <div class="gmail-mockup">
+          <div class="gmail-topbar">
+            <div class="gmail-dot" style="background:#ff5f57;"></div>
+            <div class="gmail-dot" style="background:#febc2e;"></div>
+            <div class="gmail-dot" style="background:#28c840;"></div>
+            <div class="gmail-search">Search mail</div>
+            <div style="width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,#2f9dff,#a855f7);font-size:0.6rem;font-weight:800;color:#fff;display:flex;align-items:center;justify-content:center;">N</div>
+          </div>
+          <div class="gmail-body">
+            <div class="gmail-sidebar">
+              <div class="gmail-sidebar-item active"></div>
+              <div class="gmail-sidebar-item"></div>
+              <div class="gmail-sidebar-item"></div>
+              <div class="gmail-sidebar-item"></div>
+              <div class="gmail-sidebar-item"></div>
+            </div>
+            <div class="gmail-thread">
+              <div class="gmail-thread-header">
+                <div class="gmail-subject">Re: Project Proposal — Q3 Campaign</div>
+                <div class="gmail-from">Nilesh Majumder &lt;graphyvector@gmail.com&gt; · just now</div>
+              </div>
+              <div class="gmail-email-body">
+                Hi Sarah,<br><br>
+                Thanks for the brief — I've reviewed everything and I'm excited to move forward. Please find my thoughts in the attached document.<br><br>
+                Let's schedule a call this week to align on the timeline.
+              </div>
+              <div class="gmail-sig-area">
+                <div class="sig-divider"></div>
+
+                <!-- ACTIVE SIGNATURE PREVIEW -->
+                <div class="sig-preview active" id="sig-corporate">
+                  <div class="sig-corporate">
+                    <div class="sig-avatar">NM</div>
+                    <div>
+                      <div class="sig-name">Nilesh Majumder</div>
+                      <div class="sig-role">Founder & Motion Designer</div>
+                      <div class="sig-company">Graphy Vector Studio</div>
+                      <div class="sig-contact">
+                        <span>📞 +91 70299 33095</span>
+                        <span class="sig-divider-v"></span>
+                        <a class="sig-link" href="#">graphyvector.com</a>
+                      </div>
+                      <div class="sig-socials">
+                        <div class="sig-social-icon">in</div>
+                        <div class="sig-social-icon">Be</div>
+                        <div class="sig-social-icon">📸</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="sig-preview" id="sig-creative">
+                  <div class="sig-creative">
+                    <div class="sig-creative-avatar">NM</div>
+                    <div>
+                      <div class="sig-creative-name">Nilesh Majumder</div>
+                      <div class="sig-creative-role">Motion Designer · Featured by LottieFiles</div>
+                      <div class="sig-creative-links">
+                        <span class="sig-creative-link">Portfolio</span>
+                        <span class="sig-creative-link">LottieFiles</span>
+                        <span class="sig-creative-link">LinkedIn</span>
+                        <span class="sig-creative-link">Fiverr</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="sig-preview" id="sig-minimal">
+                  <div class="sig-minimal">
+                    <div class="sig-minimal-name">Nilesh Majumder</div>
+                    <div class="sig-minimal-info">
+                      Founder, Graphy Vector Studio<br>
+                      <a class="sig-minimal-link" href="#">graphyvector.com</a> · +91 70299 33095
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- SIGNATURE STYLE TABS -->
+      <div id="preview" style="margin-top:2rem;">
+        <p style="font-size:0.78rem;color:rgba(255,255,255,0.35);margin-bottom:0.8rem;letter-spacing:0.08em;text-transform:uppercase;">Switch signature style</p>
+        <div class="sig-tabs">
+          <button class="sig-tab active" data-sig="corporate">Corporate</button>
+          <button class="sig-tab" data-sig="creative">Creative Studio</button>
+          <button class="sig-tab" data-sig="minimal">Minimal</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── BEFORE / AFTER ─── -->
+  <section class="section light reveal-on-scroll">
+    <div class="container">
+      <p class="eyebrow" style="color:var(--accent);margin-bottom:0.6rem;">The difference</p>
+      <h2 style="font-size:1.8rem;font-weight:800;letter-spacing:-0.03em;color:#111;">Plain text vs.<br>HTML signature.</h2>
+
+      <div class="ba-grid">
+        <div class="ba-item" style="background:#fafafa;">
+          <div class="ba-label before"><div class="ba-dot before"></div>Before — Plain Text</div>
+          <div class="ba-before-sig">
+            Best regards,<br>
+            Nilesh<br>
+            +91 70299 33095<br>
+            graphyvector@gmail.com
+          </div>
+          <div style="margin-top:1rem;font-size:0.75rem;color:#bbb;">No logo · No links · No brand · Forgettable</div>
+        </div>
+        <div class="ba-item" style="background:#fff;">
+          <div class="ba-label after"><div class="ba-dot after"></div>After — HTML Signature</div>
+          <div class="ba-after-sig">
+            <div class="sig-corporate">
+              <div class="sig-avatar" style="background:linear-gradient(135deg,#000,#333);">NM</div>
+              <div>
+                <div class="sig-name">Nilesh Majumder</div>
+                <div class="sig-role">Founder & Motion Designer</div>
+                <div class="sig-company">Graphy Vector Studio</div>
+                <div class="sig-contact">
+                  <span>📞 +91 70299 33095</span>
+                  <span class="sig-divider-v"></span>
+                  <a class="sig-link" href="#">graphyvector.com</a>
+                </div>
+                <div class="sig-socials">
+                  <div class="sig-social-icon">in</div>
+                  <div class="sig-social-icon">Be</div>
+                  <div class="sig-social-icon">📸</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:1rem;font-size:0.75rem;color:#4caf50;font-weight:600;">✓ Logo · ✓ Clickable links · ✓ On-brand · ✓ Memorable</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── WHAT WE BUILD ─── -->
+  <section class="section light reveal-on-scroll" style="padding-top:0;">
+    <div class="container">
+      <p class="eyebrow" style="color:var(--accent);margin-bottom:0.6rem;">What we deliver</p>
+      <h2 style="font-size:1.8rem;font-weight:800;letter-spacing:-0.03em;color:#111;">Everything in one project.</h2>
+
+      <div class="em-list">
+        <div class="em-list-item reveal-on-scroll">
+          <div class="em-list-num">01</div>
+          <div>
+            <div class="em-list-title">Custom HTML Email Signature</div>
+            <div class="em-list-desc">Fully coded in HTML/CSS — your logo, name, role, phone, website and social links in a clean, professional layout.</div>
+          </div>
+          <div class="em-list-tag">Individual · Team</div>
+        </div>
+        <div class="em-list-item reveal-on-scroll">
+          <div class="em-list-num">02</div>
+          <div>
+            <div class="em-list-title">Email Newsletter Template</div>
+            <div class="em-list-desc">Responsive HTML email templates for Mailchimp, Klaviyo, HubSpot or raw HTML — designed to render perfectly on all devices.</div>
+          </div>
+          <div class="em-list-tag">Marketing · Transactional</div>
+        </div>
+        <div class="em-list-item reveal-on-scroll">
+          <div class="em-list-num">03</div>
+          <div>
+            <div class="em-list-title">Company-wide Signature Suite</div>
+            <div class="em-list-desc">Branded signature system for entire teams — consistent across all departments with editable name/role fields.</div>
+          </div>
+          <div class="em-list-tag">5–500+ employees</div>
+        </div>
+        <div class="em-list-item reveal-on-scroll">
+          <div class="em-list-num">04</div>
+          <div>
+            <div class="em-list-title">Installation Guide</div>
+            <div class="em-list-desc">Step-by-step setup instructions for Gmail, Outlook, Apple Mail and mobile — so you never need a developer to install it.</div>
+          </div>
+          <div class="em-list-tag">All Clients</div>
+        </div>
+        <div class="em-list-item reveal-on-scroll">
+          <div class="em-list-num">05</div>
+          <div>
+            <div class="em-list-title">Dark Mode Variant</div>
+            <div class="em-list-desc">A separate version optimized for dark mode email clients — so your signature looks sharp for every recipient.</div>
+          </div>
+          <div class="em-list-tag">Add-on</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── LAPTOP MOCKUP — Outlook ─── -->
+  <section class="section dark reveal-on-scroll">
+    <div class="container">
+      <p class="eyebrow" style="margin-bottom:0.6rem;">How it looks in Outlook</p>
+      <h2 style="font-size:1.8rem;font-weight:800;letter-spacing:-0.03em;">Pixel-perfect across<br>every email client.</h2>
+
+      <div class="laptop-wrap">
+        <div class="laptop">
+          <div class="laptop-screen">
+            <div class="laptop-cam"></div>
+            <div class="laptop-display">
+              <div class="outlook-ui">
+                <div class="outlook-nav">
+                  <div class="outlook-nav-icon active-nav">✉</div>
+                  <div class="outlook-nav-icon">📅</div>
+                  <div class="outlook-nav-icon">👤</div>
+                  <div class="outlook-nav-icon">☁</div>
+                </div>
+                <div class="outlook-sidebar">
+                  <div class="outlook-folder active-folder">📥 Inbox</div>
+                  <div class="outlook-folder">⭐ Starred</div>
+                  <div class="outlook-folder">📤 Sent</div>
+                  <div class="outlook-folder">📁 Drafts</div>
+                  <div class="outlook-folder">🗂 Archive</div>
+                </div>
+                <div class="outlook-email-panel">
+                  <div class="outlook-toolbar">
+                    <div class="outlook-tool-btn">Reply</div>
+                    <div class="outlook-tool-btn">Forward</div>
+                    <div class="outlook-tool-btn">Archive</div>
+                    <div class="outlook-tool-btn">Delete</div>
+                  </div>
+                  <div class="outlook-email-header">
+                    <div class="outlook-subject-line">Re: Brand Identity Project — Next Steps</div>
+                    <div class="outlook-meta">From: Nilesh Majumder &lt;graphyvector@gmail.com&gt; · To: client@company.com</div>
+                  </div>
+                  <div class="outlook-body">
+                    Hi James,<br><br>
+                    It was great speaking earlier. I've outlined the project phases and timeline below — please review when you get a chance and let me know if you'd like any adjustments.<br><br>
+                    Looking forward to working together.
+                  </div>
+                  <div class="outlook-sig-area">
+                    <div class="sig-divider" style="margin-bottom:0.7rem;"></div>
+                    <div class="sig-corporate">
+                      <div class="sig-avatar" style="background:linear-gradient(135deg,#000,#222);">NM</div>
+                      <div>
+                        <div class="sig-name">Nilesh Majumder</div>
+                        <div class="sig-role">Founder & Motion Designer</div>
+                        <div class="sig-company">Graphy Vector Studio</div>
+                        <div class="sig-contact">
+                          <span>📞 +91 70299 33095</span>
+                          <span class="sig-divider-v"></span>
+                          <a class="sig-link" href="#">graphyvector.com</a>
+                        </div>
+                        <div class="sig-socials" style="margin-top:0.3rem;">
+                          <div class="sig-social-icon">in</div>
+                          <div class="sig-social-icon">Be</div>
+                          <div class="sig-social-icon">📸</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="laptop-base"></div>
+          <div class="laptop-stand"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── COMPATIBILITY ─── -->
+  <section class="section dark reveal-on-scroll" style="padding-top:0;">
+    <div class="container">
+      <h2 style="font-size:1.6rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:0.3rem;">Works everywhere.</h2>
+      <p style="color:rgba(255,255,255,0.35);font-size:0.88rem;">Tested and confirmed on every major email client.</p>
+      <div class="compat-strip">
+        <div class="compat-item">
+          <span class="compat-icon">📧</span>
+          <div class="compat-name">Gmail</div>
+          <div class="compat-note">Web & Mobile</div>
+          <div class="compat-check">✓ Confirmed</div>
+        </div>
+        <div class="compat-item">
+          <span class="compat-icon">📮</span>
+          <div class="compat-name">Outlook</div>
+          <div class="compat-note">2016 · 2019 · 365</div>
+          <div class="compat-check">✓ Confirmed</div>
+        </div>
+        <div class="compat-item">
+          <span class="compat-icon">🍎</span>
+          <div class="compat-name">Apple Mail</div>
+          <div class="compat-note">macOS & iOS</div>
+          <div class="compat-check">✓ Confirmed</div>
+        </div>
+        <div class="compat-item">
+          <span class="compat-icon">📱</span>
+          <div class="compat-name">Mobile</div>
+          <div class="compat-note">Android & iPhone</div>
+          <div class="compat-check">✓ Confirmed</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SPECS ─── -->
+  <section class="section light reveal-on-scroll">
+    <div class="container">
+      <p class="eyebrow" style="color:var(--accent);margin-bottom:0.6rem;">Deliverables</p>
+      <h2 style="font-size:1.8rem;font-weight:800;letter-spacing:-0.03em;color:#111;">What's included<br>in every project.</h2>
+
+      <div class="em-specs">
+        <div class="em-spec-card reveal-on-scroll">
+          <h3>Design Files</h3>
+          <div class="em-spec-item">Figma source file</div>
+          <div class="em-spec-item">Logo in SVG & PNG</div>
+          <div class="em-spec-item">All image assets exported</div>
+          <div class="em-spec-item">Font files included</div>
+        </div>
+        <div class="em-spec-card reveal-on-scroll">
+          <h3>Code Files</h3>
+          <div class="em-spec-item">Clean HTML file</div>
+          <div class="em-spec-item">Inline CSS (email-safe)</div>
+          <div class="em-spec-item">Hosted image links</div>
+          <div class="em-spec-item">Dark mode variant</div>
+        </div>
+        <div class="em-spec-card reveal-on-scroll">
+          <h3>Support</h3>
+          <div class="em-spec-item">Gmail setup guide</div>
+          <div class="em-spec-item">Outlook setup guide</div>
+          <div class="em-spec-item">Apple Mail guide</div>
+          <div class="em-spec-item">1 round of revisions</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA ─── -->
+  <section class="section dark reveal-on-scroll">
+    <div class="container">
+      <div class="em-cta">
+        <div>
+          <h2>Stop signing off<br>with plain text.</h2>
+          <p>Every email is a brand moment. Let's make sure yours lands with the right impression — every single time.</p>
+          <p class="em-cta-price">Signatures start at <strong>$49</strong> · Full team suites from <strong>$199</strong></p>
+        </div>
+        <div class="em-cta-btns">
+          <a href="contact.html" class="btn primary">Get Your Signature</a>
+          <a href="works.html" class="btn ghost">Back to Works</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+<script>
+(function(){
+  /* Signature style switcher */
+  var tabs = document.querySelectorAll('.sig-tab');
+  var previews = document.querySelectorAll('.sig-preview');
+
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      tabs.forEach(function(t){ t.classList.remove('active'); });
+      tab.classList.add('active');
+
+      var target = tab.dataset.sig;
+      previews.forEach(function(p){ p.classList.remove('active'); });
+      var el = document.getElementById('sig-' + target);
+      if(el) el.classList.add('active');
+    });
+  });
+})();
+</script>
+</main>
+
+<gv-footer></gv-footer>
+
+<script src="assets/js/components.js"></script>
+<script src="assets/js/script.js" defer></script>
+</body>
+</html>

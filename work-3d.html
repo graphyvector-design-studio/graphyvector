@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>3D Modeling & Product Animation | Graphy Vector Studio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Graphy Vector Studio creates high-impact 3D product renders and animations for cosmetics, electronics and lifestyle brands — built for ads, launches and e-commerce." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="./assets/Favicon/favicon-small.svg">
+  <link rel="icon" type="image/png" sizes="512x512" href="./assets/Favicon/favicon-big.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/Favicon/apple-touch-icon.png">
+  <meta name="theme-color" content="#000000">
+  <style>
+    /* ── 3D Page Specific ── */
+
+    /* HERO — full bleed dramatic */
+    .td-hero {
+      min-height: 88vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .td-hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 60% at 80% 40%, rgba(47,157,255,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 50% at 20% 70%, rgba(47,157,255,0.04) 0%, transparent 60%);
+      z-index: 0;
+    }
+
+    /* Big diagonal number watermark */
+    .td-hero-watermark {
+      position: absolute;
+      top: -2rem;
+      right: -2rem;
+      font-size: clamp(14rem, 28vw, 26rem);
+      font-weight: 900;
+      line-height: 1;
+      color: rgba(255,255,255,0.02);
+      letter-spacing: -0.05em;
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+    }
+
+    .td-hero-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .td-hero-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .td-hero-label::before {
+      content: '';
+      display: inline-block;
+      width: 28px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .td-hero h1 {
+      font-size: clamp(3.2rem, 7vw, 6.5rem);
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      margin-bottom: 2.4rem;
+      max-width: 800px;
+    }
+
+    .td-hero h1 em {
+      font-style: normal;
+      -webkit-text-stroke: 1px rgba(255,255,255,0.4);
+      color: transparent;
+    }
+
+    .td-hero-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 3rem;
+      padding-top: 2.4rem;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .td-hero-desc {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.55);
+      max-width: 480px;
+    }
+
+    .td-hero-desc strong {
+      color: var(--text-light);
+    }
+
+    .td-hero-stats {
+      display: flex;
+      gap: 2.4rem;
+      flex-shrink: 0;
+    }
+
+    .td-stat {
+      text-align: right;
+    }
+
+    .td-stat-num {
+      font-size: 2rem;
+      font-weight: 900;
+      display: block;
+      letter-spacing: -0.04em;
+    }
+
+    .td-stat-lbl {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.3);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* WHAT WE RENDER — bold dark grid */
+    .render-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.06);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-top: 2.4rem;
+    }
+
+    .render-item {
+      background: #000;
+      padding: 2.2rem 1.8rem;
+      position: relative;
+      transition: background 0.2s ease;
+    }
+
+    .render-item:hover {
+      background: #0a0a0a;
+    }
+
+    .render-num {
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+      font-weight: 700;
+    }
+
+    .render-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.02em;
+    }
+
+    .render-desc {
+      font-size: 0.88rem;
+      color: var(--muted-light);
+      line-height: 1.65;
+    }
+
+    .render-item::after {
+      content: '→';
+      position: absolute;
+      bottom: 1.8rem;
+      right: 1.8rem;
+      color: rgba(255,255,255,0.15);
+      font-size: 1.2rem;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .render-item:hover::after {
+      color: var(--accent);
+      transform: translate(3px, -3px);
+    }
+
+    /* SHOWCASE — dramatic full-width placeholders */
+    .showcase-3d {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 1rem;
+      margin-top: 2.4rem;
+    }
+
+    .s3d-item {
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      background: #060606;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .s3d-item.hero-item {
+      grid-column: span 2;
+    }
+
+    .s3d-frame {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      padding: 3rem 2rem;
+      min-height: 280px;
+    }
+
+    .s3d-item.hero-item .s3d-frame {
+      min-height: 360px;
+    }
+
+    .s3d-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .s3d-ph-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: rgba(47,157,255,0.06);
+      border: 1px solid rgba(47,157,255,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .s3d-ph-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: rgba(47,157,255,0.5);
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .s3d-ph-label {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.2);
+      text-align: center;
+      letter-spacing: 0.06em;
+    }
+
+    .s3d-tag {
+      position: absolute;
+      top: 1.2rem;
+      left: 1.2rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(47,157,255,0.08);
+      border: 1px solid rgba(47,157,255,0.2);
+      border-radius: 999px;
+      padding: 0.3rem 0.8rem;
+    }
+
+    /* USE CASES — light section with bold numbers */
+    .usecase-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+
+    .usecase-card {
+      padding: 2rem;
+      border-radius: var(--radius);
+      background: #f5f5f5;
+      border: 1px solid #e5e5e5;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .usecase-card::before {
+      content: attr(data-num);
+      position: absolute;
+      top: -1rem;
+      right: 1rem;
+      font-size: 6rem;
+      font-weight: 900;
+      color: rgba(0,0,0,0.04);
+      letter-spacing: -0.05em;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .usecase-card h3 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #111;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .usecase-card p {
+      font-size: 0.88rem;
+      color: #666;
+      line-height: 1.65;
+    }
+
+    .usecase-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 1rem;
+    }
+
+    .usecase-tag {
+      font-size: 0.72rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: #000;
+      color: rgba(255,255,255,0.7);
+      font-weight: 500;
+    }
+
+    /* PROCESS — horizontal timeline */
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 2.8rem;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 22px;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .timeline-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 1rem;
+      position: relative;
+    }
+
+    .timeline-dot {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #0a0a0a;
+      border: 1px solid rgba(47,157,255,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .timeline-step h4 {
+      font-size: 0.95rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .timeline-step p {
+      font-size: 0.82rem;
+      color: var(--muted-light);
+      line-height: 1.6;
+    }
+
+    /* SOFTWARE ROW */
+    .software-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.06);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-top: 2rem;
+    }
+
+    .software-item {
+      background: #000;
+      padding: 1.6rem 1.2rem;
+      text-align: center;
+    }
+
+    .software-icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+
+    .software-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .software-use {
+      font-size: 0.78rem;
+      color: var(--muted-light);
+    }
+
+    /* TESTIMONIAL */
+    .td-testimonial {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      padding: 3.5rem;
+      background: #060606;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(255,255,255,0.06);
+      margin-top: 0;
+    }
+
+    .td-testimonial-quote {
+      font-size: 1.3rem;
+      line-height: 1.65;
+      font-weight: 400;
+      color: var(--text-light);
+    }
+
+    .td-testimonial-quote::before {
+      content: '"';
+      display: block;
+      font-size: 4rem;
+      line-height: 1;
+      color: rgba(47,157,255,0.2);
+      margin-bottom: -0.5rem;
+      font-weight: 900;
+    }
+
+    .td-testimonial-right {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .td-testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .td-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(47,157,255,0.12);
+      border: 1px solid rgba(47,157,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .td-author-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .td-author-role {
+      font-size: 0.78rem;
+      color: var(--muted-light);
+    }
+
+    .td-deliverables-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .td-deliverable {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .td-deliverable::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* CTA — dramatic full bleed */
+    .td-cta {
+      position: relative;
+      overflow: hidden;
+      padding: 5rem 3rem;
+      border-radius: var(--radius-lg);
+      background: #000;
+      border: 1px solid rgba(255,255,255,0.07);
+      text-align: center;
+    }
+
+    .td-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(47,157,255,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .td-cta h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .td-cta p {
+      font-size: 1rem;
+      color: var(--muted-light);
+      max-width: 480px;
+      margin: 0 auto 2rem;
+      line-height: 1.7;
+      position: relative;
+    }
+
+    .td-cta-price {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.25);
+      margin-top: 1.2rem;
+      position: relative;
+    }
+
+    .td-cta-price strong {
+      color: var(--accent);
+    }
+
+    .td-cta-btns {
+      display: flex;
+      gap: 0.8rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    /* Responsive */
+    @media (max-width: 860px) {
+      .td-hero h1 { font-size: 3rem; }
+      .td-hero-bottom { flex-direction: column; align-items: flex-start; gap: 2rem; }
+      .td-hero-stats { flex-direction: row; }
+      .td-stat { text-align: left; }
+      .render-grid { grid-template-columns: 1fr; }
+      .showcase-3d { grid-template-columns: 1fr; }
+      .s3d-item.hero-item { grid-column: span 1; }
+      .usecase-grid { grid-template-columns: 1fr; }
+      .timeline { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .timeline::before { display: none; }
+      .software-row { grid-template-columns: 1fr 1fr; }
+      .td-testimonial { grid-template-columns: 1fr; gap: 2rem; padding: 2rem; }
+      .td-cta { padding: 3rem 1.5rem; }
+    }
+
+    @media (max-width: 540px) {
+      .timeline { grid-template-columns: 1fr; }
+      .software-row { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<gv-header page="works"></gv-header>
+
+<main class="page">
+<main class="page">
+
+  <!-- ─── HERO ─── -->
+  <section class="section dark td-hero reveal-on-scroll">
+    <div class="td-hero-bg"></div>
+    <div class="td-hero-watermark">3D</div>
+    <div class="container td-hero-inner">
+      <div class="td-hero-label">3D Modeling & Product Animation</div>
+      <h1>Make your<br>product <em>impossible</em><br>to ignore.</h1>
+      <div class="td-hero-bottom">
+        <p class="td-hero-desc">
+          We turn your product into a <strong>photorealistic 3D asset</strong> that sells — hero renders for e-commerce, scroll-stopping ads, launch videos and 360° spins that no flat photo can compete with.
+        </p>
+        <div class="td-hero-stats">
+          <div class="td-stat">
+            <span class="td-stat-num">60+</span>
+            <span class="td-stat-lbl">Products Rendered</span>
+          </div>
+          <div class="td-stat">
+            <span class="td-stat-num">4K</span>
+            <span class="td-stat-lbl">Export Quality</span>
+          </div>
+          <div class="td-stat">
+            <span class="td-stat-num">5.0</span>
+            <span class="td-stat-lbl">Avg. Rating</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── WHAT WE RENDER ─── -->
+  <section class="section dark reveal-on-scroll" style="padding-top:0;">
+    <div class="container">
+      <p class="eyebrow" style="margin-bottom:0.8rem;">What we create</p>
+      <h2 style="font-size:2rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:0;">Six types of 3D work,<br>one studio.</h2>
+
+      <div class="render-grid">
+        <div class="render-item reveal-on-scroll">
+          <div class="render-num">01</div>
+          <div class="render-title">Hero Product Renders</div>
+          <p class="render-desc">Photorealistic still renders for e-commerce listings, packaging and print — in any lighting, angle or environment.</p>
+        </div>
+        <div class="render-item reveal-on-scroll">
+          <div class="render-num">02</div>
+          <div class="render-title">360° Product Spins</div>
+          <p class="render-desc">Smooth rotation animations that let customers see every angle — perfect for Shopify, Amazon and landing pages.</p>
+        </div>
+        <div class="render-item reveal-on-scroll">
+          <div class="render-num">03</div>
+          <div class="render-title">Ad & Social Animations</div>
+          <p class="render-desc">Short dramatic 3D clips for Instagram, TikTok and YouTube ads — optimized for mobile-first viewing.</p>
+        </div>
+        <div class="render-item reveal-on-scroll">
+          <div class="render-num">04</div>
+          <div class="render-title">Product Launch Videos</div>
+          <p class="render-desc">Cinematic reveal animations timed to music — the kind that make a product feel like an event, not just a purchase.</p>
+        </div>
+        <div class="render-item reveal-on-scroll">
+          <div class="render-num">05</div>
+          <div class="render-title">Exploded & Cutaway Views</div>
+          <p class="render-desc">Technical breakdowns showing product construction, materials and engineering — ideal for premium positioning.</p>
+        </div>
+        <div class="render-item reveal-on-scroll">
+          <div class="render-num">06</div>
+          <div class="render-title">Lifestyle Scene Composites</div>
+          <p class="render-desc">3D product dropped into styled environments — no photoshoot required. Change the scene anytime.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SHOWCASE ─── -->
+  <section class="section dark reveal-on-scroll" style="padding-top:0;">
+    <div class="container">
+      <h2 style="font-size:2rem;font-weight:800;letter-spacing:-0.03em;">Selected work.</h2>
+
+      <div class="showcase-3d">
+
+        <div class="s3d-item hero-item">
+          <div class="s3d-frame">
+
+            <video src="./assets/vid/bottle_1.webm" autoplay muted loop playsinline></video>
+          </div>
+        </div>
+
+        <div class="s3d-item">
+          <span class="s3d-tag">360° Spin</span>
+          <div class="s3d-frame">
+            <div class="s3d-ph-icon">
+              <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+            </div>
+            <div class="s3d-ph-label">360° rotation animation</div>
+          </div>
+        </div>
+
+        <div class="s3d-item">
+          <span class="s3d-tag">Ad Animation</span>
+          <div class="s3d-frame">
+            <div class="s3d-ph-icon">
+              <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </div>
+            <div class="s3d-ph-label">Social ad clip — 9:16 format</div>
+          </div>
+        </div>
+
+        <div class="s3d-item">
+          <span class="s3d-tag">Lifestyle Scene</span>
+          <div class="s3d-frame">
+            <div class="s3d-ph-icon">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            </div>
+            <div class="s3d-ph-label">Lifestyle composite scene</div>
+          </div>
+        </div>
+
+        <div class="s3d-item">
+          <span class="s3d-tag">Exploded View</span>
+          <div class="s3d-frame">
+            <div class="s3d-ph-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <div class="s3d-ph-label">Technical exploded view</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── USE CASES ─── -->
+  <section class="section light reveal-on-scroll">
+    <div class="container">
+      <p class="eyebrow" style="color:var(--accent);margin-bottom:0.8rem;">Industries</p>
+      <h2 style="font-size:2rem;font-weight:800;letter-spacing:-0.03em;color:var(--text-dark);">Where this hits hardest.</h2>
+
+      <div class="usecase-grid">
+        <div class="usecase-card reveal-on-scroll" data-num="01">
+          <h3>Cosmetics & Beauty</h3>
+          <p>Perfume bottles, skincare serums, lipstick — rendered in dramatic lighting that makes your packaging look like luxury. No studio, no photoshoot costs.</p>
+          <div class="usecase-tags">
+            <span class="usecase-tag">Serums</span>
+            <span class="usecase-tag">Perfume</span>
+            <span class="usecase-tag">Packaging</span>
+            <span class="usecase-tag">Skincare</span>
+          </div>
+        </div>
+        <div class="usecase-card reveal-on-scroll" data-num="02">
+          <h3>Electronics & Tech</h3>
+          <p>Earbuds, smartwatches, gadgets — photorealistic renders with accurate materials, reflections and screen UIs baked in for e-commerce and ads.</p>
+          <div class="usecase-tags">
+            <span class="usecase-tag">Earbuds</span>
+            <span class="usecase-tag">Wearables</span>
+            <span class="usecase-tag">Gadgets</span>
+            <span class="usecase-tag">Accessories</span>
+          </div>
+        </div>
+        <div class="usecase-card reveal-on-scroll" data-num="03">
+          <h3>Lifestyle & Fashion</h3>
+          <p>Bags, footwear, accessories — styled in 3D scenes that match your brand's world without a single photoshoot. Change color, material or environment anytime.</p>
+          <div class="usecase-tags">
+            <span class="usecase-tag">Bags</span>
+            <span class="usecase-tag">Footwear</span>
+            <span class="usecase-tag">Jewellery</span>
+            <span class="usecase-tag">Accessories</span>
+          </div>
+        </div>
+        <div class="usecase-card reveal-on-scroll" data-num="04">
+          <h3>Food & Beverage</h3>
+          <p>Bottles, cans, packaging — rendered with condensation, reflections and appetite-inducing lighting. Ideal for product launches and seasonal campaigns.</p>
+          <div class="usecase-tags">
+            <span class="usecase-tag">Bottles</span>
+            <span class="usecase-tag">Cans</span>
+            <span class="usecase-tag">Packaging</span>
+            <span class="usecase-tag">Labels</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PROCESS ─── -->
+  <section class="section dark reveal-on-scroll">
+    <div class="container">
+      <p class="eyebrow" style="margin-bottom:0.8rem;">Process</p>
+      <h2 style="font-size:2rem;font-weight:800;letter-spacing:-0.03em;">From brief to final render.</h2>
+
+      <div class="timeline">
+        <div class="timeline-step reveal-on-scroll">
+          <div class="timeline-dot">01</div>
+          <h4>Brief & References</h4>
+          <p>You send product files, reference images and the vibe you want. We ask the right questions.</p>
+        </div>
+        <div class="timeline-step reveal-on-scroll">
+          <div class="timeline-dot">02</div>
+          <h4>Model & Texture</h4>
+          <p>We build the 3D model and apply photorealistic materials, textures and finishes.</p>
+        </div>
+        <div class="timeline-step reveal-on-scroll">
+          <div class="timeline-dot">03</div>
+          <h4>Light & Preview</h4>
+          <p>We set up lighting and send low-res previews for your approval before final render.</p>
+        </div>
+        <div class="timeline-step reveal-on-scroll">
+          <div class="timeline-dot">04</div>
+          <h4>Final Delivery</h4>
+          <p>4K renders or animation files exported in formats ready for web, print and ads.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SOFTWARE ─── -->
+  <section class="section dark reveal-on-scroll" style="padding-top:0;">
+    <div class="container">
+      <h2 style="font-size:1.6rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:0.4rem;">Built with industry tools.</h2>
+      <p style="color:var(--muted-light);font-size:0.88rem;">All source files included. You own everything.</p>
+      <div class="software-row">
+        <div class="software-item">
+          <span class="software-icon">🎨</span>
+          <div class="software-name">Blender</div>
+          <div class="software-use">3D modeling, lighting, Cycles rendering</div>
+        </div>
+        <div class="software-item">
+          <span class="software-icon">🖥</span>
+          <div class="software-name">Maya</div>
+          <div class="software-use">Complex animation, rigging, VFX</div>
+        </div>
+        <div class="software-item">
+          <span class="software-icon">✦</span>
+          <div class="software-name">After Effects</div>
+          <div class="software-use">Compositing, motion graphics, color</div>
+        </div>
+        <div class="software-item">
+          <span class="software-icon">📐</span>
+          <div class="software-name">Photoshop</div>
+          <div class="software-use">Retouching, compositing, final export</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TESTIMONIAL ─── -->
+  <section class="section dark reveal-on-scroll" style="padding-top:0;">
+    <div class="container">
+      <div class="td-testimonial">
+        <div class="td-testimonial-quote">
+          The 3D renders replaced our entire photoshoot budget. The product looked better in CGI than it ever did in a studio — and we could change the background color for every campaign.
+        </div>
+        <div class="td-testimonial-right">
+          <div class="td-testimonial-author">
+            <div class="td-avatar">SR</div>
+            <div>
+              <div class="td-author-name">S. Rathi</div>
+              <div class="td-author-role">Brand Director, D2C Cosmetics (confidential)</div>
+            </div>
+          </div>
+          <div class="td-deliverables-list">
+            <div class="td-deliverable">12 hero renders across 3 colorways</div>
+            <div class="td-deliverable">360° spin animation for Shopify</div>
+            <div class="td-deliverable">6 ad clips for Instagram & TikTok</div>
+            <div class="td-deliverable">Source files handed over in full</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA ─── -->
+  <section class="section dark reveal-on-scroll" style="padding-top:0;">
+    <div class="container">
+      <div class="td-cta">
+        <h2>Your product deserves<br>to look this good.</h2>
+        <p>Tell us what you're launching — we'll tell you exactly what we'd build and what it'll cost.</p>
+        <div class="td-cta-btns">
+          <a href="contact.html" class="btn primary">Get a 3D Quote</a>
+          <a href="works.html" class="btn ghost">Back to Works</a>
+        </div>
+        <p class="td-cta-price">Projects typically start at <strong>$199</strong> — complexity and deliverables determine the final investment.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+</main>
+
+<gv-footer></gv-footer>
+
+<script src="assets/js/components.js"></script>
+<script src="assets/js/script.js" defer></script>
+</body>
+</html>

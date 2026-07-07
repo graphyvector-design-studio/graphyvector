@@ -1,0 +1,2424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Motion Graphics for SaaS & Tech | Graphy Vector Studio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Graphy Vector Studio creates advanced motion graphics for SaaS products, AI platforms and tech companies — UI animations, product demos, explainer videos and launch films." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="./assets/Favicon/favicon-small.svg">
+  <link rel="icon" type="image/png" sizes="512x512" href="./assets/Favicon/favicon-big.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/Favicon/apple-touch-icon.png">
+  <meta name="theme-color" content="#000000">
+  <style>
+
+    /* ── TOKENS ── */
+    :root {
+      --grid-line: rgba(255,255,255,0.04);
+      --accent2: #7c3aed;
+      --accent2-soft: rgba(124,58,237,0.12);
+      --accent-glow: 0 0 40px rgba(47,157,255,0.2);
+    }
+
+    /* ── GLOBAL GRID OVERLAY ── */
+    .mg-grid-bg {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── HERO ── */
+    .mg-hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 8rem 0 6rem;
+    }
+
+    /* Glowing orbs */
+    .mg-orb {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(80px);
+    }
+
+    .mg-orb-1 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(47,157,255,0.12), transparent 70%);
+      top: -100px; right: -100px;
+      animation: orbFloat 10s ease-in-out infinite;
+    }
+
+    .mg-orb-2 {
+      width: 360px; height: 360px;
+      background: radial-gradient(circle, rgba(124,58,237,0.1), transparent 70%);
+      bottom: 0; left: 10%;
+      animation: orbFloat 14s ease-in-out 3s infinite;
+    }
+
+    .mg-orb-3 {
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(47,157,255,0.08), transparent 70%);
+      top: 40%; left: 40%;
+      animation: orbFloat 8s ease-in-out 1s infinite;
+    }
+
+    @keyframes orbFloat {
+      0%,100% { transform: translateY(0) scale(1); }
+      50%      { transform: translateY(-30px) scale(1.06); }
+    }
+
+    .mg-hero-inner {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Eyebrow with animated dot */
+    .mg-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2rem;
+    }
+
+    .mg-eyebrow-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+      animation: dotPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes dotPulse {
+      0%,100% { transform: scale(1); opacity: 1; }
+      50%      { transform: scale(1.6); opacity: 0.6; }
+    }
+
+    /* Hero headline — split lines */
+    .mg-h1 {
+      font-size: clamp(3.5rem, 7vw, 7rem);
+      font-weight: 900;
+      line-height: 0.92;
+      letter-spacing: -0.04em;
+      margin-bottom: 2.4rem;
+      max-width: 900px;
+    }
+
+    .mg-h1-line {
+      display: block;
+      overflow: hidden;
+    }
+
+    .mg-h1-line span {
+      display: block;
+      animation: lineReveal 0.9s cubic-bezier(0.16,1,0.3,1) both;
+    }
+
+    .mg-h1-line:nth-child(1) span { animation-delay: 0.1s; }
+    .mg-h1-line:nth-child(2) span { animation-delay: 0.2s; }
+    .mg-h1-line:nth-child(3) span { animation-delay: 0.3s; }
+
+    @keyframes lineReveal {
+      from { transform: translateY(110%); opacity: 0; }
+      to   { transform: translateY(0); opacity: 1; }
+    }
+
+    .mg-h1 .accent-word { color: var(--accent); }
+    .mg-h1 .outline-word {
+      -webkit-text-stroke: 1px rgba(255,255,255,0.2);
+      color: transparent;
+    }
+
+    .mg-hero-sub {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.45);
+      max-width: 480px;
+      margin-bottom: 2.4rem;
+      animation: fadeUp 0.8s 0.5s both;
+    }
+
+    .mg-hero-sub strong { color: rgba(255,255,255,0.8); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .mg-hero-actions {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.65s both;
+    }
+
+    /* Client logos strip */
+    .mg-clients {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      animation: fadeUp 0.8s 0.8s both;
+    }
+
+    .mg-clients-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.2);
+      margin-bottom: 1.2rem;
+    }
+
+    .mg-clients-row {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .mg-client-pill {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.2);
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.07);
+      transition: all 0.2s;
+    }
+
+    .mg-client-pill:hover {
+      color: rgba(255,255,255,0.6);
+      border-color: rgba(255,255,255,0.15);
+    }
+
+    /* ── CANVAS — animated nodes ── */
+    .mg-canvas-section {
+      position: relative;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    #nodeCanvas {
+      width: 100%;
+      height: 320px;
+      display: block;
+    }
+
+    .mg-canvas-label {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .mg-canvas-label h2 {
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: #fff;
+      margin-bottom: 0.4rem;
+    }
+
+    .mg-canvas-label p {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* ── WHAT WE MAKE — bento ── */
+    .mg-bento {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 1px;
+      background: rgba(255,255,255,0.05);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-top: 2.4rem;
+    }
+
+    .mg-bento-cell {
+      background: #050508;
+      padding: 2.2rem 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+
+    .mg-bento-cell:hover { background: #07070c; }
+
+    .mg-bento-cell.tall { grid-row: span 2; }
+
+    /* Accent line top */
+    .mg-bento-cell::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .mg-bento-cell:hover::before { opacity: 1; }
+
+    /* Corner decoration */
+    .mg-bento-cell::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; right: -40px;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(47,157,255,0.05), transparent 70%);
+      transition: transform 0.4s ease;
+    }
+
+    .mg-bento-cell:hover::after { transform: scale(1.5); }
+
+    .mg-cell-num {
+      font-size: 0.65rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: 0.18em;
+      margin-bottom: 1.2rem;
+    }
+
+    .mg-cell-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: rgba(47,157,255,0.08);
+      border: 1px solid rgba(47,157,255,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .mg-cell-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+
+    .mg-cell-desc {
+      font-size: 0.84rem;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.65;
+    }
+
+    .mg-cell-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-top: 1.2rem;
+    }
+
+    .mg-tag {
+      font-size: 0.65rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.35);
+      font-weight: 500;
+    }
+
+    /* Tall cell animation */
+    .mg-bento-cell.tall .mg-cell-visual {
+      margin-top: 1.5rem;
+      height: 120px;
+      position: relative;
+    }
+
+    .mg-ui-anim {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .mg-ui-bar {
+      height: 8px;
+      border-radius: 4px;
+      background: rgba(47,157,255,0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mg-ui-bar::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(47,157,255,0.6), transparent);
+      animation: barShimmer 2.5s ease-in-out infinite;
+    }
+
+    .mg-ui-bar:nth-child(1)::after { animation-delay: 0s; width: 70%; }
+    .mg-ui-bar:nth-child(2)::after { animation-delay: 0.3s; width: 85%; }
+    .mg-ui-bar:nth-child(3)::after { animation-delay: 0.6s; width: 55%; }
+    .mg-ui-bar:nth-child(4)::after { animation-delay: 0.9s; width: 90%; }
+    .mg-ui-bar:nth-child(5)::after { animation-delay: 1.2s; width: 65%; }
+
+    @keyframes barShimmer {
+      0%   { transform: translateX(-100%); opacity: 0; }
+      20%  { opacity: 1; }
+      80%  { opacity: 1; }
+      100% { transform: translateX(200%); opacity: 0; }
+    }
+
+    /* ── SaaS DEMO MOCKUP ── */
+    .saas-mockup-section {
+      position: relative;
+    }
+
+    .saas-mockup-wrap {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      margin-top: 2.4rem;
+    }
+
+    .saas-screen {
+      width: 100%;
+      max-width: 800px;
+      background: #07070f;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 60px 120px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.04);
+      position: relative;
+    }
+
+    /* Glow under screen */
+    .saas-screen::before {
+      content: '';
+      position: absolute;
+      bottom: -60px;
+      left: 10%; right: 10%;
+      height: 60px;
+      background: rgba(47,157,255,0.15);
+      filter: blur(40px);
+      pointer-events: none;
+    }
+
+    .saas-titlebar {
+      background: #0a0a14;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding: 0.7rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .saas-tb-dot { width: 9px; height: 9px; border-radius: 50%; }
+    .saas-tb-dot.r { background: #ff5f57; }
+    .saas-tb-dot.y { background: #febc2e; }
+    .saas-tb-dot.g { background: #28c840; }
+
+    .saas-tb-title {
+      flex: 1;
+      text-align: center;
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.1em;
+    }
+
+    .saas-body {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+    }
+
+    /* Left nav */
+    .saas-nav {
+      background: #060610;
+      border-right: 1px solid rgba(255,255,255,0.04);
+      padding: 1rem 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .saas-nav-icon {
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.03);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.2);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .saas-nav-icon:hover,
+    .saas-nav-icon.active {
+      background: rgba(47,157,255,0.12);
+      color: var(--accent);
+    }
+
+    /* Main content */
+    .saas-content {
+      padding: 1.2rem;
+      min-height: 360px;
+    }
+
+    .saas-content-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.2rem;
+    }
+
+    .saas-page-title {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .saas-header-btns {
+      display: flex;
+      gap: 0.4rem;
+    }
+
+    .saas-header-btn {
+      font-size: 0.62rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+    .saas-header-btn.primary {
+      background: var(--accent);
+      color: #000;
+    }
+
+    .saas-header-btn.ghost {
+      background: rgba(255,255,255,0.05);
+      color: rgba(255,255,255,0.5);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    /* Metric cards */
+    .saas-metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+    }
+
+    .saas-metric {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 10px;
+      padding: 0.8rem;
+    }
+
+    .saas-metric-label {
+      font-size: 0.58rem;
+      color: rgba(255,255,255,0.3);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.3rem;
+    }
+
+    .saas-metric-val {
+      font-size: 1.1rem;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -0.03em;
+    }
+
+    .saas-metric-delta {
+      font-size: 0.55rem;
+      color: #4ade80;
+      margin-top: 0.2rem;
+    }
+
+    .saas-metric-delta.down { color: #f87171; }
+
+    /* Chart area */
+    .saas-chart-area {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 10px;
+      padding: 0.8rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .saas-chart-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.8rem;
+    }
+
+    .saas-chart-title {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .saas-chart-pills {
+      display: flex;
+      gap: 0.3rem;
+    }
+
+    .saas-chart-pill {
+      font-size: 0.55rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.25);
+    }
+
+    .saas-chart-pill.active {
+      background: var(--accent);
+      color: #000;
+      border-color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* Animated SVG chart */
+    #saasChart {
+      width: 100%;
+      height: 80px;
+    }
+
+    .chart-line {
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 1.5;
+      stroke-dasharray: 800;
+      stroke-dashoffset: 800;
+      animation: drawLine 2.5s ease forwards 0.5s;
+    }
+
+    .chart-area {
+      fill: url(#chartGrad);
+      opacity: 0;
+      animation: fadeIn 1s ease forwards 1s;
+    }
+
+    @keyframes drawLine {
+      to { stroke-dashoffset: 0; }
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    /* Bottom row */
+    .saas-bottom-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+    }
+
+    .saas-table {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .saas-table-header {
+      padding: 0.5rem 0.8rem;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .saas-table-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 0.8rem;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      font-size: 0.6rem;
+    }
+
+    .saas-table-row:last-child { border-bottom: none; }
+
+    .saas-row-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .saas-row-name { flex: 1; color: rgba(255,255,255,0.6); }
+    .saas-row-val  { color: rgba(255,255,255,0.4); font-family: monospace; }
+
+    .saas-activity {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 10px;
+      padding: 0.6rem 0.8rem;
+    }
+
+    .saas-act-header {
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+
+    .saas-act-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .saas-act-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-top: 4px;
+      flex-shrink: 0;
+      animation: actPulse 2s ease-in-out infinite;
+    }
+
+    .saas-act-dot:nth-child(odd) { animation-delay: 0.5s; }
+
+    @keyframes actPulse {
+      0%,100% { opacity: 1; }
+      50%      { opacity: 0.3; }
+    }
+
+    .saas-act-text {
+      font-size: 0.58rem;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.4;
+    }
+
+    .saas-act-time {
+      font-size: 0.55rem;
+      color: rgba(255,255,255,0.2);
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+
+    /* ── PROCESS — horizontal scroll cards ── */
+    .mg-process-track {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.05);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-top: 2.4rem;
+    }
+
+    .mg-process-step {
+      background: #050508;
+      padding: 2rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.2s;
+    }
+
+    .mg-process-step:hover { background: #07070c; }
+
+    /* Connecting line */
+    .mg-process-step:not(:last-child)::after {
+      content: '→';
+      position: absolute;
+      top: 1.8rem;
+      right: -0.6rem;
+      color: rgba(47,157,255,0.3);
+      font-size: 0.8rem;
+      z-index: 2;
+    }
+
+    .mg-step-num {
+      font-size: 0.62rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      margin-bottom: 1rem;
+    }
+
+    .mg-step-title {
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.01em;
+    }
+
+    .mg-step-desc {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.35);
+      line-height: 1.6;
+    }
+
+    .mg-step-tool {
+      margin-top: 1rem;
+      font-size: 0.62rem;
+      color: rgba(47,157,255,0.5);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── STATS ── */
+    .mg-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.05);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-top: 2.4rem;
+    }
+
+    .mg-stat-item {
+      background: #050508;
+      padding: 2.4rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mg-stat-item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(47,157,255,0.05), transparent 60%);
+    }
+
+    .mg-stat-val {
+      font-size: 3rem;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      color: #fff;
+      position: relative;
+    }
+
+    .mg-stat-val span { color: var(--accent); }
+
+    .mg-stat-lbl {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.3);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-top: 0.5rem;
+      position: relative;
+    }
+
+    /* ── TOOLS GRID ── */
+    .mg-tools {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.05);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-top: 2rem;
+    }
+
+    .mg-tool {
+      background: #050508;
+      padding: 1.4rem 1rem;
+      text-align: center;
+      transition: background 0.2s;
+    }
+
+    .mg-tool:hover { background: #07070e; }
+
+    .mg-tool-icon {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .mg-tool-name {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .mg-tool-type {
+      font-size: 0.6rem;
+      color: rgba(255,255,255,0.2);
+      margin-top: 0.2rem;
+    }
+
+    /* ── CTA ── */
+    .mg-cta {
+      position: relative;
+      overflow: hidden;
+      padding: 6rem 3rem;
+      border-radius: var(--radius-lg);
+      background: #030306;
+      border: 1px solid rgba(255,255,255,0.06);
+      text-align: center;
+    }
+
+    .mg-cta::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; height: 300px;
+      background: radial-gradient(ellipse, rgba(47,157,255,0.06) 0%, rgba(124,58,237,0.04) 40%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Rotating ring decoration */
+    .mg-cta-ring {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      border: 1px solid rgba(47,157,255,0.06);
+      animation: ringRotate 20s linear infinite;
+      pointer-events: none;
+    }
+
+    .mg-cta-ring::before {
+      content: '';
+      position: absolute;
+      top: -3px; left: 50%;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 10px var(--accent);
+    }
+
+    .mg-cta-ring-2 {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.03);
+      animation: ringRotate 30s linear infinite reverse;
+      pointer-events: none;
+    }
+
+    @keyframes ringRotate {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to   { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    .mg-cta-inner { position: relative; z-index: 2; }
+
+    .mg-cta h2 {
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .mg-cta h2 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .mg-cta p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.4);
+      max-width: 420px;
+      margin: 0 auto 2.4rem;
+      line-height: 1.7;
+    }
+
+    .mg-cta-btns {
+      display: flex;
+      gap: 0.8rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .mg-cta-price {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.2);
+      margin-top: 1.2rem;
+    }
+
+    .mg-cta-price strong { color: var(--accent); }
+
+    /* ══════════════════════════════════════
+       BENTO CELL VISUAL UPGRADES
+    ══════════════════════════════════════ */
+
+    /* Cell visual containers */
+    .mg-cell-visual-new {
+      margin-top: 1.4rem;
+      position: relative;
+    }
+
+    /* ── 01 UI Anim: floating window cards ── */
+    .bento-ui-windows {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 1.2rem;
+    }
+
+    .bento-win {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8px;
+      padding: 8px 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      animation: winSlideIn 0.6s cubic-bezier(.2,.9,.2,1) both;
+    }
+
+    .bento-win:nth-child(1) { animation-delay: 0.1s; }
+    .bento-win:nth-child(2) { animation-delay: 0.25s; }
+    .bento-win:nth-child(3) { animation-delay: 0.4s; }
+    .bento-win:nth-child(4) { animation-delay: 0.55s; }
+
+    @keyframes winSlideIn {
+      from { opacity: 0; transform: translateX(-12px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    .bento-win-dots { display: flex; gap: 3px; flex-shrink: 0; }
+    .bento-win-dot  { width: 5px; height: 5px; border-radius: 50%; }
+
+    .bento-win-bar {
+      flex: 1;
+      height: 5px;
+      border-radius: 3px;
+      background: rgba(255,255,255,0.06);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .bento-win-bar::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 3px;
+      animation: barFill 2.4s ease-in-out infinite;
+    }
+
+    .bento-win:nth-child(1) .bento-win-bar::after { background: rgba(47,157,255,0.55); animation-delay: 0s; width: 72%; }
+    .bento-win:nth-child(2) .bento-win-bar::after { background: rgba(124,58,237,0.5); animation-delay: 0.3s; width: 88%; }
+    .bento-win:nth-child(3) .bento-win-bar::after { background: rgba(47,157,255,0.4); animation-delay: 0.6s; width: 55%; }
+    .bento-win:nth-child(4) .bento-win-bar::after { background: rgba(74,222,128,0.45); animation-delay: 0.9s; width: 91%; }
+
+    @keyframes barFill {
+      0%   { transform: scaleX(0); transform-origin: left; }
+      60%  { transform: scaleX(1); transform-origin: left; }
+      100% { transform: scaleX(1); transform-origin: left; }
+    }
+
+    .bento-win-val {
+      font-size: 0.58rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.25);
+      min-width: 26px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    /* ── 02 Explainer: timeline track ── */
+    .bento-timeline {
+      margin-top: 1.2rem;
+      position: relative;
+      padding-left: 16px;
+    }
+
+    .bento-timeline::before {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 6px;
+      bottom: 6px;
+      width: 1px;
+      background: rgba(255,255,255,0.07);
+    }
+
+    .bento-tl-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+      animation: tlFadeIn 0.5s ease both;
+    }
+
+    .bento-tl-item:nth-child(1) { animation-delay: 0.1s; }
+    .bento-tl-item:nth-child(2) { animation-delay: 0.25s; }
+    .bento-tl-item:nth-child(3) { animation-delay: 0.4s; }
+    .bento-tl-item:nth-child(4) { animation-delay: 0.55s; }
+
+    @keyframes tlFadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .bento-tl-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      position: relative;
+      left: -19px;
+      margin-right: -8px;
+      border: 1px solid rgba(47,157,255,0.4);
+    }
+
+    .bento-tl-dot.filled { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 6px rgba(47,157,255,0.5); }
+
+    .bento-tl-label {
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.35);
+      flex: 1;
+    }
+
+    .bento-tl-dur {
+      font-size: 0.58rem;
+      color: rgba(255,255,255,0.18);
+      font-family: monospace;
+    }
+
+    .bento-tl-bar-wrap {
+      flex: 2;
+      height: 4px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .bento-tl-bar {
+      height: 100%;
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--accent), rgba(47,157,255,0.3));
+      animation: tlBar 2s ease both;
+    }
+
+    @keyframes tlBar {
+      from { width: 0; }
+    }
+
+    /* ── 03 Launch Film: cinematic frame ── */
+    .bento-film {
+      margin-top: 1.2rem;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #000;
+      position: relative;
+      aspect-ratio: 16/7;
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .bento-film-scan {
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent 3px,
+        rgba(0,0,0,0.18) 4px
+      );
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .bento-film-glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(47,157,255,0.08), transparent 70%);
+      animation: filmPulse 4s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    @keyframes filmPulse {
+      0%,100% { opacity: 0.6; }
+      50%      { opacity: 1; }
+    }
+
+    .bento-film-horizon {
+      position: absolute;
+      bottom: 30%;
+      left: 0; right: 0;
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+      z-index: 2;
+    }
+
+    .bento-film-title {
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem;
+      z-index: 4;
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      color: rgba(255,255,255,0.35);
+      text-transform: uppercase;
+    }
+
+    .bento-film-play {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-55%);
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 4;
+      animation: playPulse 3s ease-in-out infinite;
+    }
+
+    @keyframes playPulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(47,157,255,0); }
+      50%      { box-shadow: 0 0 0 8px rgba(47,157,255,0.1); }
+    }
+
+    .bento-film-play svg {
+      width: 12px; height: 12px;
+      fill: rgba(255,255,255,0.5);
+      margin-left: 2px;
+    }
+
+    .bento-film-corners {
+      position: absolute;
+      inset: 8px;
+      z-index: 4;
+      pointer-events: none;
+    }
+
+    .bento-film-corners::before,
+    .bento-film-corners::after {
+      content: '';
+      position: absolute;
+      width: 12px; height: 12px;
+      border-color: rgba(255,255,255,0.12);
+      border-style: solid;
+    }
+
+    .bento-film-corners::before {
+      top: 0; left: 0;
+      border-width: 1px 0 0 1px;
+    }
+
+    .bento-film-corners::after {
+      bottom: 0; right: 0;
+      border-width: 0 1px 1px 0;
+    }
+
+    /* ── 04 Data Viz: mini animated bar chart ── */
+    .bento-chart {
+      margin-top: 1.2rem;
+      display: flex;
+      align-items: flex-end;
+      gap: 5px;
+      height: 70px;
+      padding-bottom: 1px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .bento-bar {
+      flex: 1;
+      border-radius: 3px 3px 0 0;
+      position: relative;
+      animation: barGrow 1s cubic-bezier(.2,.9,.2,1) both;
+      transform-origin: bottom;
+    }
+
+    .bento-bar:nth-child(1)  { background: rgba(47,157,255,0.35); animation-delay:.05s; }
+    .bento-bar:nth-child(2)  { background: rgba(47,157,255,0.5);  animation-delay:.12s; }
+    .bento-bar:nth-child(3)  { background: rgba(124,58,237,0.4);  animation-delay:.19s; }
+    .bento-bar:nth-child(4)  { background: rgba(47,157,255,0.7);  animation-delay:.26s; }
+    .bento-bar:nth-child(5)  { background: rgba(47,157,255,0.45); animation-delay:.33s; }
+    .bento-bar:nth-child(6)  { background: rgba(74,222,128,0.5);  animation-delay:.4s; }
+    .bento-bar:nth-child(7)  { background: rgba(47,157,255,0.9);  animation-delay:.47s; }
+    .bento-bar:nth-child(8)  { background: rgba(47,157,255,0.6);  animation-delay:.54s; }
+    .bento-bar:nth-child(9)  { background: rgba(124,58,237,0.55); animation-delay:.61s; }
+    .bento-bar:nth-child(10) { background: rgba(47,157,255,1);    animation-delay:.68s; }
+
+    @keyframes barGrow {
+      from { transform: scaleY(0); opacity: 0; }
+      to   { transform: scaleY(1); opacity: 1; }
+    }
+
+    .bento-chart-label {
+      margin-top: 6px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.55rem;
+      color: rgba(255,255,255,0.18);
+      font-family: monospace;
+    }
+
+    /* ── 05 Ad Motion: screen with ad preview ── */
+    .bento-ad {
+      margin-top: 1.2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+
+    .bento-ad-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      animation: adCardIn 0.5s ease both;
+    }
+
+    .bento-ad-card:nth-child(1) { animation-delay: 0.1s; }
+    .bento-ad-card:nth-child(2) { animation-delay: 0.25s; }
+
+    @keyframes adCardIn {
+      from { opacity: 0; transform: scale(0.94); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    .bento-ad-label {
+      font-size: 0.55rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.2);
+    }
+
+    .bento-ad-bar {
+      height: 4px;
+      border-radius: 2px;
+      background: rgba(255,255,255,0.05);
+      overflow: hidden;
+    }
+
+    .bento-ad-bar::after {
+      content: '';
+      display: block;
+      height: 100%;
+      border-radius: 2px;
+      animation: adBarFill 1.8s ease both;
+    }
+
+    .bento-ad-card:nth-child(1) .bento-ad-bar::after { background: var(--accent); width: 78%; animation-delay: 0.3s; }
+    .bento-ad-card:nth-child(2) .bento-ad-bar::after { background: #a855f7; width: 91%; animation-delay: 0.5s; }
+
+    @keyframes adBarFill {
+      from { width: 0; }
+    }
+
+    .bento-ad-stat {
+      font-size: 1rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: #fff;
+    }
+
+    .bento-ad-delta {
+      font-size: 0.58rem;
+      color: #4ade80;
+    }
+
+    /* ── 06 Motion System: token grid ── */
+    .bento-tokens {
+      margin-top: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .bento-token-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      animation: tokenRow 0.5s ease both;
+    }
+
+    .bento-token-row:nth-child(1) { animation-delay: 0.05s; }
+    .bento-token-row:nth-child(2) { animation-delay: 0.15s; }
+    .bento-token-row:nth-child(3) { animation-delay: 0.25s; }
+    .bento-token-row:nth-child(4) { animation-delay: 0.35s; }
+
+    @keyframes tokenRow {
+      from { opacity: 0; transform: translateX(10px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    .bento-token-key {
+      font-size: 0.58rem;
+      font-family: monospace;
+      color: var(--accent);
+      min-width: 80px;
+    }
+
+    .bento-token-val {
+      flex: 1;
+      height: 5px;
+      border-radius: 3px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bento-token-fill {
+      position: absolute;
+      inset: 0;
+      border-radius: 3px;
+      animation: tokenFill 1.2s cubic-bezier(.2,.9,.2,1) both;
+    }
+
+    .bento-token-row:nth-child(1) .bento-token-fill { background: rgba(47,157,255,0.5); width: 30%; animation-delay: 0.3s; }
+    .bento-token-row:nth-child(2) .bento-token-fill { background: rgba(47,157,255,0.5); width: 60%; animation-delay: 0.4s; }
+    .bento-token-row:nth-child(3) .bento-token-fill { background: rgba(47,157,255,0.5); width: 80%; animation-delay: 0.5s; }
+    .bento-token-row:nth-child(4) .bento-token-fill { background: rgba(47,157,255,0.5); width: 95%; animation-delay: 0.6s; }
+
+    @keyframes tokenFill {
+      from { width: 0; }
+    }
+
+    .bento-token-num {
+      font-size: 0.58rem;
+      font-family: monospace;
+      color: rgba(255,255,255,0.2);
+      min-width: 32px;
+      text-align: right;
+    }
+
+    /* ══════════════════════════════════════
+       LAPTOP FRAME MOCKUP
+    ══════════════════════════════════════ */
+
+    .laptop-wrap {
+      position: relative;
+      margin-top: 2.4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* The screen bezel */
+    .laptop-lid {
+      width: 100%;
+      max-width: 880px;
+      background: linear-gradient(160deg, #1a1a1e 0%, #111115 100%);
+      border-radius: 18px 18px 0 0;
+      padding: 14px 14px 0;
+      border: 1.5px solid rgba(255,255,255,0.08);
+      border-bottom: none;
+      position: relative;
+      box-shadow:
+        0 -4px 40px rgba(0,0,0,0.5),
+        inset 0 1px 0 rgba(255,255,255,0.06);
+    }
+
+    /* Camera dot */
+    .laptop-camera {
+      position: absolute;
+      top: 7px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #1a1a1a;
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .laptop-camera::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+    }
+
+    /* Screen inner — this is where the app lives */
+    .laptop-screen {
+      width: 100%;
+      background: #07070f;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.04);
+      position: relative;
+    }
+
+    /* Screen glare overlay */
+    .laptop-screen::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 40%;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.03), transparent);
+      pointer-events: none;
+      z-index: 100;
+      border-radius: 6px 6px 0 0;
+    }
+
+    /* The base / hinge */
+    .laptop-base {
+      width: 100%;
+      max-width: 940px;
+      background: linear-gradient(to bottom, #1c1c20, #141417);
+      height: 22px;
+      border-radius: 0 0 6px 6px;
+      border: 1.5px solid rgba(255,255,255,0.07);
+      border-top: none;
+      position: relative;
+      box-shadow: 0 12px 50px rgba(0,0,0,0.6);
+    }
+
+    /* Hinge groove */
+    .laptop-base::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 80px; height: 4px;
+      background: rgba(0,0,0,0.4);
+      border-radius: 0 0 4px 4px;
+    }
+
+    /* Desk surface glow */
+    .laptop-base::after {
+      content: '';
+      position: absolute;
+      bottom: -30px; left: 10%; right: 10%;
+      height: 30px;
+      background: rgba(47,157,255,0.06);
+      filter: blur(20px);
+    }
+
+    /* The notch edge detail at bottom of lid */
+    .laptop-lip {
+      width: 100%;
+      max-width: 880px;
+      height: 6px;
+      background: linear-gradient(to bottom, #252528, #1a1a1d);
+      border-radius: 0;
+      border-left: 1.5px solid rgba(255,255,255,0.07);
+      border-right: 1.5px solid rgba(255,255,255,0.07);
+    }
+
+    /* Glow under whole laptop */
+    .laptop-glow {
+      position: absolute;
+      bottom: -60px;
+      left: 15%; right: 15%;
+      height: 80px;
+      background: rgba(47,157,255,0.1);
+      filter: blur(40px);
+      pointer-events: none;
+    }
+
+    /* ══════════════════════════════════════
+       SVG TOOL BADGES
+    ══════════════════════════════════════ */
+
+    .mg-tools-new {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 12px;
+      margin-top: 2rem;
+    }
+
+    .mg-tool-new {
+      background: #070710;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px;
+      padding: 1.4rem 1rem 1.2rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      transition: border-color 0.25s, background 0.25s, transform 0.25s;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mg-tool-new::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(47,157,255,0.05), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .mg-tool-new:hover {
+      border-color: rgba(47,157,255,0.25);
+      background: #08081a;
+      transform: translateY(-4px);
+    }
+
+    .mg-tool-new:hover::before { opacity: 1; }
+
+    .mg-tool-badge {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .mg-tool-new-name {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.65);
+    }
+
+    .mg-tool-new-type {
+      font-size: 0.58rem;
+      color: rgba(255,255,255,0.2);
+      line-height: 1.3;
+    }
+
+    /* Responsive additions */
+    @media (max-width: 960px) {
+      .mg-tools-new { grid-template-columns: repeat(3, 1fr); }
+      .laptop-lid { border-radius: 12px 12px 0 0; }
+    }
+
+    @media (max-width: 600px) {
+      .mg-tools-new { grid-template-columns: repeat(2, 1fr); }
+      .laptop-lid { padding: 10px 10px 0; border-radius: 10px 10px 0 0; }
+      .laptop-camera { display: none; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .mg-bento { grid-template-columns: 1fr 1fr; }
+      .mg-bento-cell.tall { grid-row: span 1; }
+      .mg-process-track { grid-template-columns: 1fr 1fr; }
+      .mg-process-step:not(:last-child)::after { display: none; }
+      .mg-stats { grid-template-columns: repeat(2, 1fr); }
+      .mg-tools { grid-template-columns: repeat(3, 1fr); }
+      .saas-metrics { grid-template-columns: repeat(2, 1fr); }
+      .saas-body { grid-template-columns: 1fr; }
+      .saas-nav { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      .mg-bento { grid-template-columns: 1fr; }
+      .mg-process-track { grid-template-columns: 1fr; }
+      .mg-tools { grid-template-columns: repeat(2, 1fr); }
+      .mg-stats { grid-template-columns: 1fr 1fr; }
+      .saas-bottom-row { grid-template-columns: 1fr; }
+      .mg-cta { padding: 4rem 1.5rem; }
+      .mg-cta-ring, .mg-cta-ring-2 { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<gv-header page="works"></gv-header>
+
+<main class="page">
+<!-- Grid background -->
+<div class="mg-grid-bg"></div>
+
+
+
+<main class="page">
+
+  <!-- ─── HERO ─── -->
+  <section class="section dark mg-hero">
+    <div class="mg-orb mg-orb-1"></div>
+    <div class="mg-orb mg-orb-2"></div>
+    <div class="mg-orb mg-orb-3"></div>
+
+    <div class="container mg-hero-inner">
+      <div class="mg-eyebrow">
+        <div class="mg-eyebrow-dot"></div>
+        Motion Graphics · SaaS &amp; Tech
+      </div>
+
+      <h1 class="mg-h1">
+        <span class="mg-h1-line"><span>Motion that</span></span>
+        <span class="mg-h1-line"><span class="accent-word">explains,</span></span>
+        <span class="mg-h1-line"><span class="outline-word">converts.</span></span>
+      </h1>
+
+      <p class="mg-hero-sub">
+        We build <strong>product-grade motion</strong> for SaaS companies, AI platforms and tech startups — UI animations, feature explainers, onboarding flows and launch films that make complex products feel inevitable.
+      </p>
+
+      <div class="mg-hero-actions">
+        <a href="contact.html" class="btn primary">Start a Motion Project</a>
+        <a href="#showcase" class="btn ghost">See Live Demo ↓</a>
+      </div>
+
+      <div class="mg-clients">
+        <div class="mg-clients-label">Built for companies like</div>
+        <div class="mg-clients-row">
+          <span class="mg-client-pill">SaaS Platforms</span>
+          <span class="mg-client-pill">AI Tools</span>
+          <span class="mg-client-pill">Fintech</span>
+          <span class="mg-client-pill">Dev Tools</span>
+          <span class="mg-client-pill">Health Tech</span>
+          <span class="mg-client-pill">EdTech</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ANIMATED NODE CANVAS ─── -->
+  <div class="mg-canvas-section dark" style="background:#000;position:relative;">
+    <canvas id="nodeCanvas"></canvas>
+    <div class="mg-canvas-label">
+      <h2>Motion connects ideas.</h2>
+      <p>Every node is a frame. Every line is a story.</p>
+    </div>
+  </div>
+
+  <!-- ─── WHAT WE MAKE ─── -->
+  <section class="section dark reveal-on-scroll">
+    <div class="container">
+      <p class="eyebrow" style="margin-bottom:0.8rem;">What we create</p>
+      <h2 style="font-size:2rem;font-weight:900;letter-spacing:-0.03em;">Six motion types.<br>One product studio.</h2>
+
+      <div class="mg-bento">
+
+        <!-- 01 UI / Product Animations — floating window cards -->
+        <div class="mg-bento-cell tall reveal-on-scroll">
+          <div class="mg-cell-num">01</div>
+          <div class="mg-cell-title">UI / Product Animations</div>
+          <div class="mg-cell-desc">Micro-interactions, dashboard transitions, feature reveals and onboarding flows — motion that makes your product feel alive and intuitive.</div>
+
+          <div class="bento-ui-windows">
+            <div class="bento-win">
+              <div class="bento-win-dots">
+                <div class="bento-win-dot" style="background:#ff5f57;"></div>
+                <div class="bento-win-dot" style="background:#febc2e;"></div>
+                <div class="bento-win-dot" style="background:#28c840;"></div>
+              </div>
+              <div class="bento-win-bar"></div>
+              <div class="bento-win-val">72%</div>
+            </div>
+            <div class="bento-win">
+              <div class="bento-win-dots">
+                <div class="bento-win-dot" style="background:#ff5f57;"></div>
+                <div class="bento-win-dot" style="background:#febc2e;"></div>
+                <div class="bento-win-dot" style="background:#28c840;"></div>
+              </div>
+              <div class="bento-win-bar"></div>
+              <div class="bento-win-val">88%</div>
+            </div>
+            <div class="bento-win">
+              <div class="bento-win-dots">
+                <div class="bento-win-dot" style="background:#ff5f57;"></div>
+                <div class="bento-win-dot" style="background:#febc2e;"></div>
+                <div class="bento-win-dot" style="background:#28c840;"></div>
+              </div>
+              <div class="bento-win-bar"></div>
+              <div class="bento-win-val">55%</div>
+            </div>
+            <div class="bento-win">
+              <div class="bento-win-dots">
+                <div class="bento-win-dot" style="background:#ff5f57;"></div>
+                <div class="bento-win-dot" style="background:#febc2e;"></div>
+                <div class="bento-win-dot" style="background:#28c840;"></div>
+              </div>
+              <div class="bento-win-bar"></div>
+              <div class="bento-win-val">91%</div>
+            </div>
+          </div>
+
+          <div class="mg-cell-tags" style="margin-top:auto;">
+            <span class="mg-tag">Lottie</span>
+            <span class="mg-tag">After Effects</span>
+            <span class="mg-tag">Framer</span>
+          </div>
+        </div>
+
+        <!-- 02 Feature Explainers — production timeline -->
+        <div class="mg-bento-cell reveal-on-scroll">
+          <div class="mg-cell-num">02</div>
+          <div class="mg-cell-title">Feature Explainer Videos</div>
+          <div class="mg-cell-desc">60–120 second animated explainers that turn complex product logic into something anyone can understand in one watch.</div>
+
+          <div class="bento-timeline">
+            <div class="bento-tl-item">
+              <div class="bento-tl-dot filled"></div>
+              <div class="bento-tl-label">Script & VO</div>
+              <div class="bento-tl-bar-wrap"><div class="bento-tl-bar" style="width:100%;"></div></div>
+              <div class="bento-tl-dur">2d</div>
+            </div>
+            <div class="bento-tl-item">
+              <div class="bento-tl-dot filled"></div>
+              <div class="bento-tl-label">Storyboard</div>
+              <div class="bento-tl-bar-wrap"><div class="bento-tl-bar" style="width:80%;"></div></div>
+              <div class="bento-tl-dur">2d</div>
+            </div>
+            <div class="bento-tl-item">
+              <div class="bento-tl-dot filled"></div>
+              <div class="bento-tl-label">Animation</div>
+              <div class="bento-tl-bar-wrap"><div class="bento-tl-bar" style="width:60%;"></div></div>
+              <div class="bento-tl-dur">4d</div>
+            </div>
+            <div class="bento-tl-item">
+              <div class="bento-tl-dot"></div>
+              <div class="bento-tl-label">Review</div>
+              <div class="bento-tl-bar-wrap"><div class="bento-tl-bar" style="width:25%;background:rgba(255,255,255,0.1);"></div></div>
+              <div class="bento-tl-dur">1d</div>
+            </div>
+          </div>
+
+          <div class="mg-cell-tags">
+            <span class="mg-tag">Script</span>
+            <span class="mg-tag">Storyboard</span>
+            <span class="mg-tag">Animation</span>
+          </div>
+        </div>
+
+        <!-- 03 Launch Films — cinematic frame -->
+        <div class="mg-bento-cell reveal-on-scroll">
+          <div class="mg-cell-num">03</div>
+          <div class="mg-cell-title">Product Launch Films</div>
+          <div class="mg-cell-desc">Cinematic launch videos for Product Hunt, investor decks and social — the kind that make people feel the product before they use it.</div>
+
+          <div class="bento-film">
+            <div class="bento-film-scan"></div>
+            <div class="bento-film-glow"></div>
+            <div class="bento-film-horizon"></div>
+            <div class="bento-film-corners"></div>
+            <div class="bento-film-play">
+              <svg viewBox="0 0 10 12"><polygon points="0,0 10,6 0,12"/></svg>
+            </div>
+            <div class="bento-film-title">LAUNCH · 16:9 · 4K</div>
+          </div>
+
+          <div class="mg-cell-tags">
+            <span class="mg-tag">Cinematic</span>
+            <span class="mg-tag">3D</span>
+            <span class="mg-tag">Sound Design</span>
+          </div>
+        </div>
+
+        <!-- 04 Data Viz — animated bar chart -->
+        <div class="mg-bento-cell reveal-on-scroll">
+          <div class="mg-cell-num">04</div>
+          <div class="mg-cell-title">Data Visualization Motion</div>
+          <div class="mg-cell-desc">Animated charts, dashboards and infographics — your numbers moving in ways that make investors and users actually pay attention.</div>
+
+          <div class="bento-chart">
+            <div class="bento-bar" style="height:38%;"></div>
+            <div class="bento-bar" style="height:56%;"></div>
+            <div class="bento-bar" style="height:44%;"></div>
+            <div class="bento-bar" style="height:72%;"></div>
+            <div class="bento-bar" style="height:50%;"></div>
+            <div class="bento-bar" style="height:82%;"></div>
+            <div class="bento-bar" style="height:65%;"></div>
+            <div class="bento-bar" style="height:90%;"></div>
+            <div class="bento-bar" style="height:75%;"></div>
+            <div class="bento-bar" style="height:100%;"></div>
+          </div>
+          <div class="bento-chart-label">
+            <span>Jan</span><span>Mar</span><span>Jun</span><span>Sep</span><span>Dec</span>
+          </div>
+
+          <div class="mg-cell-tags">
+            <span class="mg-tag">Charts</span>
+            <span class="mg-tag">Infographic</span>
+            <span class="mg-tag">Data Viz</span>
+          </div>
+        </div>
+
+        <!-- 05 Ad & Demo Motion — platform cards -->
+        <div class="mg-bento-cell reveal-on-scroll">
+          <div class="mg-cell-num">05</div>
+          <div class="mg-cell-title">Ad &amp; Demo Motion</div>
+          <div class="mg-cell-desc">Performance-driven animated ads and interactive demos for LinkedIn, YouTube and landing pages — designed to convert, not just impress.</div>
+
+          <div class="bento-ad">
+            <div class="bento-ad-card">
+              <div class="bento-ad-label">LinkedIn CTR</div>
+              <div class="bento-ad-stat">4.2%</div>
+              <div class="bento-ad-bar"></div>
+              <div class="bento-ad-delta">↑ 2.1× industry avg</div>
+            </div>
+            <div class="bento-ad-card">
+              <div class="bento-ad-label">YT View-Through</div>
+              <div class="bento-ad-stat">91%</div>
+              <div class="bento-ad-bar"></div>
+              <div class="bento-ad-delta">↑ +34% vs static</div>
+            </div>
+          </div>
+
+          <div class="mg-cell-tags">
+            <span class="mg-tag">LinkedIn</span>
+            <span class="mg-tag">YouTube</span>
+            <span class="mg-tag">Landing Page</span>
+          </div>
+        </div>
+
+        <!-- 06 Motion Design System — token rows -->
+        <div class="mg-bento-cell reveal-on-scroll">
+          <div class="mg-cell-num">06</div>
+          <div class="mg-cell-title">Motion Design Systems</div>
+          <div class="mg-cell-desc">A consistent motion language for your product — timing, easing, transitions and animation tokens that scale across your entire design system.</div>
+
+          <div class="bento-tokens">
+            <div class="bento-token-row">
+              <div class="bento-token-key">--dur-fast</div>
+              <div class="bento-token-val"><div class="bento-token-fill"></div></div>
+              <div class="bento-token-num">120ms</div>
+            </div>
+            <div class="bento-token-row">
+              <div class="bento-token-key">--dur-base</div>
+              <div class="bento-token-val"><div class="bento-token-fill"></div></div>
+              <div class="bento-token-num">250ms</div>
+            </div>
+            <div class="bento-token-row">
+              <div class="bento-token-key">--dur-slow</div>
+              <div class="bento-token-val"><div class="bento-token-fill"></div></div>
+              <div class="bento-token-num">400ms</div>
+            </div>
+            <div class="bento-token-row">
+              <div class="bento-token-key">--ease-spring</div>
+              <div class="bento-token-val"><div class="bento-token-fill"></div></div>
+              <div class="bento-token-num">cubic</div>
+            </div>
+          </div>
+
+          <div class="mg-cell-tags">
+            <span class="mg-tag">Tokens</span>
+            <span class="mg-tag">Figma</span>
+            <span class="mg-tag">Guidelines</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SAAS PRODUCT MOCKUP ─── -->
+  <section id="showcase" class="section dark reveal-on-scroll" style="padding-top:0;">
+    <div class="container">
+      <p class="eyebrow" style="margin-bottom:0.8rem;">Live mockup</p>
+      <h2 style="font-size:2rem;font-weight:900;letter-spacing:-0.03em;">This is what motion<br>does to a SaaS product.</h2>
+      <p style="color:rgba(255,255,255,0.4);font-size:0.9rem;margin-top:0.5rem;margin-bottom:2rem;">A live animated dashboard mockup — every element here was designed with motion in mind.</p>
+
+      <div class="laptop-wrap">
+        <!-- MacBook lid / bezel -->
+        <div class="laptop-lid">
+          <div class="laptop-camera"></div>
+          <div class="laptop-screen">
+            <div class="saas-screen" style="border-radius:0;border:none;box-shadow:none;max-width:100%;">
+
+          <div class="saas-titlebar">
+            <div class="saas-tb-dot r"></div>
+            <div class="saas-tb-dot y"></div>
+            <div class="saas-tb-dot g"></div>
+            <div class="saas-tb-title">Graphy Analytics — Dashboard</div>
+          </div>
+
+          <div class="saas-body">
+            <div class="saas-nav">
+              <div class="saas-nav-icon active" title="Dashboard">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+              </div>
+              <div class="saas-nav-icon" title="Analytics">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              </div>
+              <div class="saas-nav-icon" title="Users">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg>
+              </div>
+              <div class="saas-nav-icon" title="Settings">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+              </div>
+              <div class="saas-nav-icon" style="margin-top:auto;" title="Help">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              </div>
+            </div>
+
+            <div class="saas-content">
+              <div class="saas-content-header">
+                <div class="saas-page-title">Overview</div>
+                <div class="saas-header-btns">
+                  <div class="saas-header-btn ghost">Export</div>
+                  <div class="saas-header-btn primary">+ New Report</div>
+                </div>
+              </div>
+
+              <!-- Metric cards with count-up -->
+              <div class="saas-metrics">
+                <div class="saas-metric">
+                  <div class="saas-metric-label">Total Users</div>
+                  <div class="saas-metric-val" data-count="24819">0</div>
+                  <div class="saas-metric-delta">↑ 12.4% this month</div>
+                </div>
+                <div class="saas-metric">
+                  <div class="saas-metric-label">MRR</div>
+                  <div class="saas-metric-val" data-count-prefix="$" data-count="48200">$0</div>
+                  <div class="saas-metric-delta">↑ 8.1% vs last month</div>
+                </div>
+                <div class="saas-metric">
+                  <div class="saas-metric-label">Churn Rate</div>
+                  <div class="saas-metric-val" data-count="2.3" data-count-suffix="%" data-count-decimals="1">0%</div>
+                  <div class="saas-metric-delta down">↓ 0.4% improvement</div>
+                </div>
+                <div class="saas-metric">
+                  <div class="saas-metric-label">NPS Score</div>
+                  <div class="saas-metric-val" data-count="74">0</div>
+                  <div class="saas-metric-delta">↑ 6 pts this quarter</div>
+                </div>
+              </div>
+
+              <!-- Animated chart -->
+              <div class="saas-chart-area">
+                <div class="saas-chart-header">
+                  <div class="saas-chart-title">Revenue Growth</div>
+                  <div class="saas-chart-pills">
+                    <div class="saas-chart-pill">1W</div>
+                    <div class="saas-chart-pill active">1M</div>
+                    <div class="saas-chart-pill">3M</div>
+                    <div class="saas-chart-pill">1Y</div>
+                  </div>
+                </div>
+                <svg id="saasChart" viewBox="0 0 600 80" preserveAspectRatio="none">
+                  <defs>
+                    <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="rgba(47,157,255,0.3)"/>
+                      <stop offset="100%" stop-color="rgba(47,157,255,0)"/>
+                    </linearGradient>
+                  </defs>
+                  <path class="chart-area" d="M0,70 L50,65 L100,58 L150,62 L200,50 L250,45 L300,38 L350,42 L400,30 L450,25 L500,18 L550,12 L600,8 L600,80 L0,80 Z"/>
+                  <path class="chart-line" d="M0,70 L50,65 L100,58 L150,62 L200,50 L250,45 L300,38 L350,42 L400,30 L450,25 L500,18 L550,12 L600,8"/>
+                  <!-- Grid lines -->
+                  <line x1="0" y1="20" x2="600" y2="20" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+                  <line x1="0" y1="40" x2="600" y2="40" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+                  <line x1="0" y1="60" x2="600" y2="60" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+                </svg>
+              </div>
+
+              <!-- Bottom row -->
+              <div class="saas-bottom-row">
+                <div class="saas-table">
+                  <div class="saas-table-header">Top Features Used</div>
+                  <div class="saas-table-row">
+                    <div class="saas-row-dot" style="background:#2f9dff;"></div>
+                    <div class="saas-row-name">Dashboard</div>
+                    <div class="saas-row-val">8,421</div>
+                  </div>
+                  <div class="saas-table-row">
+                    <div class="saas-row-dot" style="background:#7c3aed;"></div>
+                    <div class="saas-row-name">Analytics</div>
+                    <div class="saas-row-val">6,203</div>
+                  </div>
+                  <div class="saas-table-row">
+                    <div class="saas-row-dot" style="background:#4ade80;"></div>
+                    <div class="saas-row-name">Reports</div>
+                    <div class="saas-row-val">4,819</div>
+                  </div>
+                  <div class="saas-table-row">
+                    <div class="saas-row-dot" style="background:#f59e0b;"></div>
+                    <div class="saas-row-name">Integrations</div>
+                    <div class="saas-row-val">3,102</div>
+                  </div>
+                </div>
+
+                <div class="saas-activity">
+                  <div class="saas-act-header">Live Activity</div>
+                  <div class="saas-act-item">
+                    <div class="saas-act-dot"></div>
+                    <div class="saas-act-text">New user signed up via Product Hunt</div>
+                    <div class="saas-act-time">2s ago</div>
+                  </div>
+                  <div class="saas-act-item">
+                    <div class="saas-act-dot"></div>
+                    <div class="saas-act-text">Enterprise plan upgrade — $499/mo</div>
+                    <div class="saas-act-time">14s ago</div>
+                  </div>
+                  <div class="saas-act-item">
+                    <div class="saas-act-dot"></div>
+                    <div class="saas-act-text">API integration connected</div>
+                    <div class="saas-act-time">1m ago</div>
+                  </div>
+                  <div class="saas-act-item">
+                    <div class="saas-act-dot"></div>
+                    <div class="saas-act-text">Report exported — Q2 2025</div>
+                    <div class="saas-act-time">3m ago</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+            </div><!-- /saas-screen -->
+          </div><!-- /laptop-screen -->
+        </div><!-- /laptop-lid -->
+        <div class="laptop-lip"></div>
+        <div class="laptop-base"></div>
+        <div class="laptop-glow"></div>
+      </div><!-- /laptop-wrap -->
+    </div>
+  </section>
+
+  <!-- ─── PROCESS ─── -->
+  <section class="section dark reveal-on-scroll" style="padding-top:0;">
+    <div class="container">
+      <p class="eyebrow" style="margin-bottom:0.8rem;">Process</p>
+      <h2 style="font-size:2rem;font-weight:900;letter-spacing:-0.03em;">From brief to<br>shipped motion.</h2>
+
+      <div class="mg-process-track">
+        <div class="mg-process-step reveal-on-scroll">
+          <div class="mg-step-num">01</div>
+          <div class="mg-step-title">Discovery</div>
+          <div class="mg-step-desc">Product audit, user flow mapping and motion goals. We understand your product before we move a single pixel.</div>
+          <div class="mg-step-tool">Figma · Notion</div>
+        </div>
+        <div class="mg-process-step reveal-on-scroll">
+          <div class="mg-step-num">02</div>
+          <div class="mg-step-title">Script & Story</div>
+          <div class="mg-step-desc">For explainers and launch films — script, voiceover brief and storyboard approved before production starts.</div>
+          <div class="mg-step-tool">Frame.io · Docs</div>
+        </div>
+        <div class="mg-process-step reveal-on-scroll">
+          <div class="mg-step-num">03</div>
+          <div class="mg-step-title">Motion Design</div>
+          <div class="mg-step-desc">Style frames, timing guides and prototype animations reviewed and signed off before full production.</div>
+          <div class="mg-step-tool">After Effects · Figma</div>
+        </div>
+        <div class="mg-process-step reveal-on-scroll">
+          <div class="mg-step-num">04</div>
+          <div class="mg-step-title">Production</div>
+          <div class="mg-step-desc">Full animation, sound design, colour correction and export in platform-ready formats.</div>
+          <div class="mg-step-tool">AE · Premiere · Lottie</div>
+        </div>
+        <div class="mg-process-step reveal-on-scroll">
+          <div class="mg-step-num">05</div>
+          <div class="mg-step-title">Deliver</div>
+          <div class="mg-step-desc">Source files, Lottie JSON, MP4/WebM and implementation notes handed off clean and documented.</div>
+          <div class="mg-step-tool">All formats included</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── STATS ─── -->
+  <section class="section dark reveal-on-scroll" style="padding-top:0;">
+    <div class="container">
+      <div class="mg-stats">
+        <div class="mg-stat-item">
+          <div class="mg-stat-val"><span class="mg-count" data-target="3" data-suffix="x">0x</span></div>
+          <div class="mg-stat-lbl">Higher conversion with motion vs static</div>
+        </div>
+        <div class="mg-stat-item">
+          <div class="mg-stat-val"><span class="mg-count" data-target="80" data-suffix="%">0%</span></div>
+          <div class="mg-stat-lbl">Of users remember animated explainers</div>
+        </div>
+        <div class="mg-stat-item">
+          <div class="mg-stat-val"><span class="mg-count" data-target="263" data-suffix="+">0+</span></div>
+          <div class="mg-stat-lbl">Motion projects delivered</div>
+        </div>
+        <div class="mg-stat-item">
+          <div class="mg-stat-val"><span class="mg-count" data-target="5" data-suffix=".0">0</span></div>
+          <div class="mg-stat-lbl">Average client rating on Fiverr & Upwork</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TOOLS ─── -->
+  <section class="section dark reveal-on-scroll" style="padding-top:0;">
+    <div class="container">
+      <h2 style="font-size:1.6rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:0.3rem;">Built with the right tools.</h2>
+      <p style="color:rgba(255,255,255,0.3);font-size:0.85rem;">Source files always included.</p>
+      <div class="mg-tools-new">
+
+        <!-- After Effects -->
+        <div class="mg-tool-new">
+          <div class="mg-tool-badge" style="background:linear-gradient(135deg,#1a0533,#3d0b75);">
+            <svg width="26" height="26" viewBox="0 0 44 44" fill="none">
+              <rect width="44" height="44" rx="9" fill="none"/>
+              <path d="M10 32L18 12L22 24M22 24L26 12L34 32M22 24H18" stroke="#9d6eff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="mg-tool-new-name">After Effects</div>
+          <div class="mg-tool-new-type">Motion &amp; Compositing</div>
+        </div>
+
+        <!-- Lottie -->
+        <div class="mg-tool-new">
+          <div class="mg-tool-badge" style="background:linear-gradient(135deg,#00111a,#003052);">
+            <svg width="26" height="26" viewBox="0 0 44 44" fill="none">
+              <circle cx="22" cy="22" r="10" stroke="#00d2ff" stroke-width="2"/>
+              <path d="M22 12 A10 10 0 0 1 32 22" stroke="#00d2ff" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="22" cy="22" r="3" fill="#00d2ff"/>
+            </svg>
+          </div>
+          <div class="mg-tool-new-name">Lottie</div>
+          <div class="mg-tool-new-type">Web Animation</div>
+        </div>
+
+        <!-- Figma -->
+        <div class="mg-tool-new">
+          <div class="mg-tool-badge" style="background:linear-gradient(135deg,#1a0a00,#3d1500);">
+            <svg width="26" height="26" viewBox="0 0 44 44" fill="none">
+              <rect x="15" y="10" width="7" height="7" rx="3.5" fill="#ff7262"/>
+              <rect x="22" y="10" width="7" height="7" rx="3.5" fill="#1abcfe"/>
+              <rect x="15" y="17" width="7" height="7" rx="3.5" fill="#a259ff"/>
+              <rect x="15" y="24" width="7" height="7" rx="3.5" fill="#0acf83"/>
+              <circle cx="25.5" cy="27.5" r="3.5" fill="#1abcfe"/>
+            </svg>
+          </div>
+          <div class="mg-tool-new-name">Figma</div>
+          <div class="mg-tool-new-type">UI &amp; Prototyping</div>
+        </div>
+
+        <!-- Illustrator -->
+        <div class="mg-tool-new">
+          <div class="mg-tool-badge" style="background:linear-gradient(135deg,#1a1000,#3d2800);">
+            <svg width="26" height="26" viewBox="0 0 44 44" fill="none">
+              <path d="M12 32L20 12L24 24M24 24L28 12L36 32M24 24H20" stroke="#ff9a00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M10 28h4M30 28h4" stroke="#ff9a00" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="mg-tool-new-name">Illustrator</div>
+          <div class="mg-tool-new-type">Vector Assets</div>
+        </div>
+
+        <!-- Blender -->
+        <div class="mg-tool-new">
+          <div class="mg-tool-badge" style="background:linear-gradient(135deg,#00100a,#002810);">
+            <svg width="26" height="26" viewBox="0 0 44 44" fill="none">
+              <circle cx="22" cy="22" r="8" stroke="#e87d0d" stroke-width="2"/>
+              <circle cx="22" cy="22" r="3" fill="#e87d0d"/>
+              <path d="M22 14V10M30 22h4M22 30v4M14 22h-4" stroke="#e87d0d" stroke-width="2" stroke-linecap="round"/>
+              <path d="M14 30L22 22" stroke="#e87d0d" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="mg-tool-new-name">Blender</div>
+          <div class="mg-tool-new-type">3D Motion</div>
+        </div>
+
+        <!-- Audition -->
+        <div class="mg-tool-new">
+          <div class="mg-tool-badge" style="background:linear-gradient(135deg,#001a1a,#003333);">
+            <svg width="26" height="26" viewBox="0 0 44 44" fill="none">
+              <path d="M12 22c0-5.5 4.5-10 10-10s10 4.5 10 10-4.5 10-10 10" stroke="#00e4bb" stroke-width="2" stroke-linecap="round"/>
+              <path d="M18 22a4 4 0 0 1 8 0" stroke="#00e4bb" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="22" cy="22" r="1.5" fill="#00e4bb"/>
+              <path d="M10 28v4M14 26v6M18 24v8M26 24v8M30 26v6M34 28v4" stroke="#00e4bb" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="mg-tool-new-name">Audition</div>
+          <div class="mg-tool-new-type">Sound Design</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA ─── -->
+  <section class="section dark reveal-on-scroll" style="padding-top:0;">
+    <div class="container">
+      <div class="mg-cta">
+        <div class="mg-cta-ring"></div>
+        <div class="mg-cta-ring-2"></div>
+        <div class="mg-cta-inner">
+          <h2>Your product deserves<br>motion that <em>converts.</em></h2>
+          <p>Tell us what you're building. We'll tell you exactly where motion makes the biggest impact.</p>
+          <div class="mg-cta-btns">
+            <a href="contact.html" class="btn primary">Start a Motion Project</a>
+            <a href="works.html" class="btn ghost">Back to Works</a>
+          </div>
+          <p class="mg-cta-price">Projects start at <strong>$149</strong> · Full product motion systems from <strong>$999</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+<script>
+(function(){
+
+  /* ── NODE CANVAS ── */
+  const canvas = document.getElementById('nodeCanvas');
+  if(canvas){
+    const ctx = canvas.getContext('2d');
+    let W, H, nodes;
+
+    function resize(){
+      W = canvas.width  = canvas.offsetWidth;
+      H = canvas.height = canvas.offsetHeight;
+    }
+
+    function makeNodes(n){
+      return Array.from({length:n}, () => ({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        r: 1.5 + Math.random() * 2
+      }));
+    }
+
+    function drawNodes(){
+      ctx.clearRect(0, 0, W, H);
+      nodes.forEach(n => {
+        n.x += n.vx; n.y += n.vy;
+        if(n.x < 0 || n.x > W) n.vx *= -1;
+        if(n.y < 0 || n.y > H) n.vy *= -1;
+      });
+      // draw edges
+      for(let i = 0; i < nodes.length; i++){
+        for(let j = i+1; j < nodes.length; j++){
+          const dx = nodes[i].x - nodes[j].x;
+          const dy = nodes[i].y - nodes[j].y;
+          const dist = Math.sqrt(dx*dx + dy*dy);
+          if(dist < 120){
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(47,157,255,${(1 - dist/120) * 0.15})`;
+            ctx.lineWidth = 0.5;
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(nodes[j].x, nodes[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+      // draw nodes
+      nodes.forEach(n => {
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(47,157,255,0.5)';
+        ctx.fill();
+      });
+      requestAnimationFrame(drawNodes);
+    }
+
+    resize();
+    nodes = makeNodes(60);
+    drawNodes();
+    window.addEventListener('resize', () => { resize(); nodes = makeNodes(60); });
+  }
+
+  /* ── COUNT-UP for stats ── */
+  function animCount(el, target, suffix, decimals, duration){
+    let start = null;
+    function step(ts){
+      if(!start) start = ts;
+      const p = Math.min((ts - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      const val = target * ease;
+      el.textContent = (decimals ? val.toFixed(decimals) : Math.round(val)) + suffix;
+      if(p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  /* Stats section */
+  const statsObs = new IntersectionObserver(entries => {
+    if(entries[0].isIntersecting){
+      document.querySelectorAll('.mg-count').forEach(el => {
+        const target = parseFloat(el.dataset.target);
+        const suffix = el.dataset.suffix || '';
+        const decimals = el.dataset.decimals ? parseInt(el.dataset.decimals) : 0;
+        animCount(el, target, suffix, decimals, 1800);
+      });
+      statsObs.disconnect();
+    }
+  }, {threshold: 0.4});
+
+  const statsEl = document.querySelector('.mg-stats');
+  if(statsEl) statsObs.observe(statsEl);
+
+  /* SaaS dashboard metrics */
+  const dashObs = new IntersectionObserver(entries => {
+    if(entries[0].isIntersecting){
+      document.querySelectorAll('[data-count]').forEach(el => {
+        const target  = parseFloat(el.dataset.count);
+        const prefix  = el.dataset.countPrefix || '';
+        const suffix  = el.dataset.countSuffix || '';
+        const dec     = el.dataset.countDecimals ? parseInt(el.dataset.countDecimals) : 0;
+        let start = null;
+        function step(ts){
+          if(!start) start = ts;
+          const p = Math.min((ts - start) / 1600, 1);
+          const ease = 1 - Math.pow(1 - p, 3);
+          const val = target * ease;
+          el.textContent = prefix + (dec ? val.toFixed(dec) : Math.round(val).toLocaleString()) + suffix;
+          if(p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
+      dashObs.disconnect();
+    }
+  }, {threshold: 0.3});
+
+  const dashEl = document.querySelector('.saas-metrics');
+  if(dashEl) dashObs.observe(dashEl);
+
+  /* ── Live activity ticker ── */
+  const activities = [
+    'New user signed up via Product Hunt',
+    'Enterprise plan upgrade — $499/mo',
+    'API integration connected',
+    'Report exported — Q2 2025',
+    'Feature flag enabled for beta group',
+    'New workspace created — Team Pro',
+    'Webhook triggered — Slack integration',
+    'Support ticket resolved #4821',
+  ];
+
+  const actItems = document.querySelectorAll('.saas-act-item');
+  const times = ['2s ago','14s ago','1m ago','3m ago'];
+
+  setInterval(() => {
+    if(!actItems.length) return;
+    const newActivity = activities[Math.floor(Math.random() * activities.length)];
+    actItems[actItems.length - 1].querySelector('.saas-act-text').textContent = newActivity;
+    actItems[actItems.length - 1].querySelector('.saas-act-time').textContent = 'just now';
+    // shift times
+    actItems.forEach((item, i) => {
+      if(i < actItems.length - 1){
+        item.querySelector('.saas-act-time').textContent = times[i + 1] || '5m ago';
+      }
+    });
+  }, 3000);
+
+})();
+</script>
+</main>
+
+<gv-footer></gv-footer>
+
+<script src="assets/js/components.js"></script>
+<script src="assets/js/script.js" defer></script>
+</body>
+</html>

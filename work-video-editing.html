@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Graphy Vector Studio | Video Editing & VFX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Graphy Vector Studio handles full video editing and VFX post-production — color grading, compositing, sound design and cinematic visual effects for brands, agencies and filmmakers." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="./assets/Favicon/favicon-small.svg">
+  <link rel="icon" type="image/png" sizes="512x512" href="./assets/Favicon/favicon-big.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/Favicon/apple-touch-icon.png">
+  <meta name="theme-color" content="#000000">
+  <style>
+    /* ─────────────────────────────────────────────
+       PAGE-LEVEL ADDITIONS — all use site tokens
+    ───────────────────────────────────────────── */
+
+    /* ── TICKER ── */
+    .pg-ticker {
+      width: 100%;
+      background: var(--accent);
+      overflow: hidden;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .pg-ticker__track {
+      display: flex;
+      white-space: nowrap;
+      animation: tickScroll 30s linear infinite;
+    }
+    .pg-ticker__item {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #fff;
+      padding: 0 2.5rem;
+    }
+    .pg-ticker__item span { opacity: 0.5; }
+    @keyframes tickScroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── HERO ── */
+    .pg-hero {
+      position: relative;
+      min-height: 92vh;
+      background: var(--bg-dark);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 5rem max(5vw, 1.5rem) 8rem;
+      overflow: hidden;
+    }
+
+    /* Glow blob — accent blue only */
+    .pg-hero__blob {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(100px);
+    }
+    .pg-hero__blob-1 {
+      width: 460px; height: 460px;
+      background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
+      top: -80px; right: -60px;
+      opacity: 0.6;
+      animation: blobDrift 9s ease-in-out infinite;
+    }
+    .pg-hero__blob-2 {
+      width: 260px; height: 260px;
+      background: radial-gradient(circle, rgba(47,157,255,0.12) 0%, transparent 70%);
+      bottom: 60px; left: 5%;
+      animation: blobDrift 12s ease-in-out 3s infinite;
+    }
+    @keyframes blobDrift {
+      0%,100% { transform: translateY(0) scale(1); }
+      50%      { transform: translateY(-24px) scale(1.05); }
+    }
+
+    /* Vertical rule decoration */
+    .pg-hero__rule {
+      position: absolute;
+      top: 0; right: 22%;
+      width: 1px;
+      height: 100%;
+      background: linear-gradient(to bottom, transparent, var(--border-dark) 20%, var(--border-dark) 80%, transparent);
+      opacity: 0.5;
+    }
+
+    .pg-hero__content { position: relative; z-index: 2; max-width: 800px; }
+
+    .pg-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.6rem;
+    }
+    .pg-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 24px; height: 1px;
+      background: var(--accent);
+    }
+
+    .pg-h1 {
+      font-size: clamp(3rem, 8vw, 7.5rem);
+      font-weight: 900;
+      line-height: 0.93;
+      letter-spacing: -0.03em;
+      color: var(--text-light);
+      margin: 0 0 2rem;
+    }
+    .pg-h1 mark {
+      background: none;
+      color: var(--accent);
+    }
+
+    .pg-hero__sub {
+      font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+      color: var(--muted-light);
+      max-width: 500px;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+
+    .pg-hero__actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    /* Stat bar at bottom of hero */
+    .pg-hero__stats {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--border-dark);
+      z-index: 2;
+    }
+    .pg-stat {
+      padding: 1.4rem max(5vw, 1.5rem);
+      border-right: 1px solid var(--border-dark);
+    }
+    .pg-stat:last-child { border-right: none; }
+    .pg-stat__val {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--text-light);
+      line-height: 1;
+    }
+    .pg-stat__val em {
+      font-style: normal;
+      color: var(--accent);
+    }
+    .pg-stat__lbl {
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted-light);
+      margin-top: 0.3rem;
+    }
+
+    /* ── ANIMATED PLAYHEAD ── */
+    .tl-playhead-line {
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 0%;
+      width: 2px;
+      background: var(--accent);
+      z-index: 5;
+      animation: playheadMove 8s linear infinite;
+      box-shadow: 0 0 8px var(--accent);
+    }
+
+    .tl-playhead-head {
+      position: absolute;
+      top: -6px;
+      left: 0%;
+      transform: translateX(-50%);
+      width: 0; height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 7px solid var(--accent);
+      animation: playheadMove 8s linear infinite;
+      z-index: 6;
+    }
+
+    @keyframes playheadMove {
+      0%   { left: 2%; }
+      100% { left: 98%; }
+    }
+
+    /* ── PREVIEW MONITOR ── */
+    .nle-monitor {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 0;
+      background: #0a0a0a;
+      border: 1px solid var(--border-dark);
+      border-bottom: none;
+      border-radius: var(--radius) var(--radius) 0 0;
+      overflow: hidden;
+    }
+
+    .nle-preview {
+      background: #000;
+      border-right: 1px solid var(--border-dark);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nle-preview-screen {
+      flex: 1;
+      min-height: 160px;
+      background: linear-gradient(135deg, #0a0a12 0%, #050510 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Fake film grain overlay */
+    .nle-preview-screen::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.3;
+      pointer-events: none;
+    }
+
+    .nle-safe-frame {
+      width: 80%;
+      aspect-ratio: 16/9;
+      border: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .nle-safe-frame::before,
+    .nle-safe-frame::after {
+      content: '';
+      position: absolute;
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .nle-safe-frame::before { inset: 5%; }
+    .nle-safe-frame::after  { inset: 10%; }
+
+    .nle-frame-label {
+      font-size: 0.6rem;
+      color: rgba(255,255,255,0.15);
+      letter-spacing: 0.12em;
+      text-align: center;
+      font-family: monospace;
+    }
+
+    .nle-frame-counter {
+      position: absolute;
+      top: 0.5rem;
+      left: 0.5rem;
+      font-size: 0.58rem;
+      font-family: monospace;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.08em;
+    }
+
+    .nle-preview-controls {
+      background: #0d0d0d;
+      border-top: 1px solid var(--border-dark);
+      padding: 0.5rem 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .nle-ctrl-btn {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.4);
+      cursor: pointer;
+      transition: color 0.15s;
+      background: none;
+      border: none;
+      padding: 0;
+      font-family: inherit;
+    }
+
+    .nle-ctrl-btn:hover { color: #fff; }
+    .nle-ctrl-btn.play { color: var(--accent); font-size: 0.9rem; }
+
+    .nle-timecode {
+      font-size: 0.62rem;
+      font-family: monospace;
+      color: var(--accent);
+      margin-left: auto;
+      letter-spacing: 0.08em;
+    }
+
+    /* Right panel — scopes */
+    .nle-scopes {
+      background: #080808;
+      padding: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .nle-scope-label {
+      font-size: 0.58rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+      margin-bottom: 0.2rem;
+    }
+
+    .nle-waveform {
+      height: 52px;
+      background: #050505;
+      border: 1px solid var(--border-dark);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .nle-waveform-svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .nle-histogram {
+      height: 60px;
+      background: #050505;
+      border: 1px solid var(--border-dark);
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 2px;
+      gap: 1px;
+    }
+
+    .nle-hist-bar {
+      flex: 1;
+      border-radius: 1px 1px 0 0;
+      transition: height 0.3s ease;
+    }
+
+    .nle-vectorscope {
+      height: 70px;
+      background: #050505;
+      border: 1px solid var(--border-dark);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ── LUT BEFORE/AFTER ── */
+    .lut-compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border-dark);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-top: 2rem;
+    }
+
+    .lut-panel {
+      background: #050505;
+      padding: 1.2rem;
+    }
+
+    .lut-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .lut-label.before { color: #888; }
+    .lut-label.after  { color: var(--accent); }
+
+    .lut-dot { width: 7px; height: 7px; border-radius: 50%; }
+    .lut-dot.before { background: #444; }
+    .lut-dot.after  { background: var(--accent); }
+
+    .lut-screen {
+      aspect-ratio: 16/9;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.08em;
+      font-style: italic;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .lut-screen.raw {
+      background: linear-gradient(135deg, #1a1209 0%, #2a1e0a 50%, #1a150a 100%);
+    }
+
+    .lut-screen.graded {
+      background: linear-gradient(135deg, #050c1a 0%, #0a1428 50%, #08111f 100%);
+    }
+
+    /* colour cast overlays */
+    .lut-screen.raw::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,180,60,0.15), rgba(255,140,0,0.1));
+    }
+
+    .lut-screen.graded::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(47,100,255,0.08), rgba(0,60,180,0.12));
+    }
+
+    .lut-screen-text { position: relative; z-index: 1; }
+
+    .lut-chips {
+      display: flex;
+      gap: 0.4rem;
+      margin-top: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .lut-chip {
+      font-size: 0.62rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    .lut-chip.raw-chip    { background: rgba(255,180,60,0.1); color: rgba(255,180,60,0.7); }
+    .lut-chip.grade-chip  { background: rgba(47,157,255,0.1); color: var(--accent); }
+
+    /* ── TAB SWITCHER ── */
+    .pg-tabs-wrap {
+      background: var(--bg-dark);
+      padding: 4.5rem max(5vw, 1.5rem) 0;
+    }
+    .pg-tabs-intro {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .pg-tabs-intro h2 {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 800;
+      color: var(--text-light);
+      margin-bottom: 0.5rem;
+    }
+    .pg-tabs-intro p {
+      color: var(--muted-dark);
+      font-size: 0.85rem;
+    }
+
+    .pg-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--border-dark);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .pg-tab {
+      background: var(--card-dark);
+      padding: 2.2rem 2rem;
+      cursor: pointer;
+      border: none;
+      text-align: left;
+      transition: background 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .pg-tab::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s ease;
+    }
+    .pg-tab:hover::after,
+    .pg-tab.active::after { transform: scaleX(1); }
+    .pg-tab.active { background: #0d0d0d; }
+
+    .pg-tab__icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      background: var(--accent-soft);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+    .pg-tab__title {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--text-light);
+      margin-bottom: 0.3rem;
+    }
+    .pg-tab__sub {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted-dark);
+    }
+
+    /* ── PANELS ── */
+    .pg-panel { display: none; }
+    .pg-panel.active { display: block; }
+
+    /* ── SECTION COMMON ── */
+    .pg-section {
+      padding: 5rem max(5vw, 1.5rem);
+      background: var(--bg-dark);
+    }
+
+    .sec-eye {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+    .sec-eye::before { content:''; width:18px; height:1px; background:var(--accent); }
+
+    .pg-h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 900;
+      color: var(--text-light);
+      line-height: 1.1;
+      margin: 0 0 1rem;
+    }
+    .pg-intro {
+      color: var(--muted-light);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      max-width: 560px;
+      margin-bottom: 3rem;
+    }
+
+    /* ── TIMELINE UI (Video Editing) ── */
+    .tl-shell {
+      background: var(--card-dark);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 3.5rem;
+    }
+    .tl-topbar {
+      background: #0a0a0a;
+      border-bottom: 1px solid var(--border-dark);
+      padding: 0.7rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .tl-dot  { width: 10px; height: 10px; border-radius: 50%; }
+    .tl-dot.r { background: #ff5f57; }
+    .tl-dot.y { background: #febc2e; }
+    .tl-dot.g { background: #28c840; }
+    .tl-filename {
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted-dark);
+      margin-left: 0.5rem;
+    }
+
+    .tl-body { padding: 1.5rem; }
+
+    .tl-ruler {
+      display: flex;
+      border-bottom: 1px solid var(--border-dark);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .tl-tick {
+      flex: 1;
+      font-size: 9px;
+      color: var(--muted-dark);
+      text-align: center;
+      letter-spacing: 0.05em;
+    }
+
+    .tl-tracks { position: relative; }
+    .tl-playhead-line {
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 37%;
+      width: 1px;
+      background: var(--accent);
+      z-index: 5;
+    }
+    .tl-playhead-head {
+      position: absolute;
+      top: -6px; left: 37%;
+      transform: translateX(-50%);
+      width: 0; height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 7px solid var(--accent);
+    }
+
+    .tl-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.35rem;
+    }
+    .tl-label {
+      width: 72px;
+      font-size: 8px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted-dark);
+      flex-shrink: 0;
+    }
+    .tl-clips { flex: 1; display: flex; gap: 3px; }
+    .tl-clip {
+      height: 22px;
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+    }
+    .tl-clip::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(255,255,255,0.1), transparent);
+    }
+    .tl-clip.blue  { background: rgba(47,157,255,0.55); }
+    .tl-clip.blue2 { background: rgba(47,157,255,0.35); }
+    .tl-clip.white { background: rgba(255,255,255,0.08); }
+    .tl-clip.mid   { background: rgba(47,157,255,0.2); }
+
+    /* ── VE SERVICE CARDS ── */
+    .ve-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+    }
+    .ve-card {
+      background: var(--card-dark);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius);
+      padding: 1.8rem;
+      transition: border-color 0.25s, transform 0.2s;
+    }
+    .ve-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+    .ve-card__icon {
+      font-size: 1.6rem;
+      margin-bottom: 0.9rem;
+    }
+    .ve-card__title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text-light);
+      margin-bottom: 0.45rem;
+    }
+    .ve-card__desc {
+      font-size: 0.77rem;
+      color: var(--muted-dark);
+      line-height: 1.65;
+    }
+
+    /* ── VFX BENTO GRID ── */
+    .vfx-bento {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 1.2rem;
+    }
+    .vfx-cell {
+      background: var(--card-dark);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius);
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.25s;
+    }
+    .vfx-cell:hover { border-color: var(--accent); }
+    .vfx-cell.tall  { grid-row: span 2; }
+
+    .vfx-cell::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--accent-soft), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s;
+      pointer-events: none;
+    }
+    .vfx-cell:hover::before { opacity: 1; }
+
+    /* Animated circuit lines inside tall cell */
+    .vfx-cell.tall .circuit {
+      position: absolute;
+      left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(47,157,255,0.25), transparent);
+      animation: cktSlide 6s linear infinite;
+    }
+    .vfx-cell.tall .circuit:nth-child(1) { top: 25%; animation-delay: 0s; }
+    .vfx-cell.tall .circuit:nth-child(2) { top: 50%; animation-delay: 2s; }
+    .vfx-cell.tall .circuit:nth-child(3) { top: 75%; animation-delay: 4s; }
+    @keyframes cktSlide {
+      from { transform: translateX(-100%); opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 1; }
+      to   { transform: translateX(200%); opacity: 0; }
+    }
+
+    .vfx-cell__num {
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: rgba(47,157,255,0.12);
+      line-height: 1;
+      margin-bottom: 0.7rem;
+      position: relative;
+      z-index: 1;
+    }
+    .vfx-cell__title {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--text-light);
+      margin-bottom: 0.55rem;
+      position: relative;
+      z-index: 1;
+    }
+    .vfx-cell__desc {
+      font-size: 0.77rem;
+      color: var(--muted-dark);
+      line-height: 1.65;
+      position: relative;
+      z-index: 1;
+    }
+    .vfx-badge {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.28rem 0.75rem;
+      background: var(--accent-soft);
+      border: 1px solid rgba(47,157,255,0.25);
+      border-radius: 999px;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── WORKFLOW ── */
+    .workflow-wrap {
+      padding: 5rem max(5vw, 1.5rem);
+      background: #050505;
+      border-top: 1px solid var(--border-dark);
+    }
+    .workflow-wrap h2 {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 900;
+      color: var(--text-light);
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+    .workflow-wrap .sub {
+      text-align: center;
+      color: var(--muted-dark);
+      font-size: 0.84rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .workflow-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      position: relative;
+    }
+    .workflow-grid::before {
+      content: '';
+      position: absolute;
+      top: 27px; left: 9%; right: 9%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border-dark) 20%, var(--accent) 50%, var(--border-dark) 80%, transparent);
+    }
+
+    .wf-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 0.8rem;
+      position: relative;
+      z-index: 1;
+    }
+    .wf-num {
+      width: 54px; height: 54px;
+      border-radius: 50%;
+      background: var(--card-dark);
+      border: 2px solid var(--border-dark);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--muted-light);
+      margin-bottom: 1.2rem;
+      transition: border-color 0.2s, color 0.2s, box-shadow 0.2s;
+    }
+    .wf-step:hover .wf-num,
+    .wf-num.accent {
+      border-color: var(--accent);
+      color: var(--accent);
+      box-shadow: 0 0 16px var(--accent-soft);
+    }
+    .wf-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-light);
+      margin-bottom: 0.35rem;
+    }
+    .wf-desc {
+      font-size: 0.7rem;
+      color: var(--muted-dark);
+      line-height: 1.55;
+    }
+
+    /* ── STACK MARQUEE ── */
+    .stack-wrap {
+      padding: 4rem max(5vw, 1.5rem);
+      background: var(--bg-dark);
+      border-top: 1px solid var(--border-dark);
+    }
+    .stack-wrap h2 {
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 800;
+      color: var(--text-light);
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .marquee-outer {
+      overflow: hidden;
+      position: relative;
+    }
+    .marquee-outer::before,
+    .marquee-outer::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 100px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .marquee-outer::before { left: 0;  background: linear-gradient(to right, var(--bg-dark), transparent); }
+    .marquee-outer::after  { right: 0; background: linear-gradient(to left, var(--bg-dark), transparent); }
+
+    .marquee-track {
+      display: flex;
+      gap: 0.8rem;
+      white-space: nowrap;
+      animation: mRoll 32s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes mRoll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    .m-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.6rem 1.2rem;
+      background: var(--card-dark);
+      border: 1px solid var(--border-dark);
+      border-radius: 999px;
+      font-size: 0.77rem;
+      font-weight: 600;
+      color: var(--muted-light);
+      flex-shrink: 0;
+      white-space: nowrap;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .m-chip:hover { border-color: var(--accent); color: var(--text-light); }
+    .m-chip .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+
+    /* ── PILLS ── */
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .tag {
+      padding: 0.32rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      background: var(--accent-soft);
+      color: var(--accent);
+      border: 1px solid rgba(47,157,255,0.22);
+    }
+    .tag.muted {
+      background: rgba(255,255,255,0.04);
+      color: var(--muted-light);
+      border-color: var(--border-dark);
+    }
+
+    /* ── CTA ── */
+    .pg-cta {
+      padding: 6rem max(5vw, 1.5rem);
+      background: #050505;
+      border-top: 1px solid var(--border-dark);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .pg-cta::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(47,157,255,0.06) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .pg-cta h2 {
+      font-size: clamp(2rem, 4.5vw, 3.5rem);
+      font-weight: 900;
+      color: var(--text-light);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    .pg-cta h2 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+    .pg-cta p {
+      color: var(--muted-dark);
+      max-width: 420px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+      font-size: 0.93rem;
+      position: relative;
+    }
+    .pg-cta__actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .pg-tabs { grid-template-columns: 1fr; }
+      .ve-grid  { grid-template-columns: 1fr 1fr; }
+      .vfx-bento { grid-template-columns: 1fr 1fr; }
+      .vfx-cell.tall { grid-column: span 2; grid-row: auto; }
+      .workflow-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .workflow-grid::before { display: none; }
+      .pg-hero__stats { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .ve-grid   { grid-template-columns: 1fr; }
+      .vfx-bento { grid-template-columns: 1fr; }
+      .vfx-cell.tall { grid-column: auto; }
+      .workflow-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<gv-header page="works"></gv-header>
+
+<main class="page">
+<!-- ── PRELOADER ── -->
+<!-- ── HEADER ── -->
+
+
+
+
+  <!-- ════════════════════════════════
+       HERO
+  ════════════════════════════════ -->
+  <section class="pg-hero">
+    <div class="pg-hero__blob pg-hero__blob-1"></div>
+    <div class="pg-hero__blob pg-hero__blob-2"></div>
+    <div class="pg-hero__rule"></div>
+
+    <div class="pg-hero__content">
+      <div class="pg-eyebrow">Video Editing &amp; VFX Post Production</div>
+      <h1 class="pg-h1">
+        Every Frame<br>
+        <mark>Counts.</mark>
+      </h1>
+      <p class="pg-hero__sub">
+        Precision editing meets cinematic visual effects. We handle the full
+        post-production pipeline — from rough cut to final render — so your story
+        lands exactly as intended.
+      </p>
+      <div class="pg-hero__actions">
+        <a href="contact.html" class="btn primary">Start a Project</a>
+        <a href="works.html"   class="btn ghost">See All Works</a>
+      </div>
+    </div>
+
+    <div class="pg-hero__stats">
+      <div class="pg-stat">
+        <div class="pg-stat__val"><em>200+</em></div>
+        <div class="pg-stat__lbl">Videos Delivered</div>
+      </div>
+      <div class="pg-stat">
+        <div class="pg-stat__val"><em>4K</em></div>
+        <div class="pg-stat__lbl">Max Output</div>
+      </div>
+      <div class="pg-stat">
+        <div class="pg-stat__val"><em>50+</em></div>
+        <div class="pg-stat__lbl">VFX Shots</div>
+      </div>
+      <div class="pg-stat">
+        <div class="pg-stat__val"><em>12</em></div>
+        <div class="pg-stat__lbl">Industries Served</div>
+      </div>
+    </div>
+  </section>
+
+      <div class="pg-ticker">
+      <div class="pg-ticker__track">
+        <span class="pg-ticker__item">Video Editing <span>·</span></span>
+        <span class="pg-ticker__item">VFX <span>·</span></span>
+        <span class="pg-ticker__item">Post Production <span>·</span></span>
+        <span class="pg-ticker__item">Compositing <span>·</span></span>
+        <span class="pg-ticker__item">Color Grading <span>·</span></span>
+        <span class="pg-ticker__item">Sound Design <span>·</span></span>
+        <span class="pg-ticker__item">Visual Effects <span>·</span></span>
+        <span class="pg-ticker__item">Video Editing <span>·</span></span>
+        <span class="pg-ticker__item">VFX <span>·</span></span>
+        <span class="pg-ticker__item">Post Production <span>·</span></span>
+        <span class="pg-ticker__item">Compositing <span>·</span></span>
+        <span class="pg-ticker__item">Color Grading <span>·</span></span>
+        <span class="pg-ticker__item">Sound Design <span>·</span></span>
+        <span class="pg-ticker__item">Visual Effects <span>·</span></span>
+      </div>
+    </div>
+
+
+  <!-- ════════════════════════════════
+       DISCIPLINE TABS
+  ════════════════════════════════ -->
+  <div class="pg-tabs-wrap">
+    <div class="pg-tabs-intro">
+      <h2>Two Disciplines. One Pipeline.</h2>
+      <p>Select a discipline to explore what we deliver.</p>
+    </div>
+    <div class="pg-tabs" id="pgTabs">
+      <button class="pg-tab active" data-panel="ve">
+        <div class="pg-tab__icon">🎬</div>
+        <div class="pg-tab__title">Video Editing</div>
+        <div class="pg-tab__sub">Story · Pace · Precision</div>
+      </button>
+      <button class="pg-tab" data-panel="vx">
+        <div class="pg-tab__icon">✨</div>
+        <div class="pg-tab__title">VFX Post Production</div>
+        <div class="pg-tab__sub">Compositing · FX · Finishing</div>
+      </button>
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════
+       VIDEO EDITING PANEL
+  ════════════════════════════════ -->
+  <div class="pg-panel active" id="panel-ve">
+    <div class="pg-section">
+      <div class="reveal">
+        <div class="sec-eye">Discipline 01</div>
+        <h2 class="pg-h2">Video Editing</h2>
+        <p class="pg-intro">
+          Raw footage becomes a compelling narrative. We handle everything from rough
+          assembly to the final grade — every cut placed with purpose, every frame
+          timed to feel.
+        </p>
+        <div class="tag-list">
+          <span class="tag">Narrative Editing</span>
+          <span class="tag">Brand Films</span>
+          <span class="tag">Color Grading</span>
+          <span class="tag">Sound Design</span>
+          <span class="tag muted">Social Cuts</span>
+          <span class="tag muted">Subtitles & CC</span>
+          <span class="tag muted">Multi-format Export</span>
+        </div>
+      </div>
+
+      <!-- NLE Monitor + Timeline -->
+      <div class="tl-shell reveal" style="transition-delay:.1s;">
+
+        <!-- Preview Monitor -->
+        <div class="nle-monitor">
+          <div class="nle-preview">
+            <div class="nle-preview-screen">
+              <div class="nle-frame-counter" id="frameCounter">00:00:00:00</div>
+              <div class="nle-safe-frame">
+                <div class="nle-frame-label">YOUR FOOTAGE<br>GOES HERE</div>
+              </div>
+            </div>
+            <div class="nle-preview-controls">
+              <button class="nle-ctrl-btn" title="Go to start">⏮</button>
+              <button class="nle-ctrl-btn" title="Step back">◀</button>
+              <button class="nle-ctrl-btn play" id="playBtn" title="Play/Pause">▶</button>
+              <button class="nle-ctrl-btn" title="Step forward">▶</button>
+              <button class="nle-ctrl-btn" title="Go to end">⏭</button>
+              <span class="nle-timecode" id="timecode">00:00:14:22</span>
+            </div>
+          </div>
+          <div class="nle-scopes">
+            <div>
+              <div class="nle-scope-label">Waveform</div>
+              <div class="nle-waveform">
+                <svg class="nle-waveform-svg" viewBox="0 0 280 52" preserveAspectRatio="none">
+                  <polyline points="0,26 14,18 28,32 42,12 56,36 70,20 84,28 98,8 112,38 126,22 140,16 154,34 168,10 182,40 196,24 210,30 224,14 238,42 252,20 266,28 280,26" fill="none" stroke="rgba(47,157,255,0.6)" stroke-width="1.5"/>
+                  <polyline points="0,36 14,30 28,40 42,24 56,44 70,32 84,36 98,20 112,46 126,34 140,28 154,42 168,22 182,48 196,36 210,40 224,26 238,50 252,32 266,38 280,36" fill="none" stroke="rgba(47,157,255,0.2)" stroke-width="1"/>
+                </svg>
+              </div>
+            </div>
+            <div>
+              <div class="nle-scope-label">RGB Histogram</div>
+              <div class="nle-histogram" id="histogram"></div>
+            </div>
+            <div>
+              <div class="nle-scope-label">Vectorscope</div>
+              <div class="nle-vectorscope">
+                <svg viewBox="0 0 70 70" width="70" height="70">
+                  <circle cx="35" cy="35" r="32" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                  <circle cx="35" cy="35" r="20" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+                  <circle cx="35" cy="35" r="8"  fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                  <line x1="35" y1="3"  x2="35" y2="67" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+                  <line x1="3"  y1="35" x2="67" y2="35" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+                  <!-- scatter dots -->
+                  <circle cx="38" cy="32" r="1.5" fill="rgba(47,157,255,0.6)"/>
+                  <circle cx="36" cy="34" r="2"   fill="rgba(47,157,255,0.8)"/>
+                  <circle cx="40" cy="30" r="1"   fill="rgba(47,157,255,0.4)"/>
+                  <circle cx="34" cy="36" r="1.5" fill="rgba(47,157,255,0.5)"/>
+                  <circle cx="37" cy="33" r="3"   fill="rgba(47,157,255,0.3)"/>
+                  <circle cx="33" cy="31" r="1"   fill="rgba(47,157,255,0.4)"/>
+                  <circle cx="41" cy="35" r="1.5" fill="rgba(47,157,255,0.35)"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tl-topbar">
+          <div class="tl-dot r"></div>
+          <div class="tl-dot y"></div>
+          <div class="tl-dot g"></div>
+          <span class="tl-filename">Graphy_FinalEdit.prproj — Sequence 01</span>
+        </div>
+        <div class="tl-body">
+          <div class="tl-ruler">
+            <div class="tl-tick">00:00</div>
+            <div class="tl-tick">00:15</div>
+            <div class="tl-tick">00:30</div>
+            <div class="tl-tick">00:45</div>
+            <div class="tl-tick">01:00</div>
+            <div class="tl-tick">01:15</div>
+            <div class="tl-tick">01:30</div>
+            <div class="tl-tick">01:45</div>
+          </div>
+          <div class="tl-tracks">
+            <div class="tl-playhead-head"></div>
+            <div class="tl-playhead-line"></div>
+            <div class="tl-row">
+              <div class="tl-label">VIDEO 1</div>
+              <div class="tl-clips">
+                <div class="tl-clip blue"  style="flex:1.8;"></div>
+                <div class="tl-clip white" style="flex:0.3;"></div>
+                <div class="tl-clip blue"  style="flex:1.4;"></div>
+                <div class="tl-clip white" style="flex:0.2;"></div>
+                <div class="tl-clip blue"  style="flex:2.3;"></div>
+              </div>
+            </div>
+            <div class="tl-row">
+              <div class="tl-label">VIDEO 2</div>
+              <div class="tl-clips">
+                <div class="tl-clip white" style="flex:0.9;"></div>
+                <div class="tl-clip blue2" style="flex:2;"></div>
+                <div class="tl-clip white" style="flex:0.4;"></div>
+                <div class="tl-clip blue2" style="flex:2.7;"></div>
+              </div>
+            </div>
+            <div class="tl-row">
+              <div class="tl-label">GFX</div>
+              <div class="tl-clips">
+                <div class="tl-clip mid"   style="flex:1.1;"></div>
+                <div class="tl-clip white" style="flex:0.7;"></div>
+                <div class="tl-clip mid"   style="flex:0.9;"></div>
+                <div class="tl-clip white" style="flex:0.9;"></div>
+                <div class="tl-clip mid"   style="flex:2.4;"></div>
+              </div>
+            </div>
+            <div class="tl-row">
+              <div class="tl-label">MUSIC</div>
+              <div class="tl-clips">
+                <div class="tl-clip blue2" style="flex:6;"></div>
+              </div>
+            </div>
+            <div class="tl-row">
+              <div class="tl-label">SFX</div>
+              <div class="tl-clips">
+                <div class="tl-clip white" style="flex:0.5;"></div>
+                <div class="tl-clip mid"   style="flex:0.25;"></div>
+                <div class="tl-clip white" style="flex:0.8;"></div>
+                <div class="tl-clip mid"   style="flex:0.25;"></div>
+                <div class="tl-clip white" style="flex:0.9;"></div>
+                <div class="tl-clip mid"   style="flex:0.25;"></div>
+                <div class="tl-clip white" style="flex:1.5;"></div>
+              </div>
+            </div>
+          </div><!-- end tl-tracks -->
+        </div><!-- end tl-body -->
+      </div><!-- end timeline tl-shell -->
+      </div><!-- end outer tl-shell with monitor -->
+      <div class="ve-grid">
+        <div class="ve-card reveal" style="transition-delay:.05s;">
+          <div class="ve-card__icon">✂️</div>
+          <div class="ve-card__title">Narrative Editing</div>
+          <div class="ve-card__desc">Story-first assembly cuts for brand films, documentaries, and corporate content.</div>
+        </div>
+        <div class="ve-card reveal" style="transition-delay:.1s;">
+          <div class="ve-card__icon">🎨</div>
+          <div class="ve-card__title">Color Grading</div>
+          <div class="ve-card__desc">Cinematic LUT design, scene-matching, and creative color treatments in DaVinci.</div>
+        </div>
+        <div class="ve-card reveal" style="transition-delay:.15s;">
+          <div class="ve-card__icon">🔊</div>
+          <div class="ve-card__title">Sound Design</div>
+          <div class="ve-card__desc">Music sync, SFX layering, and broadcast-ready audio mastering at every output.</div>
+        </div>
+        <div class="ve-card reveal" style="transition-delay:.2s;">
+          <div class="ve-card__icon">📱</div>
+          <div class="ve-card__title">Social Reformats</div>
+          <div class="ve-card__desc">Re-edit and reframe your hero video for Reels, Shorts, TikTok, and LinkedIn.</div>
+        </div>
+        <div class="ve-card reveal" style="transition-delay:.25s;">
+          <div class="ve-card__icon">💬</div>
+          <div class="ve-card__title">Subtitles & CC</div>
+          <div class="ve-card__desc">Styled captions, multi-language subtitles, and accessibility-ready SRT files.</div>
+        </div>
+        <div class="ve-card reveal" style="transition-delay:.3s;">
+          <div class="ve-card__icon">📦</div>
+          <div class="ve-card__title">Multi-format Export</div>
+          <div class="ve-card__desc">4K ProRes, H.264/H.265, web-optimised MP4, and broadcast spec delivery.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════
+       VFX PANEL
+  ════════════════════════════════ -->
+  <div class="pg-panel" id="panel-vx">
+    <div class="pg-section">
+      <div class="reveal">
+        <div class="sec-eye">Discipline 02</div>
+        <h2 class="pg-h2">VFX Post Production</h2>
+        <p class="pg-intro">
+          Seamless compositing, particle simulations, and environment extensions.
+          We blend the impossible into the real — shot-by-shot, frame-by-frame.
+        </p>
+        <div class="tag-list">
+          <span class="tag">Green Screen</span>
+          <span class="tag">Compositing</span>
+          <span class="tag">Motion Tracking</span>
+          <span class="tag muted">Particle FX</span>
+          <span class="tag muted">Environment Extension</span>
+          <span class="tag muted">Digital Cleanup</span>
+        </div>
+      </div>
+
+      <!-- Color grading LUT compare -->
+      <div class="lut-compare reveal" style="transition-delay:.05s;">
+        <div class="lut-panel">
+          <div class="lut-label before"><div class="lut-dot before"></div>Before — Raw Footage</div>
+          <div class="lut-screen raw"><span class="lut-screen-text">Your raw clip here</span></div>
+          <div class="lut-chips">
+            <span class="lut-chip raw-chip">Flat / Log-C</span>
+            <span class="lut-chip raw-chip">Warm Cast</span>
+            <span class="lut-chip raw-chip">Low Contrast</span>
+          </div>
+        </div>
+        <div class="lut-panel">
+          <div class="lut-label after"><div class="lut-dot after"></div>After — Cinematic Grade</div>
+          <div class="lut-screen graded"><span class="lut-screen-text">Graded output</span></div>
+          <div class="lut-chips">
+            <span class="lut-chip grade-chip">Custom LUT</span>
+            <span class="lut-chip grade-chip">Cool Teal</span>
+            <span class="lut-chip grade-chip">High Contrast</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="vfx-bento">
+        <div class="vfx-cell tall reveal">
+          <div class="circuit"></div>
+          <div class="circuit"></div>
+          <div class="circuit"></div>
+          <div class="vfx-cell__num">01</div>
+          <div class="vfx-cell__title">Green Screen &amp; Compositing</div>
+          <div class="vfx-cell__desc">
+            Clean keying, edge refinement, and realistic light integration.
+            We place subjects in any world convincingly — product environments,
+            cinematic backdrops, digital stages.
+          </div>
+          <span class="vfx-badge">After Effects · Nuke</span>
+        </div>
+
+        <div class="vfx-cell reveal" style="transition-delay:.07s;">
+          <div class="vfx-cell__num">02</div>
+          <div class="vfx-cell__title">Particle &amp; Simulation FX</div>
+          <div class="vfx-cell__desc">Fire, smoke, dust, shatter — physics-accurate simulations matched to your creative direction.</div>
+          <span class="vfx-badge">Houdini · C4D</span>
+        </div>
+
+        <div class="vfx-cell reveal" style="transition-delay:.12s;">
+          <div class="vfx-cell__num">03</div>
+          <div class="vfx-cell__title">Motion Tracking</div>
+          <div class="vfx-cell__desc">Camera and object tracking so graphics lock to real footage with zero drift.</div>
+          <span class="vfx-badge">Mocha · After Effects</span>
+        </div>
+
+        <div class="vfx-cell reveal" style="transition-delay:.17s;">
+          <div class="vfx-cell__num">04</div>
+          <div class="vfx-cell__title">Environment Extension</div>
+          <div class="vfx-cell__desc">Expand locations beyond what was filmed — skies, architecture, and set extensions painted seamlessly.</div>
+          <span class="vfx-badge">Photoshop · Nuke</span>
+        </div>
+
+        <div class="vfx-cell reveal" style="transition-delay:.22s;">
+          <div class="vfx-cell__num">05</div>
+          <div class="vfx-cell__title">Digital Cleanup</div>
+          <div class="vfx-cell__desc">Wire removal, rig erasure, beauty retouching — invisible fixes that preserve realism.</div>
+          <span class="vfx-badge">DaVinci · Nuke</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════
+       WORKFLOW
+  ════════════════════════════════ -->
+  <div class="workflow-wrap">
+    <h2>Our Production Pipeline</h2>
+    <p class="sub">From brief to final delivery — every phase is intentional.</p>
+    <div class="workflow-grid">
+      <div class="wf-step reveal">
+        <div class="wf-num accent">01</div>
+        <div class="wf-title">Brief</div>
+        <div class="wf-desc">We understand your goals, audience, and delivery specs.</div>
+      </div>
+      <div class="wf-step reveal" style="transition-delay:.08s;">
+        <div class="wf-num">02</div>
+        <div class="wf-title">Concept</div>
+        <div class="wf-desc">Style frames, mood boards, and storyboards approved before production.</div>
+      </div>
+      <div class="wf-step reveal" style="transition-delay:.16s;">
+        <div class="wf-num">03</div>
+        <div class="wf-title">Production</div>
+        <div class="wf-desc">Editing, compositing, and FX work begins in parallel tracks.</div>
+      </div>
+      <div class="wf-step reveal" style="transition-delay:.24s;">
+        <div class="wf-num">04</div>
+        <div class="wf-title">Review</div>
+        <div class="wf-desc">Two revision rounds with async video feedback via Frame.io.</div>
+      </div>
+      <div class="wf-step reveal" style="transition-delay:.32s;">
+        <div class="wf-num">05</div>
+        <div class="wf-title">Deliver</div>
+        <div class="wf-desc">Platform-ready exports plus source files. Signed off and shipped.</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════
+       TECH STACK MARQUEE
+  ════════════════════════════════ -->
+  <div class="stack-wrap">
+    <h2>Our Creative Stack</h2>
+    <div class="marquee-outer">
+      <div class="marquee-track">
+        <div class="m-chip"><span class="dot"></span>After Effects</div>
+        <div class="m-chip"><span class="dot"></span>Premiere Pro</div>
+        <div class="m-chip"><span class="dot"></span>DaVinci Resolve</div>
+        <div class="m-chip"><span class="dot"></span>Nuke</div>
+        <div class="m-chip"><span class="dot"></span>Houdini</div>
+        <div class="m-chip"><span class="dot"></span>Cinema 4D</div>
+        <div class="m-chip"><span class="dot"></span>Blender</div>
+        <div class="m-chip"><span class="dot"></span>Mocha Pro</div>
+        <div class="m-chip"><span class="dot"></span>Frame.io</div>
+        <div class="m-chip"><span class="dot"></span>Photoshop</div>
+        <div class="m-chip"><span class="dot"></span>Illustrator</div>
+        <div class="m-chip"><span class="dot"></span>Audition</div>
+        <!-- duplicate for seamless loop -->
+        <div class="m-chip"><span class="dot"></span>After Effects</div>
+        <div class="m-chip"><span class="dot"></span>Premiere Pro</div>
+        <div class="m-chip"><span class="dot"></span>DaVinci Resolve</div>
+        <div class="m-chip"><span class="dot"></span>Nuke</div>
+        <div class="m-chip"><span class="dot"></span>Houdini</div>
+        <div class="m-chip"><span class="dot"></span>Cinema 4D</div>
+        <div class="m-chip"><span class="dot"></span>Blender</div>
+        <div class="m-chip"><span class="dot"></span>Mocha Pro</div>
+        <div class="m-chip"><span class="dot"></span>Frame.io</div>
+        <div class="m-chip"><span class="dot"></span>Photoshop</div>
+        <div class="m-chip"><span class="dot"></span>Illustrator</div>
+        <div class="m-chip"><span class="dot"></span>Audition</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════
+       CTA
+  ════════════════════════════════ -->
+  <section class="pg-cta">
+    <h2>Ready to<br><em>Roll?</em></h2>
+    <p>Tell us what you're building. We'll map out exactly where editing and VFX will make the biggest difference.</p>
+    <div class="pg-cta__actions">
+      <a href="contact.html" class="btn primary">Start the Conversation</a>
+      <a href="works.html"   class="btn ghost">See All Case Studies</a>
+    </div>
+  </section>
+
+</main>
+
+
+<!-- ── FOOTER ── -->
+<script>
+  /* ── Tab switcher ── */
+  document.querySelectorAll('.pg-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.panel;
+      document.querySelectorAll('.pg-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.pg-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('panel-' + target).classList.add('active');
+    });
+  });
+
+  /* ── Scroll reveal ── */
+  const ro = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+  /* ── Count-up stats ── */
+  function countUp(el) {
+    const raw = el.textContent.trim();
+    const num = parseFloat(raw.replace(/[^0-9.]/g, ''));
+    const suffix = raw.replace(/[0-9.]/g, '');
+    if (isNaN(num)) return;
+    let start = null;
+    const dur = 1600;
+    function step(ts) {
+      if (!start) start = ts;
+      const p = Math.min((ts - start) / dur, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = (num <= 10 ? (num * ease).toFixed(0) : Math.round(num * ease)) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  const statsObs = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+      document.querySelectorAll('.pg-stat__val em').forEach(countUp);
+      statsObs.disconnect();
+    }
+  }, { threshold: 0.5 });
+  const statsEl = document.querySelector('.pg-hero__stats');
+  if (statsEl) statsObs.observe(statsEl);
+
+  /* ── Timecode animation ── */
+  const tc = document.getElementById('timecode');
+  const fc = document.getElementById('frameCounter');
+  let frame = 0;
+  let playing = true;
+  const playBtn = document.getElementById('playBtn');
+
+  if (playBtn) {
+    playBtn.addEventListener('click', () => {
+      playing = !playing;
+      playBtn.textContent = playing ? '▶' : '⏸';
+    });
+  }
+
+  function pad(n, l) { return String(n).padStart(l, '0'); }
+
+  function tickTimecode() {
+    if (playing) frame++;
+    if (frame > 30 * 60 * 2) frame = 0; // reset at 2min
+    const f  = frame % 30;
+    const s  = Math.floor(frame / 30) % 60;
+    const m  = Math.floor(frame / 1800) % 60;
+    const h  = Math.floor(frame / 108000);
+    const str = pad(h,2)+':'+pad(m,2)+':'+pad(s,2)+':'+pad(f,2);
+    if (tc) tc.textContent = str;
+    if (fc) fc.textContent = str;
+    setTimeout(tickTimecode, 1000/30);
+  }
+  tickTimecode();
+
+  /* ── Histogram bars ── */
+  const hist = document.getElementById('histogram');
+  if (hist) {
+    const colors = ['#e74c3c','#e67e22','#f1c40f','#2ecc71','#3498db','#9b59b6'];
+    for (let i = 0; i < 48; i++) {
+      const bar = document.createElement('div');
+      bar.className = 'nle-hist-bar';
+      const h = 10 + Math.random() * 50;
+      bar.style.height = h + 'px';
+      bar.style.background = `rgba(47,157,255,${0.3 + Math.random() * 0.5})`;
+      hist.appendChild(bar);
+    }
+  }
+</script>
+</main>
+
+<gv-footer></gv-footer>
+
+<script src="assets/js/components.js"></script>
+<script src="assets/js/script.js" defer></script>
+</body>
+</html>

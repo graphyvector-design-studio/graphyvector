@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Graphy Vector Studio | About Us</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="./assets/Favicon/favicon-small.svg">
+  <link rel="icon" type="image/png" sizes="512x512" href="./assets/Favicon/favicon-big.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/Favicon/apple-touch-icon.png">
+  <meta name="theme-color" content="#000000">
+  <style>
+    /* ═══════════════════════════════════════════
+       ABOUT PAGE — EDITORIAL LUXURY GLOW-UP
+       Palette: site tokens (black / white / #2f9dff)
+       Accent display font: Playfair Display (headlines)
+       Body: Inter (site standard)
+    ═══════════════════════════════════════════ */
+
+    /* ── NOISE GRAIN OVERLAY ── */
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      pointer-events: none; z-index: 8000;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 160px;
+      opacity: 0.028;
+      mix-blend-mode: overlay;
+    }
+
+    /* ── DISPLAY FONT HELPER ── */
+    .display { font-family: 'Playfair Display', Georgia, serif !important; }
+
+    /* ══════════════════════════
+       HERO — SPLIT EDITORIAL
+    ══════════════════════════ */
+    .ab-hero {
+      min-height: 100vh;
+      background: var(--bg-dark);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Left — copy */
+    .ab-hero__left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem max(4vw, 2rem) 6rem max(6vw, 2rem);
+      position: relative;
+      z-index: 2;
+      border-right: 1px solid var(--border-dark);
+    }
+
+    /* Right — visual */
+    .ab-hero__right {
+      position: relative;
+      overflow: hidden;
+    }
+    .ab-hero__right-bg {
+      position: absolute; inset: 0;
+      background: #060606;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* Large rotating ring */
+    .ab-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid;
+      border-color: rgba(47,157,255,0.18);
+      animation: ringRotate 20s linear infinite;
+    }
+    .ab-ring-1 { width: 70vmin; height: 70vmin; animation-duration: 28s; }
+    .ab-ring-2 { width: 52vmin; height: 52vmin; animation-direction: reverse; animation-duration: 20s; border-color: rgba(47,157,255,0.10); }
+    .ab-ring-3 { width: 34vmin; height: 34vmin; animation-duration: 14s; border-color: rgba(255,255,255,0.07); }
+    @keyframes ringRotate {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    /* Dot at the "3 o'clock" position of ring 1 */
+    .ab-ring-1::after {
+      content: '';
+      position: absolute;
+      top: 50%; right: 0;
+      transform: translate(50%, -50%);
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px var(--accent), 0 0 24px var(--accent-soft);
+    }
+
+    /* Glow blob */
+    .ab-glow {
+      position: absolute;
+      width: 380px; height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(47,157,255,0.14) 0%, transparent 70%);
+      filter: blur(60px);
+      animation: glowPulse 6s ease-in-out infinite;
+    }
+    @keyframes glowPulse {
+      0%,100% { transform: scale(1); opacity: 0.7; }
+      50%      { transform: scale(1.1); opacity: 1; }
+    }
+
+    /* Vertical text label on right panel */
+    .ab-hero__vtxt {
+      position: absolute;
+      right: 1.6rem; top: 50%;
+      transform: translateY(-50%) rotate(90deg);
+      transform-origin: center center;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted-dark);
+      white-space: nowrap;
+    }
+
+    /* Hero copy styles */
+    .ab-eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.8rem;
+      display: flex; align-items: center; gap: 0.7rem;
+    }
+    .ab-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 30px; height: 1px;
+      background: var(--accent);
+    }
+
+    .ab-h1 {
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -0.025em;
+      color: var(--text-light);
+      margin: 0 0 0.4rem;
+    }
+    .ab-h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .ab-h1-sub {
+      font-size: clamp(2.2rem, 4.5vw, 4rem);
+      font-weight: 700;
+      font-style: italic;
+      color: rgba(245,245,245,0.18);
+      line-height: 1;
+      margin: 0 0 2.2rem;
+    }
+
+    .ab-hero__desc {
+      font-size: 1rem;
+      color: var(--muted-light);
+      line-height: 1.75;
+      max-width: 420px;
+      margin-bottom: 3rem;
+    }
+
+    /* Inline stats row */
+    .ab-hero__kpis {
+      display: flex; gap: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-dark);
+    }
+    .ab-kpi__val {
+      font-size: 1.9rem;
+      font-weight: 900;
+      color: var(--text-light);
+      line-height: 1;
+    }
+    .ab-kpi__val em { font-style: normal; color: var(--accent); }
+    .ab-kpi__lbl {
+      font-size: 0.66rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted-dark);
+      margin-top: 0.25rem;
+    }
+
+    /* ══════════════════════════
+       MARQUEE STRIP
+    ══════════════════════════ */
+    .ab-marquee-strip {
+      background: var(--accent);
+      overflow: hidden;
+      height: 38px;
+      display: flex; align-items: center;
+    }
+    .ab-marquee__track {
+      display: flex;
+      white-space: nowrap;
+      animation: mScroll 25s linear infinite;
+    }
+    .ab-marquee__item {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #fff;
+      padding: 0 2.5rem;
+    }
+    .ab-marquee__item span { opacity: 0.45; }
+    @keyframes mScroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ══════════════════════════
+       STRATEGY — BENTO BLOCKS
+    ══════════════════════════ */
+    .ab-strategy {
+      background: var(--bg-dark);
+      padding: 6rem max(5vw, 1.5rem);
+    }
+
+    .ab-section-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .ab-section-label::before { content:''; width:20px; height:1px; background:var(--accent); }
+
+    .ab-section-title {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 900;
+      color: var(--text-light);
+      line-height: 1.08;
+      margin: 0 0 3.5rem;
+    }
+
+    /* Bento grid */
+    .bento {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 1.2rem;
+    }
+
+    .bento-cell {
+      background: var(--card-dark);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius);
+      padding: 2.2rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s ease, transform 0.25s ease;
+    }
+    .bento-cell:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    /* Hover glow */
+    .bento-cell::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s;
+      pointer-events: none;
+    }
+    .bento-cell:hover::before { opacity: 1; }
+
+    .bento-cell.wide { grid-column: span 2; }
+    .bento-cell.tall { grid-row: span 2; }
+
+    .bento-cell__num {
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: rgba(47,157,255,0.1);
+      line-height: 1;
+      margin-bottom: 1rem;
+      position: relative; z-index: 1;
+    }
+    .bento-cell__title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--text-light);
+      margin-bottom: 0.6rem;
+      position: relative; z-index: 1;
+    }
+    .bento-cell__desc {
+      font-size: 0.82rem;
+      color: var(--muted-dark);
+      line-height: 1.7;
+      position: relative; z-index: 1;
+    }
+
+    /* Image placeholder as before but styled */
+    .bento-img {
+      width: 100%; 
+      aspect-ratio: 4/3;
+      border-radius: calc(var(--radius) - 6px);
+      background: linear-gradient(135deg, #0d0d0d 0%, #111 100%);
+      border: 1px dashed var(--border-dark);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted-dark);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1.4rem;
+    }
+
+    /* Animated line decoration on wide cell */
+    .bento-cell.wide .bento-anim-line {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent) 40%, transparent);
+      animation: lineShift 4s ease-in-out infinite;
+    }
+    @keyframes lineShift {
+      0%,100% { opacity: 0.4; transform: scaleX(0.6) translateX(-10%); }
+      50%      { opacity: 1; transform: scaleX(1) translateX(0); }
+    }
+
+    /* ══════════════════════════
+       VALUES ROW
+    ══════════════════════════ */
+    .ab-values {
+      background: #040404;
+      border-top: 1px solid var(--border-dark);
+      border-bottom: 1px solid var(--border-dark);
+      padding: 4rem max(5vw, 1.5rem);
+    }
+    .values-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    .value-item {
+      padding: 2rem;
+      border-right: 1px solid var(--border-dark);
+      position: relative;
+      transition: background 0.25s;
+    }
+    .value-item:last-child { border-right: none; }
+    .value-item:hover { background: rgba(47,157,255,0.03); }
+
+    .value-item__icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: var(--accent-soft);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      margin-bottom: 1.2rem;
+    }
+    .value-item__title {
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: var(--text-light);
+      margin-bottom: 0.45rem;
+    }
+    .value-item__desc {
+      font-size: 0.76rem;
+      color: var(--muted-dark);
+      line-height: 1.65;
+    }
+
+    /* ══════════════════════════
+       TEAM — EDITORIAL GRID
+    ══════════════════════════ */
+    .ab-team {
+      background: var(--bg-dark);
+      padding: 6rem max(5vw, 1.5rem);
+    }
+
+    .team-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 3.5rem;
+      gap: 2rem;
+    }
+    .team-header__copy { max-width: 480px; }
+    .team-header__quote {
+      font-size: 0.82rem;
+      color: var(--muted-dark);
+      font-style: italic;
+      max-width: 240px;
+      line-height: 1.7;
+      text-align: right;
+      border-right: 2px solid var(--accent);
+      padding-right: 1rem;
+    }
+
+    /* Team grid — 2x2 (4 members) */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
+    }
+
+    .team-card {
+      background: var(--card-dark);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.25s;
+      position: relative;
+    }
+    .team-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-5px);
+    }
+
+    /* Avatar area */
+    .team-card__avatar {
+      aspect-ratio: 1/1;
+      background: linear-gradient(145deg, #0d0d0d, #151515);
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Geometric placeholder inside avatar */
+    .avatar-geo {
+      width: 70px; height: 70px;
+      border-radius: 50%;
+      border: 2px solid var(--border-dark);
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .avatar-geo::before {
+      content: '';
+      position: absolute;
+      width: 90px; height: 90px;
+      border-radius: 50%;
+      border: 1px solid rgba(47,157,255,0.15);
+    }
+    .avatar-geo::after {
+      content: '';
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      border: 1px solid rgba(47,157,255,0.3);
+    }
+
+    /* Hover shimmer */
+    .team-card__avatar::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, transparent 60%, rgba(47,157,255,0.06) 100%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .team-card:hover .team-card__avatar::after { opacity: 1; }
+
+    /* Card meta bottom */
+    .team-card__meta {
+      padding: 1.4rem 1.6rem;
+      border-top: 1px solid var(--border-dark);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .team-card__name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-light);
+    }
+    .team-card__role {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted-dark);
+      margin-top: 0.2rem;
+    }
+    .team-card__badge {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      border: 1px solid rgba(47,157,255,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem;
+      color: var(--accent);
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    /* V logo centred in orbit */
+    .ab-v-logo {
+      position: absolute;
+      z-index: 3;
+      width: 34vmin;   /* matches innermost ring diameter */
+      height: 34vmin;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* counter-rotate so logo stays upright while rings spin */
+    }
+    .ab-v-logo svg {
+      width: 55%;
+      height: 55%;
+      filter: drop-shadow(0 0 16px rgba(47,157,255,0.5))
+              drop-shadow(0 0 40px rgba(47,157,255,0.2));
+    }
+
+    /* ══════════════════════════
+       PROCESS TIMELINE — FIXED
+    ══════════════════════════ */
+    .ab-process {
+      background: #040404;
+      border-top: 1px solid var(--border-dark);
+      padding: 6rem max(5vw, 1.5rem);
+    }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin-top: 3.5rem;
+    }
+    .process-step {
+      padding: 2rem 2rem 2.5rem;
+      border-right: 1px solid var(--border-dark);
+      border-bottom: 1px solid var(--border-dark);
+      position: relative;
+    }
+    /* Remove bottom border from last row */
+    .process-step:nth-child(4),
+    .process-step:nth-child(5),
+    .process-step:nth-child(6) { border-bottom: none; }
+    /* Remove right border from last column */
+    .process-step:nth-child(3n) { border-right: none; }
+
+    /* Dot — sits in top-left corner of padding, never overlaps text */
+    .process-step__dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--border-dark);
+      border: 2px solid var(--border-dark);
+      margin-bottom: 1.4rem;
+      transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+      display: block;
+    }
+    .process-step:first-child .process-step__dot,
+    .process-step:hover .process-step__dot {
+      background: var(--accent);
+      border-color: var(--accent);
+      box-shadow: 0 0 10px var(--accent-soft);
+    }
+
+    .process-step__num {
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .process-step__title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text-light);
+      margin-bottom: 0.6rem;
+    }
+    .process-step__desc {
+      font-size: 0.8rem;
+      color: var(--muted-dark);
+      line-height: 1.7;
+    }
+
+    /* ══════════════════════════
+       CTA / FORM
+    ══════════════════════════ */
+    .ab-cta {
+      background: var(--bg-dark);
+      padding: 6rem max(5vw, 1.5rem);
+      border-top: 1px solid var(--border-dark);
+    }
+
+    .ab-cta__inner {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .ab-cta__copy h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900;
+      color: var(--text-light);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .ab-cta__copy h2 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .ab-cta__copy p {
+      color: var(--muted-light);
+      font-size: 0.9rem;
+      line-height: 1.75;
+      margin-bottom: 2rem;
+    }
+
+    /* Testimonial-style quote */
+    .ab-pullquote {
+      border-left: 2px solid var(--accent);
+      padding-left: 1.2rem;
+      margin-top: 2rem;
+    }
+    .ab-pullquote p {
+      font-style: italic;
+      color: var(--muted-light);
+      font-size: 0.88rem;
+      line-height: 1.7;
+      margin-bottom: 0.4rem;
+    }
+    .ab-pullquote cite {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted-dark);
+      font-style: normal;
+    }
+
+    /* Styled form */
+    .ab-form {
+      background: var(--card-dark);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+    }
+    .ab-form .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .ab-form .form-row.single { grid-template-columns: 1fr; }
+
+    .ab-form input,
+    .ab-form select,
+    .ab-form textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border-dark);
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+      color: var(--text-light);
+      font-size: 0.84rem;
+      font-family: var(--site-font);
+      transition: border-color 0.2s, background 0.2s;
+      outline: none;
+    }
+    .ab-form input::placeholder,
+    .ab-form textarea::placeholder { color: var(--muted-dark); }
+    .ab-form input:focus,
+    .ab-form select:focus,
+    .ab-form textarea:focus {
+      border-color: var(--accent);
+      background: rgba(47,157,255,0.04);
+    }
+    .ab-form select option { background: #111; }
+    .ab-form textarea { resize: vertical; min-height: 110px; }
+
+    .ab-form .privacy-note {
+      font-size: 0.72rem;
+      color: var(--muted-dark);
+      text-align: center;
+      margin-top: 1rem;
+      line-height: 1.6;
+    }
+
+    /* ══════════════════════════
+       SCROLL REVEAL
+    ══════════════════════════ */
+    .sr {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .sr.in { opacity: 1; transform: none; }
+
+    /* ══════════════════════════
+       RESPONSIVE
+    ══════════════════════════ */
+    @media (max-width: 960px) {
+      .ab-hero { grid-template-columns: 1fr; min-height: auto; }
+      .ab-hero__right { display: none; }
+      .ab-hero__left { border-right: none; padding: 6rem 1.5rem 5rem; }
+      .bento { grid-template-columns: 1fr 1fr; }
+      .bento-cell.wide { grid-column: span 2; }
+      .bento-cell.tall { grid-row: auto; }
+      .values-row { grid-template-columns: 1fr 1fr; }
+      .value-item:nth-child(2) { border-right: none; }
+      .value-item:nth-child(3) { border-right: 1px solid var(--border-dark); border-top: 1px solid var(--border-dark); }
+      .value-item:nth-child(4) { border-right: none; border-top: 1px solid var(--border-dark); }
+      .team-grid { grid-template-columns: 1fr 1fr; /* 4 members → 2×2 naturally */ }
+      .process-steps { grid-template-columns: 1fr; }
+      .process-step { border-right: none; border-bottom: 1px solid var(--border-dark); }
+      .process-step:nth-child(4),
+      .process-step:nth-child(5) { border-bottom: 1px solid var(--border-dark); }
+      .process-step:nth-child(6) { border-bottom: none; }
+      .process-step:nth-child(3n) { border-right: none; }
+      .ab-cta__inner { grid-template-columns: 1fr; gap: 3rem; }
+      .team-header { flex-direction: column; align-items: flex-start; }
+      .team-header__quote { text-align: left; border-right: none; border-left: 2px solid var(--accent); padding-right: 0; padding-left: 1rem; }
+    }
+    @media (max-width: 600px) {
+      .bento { grid-template-columns: 1fr; }
+      .bento-cell.wide { grid-column: auto; }
+      .values-row { grid-template-columns: 1fr; }
+      .value-item { border-right: none; border-bottom: 1px solid var(--border-dark); }
+      .team-grid { grid-template-columns: 1fr; }
+      .ab-form .form-row { grid-template-columns: 1fr; }
+      .ab-hero__kpis { gap: 1.2rem; flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<gv-header page="about"></gv-header>
+
+<main class="page">
+<main class="page">
+
+  <!-- ══════════════════════════
+       HERO
+  ══════════════════════════ -->
+  <section class="ab-hero">
+    <!-- Left: copy -->
+    <div class="ab-hero__left">
+      <div class="ab-eyebrow">About Graphy Vector Studio</div>
+
+      <h1 class="ab-h1 display sr">
+        Built to Scale.<br>
+        <em>Crafted</em> to Last.
+      </h1>
+      <p class="ab-h1-sub display sr" style="transition-delay:.12s;">
+        Since 2021.
+      </p>
+
+      <p class="ab-hero__desc sr" style="transition-delay:.22s;">
+        We are specialized creators dedicated to producing flawless, scalable
+        assets — the foundation of every lasting visual identity. You don't hire
+        a freelancer. You hire a hand-picked creative collective.
+      </p>
+
+      <div class="ab-hero__kpis sr" style="transition-delay:.32s;">
+        <div>
+          <div class="ab-kpi__val"><em>6</em></div>
+          <div class="ab-kpi__lbl">Specialists</div>
+        </div>
+        <div>
+          <div class="ab-kpi__val"><em>300+</em></div>
+          <div class="ab-kpi__lbl">Projects Done</div>
+        </div>
+        <div>
+          <div class="ab-kpi__val"><em>12</em></div>
+          <div class="ab-kpi__lbl">Industries</div>
+        </div>
+        <div>
+          <div class="ab-kpi__val"><em>1</em></div>
+          <div class="ab-kpi__lbl">Point of Contact</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: visual -->
+    <div class="ab-hero__right">
+      <div class="ab-hero__right-bg">
+        <div class="ab-glow"></div>
+        <div class="ab-ring ab-ring-1"></div>
+        <div class="ab-ring ab-ring-2"></div>
+        <div class="ab-ring ab-ring-3"></div>
+        <!-- V logo centred inside innermost ring -->
+        <div class="ab-v-logo">
+          <svg viewBox="0 0 160 140" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Graphy Vector Logo mark">
+            <!-- Outer shield / V shape -->
+            <path d="M80 8 L148 38 L148 78 C148 108 116 128 80 136 C44 128 12 108 12 78 L12 38 Z"
+                  fill="none"
+                  stroke="rgba(47,157,255,0.18)"
+                  stroke-width="1.5"/>
+            <!-- Inner V mark — two thick descending strokes meeting at point -->
+            <path d="M38 42 L80 108 L122 42"
+                  fill="none"
+                  stroke="url(#vGrad)"
+                  stroke-width="10"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"/>
+            <!-- Small diamond at apex -->
+            <path d="M80 98 L87 108 L80 118 L73 108 Z"
+                  fill="var(--accent)"
+                  opacity="0.9"/>
+            <!-- Top cross bar of V -->
+            <line x1="38" y1="42" x2="122" y2="42"
+                  stroke="rgba(47,157,255,0.35)"
+                  stroke-width="1.5"
+                  stroke-dasharray="4 4"/>
+            <defs>
+              <linearGradient id="vGrad" x1="38" y1="42" x2="80" y2="108" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="rgba(47,157,255,0.5)"/>
+                <stop offset="100%" stop-color="#2f9dff"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+      </div>
+      <div class="ab-hero__vtxt">Graphy Vector Studio · Est. 2021</div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════
+       MARQUEE STRIP
+  ══════════════════════════ -->
+  <div class="ab-marquee-strip">
+    <div class="ab-marquee__track">
+      <span class="ab-marquee__item">Vector Artistry <span>✦</span></span>
+      <span class="ab-marquee__item">3D Modeling <span>✦</span></span>
+      <span class="ab-marquee__item">Brand Identity <span>✦</span></span>
+      <span class="ab-marquee__item">Motion Design <span>✦</span></span>
+      <span class="ab-marquee__item">Print Media <span>✦</span></span>
+      <span class="ab-marquee__item">Illustration <span>✦</span></span>
+      <span class="ab-marquee__item">Email Signatures <span>✦</span></span>
+      <span class="ab-marquee__item">Vector Artistry <span>✦</span></span>
+      <span class="ab-marquee__item">3D Modeling <span>✦</span></span>
+      <span class="ab-marquee__item">Brand Identity <span>✦</span></span>
+      <span class="ab-marquee__item">Motion Design <span>✦</span></span>
+      <span class="ab-marquee__item">Print Media <span>✦</span></span>
+      <span class="ab-marquee__item">Illustration <span>✦</span></span>
+      <span class="ab-marquee__item">Email Signatures <span>✦</span></span>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════
+       STRATEGIC ADVANTAGES
+  ══════════════════════════ -->
+  <section class="ab-strategy">
+    <div class="ab-section-label sr">Our Approach</div>
+    <h2 class="ab-section-title display sr" style="transition-delay:.08s;">
+      The Graphy Vector<br><em style="color:var(--accent);">Difference</em>
+    </h2>
+
+    <div class="bento">
+
+      <!-- Wide — single point of contact -->
+      <div class="bento-cell wide sr" style="transition-delay:.05s;">
+        <div class="bento-anim-line"></div>
+        <div class="bento-cell__num">01</div>
+        <div class="bento-cell__title">Single Point of Contact</div>
+        <div class="bento-cell__desc">
+          Despite the team's diversity, you only manage one relationship.
+          Graphy Vector handles all internal coordination, quality control,
+          and scheduling — so your project stays on track without the overhead.
+        </div>
+      </div>
+
+      <!-- Tall — image placeholder -->
+      <div class="bento-cell tall sr" style="transition-delay:.1s;">
+        <div class="bento-img">Project Portfolio</div>
+        <div class="bento-cell__title">Technical Mastery</div>
+        <div class="bento-cell__desc">
+          We deliver files in the precise format required — print-ready vector
+          for packaging, optimized renders for cinematic use, or lightweight
+          Lottie for your SaaS product.
+        </div>
+      </div>
+
+      <!-- Regular — specialized team -->
+      <div class="bento-cell sr" style="transition-delay:.15s;">
+        <div class="bento-cell__num">02</div>
+        <div class="bento-cell__title">Specialized Team Assembly</div>
+        <div class="bento-cell__desc">
+          The right artist for the right job — vector, 3D, motion, or
+          illustration — assembled specifically for your brief.
+        </div>
+      </div>
+
+      <!-- Regular — scalable -->
+      <div class="bento-cell sr" style="transition-delay:.2s;">
+        <div class="bento-cell__num">03</div>
+        <div class="bento-cell__title">Scalable Assets</div>
+        <div class="bento-cell__desc">
+          Every deliverable is built from the ground up to scale — across
+          media, markets, and time. No corner-cutting. No patch jobs.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════
+       VALUES
+  ══════════════════════════ -->
+  <div class="ab-values">
+    <div class="values-row">
+      <div class="value-item sr">
+        <div class="value-item__icon">🎯</div>
+        <div class="value-item__title">Precision First</div>
+        <div class="value-item__desc">Every pixel, anchor point, and frame is intentional. We don't cut corners.</div>
+      </div>
+      <div class="value-item sr" style="transition-delay:.07s;">
+        <div class="value-item__icon">🔗</div>
+        <div class="value-item__title">Seamless Collaboration</div>
+        <div class="value-item__desc">One contact. Multiple experts. Zero confusion.</div>
+      </div>
+      <div class="value-item sr" style="transition-delay:.14s;">
+        <div class="value-item__icon">📐</div>
+        <div class="value-item__title">Format Fluent</div>
+        <div class="value-item__desc">Print, screen, motion, or web — we deliver in the right spec every time.</div>
+      </div>
+      <div class="value-item sr" style="transition-delay:.21s;">
+        <div class="value-item__icon">🌍</div>
+        <div class="value-item__title">Global Clients</div>
+        <div class="value-item__desc">Trusted by clients on Fiverr and Upwork across 12+ industries worldwide.</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════
+       TEAM
+  ══════════════════════════ -->
+  <section class="ab-team">
+    <div class="team-header sr">
+      <div class="team-header__copy">
+        <div class="ab-section-label">The People</div>
+        <h2 class="ab-section-title display" style="margin-bottom:0;">Meet the<br><em style="color:var(--accent);">Collective</em></h2>
+      </div>
+      <div class="team-header__quote">
+        "A hand-picked team assigned to your project — expert execution across every required discipline."
+      </div>
+    </div>
+
+    <div class="team-grid">
+
+      <div class="team-card sr" style="transition-delay:.04s;">
+        <div class="team-card__avatar">
+          <div class="avatar-geo"></div>
+        </div>
+        <div class="team-card__meta">
+          <div>
+            <div class="team-card__name">Nilesh Majumder</div>
+            <div class="team-card__role">Founder</div>
+          </div>
+          <div class="team-card__badge">NM</div>
+        </div>
+      </div>
+
+      <div class="team-card sr" style="transition-delay:.09s;">
+        <div class="team-card__avatar">
+          <div class="avatar-geo"></div>
+        </div>
+        <div class="team-card__meta">
+          <div>
+            <div class="team-card__name">Debraj Das</div>
+            <div class="team-card__role">Illustrator</div>
+          </div>
+          <div class="team-card__badge">DD</div>
+        </div>
+      </div>
+
+      <div class="team-card sr" style="transition-delay:.14s;">
+        <div class="team-card__avatar">
+          <div class="avatar-geo"></div>
+        </div>
+        <div class="team-card__meta">
+          <div>
+            <div class="team-card__name">Samik Ray</div>
+            <div class="team-card__role">3D Animator</div>
+          </div>
+          <div class="team-card__badge">SR</div>
+        </div>
+      </div>
+
+      <div class="team-card sr" style="transition-delay:.19s;">
+        <div class="team-card__avatar">
+          <div class="avatar-geo"></div>
+        </div>
+        <div class="team-card__meta">
+          <div>
+            <div class="team-card__name">Debojoti Dey</div>
+            <div class="team-card__role">Cinematographer</div>
+          </div>
+          <div class="team-card__badge">DD</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════
+       PROCESS
+  ══════════════════════════ -->
+  <section class="ab-process">
+    <div class="ab-section-label sr">How We Work</div>
+    <h2 class="ab-section-title display sr" style="transition-delay:.08s;">
+      From Brief to<br><em style="color:var(--accent);">Flawless Delivery</em>
+    </h2>
+
+    <div class="process-steps">
+      <div class="process-step sr" style="transition-delay:.05s;">
+        <span class="process-step__dot"></span>
+        <div class="process-step__num">Step 01</div>
+        <div class="process-step__title">Discovery & Brief</div>
+        <div class="process-step__desc">We listen first. Understanding your goals, audience, and final medium shapes every decision that follows.</div>
+      </div>
+      <div class="process-step sr" style="transition-delay:.12s;">
+        <span class="process-step__dot"></span>
+        <div class="process-step__num">Step 02</div>
+        <div class="process-step__title">Team Assembly</div>
+        <div class="process-step__desc">We assign the right specialists for your specific disciplines — no generalists, only experts.</div>
+      </div>
+      <div class="process-step sr" style="transition-delay:.19s;">
+        <span class="process-step__dot"></span>
+        <div class="process-step__num">Step 03</div>
+        <div class="process-step__title">Concept & Approval</div>
+        <div class="process-step__desc">Style boards, references, and structured feedback rounds ensure alignment before production begins.</div>
+      </div>
+      <div class="process-step sr" style="transition-delay:.26s;">
+        <span class="process-step__dot"></span>
+        <div class="process-step__num">Step 04</div>
+        <div class="process-step__title">Production</div>
+        <div class="process-step__desc">Work happens in parallel tracks. Quality is reviewed internally before anything reaches you.</div>
+      </div>
+      <div class="process-step sr" style="transition-delay:.33s;">
+        <span class="process-step__dot"></span>
+        <div class="process-step__num">Step 05</div>
+        <div class="process-step__title">Revision & Sign-Off</div>
+        <div class="process-step__desc">Structured revision rounds — never open-ended. We protect your timeline as much as our quality.</div>
+      </div>
+      <div class="process-step sr" style="transition-delay:.4s;">
+        <span class="process-step__dot"></span>
+        <div class="process-step__num">Step 06</div>
+        <div class="process-step__title">Final Delivery</div>
+        <div class="process-step__desc">All files in the correct formats, at the correct specs, with source files included. Done right. Done once.</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════
+       CTA + FORM
+  ══════════════════════════ -->
+  <section class="ab-cta">
+    <div class="ab-cta__inner">
+
+      <div class="ab-cta__copy sr">
+        <div class="ab-section-label">Get In Touch</div>
+        <h2 class="display">
+          Have a<br><em>Multi-Disciplinary</em><br>Vision?
+        </h2>
+        <p>
+          Stop wasting time coordinating multiple freelancers. Let Graphy Vector
+          assemble the perfect creative collective for your unique challenge.
+        </p>
+        <a href="contact.html" class="btn primary">Start a Consultation</a>
+
+        <div class="ab-pullquote">
+          <p>"Working with Graphy Vector felt like having an entire agency at your disposal — but with the speed and personal attention of a single freelancer."</p>
+          <cite>— Client, Fiverr Pro</cite>
+        </div>
+      </div>
+
+      <div class="ab-form sr" style="transition-delay:.12s;">
+        <div class="form-row">
+          <input type="text"   name="name"    placeholder="Name"           required />
+          <input type="text"   name="service" placeholder="Service Needed" required />
+        </div>
+        <div class="form-row">
+          <input type="email"  name="email"   placeholder="Email"          required />
+          <textarea name="details" placeholder="Project Details" rows="4"></textarea>
+        </div>
+        <div class="form-row">
+          <select name="budget">
+            <option value="">Budget</option>
+            <option value="under1k">Under $1,000</option>
+            <option value="1k-5k">$1,000–$5,000</option>
+            <option value="5k-10k">$5,000–$10,000</option>
+            <option value="10k+">$10,000+</option>
+          </select>
+          <input type="text" name="timeline" placeholder="Project Timeline" />
+        </div>
+        <button type="submit" class="btn primary full">Send Message</button>
+        <p class="privacy-note">
+          Your privacy is important. We will only use this information to contact you about your project.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ── FOOTER ── -->
+<script>
+  /* ── Scroll reveal ── */
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.sr').forEach(el => obs.observe(el));
+</script>
+</main>
+
+<gv-footer></gv-footer>
+
+<script src="assets/js/components.js"></script>
+<script src="assets/js/script.js" defer></script>
+</body>
+</html>

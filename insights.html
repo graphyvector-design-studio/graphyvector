@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Graphy Vector Studio | Insights</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="./assets/Favicon/favicon-small.svg">
+  <link rel="icon" type="image/png" sizes="512x512" href="./assets/Favicon/favicon-big.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/Favicon/apple-touch-icon.png">
+  <meta name="theme-color" content="#000000">
+  <style>
+    /* ══════════════════════════════════════
+       INSIGHTS PAGE — PAGE-SPECIFIC STYLES
+    ══════════════════════════════════════ */
+
+    :root {
+      --accent2: #7c3aed;
+      --grid-line: rgba(255,255,255,0.035);
+    }
+
+    /* ── FIXED GRID BACKGROUND ── */
+    .ins-grid-bg {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 64px 64px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ══════════════════════════════════════
+       HERO — Editorial split layout
+    ══════════════════════════════════════ */
+    .ins-hero {
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      padding: 9rem 0 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ambient orbs */
+    .ins-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      pointer-events: none;
+    }
+    .ins-orb-1 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(47,157,255,0.07), transparent 70%);
+      top: -200px; right: -150px;
+      animation: orbDrift 14s ease-in-out infinite;
+    }
+    .ins-orb-2 {
+      width: 380px; height: 380px;
+      background: radial-gradient(circle, rgba(124,58,237,0.07), transparent 70%);
+      bottom: -100px; left: 5%;
+      animation: orbDrift 18s ease-in-out 4s infinite;
+    }
+    @keyframes orbDrift {
+      0%,100% { transform: translateY(0) scale(1); }
+      50%      { transform: translateY(-28px) scale(1.05); }
+    }
+
+    .ins-hero-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: end;
+    }
+
+    /* Left — big headline */
+    .ins-hero-left {
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      padding-bottom: 2.5rem;
+    }
+
+    .ins-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.6rem;
+    }
+
+    .ins-eyebrow-pulse {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+      animation: epulse 2s ease-in-out infinite;
+    }
+
+    @keyframes epulse {
+      0%,100% { transform: scale(1); opacity: 1; }
+      50%      { transform: scale(1.7); opacity: 0.5; }
+    }
+
+    .ins-h1 {
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 900;
+      line-height: 0.93;
+      letter-spacing: -0.045em;
+      margin: 0 0 2rem;
+    }
+
+    .ins-h1 .line { display: block; overflow: hidden; }
+    .ins-h1 .line span {
+      display: block;
+      animation: lineUp 0.9s cubic-bezier(0.16,1,0.3,1) both;
+    }
+    .ins-h1 .line:nth-child(1) span { animation-delay: 0.05s; }
+    .ins-h1 .line:nth-child(2) span { animation-delay: 0.15s; color: var(--accent); }
+    .ins-h1 .line:nth-child(3) span { animation-delay: 0.25s; }
+
+    @keyframes lineUp {
+      from { transform: translateY(110%); opacity: 0; }
+      to   { transform: translateY(0); opacity: 1; }
+    }
+
+    .ins-hero-desc {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.42);
+      max-width: 440px;
+      animation: fadeUp 0.8s 0.5s both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Right — live stats board */
+    .ins-hero-right {
+      animation: fadeUp 0.8s 0.4s both;
+    }
+
+    .ins-stats-board {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 20px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      backdrop-filter: blur(8px);
+    }
+
+    .ins-stat-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .ins-stat-row:last-child { border-bottom: none; }
+
+    .ins-stat-cell {
+      padding: 1.4rem 1.2rem;
+      position: relative;
+    }
+
+    .ins-stat-cell:first-child {
+      border-right: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .ins-stat-num {
+      font-size: 2.4rem;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      color: #fff;
+    }
+
+    .ins-stat-num span { color: var(--accent); }
+
+    .ins-stat-label {
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.28);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-top: 0.35rem;
+      line-height: 1.4;
+    }
+
+    /* Thin accent on active stat */
+    .ins-stat-cell.accent-cell::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    }
+
+    /* ══════════════════════════════════════
+       FEATURED CASE STUDIES — large cards
+    ══════════════════════════════════════ */
+
+    .ins-featured {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 24px;
+      overflow: hidden;
+      margin-top: 3rem;
+    }
+
+    .ins-case {
+      background: #050508;
+      display: grid;
+      grid-template-columns: 1fr 2.2fr 1fr;
+      align-items: stretch;
+      gap: 0;
+      transition: background 0.25s;
+      cursor: default;
+      position: relative;
+    }
+
+    .ins-case:hover { background: #070710; }
+
+    /* Accent top line on hover */
+    .ins-case::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(47,157,255,0.35), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .ins-case:hover::before { opacity: 1; }
+
+    .ins-case-num {
+      padding: 2.8rem 2rem;
+      border-right: 1px solid rgba(255,255,255,0.04);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .ins-case-index {
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+    }
+
+    .ins-case-cat {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.18);
+      writing-mode: vertical-lr;
+      transform: rotate(180deg);
+      align-self: flex-end;
+    }
+
+    .ins-case-body {
+      padding: 2.8rem 2.4rem;
+      border-right: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .ins-case-tag {
+      display: inline-block;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(47,157,255,0.2);
+      color: var(--accent);
+      background: rgba(47,157,255,0.06);
+      margin-bottom: 1rem;
+    }
+
+    .ins-case-title {
+      font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.2;
+      color: #fff;
+      margin-bottom: 0.8rem;
+    }
+
+    .ins-case-desc {
+      font-size: 0.84rem;
+      line-height: 1.72;
+      color: rgba(255,255,255,0.38);
+      max-width: 480px;
+    }
+
+    .ins-case-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.4rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: gap 0.2s;
+    }
+
+    .ins-case-link:hover { gap: 0.9rem; }
+
+    .ins-case-link svg {
+      width: 12px; height: 12px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: transform 0.2s;
+    }
+
+    .ins-case-link:hover svg { transform: translateX(3px); }
+
+    .ins-case-meta {
+      padding: 2.8rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.4rem;
+    }
+
+    .ins-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .ins-meta-label {
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.2);
+    }
+
+    .ins-meta-val {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* Result bar */
+    .ins-result-bar {
+      height: 3px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 2px;
+      margin-top: 0.3rem;
+      overflow: hidden;
+    }
+
+    .ins-result-fill {
+      height: 100%;
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--accent), rgba(47,157,255,0.4));
+      animation: fillBar 1.8s cubic-bezier(.2,.9,.2,1) both;
+    }
+
+    @keyframes fillBar {
+      from { width: 0 !important; }
+    }
+
+    /* ══════════════════════════════════════
+       INSIGHTS TICKER — scrolling headline strip
+    ══════════════════════════════════════ */
+
+    .ins-ticker-wrap {
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding: 1rem 0;
+      overflow: hidden;
+      position: relative;
+      background: rgba(255,255,255,0.01);
+    }
+
+    .ins-ticker-track {
+      display: flex;
+      gap: 0;
+      white-space: nowrap;
+      animation: tickerScroll 30s linear infinite;
+    }
+
+    .ins-ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 1.2rem;
+      padding: 0 2.5rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.2);
+    }
+
+    .ins-ticker-item::after {
+      content: '✦';
+      color: var(--accent);
+      font-size: 0.5rem;
+    }
+
+    @keyframes tickerScroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ══════════════════════════════════════
+       TOPIC PILLS — filter strip
+    ══════════════════════════════════════ */
+
+    .ins-filter-strip {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.4rem;
+      padding-bottom: 1.4rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .ins-pill {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.35);
+      cursor: pointer;
+      transition: all 0.2s;
+      background: transparent;
+    }
+
+    .ins-pill:hover,
+    .ins-pill.active {
+      background: rgba(47,157,255,0.08);
+      border-color: rgba(47,157,255,0.3);
+      color: var(--accent);
+    }
+
+    /* ══════════════════════════════════════
+       SHORT READS — tight ruled list
+    ══════════════════════════════════════ */
+
+    .ins-read-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ins-read-item {
+      display: grid;
+      grid-template-columns: 40px 1fr auto;
+      align-items: center;
+      gap: 2rem;
+      padding: 1.6rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.15s;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .ins-read-item:first-child { border-top: 1px solid rgba(255,255,255,0.05); }
+
+    .ins-read-item::before {
+      content: '';
+      position: absolute;
+      left: -1.5rem;
+      top: 0; bottom: 0;
+      width: 2px;
+      background: var(--accent);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .ins-read-item:hover::before { opacity: 1; }
+    .ins-read-item:hover .ins-read-title { color: var(--accent); }
+
+    .ins-read-num {
+      font-size: 0.6rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+    }
+
+    .ins-read-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 0.25rem;
+      transition: color 0.15s;
+      letter-spacing: -0.01em;
+    }
+
+    .ins-read-sub {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.32);
+      line-height: 1.5;
+    }
+
+    .ins-read-meta {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      align-items: flex-end;
+    }
+
+    .ins-read-tag {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+      border: 1px solid rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.28);
+      white-space: nowrap;
+    }
+
+    .ins-read-time {
+      font-size: 0.6rem;
+      color: rgba(255,255,255,0.18);
+      white-space: nowrap;
+    }
+
+    /* ══════════════════════════════════════
+       FREEBIES — upgraded dark glass cards
+    ══════════════════════════════════════ */
+
+    .ins-freebies-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 20px;
+      overflow: hidden;
+      margin-top: 2.5rem;
+    }
+
+    .ins-freebie {
+      background: #050508;
+      padding: 2.4rem 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .ins-freebie:hover { background: #07070e; }
+
+    /* Corner glow */
+    .ins-freebie::after {
+      content: '';
+      position: absolute;
+      bottom: -30px; right: -30px;
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(47,157,255,0.07), transparent 70%);
+      transition: transform 0.4s;
+    }
+
+    .ins-freebie:hover::after { transform: scale(1.8); }
+
+    .ins-freebie-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .ins-freebie-icon svg {
+      width: 22px; height: 22px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+    }
+
+    .ins-freebie-tag {
+      font-size: 0.58rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.22);
+      margin-bottom: 0.5rem;
+    }
+
+    .ins-freebie-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .ins-freebie-desc {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.35);
+      line-height: 1.65;
+      flex: 1;
+      margin-bottom: 1.6rem;
+    }
+
+    .ins-freebie-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      transition: gap 0.2s;
+      border: 1px solid rgba(47,157,255,0.2);
+      border-radius: 999px;
+      padding: 0.45rem 1rem;
+      background: rgba(47,157,255,0.05);
+      width: fit-content;
+      cursor: pointer;
+    }
+
+    .ins-freebie-btn:hover {
+      background: rgba(47,157,255,0.12);
+      gap: 0.8rem;
+    }
+
+    .ins-freebie-btn svg {
+      width: 11px; height: 11px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* ══════════════════════════════════════
+       PROCESS / HOW WE THINK — light section
+    ══════════════════════════════════════ */
+
+    .ins-think-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid #e5e5e5;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-top: 2.5rem;
+    }
+
+    .ins-think-item {
+      padding: 2.2rem 2.4rem;
+      border-right: 1px solid #e5e5e5;
+      border-bottom: 1px solid #e5e5e5;
+      position: relative;
+    }
+
+    .ins-think-item:nth-child(even) { border-right: none; }
+    .ins-think-item:nth-last-child(-n+2) { border-bottom: none; }
+
+    .ins-think-num {
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: rgba(0,0,0,0.04);
+      letter-spacing: -0.06em;
+      line-height: 1;
+      margin-bottom: 0.6rem;
+    }
+
+    .ins-think-item h3 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #111;
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.01em;
+    }
+
+    .ins-think-item p {
+      font-size: 0.83rem;
+      color: #777;
+      line-height: 1.7;
+    }
+
+    /* Accent dot */
+    .ins-think-item::before {
+      content: '';
+      position: absolute;
+      top: 2.2rem; right: 2.4rem;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0.3;
+    }
+
+    /* ══════════════════════════════════════
+       NEWSLETTER / CTA BLOCK
+    ══════════════════════════════════════ */
+
+    .ins-newsletter {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      padding: 5rem 3rem;
+      background: #030306;
+      border: 1px solid rgba(255,255,255,0.06);
+      text-align: center;
+    }
+
+    /* Rotating ring */
+    .ins-nl-ring {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      border: 1px solid rgba(47,157,255,0.06);
+      pointer-events: none;
+      animation: nlRing 24s linear infinite;
+    }
+
+    .ins-nl-ring-1 { width: 440px; height: 440px; }
+    .ins-nl-ring-2 { width: 680px; height: 680px; animation-direction: reverse; animation-duration: 36s; border-color: rgba(255,255,255,0.025); }
+
+    .ins-nl-ring::before {
+      content: '';
+      position: absolute;
+      top: -3px; left: 50%;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 10px var(--accent);
+    }
+
+    @keyframes nlRing {
+      from { transform: translate(-50%,-50%) rotate(0deg); }
+      to   { transform: translate(-50%,-50%) rotate(360deg); }
+    }
+
+    .ins-nl-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .ins-nl-inner h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin-bottom: 0.8rem;
+    }
+
+    .ins-nl-inner h2 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .ins-nl-inner p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.38);
+      line-height: 1.7;
+      margin-bottom: 2.2rem;
+    }
+
+    .ins-nl-form {
+      display: flex;
+      gap: 0.5rem;
+      max-width: 420px;
+      margin: 0 auto 1rem;
+    }
+
+    .ins-nl-input {
+      flex: 1;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 999px;
+      padding: 0.7rem 1.2rem;
+      font-size: 0.85rem;
+      color: #fff;
+      outline: none;
+      transition: border-color 0.2s;
+      font-family: inherit;
+    }
+
+    .ins-nl-input::placeholder { color: rgba(255,255,255,0.25); }
+    .ins-nl-input:focus { border-color: rgba(47,157,255,0.4); }
+
+    .ins-nl-note {
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.18);
+      letter-spacing: 0.04em;
+    }
+
+    /* ══════════════════════════════════════
+       CONTACT FORM — same as global but dark
+    ══════════════════════════════════════ */
+
+    .ins-form-wrap .contact-form {
+      margin-top: 2rem;
+    }
+
+    /* ══════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════ */
+
+    @media (max-width: 960px) {
+      .ins-hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .ins-hero-left { border-bottom: none; padding-bottom: 0; }
+      .ins-case { grid-template-columns: 1fr; }
+      .ins-case-num { flex-direction: row; align-items: center; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.04); padding: 1.2rem 2rem; }
+      .ins-case-cat { writing-mode: unset; transform: none; }
+      .ins-case-body { border-right: none; }
+      .ins-case-meta { flex-direction: row; flex-wrap: wrap; gap: 1rem; padding: 1.4rem 2rem; }
+      .ins-freebies-grid { grid-template-columns: 1fr; }
+      .ins-think-grid { grid-template-columns: 1fr; }
+      .ins-think-item { border-right: none; }
+      .ins-think-item:nth-last-child(-n+2) { border-bottom: 1px solid #e5e5e5; }
+      .ins-think-item:last-child { border-bottom: none; }
+      .ins-nl-ring-1, .ins-nl-ring-2 { display: none; }
+      .ins-newsletter { padding: 3.5rem 1.5rem; }
+      .ins-nl-form { flex-direction: column; }
+      .ins-read-item { grid-template-columns: 36px 1fr; }
+      .ins-read-meta { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      .ins-stats-board { padding: 1.2rem; }
+      .ins-stat-cell { padding: 1rem 0.8rem; }
+      .ins-stat-num { font-size: 1.8rem; }
+      .ins-hero { min-height: unset; }
+    }
+  </style>
+</head>
+<body>
+
+<gv-header page="insights"></gv-header>
+
+<main class="page">
+<!-- Fixed grid bg -->
+<div class="ins-grid-bg"></div>
+
+
+
+<main class="page">
+
+  <!-- ══════════════════════════════════════
+       HERO — Split editorial layout
+  ══════════════════════════════════════ -->
+  <section class="section dark ins-hero">
+    <div class="ins-orb ins-orb-1"></div>
+    <div class="ins-orb ins-orb-2"></div>
+
+    <div class="container">
+      <div class="ins-hero-inner">
+
+        <div class="ins-hero-left">
+          <div class="ins-eyebrow">
+            <div class="ins-eyebrow-pulse"></div>
+            Studio Insights &amp; Case Studies
+          </div>
+          <h1 class="ins-h1">
+            <span class="line"><span>Design</span></span>
+            <span class="line"><span>Thinking,</span></span>
+            <span class="line"><span>Documented.</span></span>
+          </h1>
+          <p class="ins-hero-desc">
+            A closer look at how we structure projects, build scalable design systems and combine motion, 3D and branding to solve real creative problems for real clients.
+          </p>
+        </div>
+
+        <div class="ins-hero-right">
+          <div class="ins-stats-board">
+            <div class="ins-stat-row">
+              <div class="ins-stat-cell accent-cell">
+                <div class="ins-stat-num">120<span>+</span></div>
+                <div class="ins-stat-label">Projects Delivered</div>
+              </div>
+              <div class="ins-stat-cell">
+                <div class="ins-stat-num">8</div>
+                <div class="ins-stat-label">Countries Served</div>
+              </div>
+            </div>
+            <div class="ins-stat-row">
+              <div class="ins-stat-cell">
+                <div class="ins-stat-num">5.0<span>★</span></div>
+                <div class="ins-stat-label">Average Rating</div>
+              </div>
+              <div class="ins-stat-cell accent-cell">
+                <div class="ins-stat-num">34</div>
+                <div class="ins-stat-label">Case Studies</div>
+              </div>
+            </div>
+            <div class="ins-stat-row">
+              <div class="ins-stat-cell" style="grid-column:span 2; border-right:none;">
+                <div class="ins-stat-label" style="margin-bottom:0.6rem;">Services documented</div>
+                <div style="display:flex;gap:0.4rem;flex-wrap:wrap;">
+                  <span style="font-size:0.6rem;padding:0.2rem 0.7rem;border-radius:999px;border:1px solid rgba(47,157,255,0.2);color:var(--accent);background:rgba(47,157,255,0.06);">Brand Identity</span>
+                  <span style="font-size:0.6rem;padding:0.2rem 0.7rem;border-radius:999px;border:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.3);">3D &amp; Animation</span>
+                  <span style="font-size:0.6rem;padding:0.2rem 0.7rem;border-radius:999px;border:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.3);">Motion</span>
+                  <span style="font-size:0.6rem;padding:0.2rem 0.7rem;border-radius:999px;border:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.3);">Print</span>
+                  <span style="font-size:0.6rem;padding:0.2rem 0.7rem;border-radius:999px;border:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.3);">Social</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       TICKER STRIP
+  ══════════════════════════════════════ -->
+  <div class="ins-ticker-wrap">
+    <div class="ins-ticker-track">
+      <!-- duplicate for seamless loop -->
+      <span class="ins-ticker-item">Brand Identity Systems</span>
+      <span class="ins-ticker-item">3D Product Animation</span>
+      <span class="ins-ticker-item">Motion Graphics</span>
+      <span class="ins-ticker-item">Print &amp; Editorial</span>
+      <span class="ins-ticker-item">Lottie &amp; Web Animation</span>
+      <span class="ins-ticker-item">Social Media Strategy</span>
+      <span class="ins-ticker-item">Book Illustration</span>
+      <span class="ins-ticker-item">Email Signatures</span>
+      <span class="ins-ticker-item">Brand Identity Systems</span>
+      <span class="ins-ticker-item">3D Product Animation</span>
+      <span class="ins-ticker-item">Motion Graphics</span>
+      <span class="ins-ticker-item">Print &amp; Editorial</span>
+      <span class="ins-ticker-item">Lottie &amp; Web Animation</span>
+      <span class="ins-ticker-item">Social Media Strategy</span>
+      <span class="ins-ticker-item">Book Illustration</span>
+      <span class="ins-ticker-item">Email Signatures</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       FEATURED CASE STUDIES
+  ══════════════════════════════════════ -->
+  <section class="section dark reveal-on-scroll" style="padding-top:4rem;">
+    <div class="container">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:0.8rem;flex-wrap:wrap;gap:1rem;">
+        <div>
+          <p class="eyebrow" style="margin-bottom:0.5rem;">Featured</p>
+          <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);font-weight:900;letter-spacing:-0.03em;margin:0;">Case Studies</h2>
+        </div>
+        <a href="works.html" class="ins-case-link" style="margin-bottom:0.2rem;">
+          View all work
+          <svg viewBox="0 0 12 12"><polyline points="2,6 10,6"/><polyline points="6,2 10,6 6,10"/></svg>
+        </a>
+      </div>
+
+      <div class="ins-featured reveal-on-scroll">
+
+        <!-- Case 01 -->
+        <div class="ins-case">
+          <div class="ins-case-num">
+            <span class="ins-case-index">01</span>
+            <span class="ins-case-cat">Brand Identity</span>
+          </div>
+          <div class="ins-case-body">
+            <span class="ins-case-tag">Branding · Vector · Motion</span>
+            <div class="ins-case-title">Rebuilding a Tech Brand From Vector Up</div>
+            <div class="ins-case-desc">How a minimal icon system and a purposeful motion language helped a growing SaaS company differentiate in a market flooded with generic design. We rebuilt every visual touchpoint — from icon sets to product UI animations — in a single cohesive system.</div>
+            <a href="work-brand-identity.html" class="ins-case-link">
+              View case study
+              <svg viewBox="0 0 12 12"><polyline points="2,6 10,6"/><polyline points="6,2 10,6 6,10"/></svg>
+            </a>
+          </div>
+          <div class="ins-case-meta">
+            <div class="ins-meta-item">
+              <span class="ins-meta-label">Industry</span>
+              <span class="ins-meta-val">SaaS / Tech</span>
+            </div>
+            <div class="ins-meta-item">
+              <span class="ins-meta-label">Timeline</span>
+              <span class="ins-meta-val">6 weeks</span>
+            </div>
+            <div class="ins-meta-item">
+              <span class="ins-meta-label">Brand recall lift</span>
+              <span class="ins-meta-val">+68%</span>
+              <div class="ins-result-bar"><div class="ins-result-fill" style="width:68%;"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case 02 -->
+        <div class="ins-case">
+          <div class="ins-case-num">
+            <span class="ins-case-index">02</span>
+            <span class="ins-case-cat">3D &amp; Social</span>
+          </div>
+          <div class="ins-case-body">
+            <span class="ins-case-tag">3D · Rendering · Social Ads</span>
+            <div class="ins-case-title">Turning 3D Products into Scroll-Stopping Ads</div>
+            <div class="ins-case-desc">Our workflow for converting raw CAD files into cinematic 3D renders and looping animations optimised for Instagram and LinkedIn. The client went from static product photos to an animated visual identity that tripled their ad engagement in four weeks.</div>
+            <a href="work-3d.html" class="ins-case-link">
+              View case study
+              <svg viewBox="0 0 12 12"><polyline points="2,6 10,6"/><polyline points="6,2 10,6 6,10"/></svg>
+            </a>
+          </div>
+          <div class="ins-case-meta">
+            <div class="ins-meta-item">
+              <span class="ins-meta-label">Industry</span>
+              <span class="ins-meta-val">Consumer Product</span>
+            </div>
+            <div class="ins-meta-item">
+              <span class="ins-meta-label">Timeline</span>
+              <span class="ins-meta-val">3 weeks</span>
+            </div>
+            <div class="ins-meta-item">
+              <span class="ins-meta-label">Engagement increase</span>
+              <span class="ins-meta-val">+3× CTR</span>
+              <div class="ins-result-bar"><div class="ins-result-fill" style="width:82%;"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case 03 -->
+        <div class="ins-case">
+          <div class="ins-case-num">
+            <span class="ins-case-index">03</span>
+            <span class="ins-case-cat">Design Systems</span>
+          </div>
+          <div class="ins-case-body">
+            <span class="ins-case-tag">Multi-market · Typography · Motion</span>
+            <div class="ins-case-title">Design Systems for Multi-Country Campaigns</div>
+            <div class="ins-case-desc">Keeping typography, colour and motion consistent across six languages and four markets without losing brand personality. We built a modular design system with locale-aware type rules, colour variants, and a motion token library that adapted seamlessly to each market's visual culture.</div>
+            <a href="works.html" class="ins-case-link">
+              View case study
+              <svg viewBox="0 0 12 12"><polyline points="2,6 10,6"/><polyline points="6,2 10,6 6,10"/></svg>
+            </a>
+          </div>
+          <div class="ins-case-meta">
+            <div class="ins-meta-item">
+              <span class="ins-meta-label">Markets</span>
+              <span class="ins-meta-val">4 Countries</span>
+            </div>
+            <div class="ins-meta-item">
+              <span class="ins-meta-label">Languages</span>
+              <span class="ins-meta-val">6 locales</span>
+            </div>
+            <div class="ins-meta-item">
+              <span class="ins-meta-label">Consistency score</span>
+              <span class="ins-meta-val">94%</span>
+              <div class="ins-result-bar"><div class="ins-result-fill" style="width:94%;"></div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       SHORT READS
+  ══════════════════════════════════════ -->
+  <section class="section dark reveal-on-scroll" style="padding-top:0;">
+    <div class="container">
+      <p class="eyebrow" style="margin-bottom:0.5rem;">Short Reads</p>
+      <h2 style="font-size:clamp(1.4rem,2.5vw,1.9rem);font-weight:900;letter-spacing:-0.03em;margin-bottom:2rem;">From the studio desk.</h2>
+
+      <div class="ins-filter-strip">
+        <button class="ins-pill active">All</button>
+        <button class="ins-pill">Process</button>
+        <button class="ins-pill">Branding</button>
+        <button class="ins-pill">Motion</button>
+        <button class="ins-pill">3D</button>
+        <button class="ins-pill">Print</button>
+        <button class="ins-pill">Tools</button>
+      </div>
+
+      <div class="ins-read-list">
+
+        <div class="ins-read-item">
+          <span class="ins-read-num">01</span>
+          <div>
+            <div class="ins-read-title">Why Your Logo Fails at 16×16px</div>
+            <div class="ins-read-sub">The vector discipline behind building icons that hold up from favicon to billboard — and why most logos skip it entirely.</div>
+          </div>
+          <div class="ins-read-meta">
+            <span class="ins-read-tag">Branding</span>
+            <span class="ins-read-time">4 min read</span>
+          </div>
+        </div>
+
+        <div class="ins-read-item">
+          <span class="ins-read-num">02</span>
+          <div>
+            <div class="ins-read-title">The 250ms Rule: Motion That Respects Users</div>
+            <div class="ins-read-sub">How we decide which animations make a product feel premium — and which ones make it feel broken. Timing, easing, and intent.</div>
+          </div>
+          <div class="ins-read-meta">
+            <span class="ins-read-tag">Motion</span>
+            <span class="ins-read-time">6 min read</span>
+          </div>
+        </div>
+
+        <div class="ins-read-item">
+          <span class="ins-read-num">03</span>
+          <div>
+            <div class="ins-read-title">From CAD File to Hero Render: Our 3D Pipeline</div>
+            <div class="ins-read-sub">Step-by-step: how we take an engineer's file and turn it into a cinematic product shot ready for ads, decks and packaging.</div>
+          </div>
+          <div class="ins-read-meta">
+            <span class="ins-read-tag">3D</span>
+            <span class="ins-read-time">7 min read</span>
+          </div>
+        </div>
+
+        <div class="ins-read-item">
+          <span class="ins-read-num">04</span>
+          <div>
+            <div class="ins-read-title">Print Is Not Dead — It Just Has Better Standards Now</div>
+            <div class="ins-read-sub">CMYK vs RGB, bleed, safe zones, paper stock — why getting print files right is still one of the most technically demanding things we do.</div>
+          </div>
+          <div class="ins-read-meta">
+            <span class="ins-read-tag">Print</span>
+            <span class="ins-read-time">5 min read</span>
+          </div>
+        </div>
+
+        <div class="ins-read-item">
+          <span class="ins-read-num">05</span>
+          <div>
+            <div class="ins-read-title">Building a Social System That Actually Scales</div>
+            <div class="ins-read-sub">Templates aren't enough. Here's how we build a visual language for social media that your team can actually use consistently — without a designer in every room.</div>
+          </div>
+          <div class="ins-read-meta">
+            <span class="ins-read-tag">Social</span>
+            <span class="ins-read-time">5 min read</span>
+          </div>
+        </div>
+
+        <div class="ins-read-item">
+          <span class="ins-read-num">06</span>
+          <div>
+            <div class="ins-read-title">Why We Still Use Illustrator in a Figma World</div>
+            <div class="ins-read-sub">Figma is brilliant. But some things — bezier precision, print prep, complex vector illustration — still live in AI. Both tools, used right, together.</div>
+          </div>
+          <div class="ins-read-meta">
+            <span class="ins-read-tag">Tools</span>
+            <span class="ins-read-time">3 min read</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       FREE RESOURCES — upgraded dark glass
+  ══════════════════════════════════════ -->
+  <section id="freebies" class="section dark reveal-on-scroll" style="padding-top:0;">
+    <div class="container">
+      <p class="eyebrow" style="margin-bottom:0.5rem;">Free Downloads</p>
+      <h2 style="font-size:clamp(1.4rem,2.5vw,1.9rem);font-weight:900;letter-spacing:-0.03em;margin:0 0 0.5rem;">Free Resources<br>for Creators</h2>
+      <p style="color:rgba(255,255,255,0.35);font-size:0.85rem;max-width:480px;">Open assets — Lottie animations, SVG icons, mockup templates &amp; more. All free to download and use with attribution.</p>
+
+      <div class="ins-freebies-grid">
+
+        <!-- Lottie Loader Pack -->
+        <div class="ins-freebie">
+          <div class="ins-freebie-icon" style="background:rgba(47,157,255,0.08);border:1px solid rgba(47,157,255,0.15);color:var(--accent);">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3 A9 9 0 0 1 21 12"/><circle cx="12" cy="12" r="2" fill="var(--accent)" stroke="none"/></svg>
+          </div>
+          <div class="ins-freebie-tag">Lottie · JSON · 3 Files</div>
+          <div class="ins-freebie-title">Animated Loader Pack</div>
+          <div class="ins-freebie-desc">3 lightweight Lottie loaders — spinner, pulse, and progress — ready to drop into any web or app project. JSON source files + live preview included.</div>
+          <a class="ins-freebie-btn" href="https://lottiefiles.com/your-profile" target="_blank" rel="noopener">
+            View on LottieFiles
+            <svg viewBox="0 0 12 12"><polyline points="2,6 10,6"/><polyline points="6,2 10,6 6,10"/></svg>
+          </a>
+        </div>
+
+        <!-- Icon Set SVG -->
+        <div class="ins-freebie">
+          <div class="ins-freebie-icon" style="background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2);color:#a78bfa;">
+            <svg viewBox="0 0 24 24" stroke="#a78bfa"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          </div>
+          <div class="ins-freebie-tag">SVG · 24 Icons · Sizing Guide</div>
+          <div class="ins-freebie-title">Interface Icon Set</div>
+          <div class="ins-freebie-desc">24 hand-crafted interface icons at 16px, 24px, and 32px. Consistent stroke weight, optically balanced, and export-ready for Figma or direct use.</div>
+          <a class="ins-freebie-btn" href="https://www.flaticon.com/your-profile" target="_blank" rel="noopener">
+            Download SVGs
+            <svg viewBox="0 0 12 12"><polyline points="2,6 10,6"/><polyline points="6,2 10,6 6,10"/></svg>
+          </a>
+        </div>
+
+        <!-- Mockup Pack -->
+        <div class="ins-freebie">
+          <div class="ins-freebie-icon" style="background:rgba(74,222,128,0.07);border:1px solid rgba(74,222,128,0.18);color:#4ade80;">
+            <svg viewBox="0 0 24 24" stroke="#4ade80"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 20h8M12 18v2"/></svg>
+          </div>
+          <div class="ins-freebie-tag">PSD · Sketch · 3 Devices</div>
+          <div class="ins-freebie-title">Device Mockup Pack</div>
+          <div class="ins-freebie-desc">3 clean device mockups — MacBook, iPhone 15 Pro, and iPad — with smart object layers and both light &amp; dark screen variants. PSD and Sketch format.</div>
+          <a class="ins-freebie-btn" href="/assets/freebies/mockup-pack.zip" download>
+            Download ZIP
+            <svg viewBox="0 0 12 12"><polyline points="2,6 10,6"/><polyline points="6,2 10,6 6,10"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       HOW WE THINK — light section
+  ══════════════════════════════════════ -->
+  <section class="section light reveal-on-scroll">
+    <div class="container">
+      <p class="eyebrow" style="color:var(--accent);margin-bottom:0.5rem;">Our Process</p>
+      <h2 style="font-size:clamp(1.4rem,2.5vw,1.9rem);font-weight:900;letter-spacing:-0.03em;color:#111;margin:0 0 0.4rem;">How we approach<br>every project.</h2>
+      <p style="color:#888;font-size:0.85rem;max-width:480px;line-height:1.7;">The same discipline applied to a logo and a product launch film. Clear stages, honest communication, no surprises.</p>
+
+      <div class="ins-think-grid">
+        <div class="ins-think-item">
+          <div class="ins-think-num">01</div>
+          <h3>Brief &amp; Discovery</h3>
+          <p>We ask the questions most studios skip. Market position, audience, competitors, shelf context, file formats needed. Brief clarity prevents revision loops.</p>
+        </div>
+        <div class="ins-think-item">
+          <div class="ins-think-num">02</div>
+          <h3>Concept &amp; Direction</h3>
+          <p>Two or three directions presented — not twelve. Each one is a committed point of view, not a hedge. You pick the direction that fits your brand truth.</p>
+        </div>
+        <div class="ins-think-item">
+          <div class="ins-think-num">03</div>
+          <h3>Production &amp; Refinement</h3>
+          <p>The approved direction is built to production standard with two rounds of refinement included. We work in the actual delivery format from day one — no surprises at export.</p>
+        </div>
+        <div class="ins-think-item">
+          <div class="ins-think-num">04</div>
+          <h3>Handoff &amp; Beyond</h3>
+          <p>Source files, usage guidelines and a 30-day post-delivery window for minor tweaks. We want the work to live and grow — not sit in a folder untouched.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       NEWSLETTER / CTA
+  ══════════════════════════════════════ -->
+  <section class="section dark reveal-on-scroll">
+    <div class="container">
+      <div class="ins-newsletter">
+        <div class="ins-nl-ring ins-nl-ring-1"></div>
+        <div class="ins-nl-ring ins-nl-ring-2"></div>
+
+        <div class="ins-nl-inner">
+          <h2>Have a <em>multi-disciplinary</em><br>creative challenge?</h2>
+          <p>Stop coordinating multiple freelancers. Let Graphy Vector assemble the perfect creative collective — brand, motion, 3D, print — all under one roof, one point of contact.</p>
+          <div class="ins-nl-form">
+            <input class="ins-nl-input" type="email" placeholder="your@email.com" />
+            <a href="contact.html" class="btn primary">Start a Project</a>
+          </div>
+          <div class="ins-nl-note">No spam. Just good design thinking, occasionally.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       CONTACT FORM
+  ══════════════════════════════════════ -->
+  <section class="section dark reveal-on-scroll" style="padding-top:0;">
+    <div class="container ins-form-wrap">
+      <h2 class="section-title centered">Ready to start your project?</h2>
+      <p class="section-intro centered">Tell us what you're building. We'll respond within one business day.</p>
+
+      <form class="contact-form card-lg reveal-on-scroll">
+        <div class="form-row">
+          <input type="text" name="name" placeholder="Name" required />
+          <input type="text" name="service" placeholder="Service Needed" required />
+        </div>
+        <div class="form-row">
+          <input type="email" name="email" placeholder="Email" required />
+          <textarea name="details" placeholder="Project Details" rows="4"></textarea>
+        </div>
+        <div class="form-row">
+          <select name="budget">
+            <option value="">Budget</option>
+            <option value="under1k">Under $1,000</option>
+            <option value="1k-5k">$1,000–$5,000</option>
+            <option value="5k-10k">$5,000–$10,000</option>
+            <option value="10k+">$10,000+</option>
+          </select>
+          <input type="text" name="timeline" placeholder="Project Timeline" />
+        </div>
+        <button type="submit" class="btn primary full">Send</button>
+        <p class="privacy-note">Your privacy is important. We will only use this information to contact you about your project.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<script>
+(function(){
+  /* ── Filter pills (visual only — no hiding logic needed for now) ── */
+  document.querySelectorAll('.ins-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      document.querySelectorAll('.ins-pill').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+    });
+  });
+
+  /* ── Count-up for stats board ── */
+  const board = document.querySelector('.ins-stats-board');
+  if(board){
+    const nums = [
+      { el: board.querySelectorAll('.ins-stat-num')[0], target: 120, suffix: '+', dec: 0 },
+      { el: board.querySelectorAll('.ins-stat-num')[1], target: 8,   suffix: '',  dec: 0 },
+      { el: board.querySelectorAll('.ins-stat-num')[2], target: 5.0, suffix: '★', dec: 1 },
+      { el: board.querySelectorAll('.ins-stat-num')[3], target: 34,  suffix: '',  dec: 0 },
+    ];
+
+    const obs = new IntersectionObserver(entries => {
+      if(!entries[0].isIntersecting) return;
+      nums.forEach(({ el, target, suffix, dec }) => {
+        if(!el) return;
+        let start = null;
+        const span = el.querySelector('span');
+        const spanContent = span ? span.outerHTML : '';
+        function step(ts){
+          if(!start) start = ts;
+          const p = Math.min((ts - start) / 1600, 1);
+          const ease = 1 - Math.pow(1 - p, 3);
+          const val = target * ease;
+          const formatted = dec ? val.toFixed(dec) : Math.round(val);
+          el.innerHTML = formatted + spanContent;
+          if(p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
+      obs.disconnect();
+    }, { threshold: 0.5 });
+
+    obs.observe(board);
+  }
+})();
+</script>
+</main>
+
+<gv-footer></gv-footer>
+
+<script src="assets/js/components.js"></script>
+<script src="assets/js/script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>2D Illustration, Concept Art &amp; Storyboarding | Graphy Vector Studio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Graphy Vector Studio creates concept art, character design, background illustration, storyboards and 2D illustration for games, animation studios, publishing and brands." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="icon" type="image/x-icon" href="./assets/Favicon/favicon-small.svg">
+  <link rel="icon" type="image/png" sizes="512x512" href="./assets/Favicon/favicon-big.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/Favicon/apple-touch-icon.png">
+  <meta name="theme-color" content="#000000">
+</head>
+<body>
+
+<gv-header page="works"></gv-header>
+
+<style>
+  /* ── 2D ILLUSTRATION PAGE ── */
+  .il-hero {
+    min-height: 88vh;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Warm gradient — different from the blue-dominant other pages */
+  .il-hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 80% 30%, rgba(255,140,60,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 10% 70%, rgba(200,80,255,0.05) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 50% 50%, rgba(47,157,255,0.04) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  /* Dot grid */
+  .il-hero-dots {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none;
+  }
+
+  .il-hero-inner { position: relative; z-index: 2; }
+
+  .il-eyebrow {
+    font-size: 0.7rem; font-weight: 800;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: #f97316;
+    margin-bottom: 1.4rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+
+  .il-eyebrow::before {
+    content: ''; width: 28px; height: 1px;
+    background: #f97316; display: inline-block;
+  }
+
+  .il-hero h1 {
+    font-size: clamp(3.2rem, 7vw, 7rem);
+    font-weight: 900; line-height: 0.92;
+    letter-spacing: -0.045em; color: #fff;
+    margin-bottom: 2.2rem; max-width: 780px;
+  }
+
+  .il-hero h1 em { font-style: normal; color: #f97316; }
+
+  .il-hero-bottom {
+    display: flex; align-items: flex-end;
+    justify-content: space-between; gap: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .il-hero-desc {
+    font-size: 1rem; line-height: 1.75;
+    color: rgba(255,255,255,0.45); max-width: 500px;
+    margin-bottom: 1.8rem;
+  }
+
+  .il-hero-desc strong { color: rgba(255,255,255,0.8); }
+
+  .il-hero-stats {
+    display: flex; flex-direction: column;
+    gap: 0.5rem; flex-shrink: 0; text-align: right;
+  }
+
+  .il-stat-val {
+    font-size: 2rem; font-weight: 900;
+    color: #fff; letter-spacing: -0.04em; line-height: 1;
+  }
+
+  .il-stat-val span { color: #f97316; }
+
+  .il-stat-lbl {
+    font-size: 0.68rem; color: rgba(255,255,255,0.3);
+    text-transform: uppercase; letter-spacing: 0.1em;
+  }
+
+  /* ── WHAT WE CREATE ── */
+  .il-services {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 20px; overflow: hidden;
+    margin-top: 2.4rem;
+  }
+
+  .il-service-cell {
+    background: #060606;
+    padding: 2.2rem 2rem;
+    position: relative; overflow: hidden;
+    transition: background 0.2s;
+  }
+
+  .il-service-cell:hover { background: #0a0a0a; }
+
+  .il-service-cell::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, #f97316, transparent);
+    transform: scaleX(0); transition: transform 0.3s;
+  }
+
+  .il-service-cell:hover::before { transform: scaleX(1); }
+
+  .il-cell-num {
+    font-size: 0.65rem; font-weight: 800;
+    color: #f97316; letter-spacing: 0.18em;
+    margin-bottom: 1rem;
+  }
+
+  .il-cell-icon {
+    font-size: 2rem; margin-bottom: 0.8rem; display: block;
+  }
+
+  .il-cell-title {
+    font-size: 1rem; font-weight: 800;
+    color: #fff; margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .il-cell-desc {
+    font-size: 0.84rem; color: rgba(255,255,255,0.38);
+    line-height: 1.65;
+  }
+
+  .il-cell-tags {
+    display: flex; flex-wrap: wrap; gap: 0.3rem;
+    margin-top: 1rem;
+  }
+
+  .il-tag {
+    font-size: 0.65rem; padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    border: 1px solid rgba(249,115,22,0.2);
+    color: rgba(249,115,22,0.6); font-weight: 500;
+  }
+
+  /* ── SHOWCASE GRID ── */
+  .il-showcase {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.8rem; margin-top: 2.4rem;
+  }
+
+  .il-item {
+    border-radius: 14px; overflow: hidden;
+    background: #080808;
+    border: 1px solid rgba(255,255,255,0.05);
+    position: relative; cursor: pointer;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .il-item:hover {
+    border-color: rgba(249,115,22,0.3);
+    transform: translateY(-4px);
+  }
+
+  .il-item.tall { grid-row: span 2; }
+  .il-item.wide { grid-column: span 2; }
+
+  .il-frame {
+    width: 100%; min-height: 220px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 0.6rem; padding: 2rem;
+  }
+
+  .il-item.tall .il-frame { min-height: 460px; }
+  .il-item.wide .il-frame { min-height: 240px; }
+
+  .il-ph-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: rgba(249,115,22,0.07);
+    border: 1px solid rgba(249,115,22,0.18);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+  }
+
+  .il-ph-label {
+    font-size: 0.72rem; color: rgba(255,255,255,0.2);
+    text-align: center; letter-spacing: 0.06em;
+  }
+
+  .il-item-tag {
+    position: absolute; top: 0.9rem; left: 0.9rem;
+    font-size: 0.65rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: #f97316;
+    background: rgba(249,115,22,0.08);
+    border: 1px solid rgba(249,115,22,0.2);
+    border-radius: 999px; padding: 0.25rem 0.7rem;
+    z-index: 2;
+  }
+
+  /* ── PROCESS ── */
+  .il-process {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 0; margin-top: 2.4rem;
+    border-radius: 20px; overflow: hidden;
+    background: rgba(255,255,255,0.05);
+  }
+
+  .il-proc-step {
+    background: #060606; padding: 2rem 1.6rem;
+    border-right: 1px solid rgba(255,255,255,0.05);
+    transition: background 0.2s;
+  }
+
+  .il-proc-step:last-child { border-right: none; }
+  .il-proc-step:hover { background: #0a0a0a; }
+
+  .il-proc-num {
+    font-size: 0.62rem; font-weight: 800;
+    color: #f97316; letter-spacing: 0.15em;
+    margin-bottom: 0.8rem;
+  }
+
+  .il-proc-title {
+    font-size: 0.95rem; font-weight: 800;
+    color: #fff; margin-bottom: 0.4rem;
+  }
+
+  .il-proc-desc {
+    font-size: 0.8rem; color: rgba(255,255,255,0.35);
+    line-height: 1.6;
+  }
+
+  /* ── SOFTWARE ── */
+  .il-software {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 1px; background: rgba(255,255,255,0.05);
+    border-radius: 16px; overflow: hidden;
+    margin-top: 2rem;
+  }
+
+  .il-sw-item {
+    background: #060606; padding: 1.6rem 1rem;
+    text-align: center; transition: background 0.2s;
+  }
+
+  .il-sw-item:hover { background: #0a0a0a; }
+
+  .il-sw-icon { font-size: 1.6rem; display: block; margin-bottom: 0.5rem; }
+  .il-sw-name { font-size: 0.82rem; font-weight: 700; color: rgba(255,255,255,0.6); }
+  .il-sw-use  { font-size: 0.68rem; color: rgba(255,255,255,0.25); margin-top: 0.2rem; }
+
+  /* ── CTA ── */
+  .il-cta {
+    background: #050505;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 20px; padding: 4rem 3rem;
+    display: grid; grid-template-columns: 1fr auto;
+    gap: 3rem; align-items: center;
+  }
+
+  .il-cta h2 {
+    font-size: 1.8rem; font-weight: 800;
+    letter-spacing: -0.03em; line-height: 1.15;
+    color: #fff; margin-bottom: 0.5rem;
+  }
+
+  .il-cta h2 em { font-style: normal; color: #f97316; }
+
+  .il-cta p { font-size: 0.9rem; color: rgba(255,255,255,0.4); line-height: 1.65; }
+
+  .il-cta-price {
+    font-size: 0.76rem; color: rgba(255,255,255,0.2);
+    margin-top: 0.8rem;
+  }
+
+  .il-cta-price strong { color: #f97316; }
+
+  .il-cta-btns {
+    display: flex; flex-direction: column;
+    gap: 0.7rem; flex-shrink: 0;
+  }
+
+  /* Section helpers */
+  .il-ey {
+    font-size: 0.68rem; font-weight: 800;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: #f97316; margin-bottom: 0.7rem;
+  }
+
+  .il-h2 {
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 900; letter-spacing: -0.03em;
+    color: #fff; line-height: 1.05; margin-bottom: 0.5rem;
+  }
+
+  .il-sub {
+    font-size: 0.9rem; color: rgba(255,255,255,0.38);
+    line-height: 1.65; max-width: 480px;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .il-hero h1 { font-size: 3rem; }
+    .il-hero-bottom { flex-direction: column; align-items: flex-start; }
+    .il-services { grid-template-columns: 1fr 1fr; }
+    .il-showcase { grid-template-columns: 1fr 1fr; }
+    .il-item.tall { grid-row: span 1; }
+    .il-item.wide { grid-column: span 2; }
+    .il-process { grid-template-columns: 1fr 1fr; }
+    .il-software { grid-template-columns: repeat(3, 1fr); }
+    .il-cta { grid-template-columns: 1fr; gap: 2rem; }
+    .il-cta-btns { flex-direction: row; flex-wrap: wrap; }
+  }
+
+  @media (max-width: 560px) {
+    .il-services { grid-template-columns: 1fr; }
+    .il-showcase { grid-template-columns: 1fr; }
+    .il-item.wide { grid-column: span 1; }
+    .il-process { grid-template-columns: 1fr; }
+    .il-software { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+
+<main class="page">
+
+  <!-- ─── HERO ─── -->
+  <section class="section dark il-hero reveal-on-scroll">
+    <div class="il-hero-bg"></div>
+    <div class="il-hero-dots"></div>
+    <div class="container il-hero-inner">
+
+      <div class="il-eyebrow">2D Illustration &amp; Concept Art</div>
+
+      <h1>Art that tells<br>stories before<br>words <em>do.</em></h1>
+
+      <div class="il-hero-bottom">
+        <div>
+          <p class="il-hero-desc">
+            From <strong>concept art and character design</strong> to background illustration, storyboarding and book covers — we create 2D work that has personality, narrative and craft built into every frame.
+          </p>
+          <div style="display:flex;gap:.8rem;flex-wrap:wrap;">
+            <a href="contact.php" class="btn primary">Start an Illustration Project</a>
+            <a href="works.php" class="btn ghost">See All Works</a>
+          </div>
+        </div>
+        <div class="il-hero-stats">
+          <div>
+            <div class="il-stat-val">100<span>+</span></div>
+            <div class="il-stat-lbl">Illustrations Delivered</div>
+          </div>
+          <div style="margin-top:1.2rem;">
+            <div class="il-stat-val">5<span>.0</span></div>
+            <div class="il-stat-lbl">Avg. Rating</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── WHAT WE CREATE ─── -->
+  <section class="section dark reveal-on-scroll" style="padding-top:0;">
+    <div class="container">
+      <div class="il-ey">What we create</div>
+      <h2 class="il-h2">Six types of 2D work.</h2>
+
+      <div class="il-services">
+
+        <div class="il-service-cell reveal-on-scroll">
+          <div class="il-cell-num">01</div>
+          <span class="il-cell-icon">🎭</span>
+          <div class="il-cell-title">Character Design</div>
+          <p class="il-cell-desc">Original character creation from brief to final turnaround sheets — for games, animation, webtoons, branding mascots and children's books.</p>
+          <div class="il-cell-tags">
+            <span class="il-tag">Games</span>
+            <span class="il-tag">Animation</span>
+            <span class="il-tag">Mascots</span>
+          </div>
+        </div>
+
+        <div class="il-service-cell reveal-on-scroll">
+          <div class="il-cell-num">02</div>
+          <span class="il-cell-icon">🌄</span>
+          <div class="il-cell-title">Background & Environment Art</div>
+          <p class="il-cell-desc">Detailed environment illustrations for games, animated series, graphic novels and editorial — from stylized to semi-realistic.</p>
+          <div class="il-cell-tags">
+            <span class="il-tag">Game Art</span>
+            <span class="il-tag">Editorial</span>
+            <span class="il-tag">Environment</span>
+          </div>
+        </div>
+
+        <div class="il-service-cell reveal-on-scroll">
+          <div class="il-cell-num">03</div>
+          <span class="il-cell-icon">💡</span>
+          <div class="il-cell-title">Concept Art</div>
+          <p class="il-cell-desc">Pre-production concept explorations — props, vehicles, worlds and creatures developed from written brief to polished concept sheets ready for production.</p>
+          <div class="il-cell-tags">
+            <span class="il-tag">Pre-production</span>
+            <span class="il-tag">Props</span>
+            <span class="il-tag">World-building</span>
+          </div>
+        </div>
+
+        <div class="il-service-cell reveal-on-scroll">
+          <div class="il-cell-num">04</div>
+          <span class="il-cell-icon">📋</span>
+          <div class="il-cell-title">Storyboarding</div>
+          <p class="il-cell-desc">Shot-by-shot storyboards for films, commercials, animated series and explainer videos — clear camera direction, timing notes and action breakdowns.</p>
+          <div class="il-cell-tags">
+            <span class="il-tag">Film</span>
+            <span class="il-tag">Commercials</span>
+            <span class="il-tag">Explainers</span>
+          </div>
+        </div>
+
+        <div class="il-service-cell reveal-on-scroll">
+          <div class="il-cell-num">05</div>
+          <span class="il-cell-icon">🎨</span>
+          <div class="il-cell-title">Editorial & Commercial Illustration</div>
+          <p class="il-cell-desc">Spot illustrations, infographics, product illustrations and visual storytelling for magazines, websites, marketing campaigns and brand collateral.</p>
+          <div class="il-cell-tags">
+            <span class="il-tag">Editorial</span>
+            <span class="il-tag">Infographic</span>
+            <span class="il-tag">Marketing</span>
+          </div>
+        </div>
+
+        <div class="il-service-cell reveal-on-scroll">
+          <div class="il-cell-num">06</div>
+          <span class="il-cell-icon">📖</span>
+          <div class="il-cell-title">Children's Book Illustration</div>
+          <p class="il-cell-desc">Full interior illustration sets and cover art for children's books — warm, expressive, age-appropriate styles developed to match your story's tone.</p>
+          <div class="il-cell-tags">
+            <span class="il-tag">Picture Books</span>
+            <span class="il-tag">Chapter Books</span>
+            <span class="il-tag">Cover Art</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SHOWCASE ─── -->
+  <section class="section dark reveal-on-scroll" style="padding-top:0;">
+    <div class="container">
+      <h2 class="il-h2">Selected work.</h2>
+      <p class="il-sub" style="margin-top:.4rem;">Drop your illustration work in — grid is ready.</p>
+
+      <div class="il-showcase">
+
+        <div class="il-item tall">
+          <span class="il-item-tag">Character Design</span>
+          <div class="il-frame">
+            <div class="il-ph-icon">🎭</div>
+            <div class="il-ph-label">Character sheet<br>Full turnaround</div>
+          </div>
+        </div>
+
+        <div class="il-item">
+          <span class="il-item-tag">Concept Art</span>
+          <div class="il-frame">
+            <div class="il-ph-icon">💡</div>
+            <div class="il-ph-label">Environment concept</div>
+          </div>
+        </div>
+
+        <div class="il-item">
+          <span class="il-item-tag">Storyboard</span>
+          <div class="il-frame">
+            <div class="il-ph-icon">📋</div>
+            <div class="il-ph-label">6-panel storyboard</div>
+          </div>
+        </div>
+
+        <div class="il-item wide">
+          <span class="il-item-tag">Background Art</span>
+          <div class="il-frame">
+            <div class="il-ph-icon">🌄</div>
+            <div class="il-ph-label">Wide environment illustration — 16:9</div>
+          </div>
+        </div>
+
+        <div class="il-item">
+          <span class="il-item-tag">Editorial</span>
+          <div class="il-frame">
+            <div class="il-ph-icon">🎨</div>
+            <div class="il-ph-label">Editorial spot illustration</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PROCESS ─── -->
+  <section class="section dark reveal-on-scroll" style="padding-top:0;">
+    <div class="container">
+      <div class="il-ey">Process</div>
+      <h2 class="il-h2">How we bring your vision to life.</h2>
+
+      <div class="il-process">
+        <div class="il-proc-step">
+          <div class="il-proc-num">01</div>
+          <div class="il-proc-title">Brief &amp; References</div>
+          <p class="il-proc-desc">You share the concept, tone, style references and any existing assets. We ask the right questions.</p>
+        </div>
+        <div class="il-proc-step">
+          <div class="il-proc-num">02</div>
+          <div class="il-proc-title">Rough Sketches</div>
+          <p class="il-proc-desc">We present rough composition and character sketches for your feedback before any detail work starts.</p>
+        </div>
+        <div class="il-proc-step">
+          <div class="il-proc-num">03</div>
+          <div class="il-proc-title">Refinement</div>
+          <p class="il-proc-desc">Approved roughs go into full line work, color, lighting and detail — with check-ins at each stage.</p>
+        </div>
+        <div class="il-proc-step">
+          <div class="il-proc-num">04</div>
+          <div class="il-proc-title">Final Delivery</div>
+          <p class="il-proc-desc">High-res files in all required formats — PNG, PSD, SVG, PDF — source files always included.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SOFTWARE ─── -->
+  <section class="section dark reveal-on-scroll" style="padding-top:0;">
+    <div class="container">
+      <h2 class="il-h2" style="margin-bottom:.4rem;">Tools we work in.</h2>
+      <p class="il-sub">Source files always included. You own everything.</p>
+      <div class="il-software">
+        <div class="il-sw-item"><span class="il-sw-icon">🎨</span><div class="il-sw-name">Procreate</div><div class="il-sw-use">Character & concept art</div></div>
+        <div class="il-sw-item"><span class="il-sw-icon">🖊</span><div class="il-sw-name">Illustrator</div><div class="il-sw-use">Vector illustration</div></div>
+        <div class="il-sw-item"><span class="il-sw-icon">🖼</span><div class="il-sw-name">Photoshop</div><div class="il-sw-use">Digital painting & compositing</div></div>
+        <div class="il-sw-item"><span class="il-sw-icon">✏️</span><div class="il-sw-name">Clip Studio</div><div class="il-sw-use">Comics & storyboarding</div></div>
+        <div class="il-sw-item"><span class="il-sw-icon">⬡</span><div class="il-sw-name">Affinity</div><div class="il-sw-use">Vector & print-ready files</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA ─── -->
+  <section class="section dark reveal-on-scroll" style="padding-top:0;">
+    <div class="container">
+      <div class="il-cta">
+        <div>
+          <h2>Have a story that needs<br>to be <em>drawn?</em></h2>
+          <p>Tell us what you're building — a game, a book, a film or a brand. We'll tell you exactly what we'd create and what it costs.</p>
+          <p class="il-cta-price">Projects start at <strong>$99</strong> — scope and deliverables determine the final investment.</p>
+        </div>
+        <div class="il-cta-btns">
+          <a href="contact.php" class="btn primary">Start an Illustration Project</a>
+          <a href="works.php" class="btn ghost">Back to Works</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<gv-footer></gv-footer>
+<script src="assets/js/components.js"></script>
+<script src="assets/js/script.js" defer></script>
+</body>
+</html>

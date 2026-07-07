@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Brand Identity Design | Graphy Vector Studio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Graphy Vector Studio builds brand identity systems for SaaS startups and D2C product brands — logos, typography, color systems, iconography and social kits that scale from app icon to billboard." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="./assets/Favicon/favicon-small.svg">
+  <link rel="icon" type="image/png" sizes="512x512" href="./assets/Favicon/favicon-big.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/Favicon/apple-touch-icon.png">
+  <meta name="theme-color" content="#000000">
+  <style>
+    /* ── Page-specific styles ── */
+    /* Fix: overflow-x: hidden on body kills position: sticky globally */
+    html { overflow-x: clip; }
+    body { overflow-x: visible; }
+ 
+    /* HERO — full editorial split */
+    .bi-hero {
+      min-height: 92vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+    }
+ 
+    .bi-hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 3.5rem 2.8rem 3.5rem 0;
+      border-right: 1px solid rgba(255,255,255,0.07);
+    }
+ 
+    .bi-hero-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+ 
+    .bi-hero-label::before {
+      content: '';
+      display: inline-block;
+      width: 28px;
+      height: 1px;
+      background: var(--accent);
+    }
+ 
+    .bi-hero-left h1 {
+      font-size: clamp(2.8rem, 4.5vw, 4.2rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: 2rem;
+    }
+ 
+    .bi-hero-left h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+ 
+    .bi-hero-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 2.4rem;
+    }
+ 
+    .bi-hero-meta-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.8rem;
+      font-size: 0.88rem;
+    }
+ 
+    .bi-hero-meta-row .meta-key {
+      color: rgba(255,255,255,0.3);
+      min-width: 90px;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+ 
+    .bi-hero-meta-row .meta-val {
+      color: var(--text-light);
+    }
+ 
+    .bi-hero-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 3.5rem 0 3.5rem 2.8rem;
+      gap: 1.4rem;
+    }
+ 
+    .bi-hero-right p {
+      font-size: 1.08rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.6);
+      max-width: 460px;
+    }
+ 
+    .bi-hero-right p strong {
+      color: var(--text-light);
+      font-weight: 600;
+    }
+ 
+    .bi-stat-row {
+      display: flex;
+      gap: 2rem;
+      margin-top: 1rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+ 
+    .bi-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+ 
+    .bi-stat-num {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: var(--text-light);
+      letter-spacing: -0.03em;
+    }
+ 
+    .bi-stat-lbl {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.35);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+ 
+    /* DELIVERABLES strip */
+    .deliverables-strip {
+      background: var(--accent);
+      padding: 1rem 0;
+      overflow: hidden;
+    }
+ 
+    .deliverables-track {
+      display: flex;
+      gap: 2.4rem;
+      align-items: center;
+      white-space: nowrap;
+      animation: deliverables-scroll 22s linear infinite;
+    }
+ 
+    .deliverables-track span {
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #000;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+ 
+    .deliverables-track span::before {
+      content: '◆';
+      font-size: 0.5rem;
+      opacity: 0.5;
+    }
+ 
+    @keyframes deliverables-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+ 
+    /* PROCESS — numbered editorial list */
+    .process-section {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+ 
+    .process-section {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+ 
+    .process-sticky-col {
+      height: 100%;
+    }
+ 
+    .process-sticky {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 100px;
+    }
+ 
+    .process-steps {
+      display: flex;
+      flex-direction: column;
+    }
+ 
+    .process-sticky h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+    }
+ 
+    .process-sticky p {
+      margin-top: 1rem;
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: var(--muted-light);
+    }
+ 
+ 
+ 
+    .process-step {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 1.6rem;
+      padding: 3rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      align-items: start;
+    }
+ 
+    .process-step:last-child {
+      border-bottom: none;
+    }
+ 
+    .process-step-num {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      padding-top: 0.25rem;
+    }
+ 
+    .process-step-body h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+ 
+    .process-step-body p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--muted-light);
+    }
+ 
+    .process-step-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.9rem;
+    }
+ 
+    .process-tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.07em;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.5);
+    }
+ 
+    /* WORK SHOWCASE — editorial grid */
+    .showcase-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 2.4rem;
+      gap: 2rem;
+    }
+ 
+    .showcase-header h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      max-width: 320px;
+    }
+ 
+    .showcase-header p {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--muted-light);
+      max-width: 340px;
+    }
+ 
+    /* Masonry-style showcase grid */
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: auto;
+      gap: 1rem;
+    }
+ 
+    .showcase-item {
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      background: #0d0d0d;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+ 
+    .showcase-item.tall {
+      grid-row: span 2;
+    }
+ 
+    .showcase-item.wide {
+      grid-column: span 2;
+    }
+ 
+    .showcase-frame {
+      width: 100%;
+      height: 100%;
+      min-height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.6rem;
+      padding: 2rem;
+    }
+ 
+    .showcase-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+ 
+    .showcase-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1.2rem 1.4rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+ 
+    .showcase-item:hover .showcase-overlay {
+      opacity: 1;
+    }
+ 
+    .showcase-overlay-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-light);
+      letter-spacing: 0.06em;
+    }
+ 
+    /* Placeholder frame styles for "images coming" state */
+    .ph {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: #0d0d0d;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+    }
+ 
+    .ph.tall { aspect-ratio: 3/4; }
+    .ph.wide { aspect-ratio: 16/7; }
+    .ph.square { aspect-ratio: 1/1; }
+ 
+    .ph-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(47,157,255,0.08);
+      border: 1px solid rgba(47,157,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+ 
+    .ph-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--accent);
+      fill: none;
+      stroke-width: 1.5;
+    }
+ 
+    .ph-label {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.08em;
+      text-align: center;
+    }
+ 
+    /* TOOLS — horizontal pill list */
+    .tools-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+ 
+    .tools-intro h2 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+ 
+    .tools-intro p {
+      font-size: 0.9rem;
+      line-height: 1.75;
+      color: rgba(0,0,0,0.55);
+    }
+ 
+    .tools-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+ 
+    .tool-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.2rem;
+      background: var(--card-light);
+      border-radius: 14px;
+      border: 1px solid var(--border-light);
+    }
+ 
+    .tool-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+ 
+    .tool-info {
+      flex: 1;
+    }
+ 
+    .tool-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+ 
+    .tool-use {
+      font-size: 0.78rem;
+      color: var(--muted-dark);
+      margin-top: 1px;
+    }
+ 
+    /* WHY THIS WORKS — light, 3-col */
+    .why-grid-bi {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+    }
+ 
+    .why-card-bi {
+      padding: 1.6rem;
+      border-radius: var(--radius);
+      background: #000;
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+ 
+    .why-card-bi-num {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: rgba(47,157,255,0.18);
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+ 
+    .why-card-bi h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text-light);
+    }
+ 
+    .why-card-bi p {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--muted-light);
+    }
+ 
+    /* TESTIMONIAL — large single quote */
+    .testimonial-large {
+      padding: 4rem 0;
+      text-align: center;
+    }
+ 
+    .testimonial-quote-mark {
+      font-size: 5rem;
+      line-height: 1;
+      color: rgba(47,157,255,0.15);
+      font-weight: 900;
+      margin-bottom: -1rem;
+    }
+ 
+    .testimonial-text {
+      font-size: clamp(1.1rem, 2vw, 1.45rem);
+      line-height: 1.65;
+      color: var(--text-light);
+      max-width: 680px;
+      margin: 0 auto 1.8rem;
+      font-weight: 400;
+    }
+ 
+    .testimonial-author {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+ 
+    .testimonial-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(47,157,255,0.15);
+      border: 1px solid rgba(47,157,255,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+ 
+    .testimonial-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-light);
+    }
+ 
+    .testimonial-role {
+      font-size: 0.78rem;
+      color: var(--muted-light);
+    }
+ 
+    /* CTA — dark editorial */
+    .cta-bi {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 3rem;
+      padding: 3rem;
+      background: #080808;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+ 
+    .cta-bi h2 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+ 
+    .cta-bi p {
+      font-size: 0.9rem;
+      color: var(--muted-light);
+      line-height: 1.65;
+    }
+ 
+    .cta-bi-price {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.3);
+      margin-top: 0.8rem;
+      letter-spacing: 0.04em;
+    }
+ 
+    .cta-bi-price strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+ 
+    .cta-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      align-items: flex-end;
+      flex-shrink: 0;
+    }
+ 
+    /* Responsive */
+    @media (max-width: 860px) {
+      .bi-hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+      .bi-hero-left {
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.07);
+        padding: 2.4rem 0 2rem;
+      }
+      .bi-hero-right {
+        padding: 2rem 0 2rem;
+      }
+      .process-section {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .process-sticky {
+        position: static;
+      }
+      .showcase-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .showcase-item.wide {
+        grid-column: span 2;
+      }
+      .tools-section {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .why-grid-bi {
+        grid-template-columns: 1fr;
+      }
+      .cta-bi {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .cta-actions {
+        align-items: flex-start;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      .showcase-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+ 
+    @media (max-width: 560px) {
+      .bi-hero-left h1 { font-size: 2.2rem; }
+      .showcase-grid { grid-template-columns: 1fr; }
+      .showcase-item.tall, .showcase-item.wide { grid-column: span 1; grid-row: span 1; }
+    }
+  </style>
+</head>
+<body>
+
+<gv-header page="works"></gv-header>
+
+<main class="page">
+<main class="page">
+ 
+  <!-- ─── HERO ─── -->
+  <section class="section dark" style="padding-bottom: 0;">
+    <div class="container">
+      <div class="bi-hero reveal-on-scroll">
+ 
+        <div class="bi-hero-left">
+          <div class="bi-hero-label">Brand Identity</div>
+          <h1>Your brand,<br>built to<br><em>own</em> its space.</h1>
+          <div class="bi-hero-meta">
+            <div class="bi-hero-meta-row">
+              <span class="meta-key">Scope</span>
+              <span class="meta-val">Logo, Identity System, Brand Guidelines, Social Kit</span>
+            </div>
+            <div class="bi-hero-meta-row">
+              <span class="meta-key">For</span>
+              <span class="meta-val">SaaS Startups &amp; D2C Product Brands</span>
+            </div>
+            <div class="bi-hero-meta-row">
+              <span class="meta-key">Timeline</span>
+              <span class="meta-val">6–10 weeks</span>
+            </div>
+          </div>
+          <div class="bi-stat-row">
+            <div class="bi-stat">
+              <span class="bi-stat-num">40+</span>
+              <span class="bi-stat-lbl">Brands Built</span>
+            </div>
+            <div class="bi-stat">
+              <span class="bi-stat-num">8</span>
+              <span class="bi-stat-lbl">Countries</span>
+            </div>
+            <div class="bi-stat">
+              <span class="bi-stat-num">5.0</span>
+              <span class="bi-stat-lbl">Avg. Rating</span>
+            </div>
+          </div>
+        </div>
+ 
+        <div class="bi-hero-right">
+          <p>
+            A logo is not a brand. A brand is what people feel when they see your name — before they read a single word.
+          </p>
+          <p>
+            We build <strong>complete identity systems</strong> designed to stay sharp at every scale — from a 16px favicon to a 20-foot trade show banner — and to grow with your business without breaking.
+          </p>
+          <p>
+            Every project starts with a discovery process, not a template. Because <strong>generic brand kits produce generic brands.</strong>
+          </p>
+          <div style="margin-top:1.5rem; display: flex; gap: 0.8rem; flex-wrap: wrap;">
+            <a href="contact.html" class="btn primary">Start a Brand Project</a>
+            <a href="#process" class="btn ghost">See Our Process</a>
+          </div>
+        </div>
+ 
+      </div>
+    </div>
+  </section>
+ 
+  <!-- ─── DELIVERABLES TICKER ─── -->
+  <div class="deliverables-strip">
+    <div class="deliverables-track">
+      <span>Primary Logo</span>
+      <span>Logo Variations</span>
+      <span>Color System</span>
+      <span>Typography Scale</span>
+      <span>Icon Set</span>
+      <span>Brand Guidelines PDF</span>
+      <span>Social Media Templates</span>
+      <span>Stationery Kit</span>
+      <span>Figma Component Library</span>
+      <span>Export-Ready Files</span>
+      <!-- duplicate for seamless loop -->
+      <span>Primary Logo</span>
+      <span>Logo Variations</span>
+      <span>Color System</span>
+      <span>Typography Scale</span>
+      <span>Icon Set</span>
+      <span>Brand Guidelines PDF</span>
+      <span>Social Media Templates</span>
+      <span>Stationery Kit</span>
+      <span>Figma Component Library</span>
+      <span>Export-Ready Files</span>
+    </div>
+  </div>
+ 
+  <!-- ─── PROCESS ─── -->
+  <section id="process" class="section dark reveal-on-scroll">
+    <div class="container">
+      <div class="process-section">
+ 
+        <div class="process-sticky-col" style="margin-top: 43px;">
+          <div class="process-sticky">
+            <h2>How we build it.</h2>
+            <p>
+              Four deliberate stages. Every step is documented and shared with you so there are no surprises, only decisions.
+            </p>
+          </div>
+        </div>
+ 
+        <div class="process-steps">
+ 
+          <div class="process-step reveal-on-scroll">
+            <div class="process-step-num" style="font-size: 50px;">01</div>
+            <div class="process-step-body">
+              <h3>Discovery &amp; Brand Audit</h3>
+              <p>
+                We start by auditing your existing visual presence — what you have, what's working and what's hurting you. Then we run a structured brief to understand your audience, competitors and the feeling you want your brand to own.
+              </p>
+              <div class="process-step-tags">
+                <span class="process-tag">Brand Brief</span>
+                <span class="process-tag">Competitor Audit</span>
+                <span class="process-tag">Audience Mapping</span>
+                <span class="process-tag">Visual Benchmarking</span>
+              </div>
+            </div>
+          </div>
+ 
+          <div class="process-step reveal-on-scroll">
+            <div class="process-step-num" style="font-size: 50px;">02</div>
+            <div class="process-step-body">
+              <h3>Visual Direction &amp; Moodboarding</h3>
+              <p>
+                We present two distinct visual directions — not just color swatches, but full moodboards covering typography treatment, icon language, layout style and motion references. You choose the direction that resonates. We iterate until it's right.
+              </p>
+              <div class="process-step-tags">
+                <span class="process-tag">Moodboards</span>
+                <span class="process-tag">2 Visual Territories</span>
+                <span class="process-tag">Typography Pairing</span>
+                <span class="process-tag">Color Psychology</span>
+              </div>
+            </div>
+          </div>
+ 
+          <div class="process-step reveal-on-scroll">
+            <div class="process-step-num" style="font-size: 50px;">03</div>
+            <div class="process-step-body">
+              <h3>Identity System Design</h3>
+              <p>
+                With direction locked, we design the full system — primary logo, variations, grid system, a complete icon set, layout language and usage rules. Everything is built on a geometry grid so it scales perfectly at any size.
+              </p>
+              <div class="process-step-tags">
+                <span class="process-tag">Logo Construction</span>
+                <span class="process-tag">Icon Set</span>
+                <span class="process-tag">Grid System</span>
+                <span class="process-tag">Motion-Ready Shapes</span>
+              </div>
+            </div>
+          </div>
+ 
+          <div class="process-step reveal-on-scroll">
+            <div class="process-step-num" style="font-size: 50px;">04</div>
+            <div class="process-step-body">
+              <h3>Handover &amp; Brand Guidelines</h3>
+              <p>
+                Final delivery includes a brand guidelines PDF, an editable Figma component library, export-ready logo files in every format your team needs, and a social media launch kit so your first public post lands with the right weight.
+              </p>
+              <div class="process-step-tags">
+                <span class="process-tag">Brand PDF</span>
+                <span class="process-tag">Figma Library</span>
+                <span class="process-tag">SVG / PNG / AI / EPS</span>
+                <span class="process-tag">Social Launch Kit</span>
+              </div>
+            </div>
+          </div>
+ 
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- ─── WORK SHOWCASE ─── -->
+  <section class="section light reveal-on-scroll">
+    <div class="container">
+      <div class="showcase-header">
+        <h2 style="color: var(--text-dark);">Selected<br>brand work.</h2>
+        <p style="color: var(--muted-dark);">
+          A sample of brand identity systems across tech startups, product brands and service companies. Drop your images in — the grid is ready.
+        </p>
+      </div>
+ 
+      <div class="showcase-grid">
+ 
+        <!-- Tall left item -->
+        <div class="showcase-item tall">
+          <div class="ph tall" style="min-height:420px;">
+            <div class="ph-icon">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            </div>
+            <div class="ph-label">Primary Logo<br>&amp; Variations</div>
+          </div>
+          <div class="showcase-overlay">
+            <div class="showcase-overlay-label">Logo System</div>
+          </div>
+        </div>
+ 
+        <!-- Two stacked right items -->
+        <div class="showcase-item">
+          <div class="ph" style="min-height:200px;">
+            <div class="ph-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>
+            </div>
+            <div class="ph-label">Color &amp; Typography</div>
+          </div>
+          <div class="showcase-overlay">
+            <div class="showcase-overlay-label">Color System</div>
+          </div>
+        </div>
+ 
+        <div class="showcase-item">
+          <div class="ph" style="min-height:200px;">
+            <div class="ph-icon">
+              <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+            </div>
+            <div class="ph-label">Stationery &amp; Print</div>
+          </div>
+          <div class="showcase-overlay">
+            <div class="showcase-overlay-label">Print Mockups</div>
+          </div>
+        </div>
+ 
+        <!-- Wide bottom item -->
+        <div class="showcase-item wide">
+          <div class="ph wide" style="min-height:200px;">
+            <div class="ph-icon">
+              <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <div class="ph-label">Social Media Templates &amp; Brand in Use</div>
+          </div>
+          <div class="showcase-overlay">
+            <div class="showcase-overlay-label">Social Kit</div>
+          </div>
+        </div>
+ 
+        <!-- Square item -->
+        <div class="showcase-item">
+          <div class="ph square" style="min-height:200px;">
+            <div class="ph-icon">
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <div class="ph-label">Icon Set</div>
+          </div>
+          <div class="showcase-overlay">
+            <div class="showcase-overlay-label">Custom Iconography</div>
+          </div>
+        </div>
+ 
+      </div>
+    </div>
+  </section>
+ 
+  <!-- ─── TOOLS ─── -->
+  <section class="section light reveal-on-scroll">
+    <div class="container">
+      <div class="tools-section">
+ 
+        <div class="tools-intro">
+          <h2 style="color: var(--text-dark);">The tools behind the work.</h2>
+          <p>
+            We use industry-standard software and deliver files in every format your team needs — whether you're handing off to developers, printers or in-house marketers.
+          </p>
+          <p style="margin-top:0.8rem;">
+            All source files are included. You own everything, forever.
+          </p>
+        </div>
+ 
+        <div class="tools-list">
+          <div class="tool-row">
+            <div class="tool-icon" style="background:#fff3e0;">🖊</div>
+            <div class="tool-info">
+              <div class="tool-name">Adobe Illustrator</div>
+              <div class="tool-use">Logo construction, icon set, all vector assets</div>
+            </div>
+          </div>
+          <div class="tool-row">
+            <div class="tool-icon" style="background:#e8f5e9;">✦</div>
+            <div class="tool-info">
+              <div class="tool-name">Figma</div>
+              <div class="tool-use">Component library, social templates, shared handoff</div>
+            </div>
+          </div>
+          <div class="tool-row">
+            <div class="tool-icon" style="background:#e3f2fd;">🎨</div>
+            <div class="tool-info">
+              <div class="tool-name">Adobe Photoshop</div>
+              <div class="tool-use">Mockups, compositing, print-ready exports</div>
+            </div>
+          </div>
+          <div class="tool-row">
+            <div class="tool-icon" style="background:#f3e5f5;">▶</div>
+            <div class="tool-info">
+              <div class="tool-name">After Effects <span style="font-size:0.72rem;color:var(--muted-dark);font-weight:400;">(add-on)</span></div>
+              <div class="tool-use">Animated logo stings and Lottie motion versions</div>
+            </div>
+          </div>
+        </div>
+ 
+      </div>
+    </div>
+  </section>
+ 
+  <!-- ─── WHY THIS DIRECTION WORKS ─── -->
+  <section class="section dark reveal-on-scroll">
+    <div class="container">
+      <p class="eyebrow" style="margin-bottom:1.2rem;">Why it works</p>
+      <div class="why-grid-bi">
+ 
+        <div class="why-card-bi reveal-on-scroll">
+          <div class="why-card-bi-num">01</div>
+          <h3>Scales from 16px to 16 feet</h3>
+          <p>Every logo is built on a strict geometric grid. It looks identical whether it's a favicon, a business card or a trade show banner — because geometry doesn't lie.</p>
+        </div>
+ 
+        <div class="why-card-bi reveal-on-scroll">
+          <div class="why-card-bi-num">02</div>
+          <h3>Flexible, not random</h3>
+          <p>The system has strict rules and a layout language that keeps everything consistent — but enough room for your team to produce new content without calling us every time.</p>
+        </div>
+ 
+        <div class="why-card-bi reveal-on-scroll">
+          <div class="why-card-bi-num">03</div>
+          <h3>Motion-ready from the start</h3>
+          <p>Shapes and letterforms are chosen so they animate cleanly in Lottie or After Effects — no visual noise, no awkward in-betweens. Your brand can move if it needs to.</p>
+        </div>
+ 
+      </div>
+    </div>
+  </section>
+ 
+  <!-- ─── TESTIMONIAL ─── -->
+  <section class="section dark reveal-on-scroll">
+    <div class="container">
+      <div class="testimonial-large">
+        <div class="testimonial-quote-mark">&ldquo;</div>
+        <p class="testimonial-text">
+          The identity system they built didn't just look good — it worked. Our social posts, pitch deck, and product UI finally felt like the same company. That's rare.
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">AK</div>
+          <div style="text-align:left;">
+            <div class="testimonial-name">A. Kapoor</div>
+            <div class="testimonial-role">Co-founder, SaaS startup (B2B, confidential)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- ─── CTA ─── -->
+  <section class="section dark reveal-on-scroll" style="padding-top:0;">
+    <div class="container">
+      <div class="cta-bi">
+        <div>
+          <h2>Ready to build something that lasts?</h2>
+          <p>
+            Tell us about your brand — where it is now and where you want it to be. We'll get back to you within one business day.
+          </p>
+          <p class="cta-bi-price">Projects typically start at <strong>$299</strong> — scope and complexity determine the final investment.</p>
+        </div>
+        <div class="cta-actions">
+          <a href="contact.html" class="btn primary">Start a Brand Project</a>
+          <a href="works.html" class="btn ghost">Back to Works</a>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+</main>
+</main>
+
+<gv-footer></gv-footer>
+
+<script src="assets/js/components.js"></script>
+<script src="assets/js/script.js" defer></script>
+</body>
+</html>

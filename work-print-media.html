@@ -1,0 +1,2720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Print Media Design &amp; Book Illustration | Graphy Vector Studio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Graphy Vector Studio designs print-ready brochures, flyers, catalogues, book covers and illustrations — from single flyer to full illustrated book." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="icon" type="image/x-icon" href="./assets/Favicon/favicon-small.svg">
+  <link rel="icon" type="image/png" sizes="512x512" href="./assets/Favicon/favicon-big.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/Favicon/apple-touch-icon.png">
+  <meta name="theme-color" content="#000000">
+  <style>
+    /* ── PRINT MEDIA STYLES ── */
+    
+    /* ── Print Page Specific ── */
+
+    .pr-hero {
+      padding-top: 5rem;
+      padding-bottom: 4rem;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .pr-hero-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2.4rem;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .pr-hero-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .pr-hero-label::before {
+      content: '';
+      width: 28px;
+      height: 1px;
+      background: var(--accent);
+      display: inline-block;
+    }
+
+    .pr-hero-date {
+      font-size: 0.72rem;
+      color: #aaa;
+      letter-spacing: 0.1em;
+    }
+
+    .pr-hero h1 {
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      margin-bottom: 2rem;
+      max-width: 900px;
+      color: #111;
+    }
+
+    .pr-hero-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid #e5e5e5;
+    }
+
+    .pr-hero-col p {
+      font-size: 0.9rem;
+      line-height: 1.75;
+      color: #666;
+    }
+
+    .pr-hero-col p strong {
+      color: #111;
+    }
+
+    .pr-hero-col:first-child {
+      border-right: 1px solid #e5e5e5;
+      padding-right: 2rem;
+    }
+
+    .pr-hero-col:nth-child(2) {
+      border-right: 1px solid #e5e5e5;
+      padding-right: 2rem;
+    }
+
+    /* PRINT TYPES — tight ruled list */
+    .print-list {
+      display: flex;
+      flex-direction: column;
+      margin-top: 2rem;
+    }
+
+    .print-list-item {
+      display: grid;
+      grid-template-columns: 48px 1fr auto;
+      align-items: center;
+      gap: 1.6rem;
+      padding: 1.4rem 0;
+      border-bottom: 1px solid #e8e8e8;
+      transition: background 0.15s;
+      cursor: default;
+    }
+
+    .print-list-item:first-child {
+      border-top: 1px solid #e8e8e8;
+    }
+
+    .print-list-item:hover .pl-title {
+      color: var(--accent);
+    }
+
+    .pl-num {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+    }
+
+
+    .pl-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+      color: #111;
+      transition: color 0.15s;
+    }
+
+    .pl-desc {
+      font-size: 0.83rem;
+      color: #888;
+    }
+
+    .pl-format {
+      font-size: 0.75rem;
+      color: #bbb;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    /* SHOWCASE — tight ruled newspaper grid */
+    .print-showcase {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.06);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-top: 2rem;
+    }
+
+    .ps-item {
+      background: #040404;
+      position: relative;
+    }
+
+    .ps-item.tall {
+      grid-row: span 2;
+    }
+
+    .ps-frame {
+      width: 100%;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 2rem;
+    }
+
+    .ps-item.tall .ps-frame {
+      min-height: 460px;
+    }
+
+    .ps-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .ps-ph-line {
+      width: 100%;
+      height: 1px;
+      background: rgba(255,255,255,0.05);
+      margin: 0.3rem 0;
+    }
+
+    .ps-ph-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: rgba(47,157,255,0.06);
+      border: 1px solid rgba(47,157,255,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ps-ph-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: rgba(47,157,255,0.45);
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .ps-label {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.18);
+      letter-spacing: 0.08em;
+      text-align: center;
+    }
+
+    .ps-tag {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(47,157,255,0.07);
+      border: 1px solid rgba(47,157,255,0.18);
+      border-radius: 999px;
+      padding: 0.25rem 0.7rem;
+    }
+
+    /* WHAT MAKES GOOD PRINT — light, precision feel */
+    .precision-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid #e5e5e5;
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-top: 2rem;
+    }
+
+    .precision-item {
+      padding: 2rem;
+      border-right: 1px solid #e5e5e5;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .precision-item:nth-child(even) {
+      border-right: none;
+    }
+
+    .precision-item:nth-last-child(-n+2) {
+      border-bottom: none;
+    }
+
+    .precision-num {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: rgba(0,0,0,0.06);
+      letter-spacing: -0.05em;
+      line-height: 1;
+      margin-bottom: 0.8rem;
+    }
+
+    .precision-item h3 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #111;
+      margin-bottom: 0.4rem;
+    }
+
+    .precision-item p {
+      font-size: 0.86rem;
+      color: #666;
+      line-height: 1.65;
+    }
+
+    /* SPECS — tight technical table feel */
+    .specs-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2rem;
+      font-size: 0.88rem;
+    }
+
+    .specs-table th {
+      text-align: left;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      padding: 0.8rem 1.2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-weight: 600;
+    }
+
+    .specs-table td {
+      padding: 1rem 1.2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      color: rgba(255,255,255,0.7);
+      vertical-align: top;
+    }
+
+    .specs-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .specs-table td:first-child {
+      font-weight: 700;
+      color: var(--text-light);
+      white-space: nowrap;
+    }
+
+    .specs-table td .spec-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      background: rgba(47,157,255,0.08);
+      border: 1px solid rgba(47,157,255,0.15);
+      color: var(--accent);
+      margin-right: 0.3rem;
+      margin-bottom: 0.3rem;
+    }
+
+    /* CTA */
+    .pr-cta {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 3rem;
+      padding: 3rem;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius-lg);
+      background: #050505;
+    }
+
+    .pr-cta h2 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 0.5rem;
+    }
+
+    .pr-cta p {
+      font-size: 0.9rem;
+      color: var(--muted-light);
+      line-height: 1.65;
+    }
+
+    .pr-cta-price {
+      font-size: 0.76rem;
+      color: rgba(255,255,255,0.25);
+      margin-top: 0.8rem;
+    }
+
+    .pr-cta-price strong {
+      color: var(--accent);
+    }
+
+    .pr-cta-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      flex-shrink: 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 860px) {
+      .pr-hero-cols { grid-template-columns: 1fr; gap: 1.2rem; }
+      .pr-hero-col:first-child,
+      .pr-hero-col:nth-child(2) { border-right: none; padding-right: 0; border-bottom: 1px solid rgba(255,255,255,0.07); padding-bottom: 1.2rem; }
+      .print-list-item { grid-template-columns: 40px 1fr; }
+      .pl-format { display: none; }
+      .print-showcase { grid-template-columns: 1fr 1fr; }
+      .ps-item.tall { grid-row: span 1; }
+      .precision-grid { grid-template-columns: 1fr; }
+      .precision-item { border-right: none; }
+      .precision-item:nth-last-child(-n+2) { border-bottom: 1px solid #e5e5e5; }
+      .precision-item:last-child { border-bottom: none; }
+      .pr-cta { grid-template-columns: 1fr; gap: 1.5rem; }
+      .pr-cta-btns { flex-direction: row; flex-wrap: wrap; }
+    }
+
+    @media (max-width: 540px) {
+      .print-showcase { grid-template-columns: 1fr; }
+    }
+  
+
+    /* ── FLIPBOOK ── */
+    .flipbook-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    #flipbook {
+      display: none; /* hidden — StPageFlip takes over */
+    }
+
+    .stf__parent {
+      border-radius: 4px;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.18), 0 8px 24px rgba(0,0,0,0.1);
+    }
+
+    /* Page base */
+    .fb-page {
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .fb-page-inner {
+      width: 100%;
+      height: 100%;
+      padding: 2.4rem 2rem;
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    /* Light page */
+    .fb-light {
+      background: #fff;
+      color: #111;
+      border-left: 3px solid #f0f0f0;
+    }
+
+    /* Dark page */
+    .fb-dark {
+      background: #080808;
+      color: #fff;
+    }
+
+    /* Cover */
+    .fb-cover {
+      background: #000;
+    }
+
+    .fb-cover .fb-page-inner {
+      background: linear-gradient(145deg, #0a0a0a 0%, #111 100%);
+      justify-content: flex-end;
+      border-right: 4px solid var(--accent);
+    }
+
+    .fb-cover-badge {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+    }
+
+    .fb-cover-title {
+      font-size: 2.2rem;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: #fff;
+      margin-bottom: 0.8rem;
+    }
+
+    .fb-cover-sub {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.1em;
+    }
+
+    .fb-cover-year {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.1em;
+    }
+
+    /* Back cover */
+    .fb-back-cover {
+      background: #000;
+    }
+
+    .fb-back-cover .fb-page-inner {
+      background: #000;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border-left: 4px solid var(--accent);
+    }
+
+    .fb-back-logo {
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--accent);
+      letter-spacing: -0.04em;
+      margin-bottom: 0.8rem;
+    }
+
+    .fb-back-tagline {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+    }
+
+    .fb-back-url {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.1em;
+    }
+
+    /* Page number & label */
+    .fb-pg-num {
+      font-size: 0.65rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      margin-bottom: 0.3rem;
+    }
+
+    .fb-pg-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #bbb;
+      margin-bottom: 1rem;
+    }
+
+    .fb-pg-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 0.8rem;
+      color: #111;
+    }
+
+    .fb-pg-body {
+      font-size: 0.78rem;
+      line-height: 1.65;
+      color: #666;
+    }
+
+    .fb-pg-rule {
+      width: 40px;
+      height: 2px;
+      background: var(--accent);
+      margin: 1rem 0;
+    }
+
+    /* Stats */
+    .fb-pg-stats {
+      display: flex;
+      gap: 1.2rem;
+      margin-top: auto;
+    }
+
+    .fb-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      font-size: 0.65rem;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .fb-stat span {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #111;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    /* Service list */
+    .fb-service-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 0.5rem;
+    }
+
+    .fb-service-row {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.78rem;
+      color: #333;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid #f0f0f0;
+      font-weight: 500;
+    }
+
+    .fb-service-row span {
+      font-size: 0.6rem;
+      color: var(--accent);
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      min-width: 20px;
+    }
+
+    /* Work grid */
+    .fb-work-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+
+    .fb-work-item {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 8px;
+      padding: 0.8rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.4;
+    }
+
+    .fb-work-item small {
+      display: block;
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.35);
+      font-weight: 400;
+      margin-top: 0.2rem;
+    }
+
+    /* Process steps */
+    .fb-process-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      margin-top: 0.8rem;
+    }
+
+    .fb-process-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+    }
+
+    .fb-step-dot {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .fb-process-step strong {
+      font-size: 0.8rem;
+      color: #111;
+      display: block;
+    }
+
+    .fb-process-step p {
+      font-size: 0.7rem;
+      color: #999;
+      margin: 0;
+    }
+
+    /* Contact rows */
+    .fb-contact-row {
+      font-size: 0.78rem;
+      color: #555;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    /* Controls */
+    .fb-controls {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .fb-btn {
+      background: #000;
+      color: #fff;
+      border: none;
+      padding: 0.6rem 1.4rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.15s;
+      font-family: inherit;
+    }
+
+    .fb-btn:hover {
+      background: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .fb-page-count {
+      font-size: 0.82rem;
+      color: #999;
+      min-width: 80px;
+      text-align: center;
+    }
+
+    .fb-hint {
+      font-size: 0.78rem;
+      color: #aaa;
+      text-align: center;
+      max-width: 560px;
+      line-height: 1.6;
+    }
+
+    .fb-hint code {
+      background: #f0f0f0;
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      color: #333;
+    }
+  
+
+    /* ── BOOK ILLUSTRATION STYLES ── */
+    
+    /* ── PAGE-SPECIFIC: Book Illustration ── */
+
+    /* ── EDITORIAL HERO ── */
+    .bk-hero {
+      padding-top: 5rem;
+      padding-bottom: 0;
+    }
+
+    .bk-masthead {
+      border-bottom: 2px solid #1a1a1a;
+      padding-bottom: 1.4rem;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .bk-masthead-left {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .bk-issue-badge {
+      font-size: 0.64rem;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid rgba(47,157,255,0.3);
+      border-radius: 3px;
+      padding: 0.3rem 0.7rem;
+    }
+
+    .bk-vol {
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .bk-masthead-right {
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* ── BIG TITLE LAYOUT (newspaper/magazine double spread) ── */
+    .bk-headline-block {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: end;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid #1a1a1a;
+    }
+
+    .bk-hero-h1 {
+      font-size: clamp(3.2rem, 7vw, 6.4rem);
+      font-weight: 900;
+      line-height: 0.93;
+      letter-spacing: -0.05em;
+      color: #fff;
+      margin: 0;
+    }
+
+    .bk-hero-h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .bk-hero-sidebar {
+      max-width: 220px;
+      border-left: 1px solid #2a2a2a;
+      padding-left: 1.4rem;
+    }
+
+    .bk-hero-sidebar p {
+      font-size: 0.83rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.45);
+      margin: 0 0 1.2rem;
+    }
+
+    .bk-hero-sidebar .bk-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+      margin-bottom: 1rem;
+    }
+
+    .bk-hero-sidebar .bk-stat strong {
+      font-size: 2rem;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    .bk-hero-sidebar .bk-stat span {
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ── HERO 3-COLUMN FOOT ── */
+    .bk-hero-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid #1a1a1a;
+    }
+
+    .bk-hero-col {
+      font-size: 0.86rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.7;
+    }
+
+    .bk-hero-col strong {
+      color: #fff;
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.01em;
+    }
+
+    .bk-hero-col:not(:last-child) {
+      border-right: 1px solid #1a1a1a;
+      padding-right: 2rem;
+    }
+
+    /* ── WHAT WE DO — ruled editorial list ── */
+    .bk-list {
+      display: flex;
+      flex-direction: column;
+      margin-top: 2.5rem;
+    }
+
+    .bk-list-item {
+      display: grid;
+      grid-template-columns: 52px 1fr auto;
+      align-items: center;
+      gap: 2rem;
+      padding: 1.6rem 0;
+      border-bottom: 1px solid #1c1c1c;
+      transition: background 0.15s;
+      cursor: default;
+    }
+
+    .bk-list-item:first-child {
+      border-top: 1px solid #1c1c1c;
+    }
+
+    .bk-list-item:hover .bkl-title {
+      color: var(--accent);
+    }
+
+    .bkl-num {
+      font-size: 0.65rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-align: right;
+    }
+
+    .bkl-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      transition: color 0.15s;
+      margin-bottom: 0.2rem;
+    }
+
+    .bkl-desc {
+      font-size: 0.83rem;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .bkl-format {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.2);
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    /* ── EDITORIAL BOOK SPREAD SECTION ── */
+    /* This is the special "real life book feel" editorial section */
+
+    .book-spread-section {
+      background: #f4f0e8; /* aged paper */
+      color: #111;
+      padding: 5rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle paper texture via pseudo gradient noise */
+    .book-spread-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 23px,
+          rgba(0,0,0,0.018) 24px
+        );
+      pointer-events: none;
+    }
+
+    .book-spread-section::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 120% 80% at 50% 10%, rgba(255,250,235,0.6) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* ── Editorial Masthead (light) ── */
+    .bs-masthead {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid #111;
+      margin-bottom: 0.3rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .bs-pub-name {
+      font-size: 2.4rem;
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      line-height: 1;
+      color: #111;
+      font-style: italic;
+    }
+
+    .bs-pub-right {
+      text-align: right;
+    }
+
+    .bs-issue-line {
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #888;
+    }
+
+    .bs-price {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #111;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+    }
+
+    .bs-ruling {
+      height: 3px;
+      background: #111;
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .bs-ruling::after {
+      content: '';
+      position: absolute;
+      top: 5px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: #111;
+    }
+
+    /* ── Main spread body ── */
+    .bs-body {
+      display: grid;
+      grid-template-columns: 2fr 1px 1.4fr 1px 1fr;
+      gap: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .bs-col {
+      padding: 0 2rem;
+    }
+
+    .bs-col:first-child {
+      padding-left: 0;
+    }
+
+    .bs-col:last-child {
+      padding-right: 0;
+    }
+
+    .bs-rule-v {
+      width: 1px;
+      background: rgba(0,0,0,0.15);
+      align-self: stretch;
+    }
+
+    /* Drop cap column (left main) */
+    .bs-drop-cap::first-letter {
+      float: left;
+      font-size: 5.5rem;
+      font-weight: 900;
+      line-height: 0.78;
+      margin-right: 0.08em;
+      margin-top: 0.05em;
+      color: #111;
+    }
+
+    .bs-kicker {
+      font-size: 0.6rem;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .bs-kicker::before {
+      content: '';
+      width: 22px;
+      height: 1px;
+      background: #888;
+    }
+
+    .bs-headline {
+      font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: #111;
+      margin: 0 0 0.6rem;
+    }
+
+    .bs-deck {
+      font-size: 0.94rem;
+      color: #444;
+      line-height: 1.6;
+      font-style: italic;
+      margin-bottom: 1.2rem;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid rgba(0,0,0,0.12);
+    }
+
+    .bs-body-text {
+      font-size: 0.82rem;
+      line-height: 1.72;
+      color: #555;
+      columns: 2;
+      column-gap: 1.4rem;
+      column-rule: 1px solid rgba(0,0,0,0.1);
+    }
+
+    /* Pull quote in body */
+    .bs-pullquote {
+      column-span: all;
+      margin: 1.4rem 0;
+      padding: 1.2rem 0;
+      border-top: 2px solid #111;
+      border-bottom: 2px solid #111;
+      font-size: 1.1rem;
+      font-weight: 800;
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+      color: #111;
+      font-style: italic;
+      text-align: center;
+    }
+
+    /* Image placeholder (editorial art box) */
+    .bs-art-box {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: linear-gradient(145deg, #ddd8cc, #c8c3b5);
+      border-radius: 3px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-bottom: 0.8rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bs-art-box::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          -45deg,
+          transparent,
+          transparent 8px,
+          rgba(0,0,0,0.04) 8px,
+          rgba(0,0,0,0.04) 9px
+        );
+    }
+
+    .bs-art-icon {
+      width: 40px;
+      height: 40px;
+      border: 1.5px solid rgba(0,0,0,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .bs-art-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: rgba(0,0,0,0.3);
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .bs-art-caption {
+      font-size: 0.62rem;
+      color: rgba(0,0,0,0.3);
+      letter-spacing: 0.1em;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .bs-caption {
+      font-size: 0.7rem;
+      color: #888;
+      line-height: 1.5;
+      font-style: italic;
+      margin-bottom: 1.4rem;
+    }
+
+    /* Middle column (secondary article) */
+    .bs-secondary-headline {
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: #111;
+      line-height: 1.2;
+      margin-bottom: 0.6rem;
+      border-top: 2px solid #111;
+      padding-top: 0.8rem;
+    }
+
+    .bs-secondary-body {
+      font-size: 0.78rem;
+      line-height: 1.7;
+      color: #555;
+      margin-bottom: 1.2rem;
+    }
+
+    .bs-tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin: 1rem 0;
+    }
+
+    .bs-tag {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border: 1px solid rgba(0,0,0,0.2);
+      border-radius: 3px;
+      color: #555;
+    }
+
+    /* Right sidebar column */
+    .bs-sidebar-box {
+      background: #111;
+      color: #fff;
+      padding: 1.4rem;
+      border-radius: 4px;
+      margin-bottom: 1.4rem;
+    }
+
+    .bs-sidebar-box h4 {
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+
+    .bs-sidebar-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.5;
+    }
+
+    .bs-sidebar-item:last-child {
+      border-bottom: none;
+    }
+
+    .bs-sidebar-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+
+    .bs-folio {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1.4rem;
+      margin-top: 1.6rem;
+      border-top: 1px solid rgba(0,0,0,0.12);
+      position: relative;
+      z-index: 1;
+    }
+
+    .bs-folio-pg {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #888;
+      letter-spacing: 0.1em;
+    }
+
+    .bs-folio-title {
+      font-size: 0.65rem;
+      color: #bbb;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    /* ── STORYBOARD SECTION ── */
+    .sb-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-top: 2rem;
+    }
+
+    .sb-panel {
+      background: #0a0a0a;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sb-panel.wide {
+      grid-column: span 2;
+    }
+
+    .sb-frame {
+      flex: 1;
+      min-height: 180px;
+      background: linear-gradient(160deg, #0f0f0f, #141414);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sb-panel.wide .sb-frame {
+      min-height: 220px;
+    }
+
+    /* Simulated scene composition lines */
+    .sb-frame::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, transparent 30%, rgba(47,157,255,0.03) 50%, transparent 70%),
+        repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(255,255,255,0.015) 60px, rgba(255,255,255,0.015) 61px);
+    }
+
+    .sb-scene-marker {
+      position: absolute;
+      top: 0.8rem;
+      left: 0.8rem;
+      font-size: 0.6rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      background: rgba(47,157,255,0.08);
+      border: 1px solid rgba(47,157,255,0.2);
+      border-radius: 3px;
+      padding: 0.2rem 0.55rem;
+    }
+
+    .sb-action-hint {
+      position: absolute;
+      bottom: 0.8rem;
+      right: 0.8rem;
+      font-size: 0.6rem;
+      color: rgba(255,255,255,0.15);
+      font-style: italic;
+    }
+
+    .sb-icon-comp {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0.3;
+    }
+
+    .sb-icon-comp svg {
+      width: 28px;
+      height: 28px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 1;
+    }
+
+    .sb-icon-comp span {
+      font-size: 0.55rem;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+    }
+
+    .sb-caption-bar {
+      padding: 0.8rem 1rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      gap: 0.8rem;
+      align-items: flex-start;
+    }
+
+    .sb-cap-num {
+      font-size: 0.6rem;
+      font-weight: 800;
+      color: var(--accent);
+      min-width: 18px;
+      margin-top: 2px;
+    }
+
+    .sb-cap-text {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.5;
+    }
+
+    .sb-cap-text strong {
+      color: rgba(255,255,255,0.85);
+      font-weight: 700;
+      display: block;
+      font-size: 0.8rem;
+    }
+
+    /* ── COVER SHOWCASE ── */
+    .cover-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .cover-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      cursor: default;
+      transition: transform 0.3s cubic-bezier(.2,.9,.2,1);
+    }
+
+    .cover-item:hover {
+      transform: translateY(-8px);
+    }
+
+    .cover-book {
+      width: 100%;
+      aspect-ratio: 2/3;
+      border-radius: 4px 10px 10px 4px;
+      position: relative;
+      overflow: hidden;
+      box-shadow:
+        -5px 5px 20px rgba(0,0,0,0.7),
+        inset -3px 0 10px rgba(0,0,0,0.35);
+    }
+
+    /* Spine shadow illusion */
+    .cover-book::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 18px;
+      background: linear-gradient(to right, rgba(0,0,0,0.55), transparent);
+      z-index: 2;
+      border-radius: 4px 0 0 4px;
+    }
+
+    /* Page edge illusion (right side) */
+    .cover-book::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 4px;
+      bottom: 4px;
+      width: 6px;
+      background: repeating-linear-gradient(
+        to bottom,
+        #f5f0e8,
+        #f5f0e8 1px,
+        #e8e3d8 2px,
+        #e8e3d8 3px
+      );
+      border-radius: 0 2px 2px 0;
+    }
+
+    .cover-inner {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.2rem;
+      z-index: 1;
+    }
+
+    .cover-genre {
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+      font-weight: 700;
+    }
+
+    .cover-title-text {
+      font-size: 1rem;
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .cover-author {
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      margin-top: 0.5rem;
+      opacity: 0.6;
+    }
+
+    /* Individual cover palettes */
+    .cover-01 {
+      background: linear-gradient(160deg, #0a1628 0%, #1a2f5a 40%, #0d2042 100%);
+      color: #e8f4ff;
+    }
+
+    .cover-01 .cover-genre { color: var(--accent); }
+
+    .cover-02 {
+      background: linear-gradient(160deg, #1a0a0a 0%, #3d1515 50%, #200d0d 100%);
+      color: #ffe8e8;
+    }
+
+    .cover-02 .cover-genre { color: #ff6b6b; }
+
+    .cover-03 {
+      background: linear-gradient(160deg, #0d1a0d 0%, #1a3520 50%, #0a1a0f 100%);
+      color: #e8f5ea;
+    }
+
+    .cover-03 .cover-genre { color: #5ddb7a; }
+
+    .cover-04 {
+      background: linear-gradient(160deg, #1a1508 0%, #3d3210 50%, #1a1408 100%);
+      color: #fff8e1;
+    }
+
+    .cover-04 .cover-genre { color: #f0c040; }
+
+    /* Decorative art elements inside covers */
+    .cover-art {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .cover-01 .cover-art {
+      background:
+        radial-gradient(circle 60px at 70% 30%, rgba(47,157,255,0.15), transparent),
+        radial-gradient(ellipse 120px 80px at 30% 70%, rgba(47,157,255,0.06), transparent);
+    }
+
+    .cover-02 .cover-art {
+      background:
+        radial-gradient(circle 80px at 60% 25%, rgba(255,80,80,0.12), transparent),
+        radial-gradient(ellipse 100px 60px at 40% 75%, rgba(200,40,40,0.08), transparent);
+    }
+
+    .cover-03 .cover-art {
+      background:
+        radial-gradient(circle 70px at 50% 20%, rgba(93,219,122,0.1), transparent),
+        radial-gradient(ellipse 120px 90px at 30% 65%, rgba(40,160,70,0.07), transparent);
+    }
+
+    .cover-04 .cover-art {
+      background:
+        radial-gradient(circle 90px at 60% 30%, rgba(240,192,64,0.1), transparent),
+        radial-gradient(ellipse 100px 60px at 35% 70%, rgba(200,150,20,0.07), transparent);
+    }
+
+    .cover-meta {
+      text-align: center;
+    }
+
+    .cover-meta-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.8);
+    }
+
+    .cover-meta-type {
+      font-size: 0.65rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ── HOW WE WORK — light precision grid ── */
+    .process-precision {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid #e5e5e5;
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-top: 2.5rem;
+    }
+
+    .pp-item {
+      padding: 2rem 2.2rem;
+      border-right: 1px solid #e5e5e5;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .pp-item:nth-child(even) { border-right: none; }
+    .pp-item:nth-last-child(-n+2) { border-bottom: none; }
+
+    .pp-num {
+      font-size: 3rem;
+      font-weight: 900;
+      color: rgba(0,0,0,0.05);
+      letter-spacing: -0.06em;
+      line-height: 1;
+      margin-bottom: 0.6rem;
+    }
+
+    .pp-item h3 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #111;
+      margin-bottom: 0.35rem;
+    }
+
+    .pp-item p {
+      font-size: 0.84rem;
+      color: #777;
+      line-height: 1.65;
+    }
+
+    /* ── SPECS TABLE (dark) ── */
+    .specs-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2rem;
+      font-size: 0.88rem;
+    }
+
+    .specs-table th {
+      text-align: left;
+      font-size: 0.66rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.28);
+      padding: 0.8rem 1.2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-weight: 700;
+    }
+
+    .specs-table td {
+      padding: 1rem 1.2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      color: rgba(255,255,255,0.65);
+      vertical-align: top;
+      line-height: 1.6;
+    }
+
+    .specs-table tr:last-child td { border-bottom: none; }
+    .specs-table td:first-child { font-weight: 700; color: #fff; white-space: nowrap; }
+
+    .spec-tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      background: rgba(47,157,255,0.08);
+      border: 1px solid rgba(47,157,255,0.15);
+      color: var(--accent);
+      margin-right: 0.3rem;
+      margin-bottom: 0.3rem;
+    }
+
+    /* ── CTA ── */
+    .bk-cta {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 3rem;
+      padding: 3rem;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius-lg);
+      background: #060606;
+      margin-top: 3rem;
+    }
+
+    .bk-cta h2 {
+      font-size: 1.9rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.15;
+      margin-bottom: 0.5rem;
+    }
+
+    .bk-cta p {
+      font-size: 0.9rem;
+      color: var(--muted-light);
+      line-height: 1.65;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .bk-headline-block { grid-template-columns: 1fr; }
+      .bk-hero-sidebar { max-width: 100%; border-left: none; border-top: 1px solid #2a2a2a; padding-left: 0; padding-top: 1.2rem; }
+      .bk-hero-cols { grid-template-columns: 1fr; }
+      .bk-hero-col:not(:last-child) { border-right: none; border-bottom: 1px solid #1a1a1a; padding-right: 0; padding-bottom: 1rem; }
+      .bs-body { grid-template-columns: 1fr; }
+      .bs-rule-v { display: none; }
+      .bs-body-text { columns: 1; }
+      .cover-showcase { grid-template-columns: 1fr 1fr; }
+      .sb-grid { grid-template-columns: 1fr; }
+      .sb-panel.wide { grid-column: span 1; }
+      .bk-cta { grid-template-columns: 1fr; gap: 1.5rem; }
+      .process-precision { grid-template-columns: 1fr; }
+      .pp-item { border-right: none; }
+      .pp-item:nth-last-child(-n+2) { border-bottom: 1px solid #e5e5e5; }
+      .pp-item:last-child { border-bottom: none; }
+    }
+
+    @media (max-width: 560px) {
+      .cover-showcase { grid-template-columns: 1fr 1fr; gap: 1rem; }
+      .bk-list-item { grid-template-columns: 36px 1fr; }
+      .bkl-format { display: none; }
+      .bs-masthead { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    }
+  
+
+    /* ── PS FRAME FIX — light bg ── */
+    .print-showcase {
+      background: #e0e0e0;
+    }
+    .ps-item {
+      background: #f5f5f5;
+    }
+    .ps-ph-icon {
+      background: rgba(0,0,0,0.06);
+      border: 1px solid rgba(0,0,0,0.12);
+    }
+    .ps-ph-icon svg {
+      stroke: rgba(0,0,0,0.35);
+    }
+    .ps-label {
+      color: rgba(0,0,0,0.35);
+    }
+    .ps-tag {
+      color: var(--accent);
+      background: rgba(47,157,255,0.08);
+      border: 1px solid rgba(47,157,255,0.2);
+    }
+</style>
+</head>
+<body>
+
+<gv-header page="works"></gv-header>
+
+<main class="page">
+
+<!-- ─── HERO ─── -->
+  <section class="section light reveal-on-scroll">
+    <div class="container pr-hero">
+      <div class="pr-hero-top">
+        <div class="pr-hero-label">Brochure, Flyer &amp; Print Media</div>
+        <div class="pr-hero-date">Print · Offset · Digital · Large Format</div>
+      </div>
+      <h1>Print that people<br>actually keep.</h1>
+      <div class="pr-hero-cols">
+        <div class="pr-hero-col">
+          <p>Most print collateral gets thrown away in seconds. Ours doesn't — because we design with <strong>hierarchy, intention and craft</strong>, not just templates.</p>
+        </div>
+        <div class="pr-hero-col">
+          <p>Every file is delivered <strong>print-ready</strong> — correct bleed, CMYK color profiles, embedded fonts and resolution that holds up at any size.</p>
+        </div>
+        <div class="pr-hero-col">
+          <p>From a single-page flyer to a <strong>48-page product catalogue</strong>, we handle the full design and pre-press production process end to end.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── WHAT WE DESIGN ─── -->
+  <section class="section light reveal-on-scroll" style="padding-top:0;">
+    <div class="container">
+      <p class="eyebrow" style="color:var(--accent);margin-bottom:0.6rem;">What we design</p>
+      <h2 style="font-size:1.8rem;font-weight:800;letter-spacing:-0.03em;color:var(--text-dark);">Every print format, covered.</h2>
+
+      <div class="print-list">
+        <div class="print-list-item reveal-on-scroll">
+          <div class="pl-num">01</div>
+          <div class="pl-body">
+            <div class="pl-title">Brochures &amp; Catalogues</div>
+            <div class="pl-desc">Bi-fold, tri-fold, saddle-stitched — from 4 pages to 80+. Designed for products, services and investor decks.</div>
+          </div>
+          <div class="pl-format">A4 · A5 · DL · Custom</div>
+        </div>
+        <div class="print-list-item reveal-on-scroll">
+          <div class="pl-num">02</div>
+          <div class="pl-body">
+            <div class="pl-title">Flyers &amp; Leaflets</div>
+            <div class="pl-desc">Event promotions, product launches and offers — single or double sided, designed to stop people mid-walk.</div>
+          </div>
+          <div class="pl-format">A5 · A6 · Square</div>
+        </div>
+        <div class="print-list-item reveal-on-scroll">
+          <div class="pl-num">03</div>
+          <div class="pl-body">
+            <div class="pl-title">Posters &amp; Banners</div>
+            <div class="pl-desc">Retail, trade show, event and outdoor banners — built at actual print resolution so they stay sharp at 10 feet.</div>
+          </div>
+          <div class="pl-format">A3 · A2 · A1 · Custom</div>
+        </div>
+        <div class="print-list-item reveal-on-scroll">
+          <div class="pl-num">04</div>
+          <div class="pl-body">
+            <div class="pl-title">Business Cards &amp; Stationery</div>
+            <div class="pl-desc">Letterheads, envelopes, compliment slips, notepads — the full stationery suite to match your brand system.</div>
+          </div>
+          <div class="pl-format">Standard · Spot UV · Embossed</div>
+        </div>
+        <div class="print-list-item reveal-on-scroll">
+          <div class="pl-num">05</div>
+          <div class="pl-body">
+            <div class="pl-title">Packaging &amp; Labels</div>
+            <div class="pl-desc">Product boxes, bottle labels, hang tags and inserts — dieline-ready files built to your printer's specifications.</div>
+          </div>
+          <div class="pl-format">Dieline · CMYK · Spot</div>
+        </div>
+        <div class="print-list-item reveal-on-scroll">
+          <div class="pl-num">06</div>
+          <div class="pl-body">
+            <div class="pl-title">Menus &amp; Hospitality</div>
+            <div class="pl-desc">Restaurant menus, hotel guides, event programmes — designed to feel premium in the hand, not just on screen.</div>
+          </div>
+          <div class="pl-format">A4 · Booklet · Card</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SHOWCASE ─── -->
+  <section class="section dark reveal-on-scroll">
+    <div class="container">
+      <h2 style="font-size:1.8rem;font-weight:800;letter-spacing:-0.03em;">Selected work.</h2>
+      <p style="color:var(--muted-light);font-size:0.88rem;margin-top:0.3rem;">Drop your print mockups in — grid is ready.</p>
+
+      <div class="print-showcase">
+
+        <div class="ps-item tall">
+          <span class="ps-tag">Catalogue</span>
+          <div class="ps-frame">
+            <div class="ps-ph-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            </div>
+            <div class="ps-label">Product catalogue<br>48 pages</div>
+          </div>
+        </div>
+
+        <div class="ps-item">
+          <span class="ps-tag">Brochure</span>
+          <div class="ps-frame">
+            <div class="ps-ph-icon">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/></svg>
+            </div>
+            <div class="ps-label">Tri-fold brochure</div>
+          </div>
+        </div>
+
+        <div class="ps-item">
+          <span class="ps-tag">Poster</span>
+          <div class="ps-frame">
+            <div class="ps-ph-icon">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            </div>
+            <div class="ps-label">Event poster A1</div>
+          </div>
+        </div>
+
+        <div class="ps-item">
+          <span class="ps-tag">Business Card</span>
+          <div class="ps-frame">
+            <div class="ps-ph-icon">
+              <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+            </div>
+            <div class="ps-label">Business card — spot UV</div>
+          </div>
+        </div>
+
+        <div class="ps-item">
+          <span class="ps-tag">Packaging</span>
+          <div class="ps-frame">
+            <div class="ps-ph-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            </div>
+            <div class="ps-label">Product box — dieline</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FLIPBOOK ─── -->
+  <section class="section light reveal-on-scroll">
+    <div class="container">
+      <p class="eyebrow" style="color:var(--accent);margin-bottom:0.6rem;">Live Preview</p>
+      <h2 style="font-size:1.8rem;font-weight:800;letter-spacing:-0.03em;color:#111;">Flip through a sample<br>company profile.</h2>
+      <p style="color:#888;font-size:0.9rem;margin-top:0.5rem;margin-bottom:2rem;">Click the pages or use the arrows to flip. Drag to turn.</p>
+
+      <div class="flipbook-wrap">
+        <div id="flipbook">
+          <!-- COVER -->
+          <div class="fb-page fb-cover">
+            <div class="fb-page-inner">
+              <div class="fb-cover-badge">Company Profile</div>
+              <div class="fb-cover-title">Graphy<br>Vector<br>Studio</div>
+              <div class="fb-cover-sub">Motion · Branding · Visual Design</div>
+              <div class="fb-cover-year">2025</div>
+            </div>
+          </div>
+
+          <!-- PAGE 1 — About -->
+          <div class="fb-page">
+            <div class="fb-page-inner fb-light">
+              <div class="fb-pg-num">01</div>
+              <div class="fb-pg-label">About Us</div>
+              <div class="fb-pg-title">Who we are</div>
+              <div class="fb-pg-body">Graphy Vector Studio is a full-stack creative studio specializing in motion design, brand identity and 3D visualization for startups and product brands worldwide.</div>
+              <div class="fb-pg-rule"></div>
+              <div class="fb-pg-stats">
+                <div class="fb-stat"><span>77+</span>Clients</div>
+                <div class="fb-stat"><span>8</span>Countries</div>
+                <div class="fb-stat"><span>263+</span>Projects</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PAGE 2 — Services -->
+          <div class="fb-page">
+            <div class="fb-page-inner fb-light">
+              <div class="fb-pg-num">02</div>
+              <div class="fb-pg-label">Services</div>
+              <div class="fb-pg-title">What we do</div>
+              <div class="fb-service-list">
+                <div class="fb-service-row"><span>01</span>Brand Identity &amp; Logo Design</div>
+                <div class="fb-service-row"><span>02</span>Motion &amp; Lottie Animation</div>
+                <div class="fb-service-row"><span>03</span>3D Modeling &amp; Product Render</div>
+                <div class="fb-service-row"><span>04</span>Print &amp; Marketing Collateral</div>
+                <div class="fb-service-row"><span>05</span>Social Media Design</div>
+                <div class="fb-service-row"><span>06</span>Architecture Visualization</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PAGE 3 — Work -->
+          <div class="fb-page">
+            <div class="fb-page-inner fb-dark">
+              <div class="fb-pg-num" style="color:rgba(255,255,255,0.3);">03</div>
+              <div class="fb-pg-label" style="color:var(--accent);">Selected Work</div>
+              <div class="fb-pg-title" style="color:#fff;">Projects that<br>made an impact.</div>
+              <div class="fb-work-grid">
+                <div class="fb-work-item">Brand Identity<br><small>SaaS Startup</small></div>
+                <div class="fb-work-item">3D Animation<br><small>D2C Cosmetics</small></div>
+                <div class="fb-work-item">Motion Design<br><small>Fintech App</small></div>
+                <div class="fb-work-item">Print Collateral<br><small>Real Estate</small></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PAGE 4 — Process -->
+          <div class="fb-page">
+            <div class="fb-page-inner fb-light">
+              <div class="fb-pg-num">04</div>
+              <div class="fb-pg-label">Process</div>
+              <div class="fb-pg-title">How we work</div>
+              <div class="fb-process-steps">
+                <div class="fb-process-step"><div class="fb-step-dot">1</div><div><strong>Discover</strong><p>Brief, research, benchmarking</p></div></div>
+                <div class="fb-process-step"><div class="fb-step-dot">2</div><div><strong>Design</strong><p>Concepts, direction, prototypes</p></div></div>
+                <div class="fb-process-step"><div class="fb-step-dot">3</div><div><strong>Execute</strong><p>Production &amp; quality review</p></div></div>
+                <div class="fb-process-step"><div class="fb-step-dot">4</div><div><strong>Deliver</strong><p>Files, docs &amp; handoff</p></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PAGE 5 — Contact -->
+          <div class="fb-page">
+            <div class="fb-page-inner fb-light">
+              <div class="fb-pg-num">05</div>
+              <div class="fb-pg-label">Contact</div>
+              <div class="fb-pg-title">Let's work<br>together.</div>
+              <div class="fb-pg-rule"></div>
+              <div class="fb-contact-row">✉ graphyvector@gmail.com</div>
+              <div class="fb-contact-row">📞 +91 70299 33095</div>
+              <div class="fb-contact-row">🌐 graphyvector.com</div>
+              <div class="fb-contact-row">in linkedin.com/in/graphy-vector</div>
+            </div>
+          </div>
+
+          <!-- BACK COVER -->
+          <div class="fb-page fb-back-cover">
+            <div class="fb-page-inner">
+              <div class="fb-back-logo">GV</div>
+              <div class="fb-back-tagline">Let The Design<br>Speak for You</div>
+              <div class="fb-back-url">graphyvector.com</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="fb-controls">
+          <button class="fb-btn" id="fb-prev">← Prev</button>
+          <span class="fb-page-count" id="fb-count">Page 1 of 7</span>
+          <button class="fb-btn" id="fb-next">Next →</button>
+        </div>
+
+        <p class="fb-hint">💡 Replace these placeholder pages with your actual brochure images — just swap the <code>.fb-page</code> divs with <code>&lt;img&gt;</code> tags pointing to your exported PDF pages.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── WHAT MAKES GOOD PRINT ─── -->
+  <section class="section light reveal-on-scroll">
+    <div class="container">
+      <p class="eyebrow" style="color:var(--accent);margin-bottom:0.6rem;">Our standards</p>
+      <h2 style="font-size:1.8rem;font-weight:800;letter-spacing:-0.03em;color:var(--text-dark);">What separates good print<br>from great print.</h2>
+
+      <div class="precision-grid">
+        <div class="precision-item reveal-on-scroll">
+          <div class="precision-num">01</div>
+          <h3>Hierarchy that guides the eye</h3>
+          <p>Every layout has a clear reading order — headline, subhead, body, CTA. The reader's eye is guided, never lost.</p>
+        </div>
+        <div class="precision-item reveal-on-scroll">
+          <div class="precision-num">02</div>
+          <h3>Correct bleed &amp; safe zones</h3>
+          <p>All files include 3mm bleed and safe zones so nothing important gets cut during production. Print-ready from day one.</p>
+        </div>
+        <div class="precision-item reveal-on-scroll">
+          <div class="precision-num">03</div>
+          <h3>CMYK color accuracy</h3>
+          <p>We work in CMYK from the start — not converted at the end. Colors print the way they look on screen.</p>
+        </div>
+        <div class="precision-item reveal-on-scroll">
+          <div class="precision-num">04</div>
+          <h3>Typography that works at scale</h3>
+          <p>Font choices that stay legible at 8pt body copy and still feel premium at 120pt headlines. Both matter in print.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SPECS TABLE ─── -->
+  <section class="section light reveal-on-scroll" style="padding-top:0;">
+    <div class="container">
+      <p class="eyebrow" style="color:var(--accent);margin-bottom:0.6rem;">Deliverables</p>
+      <h2 style="font-size:1.8rem;font-weight:800;letter-spacing:-0.03em;color:var(--text-dark);">What you get with every project.</h2>
+
+      <table class="specs-table" style="border:1px solid #e5e5e5;border-radius:var(--radius);overflow:hidden;">
+        <thead style="background:#f5f5f5;">
+          <tr>
+            <th style="color:#999;">Item</th>
+            <th style="color:#999;">Formats</th>
+            <th style="color:#999;">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="color:#111;border-bottom:1px solid #eee;">Print-ready PDF</td>
+            <td style="border-bottom:1px solid #eee;">
+              <span class="spec-tag">PDF/X-1a</span>
+              <span class="spec-tag">PDF/X-4</span>
+            </td>
+            <td style="color:#666;border-bottom:1px solid #eee;">With bleed, crop marks and embedded fonts</td>
+          </tr>
+          <tr>
+            <td style="color:#111;border-bottom:1px solid #eee;">Editable Source File</td>
+            <td style="border-bottom:1px solid #eee;">
+              <span class="spec-tag">AI</span>
+              <span class="spec-tag">INDD</span>
+              <span class="spec-tag">PSD</span>
+            </td>
+            <td style="color:#666;border-bottom:1px solid #eee;">Fully layered, labeled and organized</td>
+          </tr>
+          <tr>
+            <td style="color:#111;border-bottom:1px solid #eee;">Web/Digital Version</td>
+            <td style="border-bottom:1px solid #eee;">
+              <span class="spec-tag">RGB PDF</span>
+              <span class="spec-tag">PNG</span>
+              <span class="spec-tag">JPG</span>
+            </td>
+            <td style="color:#666;border-bottom:1px solid #eee;">Screen-optimized for email and social use</td>
+          </tr>
+          <tr>
+            <td style="color:#111;border-bottom:1px solid #eee;">Color Profiles</td>
+            <td style="border-bottom:1px solid #eee;">
+              <span class="spec-tag">CMYK</span>
+              <span class="spec-tag">Pantone</span>
+            </td>
+            <td style="color:#666;border-bottom:1px solid #eee;">Matched to your print vendor specifications</td>
+          </tr>
+          <tr>
+            <td style="color:#111;">Font Files</td>
+            <td>
+              <span class="spec-tag">OTF</span>
+              <span class="spec-tag">TTF</span>
+            </td>
+            <td style="color:#666;">Licensed fonts included where possible</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  
+
+
+  <!-- ═══════════════════════════════════════════
+       BOOK ILLUSTRATION & COVER DESIGN
+  ═══════════════════════════════════════════ -->
+  <section class="section light" style="padding:3rem 0 0;">
+    <div class="container">
+      <div style="display:flex;align-items:center;gap:1rem;padding:1.5rem 0;border-top:3px solid #111;border-bottom:1px solid #e5e5e5;margin-bottom:0;">
+        <span style="font-size:0.68rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);">Also in Print Media</span>
+        <span style="flex:1;height:1px;background:#e5e5e5;"></span>
+        <span style="font-size:1.4rem;font-weight:900;color:#111;letter-spacing:-0.03em;">Book Illustration &amp; Cover Design</span>
+      </div>
+    </div>
+  </section>
+
+
+<!-- ═══════════════════════════════════════════
+         HERO — Editorial Dark Magazine
+    ═══════════════════════════════════════════ -->
+    <section class="section dark bk-hero reveal-on-scroll">
+      <div class="container">
+
+        <div class="bk-masthead">
+          <div class="bk-masthead-left">
+            <span class="bk-issue-badge">Craft Series</span>
+            <span class="bk-vol">Vol. IV — Narrative Visual Design</span>
+          </div>
+          <span class="bk-masthead-right">Graphy Vector Studio · graphyvector.com</span>
+        </div>
+
+        <div class="bk-headline-block">
+          <h1 class="bk-hero-h1">
+            Book<br>
+            <em>Illustration</em><br>
+            &amp; Cover<br>
+            Design
+          </h1>
+          <div class="bk-hero-sidebar">
+            <p>
+              We turn manuscripts into visual experiences — from concept sketches to print-ready artwork that sells books before a reader reads a word.
+            </p>
+            <div class="bk-stat">
+              <strong>120+</strong>
+              <span>Covers Designed</span>
+            </div>
+            <div class="bk-stat">
+              <strong>34</strong>
+              <span>Published Titles</span>
+            </div>
+            <div class="bk-stat">
+              <strong>8</strong>
+              <span>Countries Served</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bk-hero-cols">
+          <div class="bk-hero-col">
+            <strong>What We Do</strong>
+            We craft every visual layer of a book — from the spine to the spread. Full illustration suites, editorial covers, and narrative storyboards, all built to publishing standards.
+          </div>
+          <div class="bk-hero-col">
+            <strong>Who It's For</strong>
+            Independent authors, publishers, literary agents, comic studios, children's book creators, and brands producing illustrated content for storytelling.
+          </div>
+          <div class="bk-hero-col">
+            <strong>File Delivery</strong>
+            Print-ready PDF (CMYK, 300 DPI), AI source files, layered PSD, ePub-optimized RGB exports, and web-optimized JPEG/PNG — whichever you need.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         WHAT WE CREATE — Ruled List
+    ═══════════════════════════════════════════ -->
+    <section class="section dark reveal-on-scroll">
+      <div class="container">
+        <h2 class="section-title">What We Create</h2>
+        <p class="section-intro">
+          Every format, every genre, every discipline — if it lives inside or on a book, we design it.
+        </p>
+
+        <div class="bk-list">
+          <div class="bk-list-item">
+            <span class="bkl-num">01</span>
+            <div>
+              <div class="bkl-title">Book Cover Design</div>
+              <div class="bkl-desc">Front, spine and back — genre-accurate, shelf-stopping, digitally and print-optimised</div>
+            </div>
+            <span class="bkl-format">AI · PDF · JPG</span>
+          </div>
+
+          <div class="bk-list-item">
+            <span class="bkl-num">02</span>
+            <div>
+              <div class="bkl-title">Interior Illustration</div>
+              <div class="bkl-desc">Chapter headers, full spreads, spot illustrations and decorative ornaments</div>
+            </div>
+            <span class="bkl-format">SVG · PDF · PNG</span>
+          </div>
+
+          <div class="bk-list-item">
+            <span class="bkl-num">03</span>
+            <div>
+              <div class="bkl-title">Children's Book Illustration</div>
+              <div class="bkl-desc">Character creation, world-building, vibrant page-by-page storytelling</div>
+            </div>
+            <span class="bkl-format">AI · PSD · PDF</span>
+          </div>
+
+          <div class="bk-list-item">
+            <span class="bkl-num">04</span>
+            <div>
+              <div class="bkl-title">Storyboarding</div>
+              <div class="bkl-desc">Scene-by-scene narrative boards for books, animation pre-production and pitches</div>
+            </div>
+            <span class="bkl-format">PDF · PNG · PSD</span>
+          </div>
+
+          <div class="bk-list-item">
+            <span class="bkl-num">05</span>
+            <div>
+              <div class="bkl-title">Graphic Novel & Comic Art</div>
+              <div class="bkl-desc">Panel layouts, linework, inking, colouring and lettering — full pipeline support</div>
+            </div>
+            <span class="bkl-format">CBZ · PDF · AI</span>
+          </div>
+
+          <div class="bk-list-item">
+            <span class="bkl-num">06</span>
+            <div>
+              <div class="bkl-title">Typography & Lettering</div>
+              <div class="bkl-desc">Custom title lettering, drop caps, editorial type layouts and font pairing</div>
+            </div>
+            <span class="bkl-format">OTF · SVG · AI</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         EDITORIAL BOOK SPREAD  ← THE SPECIAL SECTION
+         Feels like opening a real editorial magazine/book
+    ═══════════════════════════════════════════ -->
+    <section class="book-spread-section reveal-on-scroll">
+      <div class="container">
+
+        <!-- Masthead -->
+        <div class="bs-masthead">
+          <div class="bs-pub-name">The Illustrated Page</div>
+          <div class="bs-pub-right">
+            <div class="bs-issue-line">Graphy Vector Studio · Studio Quarterly</div>
+            <div class="bs-price">₹ 599</div>
+          </div>
+        </div>
+        <div class="bs-ruling"></div>
+
+        <!-- 3-column editorial body -->
+        <div class="bs-body">
+
+          <!-- LEFT — main feature article -->
+          <div class="bs-col">
+            <div class="bs-kicker">Cover Story</div>
+            <h2 class="bs-headline">Why a Cover is a Promise</h2>
+            <p class="bs-deck">
+              A well-designed cover doesn't describe the book — it makes the reader feel something before a single page is turned.
+            </p>
+
+            <div class="bs-art-box" style="aspect-ratio:16/9; margin-bottom:0.7rem;">
+              <div class="bs-art-icon">
+                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              </div>
+              <span class="bs-art-caption">ILLUSTRATION PLACEHOLDER · COVER DESIGN SAMPLE</span>
+            </div>
+            <p class="bs-caption">Fig. 1 — Concept sketch to final cover, three-stage editorial process.</p>
+
+            <div class="bs-body-text">
+              The cover is the first sensory contract between author and reader. Before a blurb is read, before a review is trusted, the image does its work in less than two seconds — genre, mood, quality, price point, all decoded subconsciously.
+
+              <div class="bs-pullquote">"The best covers don't illustrate the book — they distil its emotional core into a single frame."</div>
+
+              We approach every cover through the lens of the genre market. A literary fiction cover that looks like a thriller is a broken promise. We study shelf context, bestseller visual language, and the specific reader who should feel seen by this cover — then we design against that brief with precision.
+
+              Typography carries equal weight. Title lettering, subtitle hierarchy, author name scale — all calibrated to both digital thumbnail (where most books are first discovered) and print shelf. We deliver layered source files alongside final exports, so publishers retain full control at every future touchpoint.
+            </div>
+          </div>
+
+          <!-- Rule -->
+          <div class="bs-rule-v"></div>
+
+          <!-- MIDDLE — secondary article -->
+          <div class="bs-col">
+
+            <div class="bs-art-box" style="aspect-ratio:3/4;">
+              <div class="bs-art-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              </div>
+              <span class="bs-art-caption">INTERIOR SPREAD PLACEHOLDER</span>
+            </div>
+            <p class="bs-caption">Fig. 2 — Chapter opener with drop cap ornament and full-bleed illustration.</p>
+
+            <h3 class="bs-secondary-headline">Interior Illustration as Narrative Architecture</h3>
+            <p class="bs-secondary-body">
+              Where covers attract, interior illustrations deepen. We design illustration systems that work in dialogue with the text — never decorating, always meaning.
+            </p>
+            <p class="bs-secondary-body">
+              Each spot illustration is positioned to punctuate rhythm, not interrupt it. Chapter openers create anticipation. Full-bleed spreads create pause. The reader doesn't notice the design — they just feel the story working.
+            </p>
+
+            <div class="bs-tag-row">
+              <span class="bs-tag">Editorial</span>
+              <span class="bs-tag">Children's</span>
+              <span class="bs-tag">Literary Fiction</span>
+              <span class="bs-tag">Graphic Novel</span>
+              <span class="bs-tag">Non-Fiction</span>
+            </div>
+
+            <h3 class="bs-secondary-headline" style="margin-top:1rem;">Storyboarding: The Invisible Foundation</h3>
+            <p class="bs-secondary-body">
+              Every illustrated page begins with a board. We map visual pacing before a single finished line is drawn — ensuring the narrative breathes correctly across the spread.
+            </p>
+
+          </div>
+
+          <!-- Rule -->
+          <div class="bs-rule-v"></div>
+
+          <!-- RIGHT — sidebar box -->
+          <div class="bs-col">
+
+            <div class="bs-sidebar-box">
+              <h4>Disciplines Covered</h4>
+              <div class="bs-sidebar-item">
+                <div class="bs-sidebar-dot"></div>
+                Cover Design (front / spine / back)
+              </div>
+              <div class="bs-sidebar-item">
+                <div class="bs-sidebar-dot"></div>
+                Interior Illustration Suites
+              </div>
+              <div class="bs-sidebar-item">
+                <div class="bs-sidebar-dot"></div>
+                Children's Book Illustration
+              </div>
+              <div class="bs-sidebar-item">
+                <div class="bs-sidebar-dot"></div>
+                Graphic Novel Panels
+              </div>
+              <div class="bs-sidebar-item">
+                <div class="bs-sidebar-dot"></div>
+                Storyboarding & Pitch Boards
+              </div>
+              <div class="bs-sidebar-item">
+                <div class="bs-sidebar-dot"></div>
+                Custom Lettering & Title Type
+              </div>
+            </div>
+
+            <div class="bs-art-box" style="aspect-ratio:1/1; margin-bottom:0.6rem;">
+              <div class="bs-art-icon">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+              </div>
+              <span class="bs-art-caption">CHARACTER STUDY · PLACEHOLDER</span>
+            </div>
+            <p class="bs-caption">Fig. 3 — Character turnaround sheet for children's book project.</p>
+
+            <div class="bs-sidebar-box" style="background: #f4f0e8; color: #111; border: 1px solid rgba(0,0,0,0.08);">
+              <h4 style="color: #888;">Typical Timeline</h4>
+              <div class="bs-sidebar-item" style="color: #555; border-color: rgba(0,0,0,0.08);">
+                <div class="bs-sidebar-dot" style="background:#111;"></div>
+                Cover concept: 3–5 days
+              </div>
+              <div class="bs-sidebar-item" style="color: #555; border-color: rgba(0,0,0,0.08);">
+                <div class="bs-sidebar-dot" style="background:#111;"></div>
+                Storyboard (per 10 scenes): 4–7 days
+              </div>
+              <div class="bs-sidebar-item" style="color: #555; border-color: rgba(0,0,0,0.08);">
+                <div class="bs-sidebar-dot" style="background:#111;"></div>
+                Interior suite (10 illos): 2–3 weeks
+              </div>
+              <div class="bs-sidebar-item" style="color: #555; border-color: rgba(0,0,0,0.08); border-bottom: none;">
+                <div class="bs-sidebar-dot" style="background:#111;"></div>
+                Full book project: agreed on brief
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Folio line -->
+        <div class="bs-folio">
+          <span class="bs-folio-pg">← 04</span>
+          <span class="bs-folio-title">Graphy Vector Studio — Book Illustration &amp; Cover Design</span>
+          <span class="bs-folio-pg">05 →</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         STORYBOARD SECTION
+    ═══════════════════════════════════════════ -->
+    <section class="section dark reveal-on-scroll">
+      <div class="container">
+        <h2 class="section-title">Storyboarding in Action</h2>
+        <p class="section-intro">
+          Before any illustration begins, we plan the visual narrative scene-by-scene — pacing, camera angle, mood, and composition all locked before the final line is drawn.
+        </p>
+
+        <div class="sb-grid">
+
+          <!-- Panel 1 — wide establishing -->
+          <div class="sb-panel wide">
+            <div class="sb-frame">
+              <span class="sb-scene-marker">SC 01 · WIDE</span>
+              <span class="sb-action-hint">Establishing shot</span>
+              <div class="sb-icon-comp">
+                <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                <span>Landscape wide</span>
+              </div>
+            </div>
+            <div class="sb-caption-bar">
+              <span class="sb-cap-num">1</span>
+              <div class="sb-cap-text">
+                <strong>Establishing the World</strong>
+                Wide establishing shot. Skyline at dusk. Hero silhouetted against the horizon — scale and isolation communicated immediately.
+              </div>
+            </div>
+          </div>
+
+          <!-- Panel 2 — portrait close -->
+          <div class="sb-panel">
+            <div class="sb-frame">
+              <span class="sb-scene-marker">SC 02 · CU</span>
+              <span class="sb-action-hint">Character reveal</span>
+              <div class="sb-icon-comp">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg>
+                <span>Close-up face</span>
+              </div>
+            </div>
+            <div class="sb-caption-bar">
+              <span class="sb-cap-num">2</span>
+              <div class="sb-cap-text">
+                <strong>Character Reveal</strong>
+                Tight face shot — eyes catching light. Emotion before dialogue.
+              </div>
+            </div>
+          </div>
+
+          <!-- Panel 3 — medium action -->
+          <div class="sb-panel">
+            <div class="sb-frame">
+              <span class="sb-scene-marker">SC 03 · MS</span>
+              <span class="sb-action-hint">Action beat</span>
+              <div class="sb-icon-comp">
+                <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                <span>Medium shot</span>
+              </div>
+            </div>
+            <div class="sb-caption-bar">
+              <span class="sb-cap-num">3</span>
+              <div class="sb-cap-text">
+                <strong>Action Beat</strong>
+                Dynamic pose mid-motion. Line of action flows left-to-right — momentum maintained.
+              </div>
+            </div>
+          </div>
+
+          <!-- Panel 4 — detail -->
+          <div class="sb-panel">
+            <div class="sb-frame">
+              <span class="sb-scene-marker">SC 04 · ECU</span>
+              <span class="sb-action-hint">Object detail</span>
+              <div class="sb-icon-comp">
+                <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                <span>Extreme close</span>
+              </div>
+            </div>
+            <div class="sb-caption-bar">
+              <span class="sb-cap-num">4</span>
+              <div class="sb-cap-text">
+                <strong>Object Detail</strong>
+                The key — symbolic prop close-up. Reader attention directed to plot catalyst.
+              </div>
+            </div>
+          </div>
+
+          <!-- Panel 5 — wide reaction -->
+          <div class="sb-panel wide">
+            <div class="sb-frame">
+              <span class="sb-scene-marker">SC 05 · OTS</span>
+              <span class="sb-action-hint">Over-the-shoulder moment</span>
+              <div class="sb-icon-comp">
+                <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                <span>Two-shot</span>
+              </div>
+            </div>
+            <div class="sb-caption-bar">
+              <span class="sb-cap-num">5</span>
+              <div class="sb-cap-text">
+                <strong>Tension &amp; Resolution</strong>
+                Over-the-shoulder framing — confrontation, connection, or revelation. The widest emotional beat of the sequence.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         COVER SHOWCASE
+    ═══════════════════════════════════════════ -->
+    <section class="section light reveal-on-scroll">
+      <div class="container">
+        <h2 class="section-title centered" style="color:#111;">Cover Design Gallery</h2>
+        <p class="section-intro centered" style="color:#666;">
+          A selection of cover concepts across genre — each designed for the specific reader, market and shelf context of that title.
+        </p>
+
+        <div class="cover-showcase">
+
+          <div class="cover-item">
+            <div class="cover-book cover-01">
+              <div class="cover-art"></div>
+              <div class="cover-inner">
+                <div class="cover-genre">Sci-Fi Thriller</div>
+                <div class="cover-title-text">The Last Signal</div>
+                <div class="cover-author">by A. Mehta</div>
+              </div>
+            </div>
+            <div class="cover-meta">
+              <div class="cover-meta-title">Deep Space / Isolation</div>
+              <div class="cover-meta-type">Concept Cover</div>
+            </div>
+          </div>
+
+          <div class="cover-item">
+            <div class="cover-book cover-02">
+              <div class="cover-art"></div>
+              <div class="cover-inner">
+                <div class="cover-genre">Dark Fantasy</div>
+                <div class="cover-title-text">Blood &amp; Velvet</div>
+                <div class="cover-author">by S. Kapur</div>
+              </div>
+            </div>
+            <div class="cover-meta">
+              <div class="cover-meta-title">Gothic / Dramatic</div>
+              <div class="cover-meta-type">Concept Cover</div>
+            </div>
+          </div>
+
+          <div class="cover-item">
+            <div class="cover-book cover-03">
+              <div class="cover-art"></div>
+              <div class="cover-inner">
+                <div class="cover-genre">Literary Fiction</div>
+                <div class="cover-title-text">The Quiet Forest</div>
+                <div class="cover-author">by P. Rao</div>
+              </div>
+            </div>
+            <div class="cover-meta">
+              <div class="cover-meta-title">Nature / Meditative</div>
+              <div class="cover-meta-type">Concept Cover</div>
+            </div>
+          </div>
+
+          <div class="cover-item">
+            <div class="cover-book cover-04">
+              <div class="cover-art"></div>
+              <div class="cover-inner">
+                <div class="cover-genre">Historical</div>
+                <div class="cover-title-text">The Amber City</div>
+                <div class="cover-author">by N. Majumder</div>
+              </div>
+            </div>
+            <div class="cover-meta">
+              <div class="cover-meta-title">Vintage / Warm</div>
+              <div class="cover-meta-type">Concept Cover</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         HOW WE WORK
+    ═══════════════════════════════════════════ -->
+    <section class="section light reveal-on-scroll">
+      <div class="container">
+        <h2 class="section-title centered" style="color:#111;">How We Work</h2>
+        <p class="section-intro centered" style="color:#666;">
+          A precise, collaborative four-stage process — structured so you're never waiting without reason.
+        </p>
+
+        <div class="process-precision">
+          <div class="pp-item">
+            <div class="pp-num">01</div>
+            <h3>Brief &amp; Discovery</h3>
+            <p>We read the manuscript (or synopsis), study your genre shelf, define the reader avatar, and agree on the visual direction before any artwork begins.</p>
+          </div>
+          <div class="pp-item">
+            <div class="pp-num">02</div>
+            <h3>Concept &amp; Storyboard</h3>
+            <p>Mood boards, thumbnail sketches and storyboard panels are delivered for approval. This is the creative alignment stage — changes here cost nothing.</p>
+          </div>
+          <div class="pp-item">
+            <div class="pp-num">03</div>
+            <h3>Illustration &amp; Refinement</h3>
+            <p>Final artwork is produced in stages — linework first, then colour, then typography. Two rounds of revisions are included at each stage.</p>
+          </div>
+          <div class="pp-item">
+            <div class="pp-num">04</div>
+            <h3>Delivery &amp; Handoff</h3>
+            <p>Print-ready files (CMYK 300 DPI) and digital exports delivered in full. Source files included. We stay available for 30 days post-delivery for minor adjustments.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         SPECS TABLE
+    ═══════════════════════════════════════════ -->
+    <section class="section dark reveal-on-scroll">
+      <div class="container">
+        <h2 class="section-title">File Specifications &amp; Deliverables</h2>
+        <p class="section-intro">
+          Every project delivers a complete asset package. No chasing files after the fact.
+        </p>
+
+        <table class="specs-table">
+          <thead>
+            <tr>
+              <th>Service</th>
+              <th>Format</th>
+              <th>Resolution / Spec</th>
+              <th>Deliverables</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Book Cover Design</td>
+              <td><span class="spec-tag">AI</span><span class="spec-tag">PDF</span><span class="spec-tag">JPG</span></td>
+              <td>300 DPI, CMYK (print) + 72 DPI sRGB (digital)</td>
+              <td>Front / Spine / Back; KDP-ready template; layered source</td>
+            </tr>
+            <tr>
+              <td>Interior Illustrations</td>
+              <td><span class="spec-tag">SVG</span><span class="spec-tag">PNG</span><span class="spec-tag">PDF</span></td>
+              <td>Vector (infinite) + 300 DPI raster export</td>
+              <td>Per-illustration source; grayscale & colour variants; bleed-ready</td>
+            </tr>
+            <tr>
+              <td>Children's Book Pages</td>
+              <td><span class="spec-tag">PSD</span><span class="spec-tag">PDF</span><span class="spec-tag">PNG</span></td>
+              <td>300 DPI CMYK; A4 / US Letter / custom trim sizes</td>
+              <td>Layered PSD per spread; character sheet; font files</td>
+            </tr>
+            <tr>
+              <td>Storyboard Boards</td>
+              <td><span class="spec-tag">PDF</span><span class="spec-tag">PNG</span></td>
+              <td>A3 landscape; labelled scenes, actions, camera notes</td>
+              <td>Annotated PDF deck; individual panel PNGs; revision log</td>
+            </tr>
+            <tr>
+              <td>Graphic Novel Pages</td>
+              <td><span class="spec-tag">CBZ</span><span class="spec-tag">PDF</span><span class="spec-tag">AI</span></td>
+              <td>300 DPI CMYK; standard comic trim (6.625" × 10.25")</td>
+              <td>Lettered & unlettered versions; bleed guides; print & web exports</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         CTA
+    ═══════════════════════════════════════════ -->
+    <section class="section dark reveal-on-scroll">
+      <div class="container">
+        <div class="bk-cta">
+          <div>
+            <h2>Have a manuscript that needs a visual voice?</h2>
+            <p>
+              Whether it's a single cover or a full illustrated book — share your brief and we'll tell you exactly how we'd approach it. No obligation, no template pitch.
+            </p>
+          </div>
+          <div>
+            <a href="contact.html" class="btn primary">Start Your Project</a>
+          </div>
+        </div>
+
+        
+      </div>
+    </section>
+
+</main>
+
+<gv-footer></gv-footer>
+<script src="assets/js/components.js"></script>
+<script src="assets/js/script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Graphy Vector Studio | Works</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="./assets/Favicon/favicon-small.svg">
+  <link rel="icon" type="image/png" sizes="512x512" href="./assets/Favicon/favicon-big.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/Favicon/apple-touch-icon.png">
+  <meta name="theme-color" content="#000000">
+  <style>
+    /* ══════════════════════════════════════════
+       WORKS PAGE — EDITORIAL SHOWCASE GLOW-UP
+    ══════════════════════════════════════════ */
+
+    .display { font-family: 'Playfair Display', Georgia, serif !important; }
+
+    /* ── GRAIN ── */
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      pointer-events: none; z-index: 8000;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 160px;
+      opacity: 0.025;
+      mix-blend-mode: overlay;
+    }
+
+    /* ══════════════════════
+       HERO
+    ══════════════════════ */
+    .wk-hero {
+      position: relative;
+      min-height: 80vh;
+      background: var(--bg-dark);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 max(5vw, 1.5rem) 5rem;
+      overflow: hidden;
+    }
+
+    /* Giant background number */
+    .wk-hero__bg-num {
+      position: absolute;
+      bottom: -0.1em;
+      right: -0.02em;
+      font-size: clamp(12rem, 28vw, 26rem);
+      font-weight: 900;
+      line-height: 1;
+      color: rgba(255,255,255,0.025);
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: -0.05em;
+    }
+
+    /* Glow */
+    .wk-hero__glow {
+      position: absolute;
+      top: 10%; left: 60%;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(47,157,255,0.10) 0%, transparent 65%);
+      filter: blur(80px);
+      pointer-events: none;
+      animation: heroGlow 8s ease-in-out infinite;
+    }
+    @keyframes heroGlow {
+      0%,100% { opacity: 0.6; transform: scale(1); }
+      50%      { opacity: 1; transform: scale(1.08); }
+    }
+
+    /* Diagonal rule */
+    .wk-hero__rule {
+      position: absolute;
+      top: 0; right: 35%;
+      width: 1px; height: 100%;
+      background: linear-gradient(to bottom, transparent, var(--border-dark) 30%, var(--border-dark) 70%, transparent);
+      opacity: 0.4;
+    }
+
+    /* Ticker at top of hero */
+    .wk-ticker {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 34px;
+      background: var(--accent);
+      overflow: hidden;
+      display: flex; align-items: center;
+      z-index: 2;
+    }
+    .wk-ticker__track {
+      display: flex;
+      white-space: nowrap;
+      animation: tickRun 28s linear infinite;
+    }
+    .wk-ticker__item {
+      font-size: 10px; font-weight: 800;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: #fff; padding: 0 2.5rem;
+    }
+    .wk-ticker__item span { opacity: 0.45; }
+    @keyframes tickRun {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    .wk-hero__content {
+      position: relative; z-index: 2;
+      padding-top: 60px; /* ticker height + breathing room */
+      max-width: 800px;
+    }
+
+    .wk-eyebrow {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.26em; text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.6rem;
+      display: flex; align-items: center; gap: 0.7rem;
+    }
+    .wk-eyebrow::before {
+      content: ''; display: inline-block;
+      width: 28px; height: 1px; background: var(--accent);
+    }
+
+    .wk-h1 {
+      font-size: clamp(2.8rem, 7vw, 6.5rem);
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      color: var(--text-light);
+      margin: 0 0 1.8rem;
+    }
+    .wk-h1 em { font-style: italic; color: var(--accent); }
+
+    .wk-hero__sub {
+      font-size: 1rem;
+      color: var(--muted-light);
+      max-width: 520px;
+      line-height: 1.75;
+    }
+
+    /* Hero stat strip */
+    .wk-hero__stats {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      display: grid;
+      grid-template-columns: repeat(4, auto) 1fr;
+      border-top: 1px solid var(--border-dark);
+      z-index: 2;
+    }
+    .wk-stat {
+      padding: 1.2rem max(4vw, 1.5rem);
+      border-right: 1px solid var(--border-dark);
+    }
+    .wk-stat:last-child { border-right: none; background: transparent; }
+    .wk-stat__val {
+      font-size: 1.6rem; font-weight: 900;
+      color: var(--text-light); line-height: 1;
+    }
+    .wk-stat__val em { font-style: normal; color: var(--accent); }
+    .wk-stat__lbl {
+      font-size: 0.64rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--muted-dark);
+      margin-top: 0.2rem;
+    }
+
+    /* ══════════════════════
+       FILTER BAR
+    ══════════════════════ */
+    .wk-filter-bar {
+      background: #050505;
+      border-bottom: 1px solid var(--border-dark);
+      padding: 0 max(5vw, 1.5rem);
+      display: flex;
+      align-items: center;
+      gap: 0;
+      overflow-x: auto;
+      -ms-overflow-style: none; scrollbar-width: none;
+      position: sticky;
+      top: 64px; /* below header */
+      z-index: 100;
+    }
+    .wk-filter-bar::-webkit-scrollbar { display: none; }
+
+    .wk-filter-btn {
+      padding: 1.1rem 1.4rem;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--muted-dark);
+      border: none; background: none;
+      cursor: pointer;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      font-family: var(--site-font);
+    }
+    .wk-filter-btn:hover { color: var(--text-light); }
+    .wk-filter-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ══════════════════════
+       WORKS GRID
+    ══════════════════════ */
+    .wk-main {
+      background: var(--bg-dark);
+      padding: 4rem max(5vw, 1.5rem) 6rem;
+    }
+
+    .wk-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    /* ── WORK CARD ── */
+    .wk-card {
+      display: block;
+      text-decoration: none;
+      background: var(--card-dark);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+      transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .wk-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(47,157,255,0.1);
+    }
+
+    /* Thumbnail area */
+    .wk-card__thumb {
+      aspect-ratio: 4/3;
+      background: #0a0a0a;
+      position: relative;
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* Unique per-category icon composition */
+    .wk-card__icon {
+      font-size: 2.8rem;
+      opacity: 0.18;
+      transition: opacity 0.3s, transform 0.4s;
+      position: relative; z-index: 2;
+    }
+    .wk-card:hover .wk-card__icon {
+      opacity: 0.35;
+      transform: scale(1.12);
+    }
+
+    /* Accent corner tag */
+    .wk-card__tag {
+      position: absolute;
+      top: 12px; left: 12px;
+      padding: 0.3rem 0.7rem;
+      background: var(--accent-soft);
+      border: 1px solid rgba(47,157,255,0.25);
+      border-radius: 999px;
+      font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--accent);
+      z-index: 3;
+    }
+
+    /* Arrow indicator */
+    .wk-card__arrow {
+      position: absolute;
+      bottom: 12px; right: 12px;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: rgba(47,157,255,0.08);
+      border: 1px solid rgba(47,157,255,0.2);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent);
+      font-size: 0.85rem;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.25s, transform 0.25s;
+      z-index: 3;
+    }
+    .wk-card:hover .wk-card__arrow {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Animated scan line on hover */
+    .wk-card__scan {
+      position: absolute;
+      left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      top: -100%;
+      transition: none;
+      z-index: 1;
+    }
+    .wk-card:hover .wk-card__scan {
+      animation: scanDown 0.6s ease-in forwards;
+    }
+    @keyframes scanDown {
+      from { top: 0%; opacity: 1; }
+      to   { top: 100%; opacity: 0; }
+    }
+
+    /* Grid background pattern unique per card */
+    .wk-card__bg {
+      position: absolute; inset: 0;
+      opacity: 0.04;
+      background-size: 24px 24px;
+      background-image:
+        linear-gradient(to right, rgba(47,157,255,0.5) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(47,157,255,0.5) 1px, transparent 1px);
+      transition: opacity 0.3s;
+    }
+    .wk-card:hover .wk-card__bg { opacity: 0.09; }
+
+    /* Card body */
+    .wk-card__body {
+      padding: 1.4rem 1.6rem 1.6rem;
+      border-top: 1px solid var(--border-dark);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .wk-card__title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text-light);
+      line-height: 1.35;
+      transition: color 0.2s;
+    }
+    .wk-card:hover .wk-card__title { color: var(--accent); }
+    .wk-card__num {
+      font-size: 0.68rem; font-weight: 800;
+      color: rgba(47,157,255,0.2);
+      flex-shrink: 0;
+      letter-spacing: 0.08em;
+      margin-top: 0.15rem;
+    }
+
+    /* FEATURED — large card spanning 2 cols */
+    .wk-card.featured {
+      grid-column: span 2;
+    }
+    .wk-card.featured .wk-card__thumb {
+      aspect-ratio: 16/7;
+    }
+    .wk-card.featured .wk-card__icon { font-size: 4rem; }
+    .wk-card.featured .wk-card__title { font-size: 1.05rem; }
+
+    /* ══════════════════════
+       GALLERY PLACEHOLDER
+    ══════════════════════ */
+    .wk-gallery {
+      background: #040404;
+      border-top: 1px solid var(--border-dark);
+      padding: 5rem max(5vw, 1.5rem);
+    }
+
+    .wk-gallery-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 2.5rem;
+      gap: 2rem;
+    }
+
+    .wk-section-eye {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 0.6rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .wk-section-eye::before { content:''; width:18px; height:1px; background:var(--accent); }
+
+    .wk-section-h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 900; color: var(--text-light);
+      line-height: 1.1; margin: 0;
+    }
+    .wk-section-h2 em { font-style: italic; color: var(--accent); }
+
+    .wk-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .gallery-ph {
+      border-radius: var(--radius);
+      border: 1px dashed var(--border-dark);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 0.5rem;
+      color: var(--muted-dark);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: border-color 0.2s, background 0.2s;
+      cursor: pointer;
+    }
+    .gallery-ph:hover {
+      border-color: var(--accent);
+      background: rgba(47,157,255,0.02);
+    }
+    .gallery-ph.tall { aspect-ratio: 3/4; grid-row: span 2; }
+    .gallery-ph.wide { aspect-ratio: 16/7; grid-column: span 2; }
+    .gallery-ph.sq   { aspect-ratio: 1/1; }
+
+    .gallery-ph__icon { font-size: 1.8rem; opacity: 0.3; }
+    .gallery-ph__label { font-size: 0.65rem; }
+
+    /* ══════════════════════
+       CTA / FORM
+    ══════════════════════ */
+    .wk-cta {
+      background: var(--bg-dark);
+      border-top: 1px solid var(--border-dark);
+      padding: 6rem max(5vw, 1.5rem);
+    }
+
+    .wk-cta__inner {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .wk-cta__copy h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900; color: var(--text-light);
+      line-height: 1.1; margin-bottom: 1rem;
+    }
+    .wk-cta__copy h2 em { font-style: italic; color: var(--accent); }
+    .wk-cta__copy p {
+      color: var(--muted-light); font-size: 0.9rem;
+      line-height: 1.75; margin-bottom: 2rem;
+    }
+
+    /* Styled form (matches about.html) */
+    .wk-form {
+      background: var(--card-dark);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+    }
+    .wk-form .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .wk-form input,
+    .wk-form select,
+    .wk-form textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border-dark);
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+      color: var(--text-light);
+      font-size: 0.84rem;
+      font-family: var(--site-font);
+      transition: border-color 0.2s, background 0.2s;
+      outline: none;
+    }
+    .wk-form input::placeholder,
+    .wk-form textarea::placeholder { color: var(--muted-dark); }
+    .wk-form input:focus,
+    .wk-form select:focus,
+    .wk-form textarea:focus {
+      border-color: var(--accent);
+      background: rgba(47,157,255,0.04);
+    }
+    .wk-form select option { background: #111; }
+    .wk-form textarea { resize: vertical; min-height: 110px; }
+    .wk-form .privacy-note {
+      font-size: 0.72rem; color: var(--muted-dark);
+      text-align: center; margin-top: 1rem; line-height: 1.6;
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .sr {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .sr.in { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 980px) {
+      .wk-grid { grid-template-columns: 1fr 1fr; }
+      .wk-card.featured { grid-column: span 2; }
+      .wk-gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-ph.wide { grid-column: span 2; }
+      .gallery-ph.tall { grid-row: auto; aspect-ratio: 4/3; }
+      .wk-cta__inner { grid-template-columns: 1fr; gap: 3rem; }
+      .wk-hero__stats { grid-template-columns: repeat(2, auto) 1fr; }
+      .wk-stat:nth-child(3) { border-right: none; }
+      .wk-stat:nth-child(4) { display: none; }
+    }
+    @media (max-width: 600px) {
+      .wk-grid { grid-template-columns: 1fr; }
+      .wk-card.featured { grid-column: auto; }
+      .wk-gallery-grid { grid-template-columns: 1fr; }
+      .gallery-ph.wide { grid-column: auto; aspect-ratio: 4/3; }
+      .wk-form .form-row { grid-template-columns: 1fr; }
+      .wk-hero__stats { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<gv-header page="works"></gv-header>
+
+<main class="page">
+<main class="page">
+
+  <!-- ══════════════════════
+       HERO
+  ══════════════════════ -->
+  <section class="wk-hero">
+
+    <!-- Ticker -->
+    <div class="wk-ticker">
+      <div class="wk-ticker__track">
+        <span class="wk-ticker__item">Brand Identity <span>✦</span></span>
+        <span class="wk-ticker__item">3D Animation <span>✦</span></span>
+        <span class="wk-ticker__item">Motion Graphics <span>✦</span></span>
+        <span class="wk-ticker__item">Book Illustration <span>✦</span></span>
+        <span class="wk-ticker__item">Video Editing <span>✦</span></span>
+        <span class="wk-ticker__item">Social Media Design <span>✦</span></span>
+        <span class="wk-ticker__item">Lottie Animation <span>✦</span></span>
+        <span class="wk-ticker__item">Brand Identity <span>✦</span></span>
+        <span class="wk-ticker__item">3D Animation <span>✦</span></span>
+        <span class="wk-ticker__item">Motion Graphics <span>✦</span></span>
+        <span class="wk-ticker__item">Book Illustration <span>✦</span></span>
+        <span class="wk-ticker__item">Video Editing <span>✦</span></span>
+        <span class="wk-ticker__item">Social Media Design <span>✦</span></span>
+        <span class="wk-ticker__item">Lottie Animation <span>✦</span></span>
+      </div>
+    </div>
+
+    <div class="wk-hero__glow"></div>
+    <div class="wk-hero__rule"></div>
+    <div class="wk-hero__bg-num">12</div>
+
+    <div class="wk-hero__content">
+      <div class="wk-eyebrow">Works & Case Studies</div>
+      <h1 class="wk-h1 display sr">
+        Where Ideas<br>Become <em>Craft.</em>
+      </h1>
+      <p class="wk-hero__sub sr" style="transition-delay:.12s;">
+        Twelve disciplines. Hundreds of projects. One studio where brand identity,
+        motion, 3D, illustration and print converge into lasting visual work.
+      </p>
+    </div>
+
+    <div class="wk-hero__stats">
+      <div class="wk-stat">
+        <div class="wk-stat__val"><em>12</em></div>
+        <div class="wk-stat__lbl">Disciplines</div>
+      </div>
+      <div class="wk-stat">
+        <div class="wk-stat__val"><em>300+</em></div>
+        <div class="wk-stat__lbl">Projects</div>
+      </div>
+      <div class="wk-stat">
+        <div class="wk-stat__val"><em>50+</em></div>
+        <div class="wk-stat__lbl">Clients</div>
+      </div>
+      <div class="wk-stat">
+        <div class="wk-stat__val"><em>4K</em></div>
+        <div class="wk-stat__lbl">Max Resolution</div>
+      </div>
+      <div class="wk-stat"></div><!-- spacer -->
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════
+       FILTER BAR
+  ══════════════════════ -->
+  <div class="wk-filter-bar">
+    <button class="wk-filter-btn active" data-filter="all">All Work</button>
+    <button class="wk-filter-btn" data-filter="branding">Branding</button>
+    <button class="wk-filter-btn" data-filter="motion">Motion & 3D</button>
+    <button class="wk-filter-btn" data-filter="print">Print & Social</button>
+    <button class="wk-filter-btn" data-filter="digital">Digital</button>
+  </div>
+
+
+  <!-- ══════════════════════
+       WORKS GRID
+  ══════════════════════ -->
+  <section class="wk-main">
+    <div class="wk-grid" id="wkGrid">
+
+      <!-- 01 — Brand Identity · FEATURED -->
+      <a href="work-brand-identity.html"
+         class="wk-card featured sr"
+         data-category="branding"
+         style="transition-delay:.04s;">
+        <div class="wk-card__thumb">
+          <div class="wk-card__bg"></div>
+          <div class="wk-card__scan"></div>
+          <span class="wk-card__icon">🎨</span>
+          <span class="wk-card__tag">Branding</span>
+          <span class="wk-card__arrow">→</span>
+        </div>
+        <div class="wk-card__body">
+          <div class="wk-card__title">Brand Identity</div>
+          <div class="wk-card__num">01</div>
+        </div>
+      </a>
+
+      <!-- 02 — Brochure & Print -->
+      <a href="work-print-media.html"
+         class="wk-card sr"
+         data-category="print"
+         style="transition-delay:.08s;">
+        <div class="wk-card__thumb">
+          <div class="wk-card__bg"></div>
+          <div class="wk-card__scan"></div>
+          <span class="wk-card__icon">📄</span>
+          <span class="wk-card__tag">Print</span>
+          <span class="wk-card__arrow">→</span>
+        </div>
+        <div class="wk-card__body">
+          <div class="wk-card__title">Brochure, Flyer and Print Media</div>
+          <div class="wk-card__num">02</div>
+        </div>
+      </a>
+
+      <!-- 03 — Lottie & 3D Web Animation -->
+      <a href="work-lottie-rive.html"
+         class="wk-card sr"
+         data-category="motion"
+         style="transition-delay:.12s;">
+        <div class="wk-card__thumb">
+          <div class="wk-card__bg"></div>
+          <div class="wk-card__scan"></div>
+          <span class="wk-card__icon">✨</span>
+          <span class="wk-card__tag">Motion</span>
+          <span class="wk-card__arrow">→</span>
+        </div>
+        <div class="wk-card__body">
+          <div class="wk-card__title">Lottie and 3D Web Animation</div>
+          <div class="wk-card__num">03</div>
+        </div>
+      </a>
+
+      <!-- 04 — 3D Modeling · FEATURED -->
+      <a href="work-3d.html"
+         class="wk-card featured sr"
+         data-category="motion"
+         style="transition-delay:.16s;">
+        <div class="wk-card__thumb">
+          <div class="wk-card__bg"></div>
+          <div class="wk-card__scan"></div>
+          <span class="wk-card__icon">🧊</span>
+          <span class="wk-card__tag">3D</span>
+          <span class="wk-card__arrow">→</span>
+        </div>
+        <div class="wk-card__body">
+          <div class="wk-card__title">3D Modeling and Product Animation</div>
+          <div class="wk-card__num">04</div>
+        </div>
+      </a>
+
+      <!-- 05 — Email Signature -->
+      <a href="work-email-signature.html"
+         class="wk-card sr"
+         data-category="digital"
+         style="transition-delay:.20s;">
+        <div class="wk-card__thumb">
+          <div class="wk-card__bg"></div>
+          <div class="wk-card__scan"></div>
+          <span class="wk-card__icon">✉️</span>
+          <span class="wk-card__tag">Digital</span>
+          <span class="wk-card__arrow">→</span>
+        </div>
+        <div class="wk-card__body">
+          <div class="wk-card__title">Custom HTML Email Signature</div>
+          <div class="wk-card__num">05</div>
+        </div>
+      </a>
+
+      <!-- 06 — Video Editing -->
+      <a href="work-video-editing.html"
+         class="wk-card sr"
+         data-category="motion"
+         style="transition-delay:.24s;">
+        <div class="wk-card__thumb">
+          <div class="wk-card__bg"></div>
+          <div class="wk-card__scan"></div>
+          <span class="wk-card__icon">🎬</span>
+          <span class="wk-card__tag">Video</span>
+          <span class="wk-card__arrow">→</span>
+        </div>
+        <div class="wk-card__body">
+          <div class="wk-card__title">Video Editing and Post Production</div>
+          <div class="wk-card__num">06</div>
+        </div>
+      </a>
+
+      <!-- 07 — Motion Graphics -->
+      <a href="work-motion-graphics.html"
+         class="wk-card sr"
+         data-category="motion"
+         style="transition-delay:.28s;">
+        <div class="wk-card__thumb">
+          <div class="wk-card__bg"></div>
+          <div class="wk-card__scan"></div>
+          <span class="wk-card__icon">🎞</span>
+          <span class="wk-card__tag">Motion</span>
+          <span class="wk-card__arrow">→</span>
+        </div>
+        <div class="wk-card__body">
+          <div class="wk-card__title">Motion Graphics</div>
+          <div class="wk-card__num">07</div>
+        </div>
+      </a>
+
+      <!-- 08 — Social Media · FEATURED -->
+      <a href="work-social-media.html"
+         class="wk-card featured sr"
+         data-category="print"
+         style="transition-delay:.32s;">
+        <div class="wk-card__thumb">
+          <div class="wk-card__bg"></div>
+          <div class="wk-card__scan"></div>
+          <span class="wk-card__icon">📱</span>
+          <span class="wk-card__tag">Social</span>
+          <span class="wk-card__arrow">→</span>
+        </div>
+        <div class="wk-card__body">
+          <div class="wk-card__title">Social Media Strategy and Design</div>
+          <div class="wk-card__num">08</div>
+        </div>
+      </a>
+
+      <!-- 09 — Storyboard -->
+      <a href="work-2d-illustration.html"
+         class="wk-card sr"
+         data-category="motion"
+         style="transition-delay:.36s;">
+        <div class="wk-card__thumb">
+          <div class="wk-card__bg"></div>
+          <div class="wk-card__scan"></div>
+          <span class="wk-card__icon">🎭</span>
+          <span class="wk-card__tag">Animation</span>
+          <span class="wk-card__arrow">→</span>
+        </div>
+        <div class="wk-card__body">
+          <div class="wk-card__title">Storyboard and Animation</div>
+          <div class="wk-card__num">09</div>
+        </div>
+      </a>
+
+      <!-- 10 — Book Illustration -->
+      <a href="work-print-media.html"
+         class="wk-card sr"
+         data-category="branding"
+         style="transition-delay:.40s;">
+        <div class="wk-card__thumb">
+          <div class="wk-card__bg"></div>
+          <div class="wk-card__scan"></div>
+          <span class="wk-card__icon">📖</span>
+          <span class="wk-card__tag">Illustration</span>
+          <span class="wk-card__arrow">→</span>
+        </div>
+        <div class="wk-card__body">
+          <div class="wk-card__title">Book Illustration and Cover Design</div>
+          <div class="wk-card__num">10</div>
+        </div>
+      </a>
+
+      </div>
+  </section>
+
+
+  <!-- ══════════════════════
+       GALLERY PLACEHOLDER
+  ══════════════════════ -->
+  <section class="wk-gallery">
+    <div class="wk-gallery-header sr">
+      <div>
+        <div class="wk-section-eye">Gallery</div>
+        <h2 class="wk-section-h2 display">
+          Mockups, Stills<br>&amp; <em>Case Studies</em>
+        </h2>
+      </div>
+      <p style="color:var(--muted-dark);font-size:0.82rem;max-width:280px;line-height:1.7;text-align:right;">
+        Drop your project images, videos, or mockup screenshots here to replace these placeholders.
+      </p>
+    </div>
+
+    <div class="wk-gallery-grid">
+      <div class="gallery-ph tall sr" style="transition-delay:.05s;">
+        <span class="gallery-ph__icon">🖼</span>
+        <span class="gallery-ph__label">Case Study Image</span>
+      </div>
+      <div class="gallery-ph sq sr" style="transition-delay:.1s;">
+        <span class="gallery-ph__icon">🎬</span>
+        <span class="gallery-ph__label">Video / Reel</span>
+      </div>
+      <div class="gallery-ph sq sr" style="transition-delay:.15s;">
+        <span class="gallery-ph__icon">📱</span>
+        <span class="gallery-ph__label">Mockup</span>
+      </div>
+      <div class="gallery-ph wide sr" style="transition-delay:.2s;">
+        <span class="gallery-ph__icon">🧊</span>
+        <span class="gallery-ph__label">3D Render / Hero Shot</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════
+       CTA + FORM
+  ══════════════════════ -->
+  <section class="wk-cta">
+    <div class="wk-cta__inner">
+
+      <div class="wk-cta__copy sr">
+        <div class="wk-section-eye">Start a Project</div>
+        <h2 class="display">
+          Tell Us What<br>You're <em>Building.</em>
+        </h2>
+        <p>
+          We'll respond within one business day and match the right
+          specialists to your brief — no generalists, no guesswork.
+        </p>
+        <a href="contact.html" class="btn primary">Book a Consultation</a>
+      </div>
+
+      <div class="wk-form sr" style="transition-delay:.1s;">
+        <div class="form-row">
+          <input type="text"  name="name"    placeholder="Name"           required />
+          <input type="text"  name="service" placeholder="Service Needed" required />
+        </div>
+        <div class="form-row">
+          <input type="email" name="email"   placeholder="Email"          required />
+          <textarea name="details" placeholder="Project Details" rows="4"></textarea>
+        </div>
+        <div class="form-row">
+          <select name="budget">
+            <option value="">Budget</option>
+            <option value="under1k">Under $1,000</option>
+            <option value="1k-5k">$1,000–$5,000</option>
+            <option value="5k-10k">$5,000–$10,000</option>
+            <option value="10k+">$10,000+</option>
+          </select>
+          <input type="text" name="timeline" placeholder="Project Timeline" />
+        </div>
+        <button type="submit" class="btn primary full">Send Message</button>
+        <p class="privacy-note">
+          Your privacy is important. We will only use this information to contact you about your project.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+
+<!-- ── FOOTER ── -->
+<script>
+  /* ── Scroll reveal ── */
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.sr').forEach(el => obs.observe(el));
+
+  /* ── Filter bar ── */
+  const filterBtns = document.querySelectorAll('.wk-filter-btn');
+  const cards = document.querySelectorAll('.wk-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.dataset.filter;
+      cards.forEach(card => {
+        const cat = card.dataset.category;
+        const show = filter === 'all' || cat === filter;
+        card.style.opacity = show ? '1' : '0.2';
+        card.style.pointerEvents = show ? 'auto' : 'none';
+        card.style.transform = show ? '' : 'scale(0.97)';
+        card.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+      });
+    });
+  });
+</script>
+</main>
+
+<gv-footer></gv-footer>
+
+<script src="assets/js/components.js"></script>
+<script src="assets/js/script.js" defer></script>
+</body>
+</html>

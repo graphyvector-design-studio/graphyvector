@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contact Graphy Vector Studio | Start Your Project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Get in touch with Graphy Vector Studio — motion design, brand identity, 3D and print projects. Response within 2–4 hours." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="./assets/Favicon/favicon-small.svg">
+  <link rel="icon" type="image/png" sizes="512x512" href="./assets/Favicon/favicon-big.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/Favicon/apple-touch-icon.png">
+  <meta name="theme-color" content="#000000">
+  <style>
+
+    /* ── HERO ── */
+    .ct-hero {
+      min-height: 52vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ct-hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 100% 50%, rgba(47,157,255,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 60% at 0% 80%, rgba(47,157,255,0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .ct-hero-inner { position: relative; z-index: 1; }
+
+    .ct-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .ct-eyebrow::before {
+      content: '';
+      width: 28px; height: 1px;
+      background: var(--accent);
+      display: inline-block;
+    }
+
+    .ct-hero h1 {
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      margin-bottom: 1.6rem;
+    }
+
+    .ct-hero h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .ct-hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .ct-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .ct-meta-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 6px #4ade80;
+      animation: ctPulse 2s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes ctPulse {
+      0%,100% { transform: scale(1); opacity: 1; }
+      50%      { transform: scale(1.5); opacity: 0.6; }
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .ct-layout {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    /* Step indicator */
+    .ct-steps {
+      display: flex;
+      gap: 0;
+      margin-bottom: 2.4rem;
+    }
+
+    .ct-step {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex: 1;
+      position: relative;
+    }
+
+    .ct-step::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #e5e5e5;
+      margin: 0 0.6rem;
+    }
+
+    .ct-step:last-child::after { display: none; }
+
+    .ct-step-circle {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: #f0f0f0;
+      border: 2px solid #e0e0e0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: #aaa;
+      flex-shrink: 0;
+      transition: all 0.3s;
+    }
+
+    .ct-step.active .ct-step-circle {
+      background: #000;
+      border-color: #000;
+      color: #fff;
+    }
+
+    .ct-step.done .ct-step-circle {
+      background: #4ade80;
+      border-color: #4ade80;
+      color: #fff;
+    }
+
+    .ct-step.done::after { background: #4ade80; }
+    .ct-step.active::after { background: #e5e5e5; }
+
+    .ct-step-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #aaa;
+      white-space: nowrap;
+    }
+
+    .ct-step.active .ct-step-label { color: #111; }
+    .ct-step.done .ct-step-label { color: #4ade80; }
+
+    /* Form panels */
+    .ct-form-panel { display: none; }
+    .ct-form-panel.active { display: block; }
+
+    /* Form fields */
+    .ct-form-card {
+      background: #fff;
+      border: 1px solid #e8e8e8;
+      border-radius: 20px;
+      padding: 2.4rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+
+    .ct-form-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #111;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.3rem;
+    }
+
+    .ct-form-subtitle {
+      font-size: 0.85rem;
+      color: #999;
+      margin-bottom: 2rem;
+    }
+
+    .ct-field {
+      margin-bottom: 1.2rem;
+    }
+
+    .ct-label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #555;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .ct-input,
+    .ct-textarea,
+    .ct-select {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border: 1.5px solid #e5e5e5;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      color: #111;
+      background: #fafafa;
+      font-family: inherit;
+      transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+      box-sizing: border-box;
+    }
+
+    .ct-input:focus,
+    .ct-textarea:focus,
+    .ct-select:focus {
+      outline: none;
+      border-color: var(--accent);
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(47,157,255,0.1);
+    }
+
+    .ct-textarea { resize: vertical; min-height: 110px; }
+
+    .ct-field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+    }
+
+    /* Service selector chips */
+    .ct-service-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.6rem;
+      margin-top: 0.4rem;
+    }
+
+    .ct-service-chip {
+      padding: 0.75rem 1rem;
+      border: 1.5px solid #e5e5e5;
+      border-radius: 10px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #555;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+      background: #fafafa;
+      user-select: none;
+    }
+
+    .ct-service-chip:hover {
+      border-color: #bbb;
+      color: #111;
+    }
+
+    .ct-service-chip.selected {
+      border-color: var(--accent);
+      background: rgba(47,157,255,0.06);
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .ct-service-chip .chip-icon {
+      display: block;
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    /* Budget slider */
+    .ct-budget-options {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 0.4rem;
+    }
+
+    .ct-budget-pill {
+      padding: 0.5rem 1rem;
+      border: 1.5px solid #e5e5e5;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #777;
+      cursor: pointer;
+      transition: all 0.2s;
+      background: #fafafa;
+      user-select: none;
+    }
+
+    .ct-budget-pill:hover { border-color: #bbb; color: #111; }
+    .ct-budget-pill.selected {
+      border-color: #000;
+      background: #000;
+      color: #fff;
+    }
+
+    /* Form nav buttons */
+    .ct-form-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1.8rem;
+      gap: 1rem;
+    }
+
+    .ct-btn-back {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #aaa;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      padding: 0;
+      transition: color 0.2s;
+    }
+
+    .ct-btn-back:hover { color: #111; }
+
+    .ct-btn-next {
+      background: #000;
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      padding: 0.75rem 2rem;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.2s, transform 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .ct-btn-next:hover { background: var(--accent); transform: translateY(-1px); }
+
+    .ct-btn-submit {
+      background: var(--accent);
+      color: #000;
+      border: none;
+      border-radius: 999px;
+      padding: 0.85rem 2.4rem;
+      font-size: 0.9rem;
+      font-weight: 800;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .ct-btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(47,157,255,0.3); }
+
+    /* Success state */
+    .ct-success {
+      display: none;
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+
+    .ct-success.show { display: block; }
+
+    .ct-success-icon {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 1.5rem;
+      animation: successPop 0.5s cubic-bezier(0.16,1,0.3,1);
+    }
+
+    @keyframes successPop {
+      from { transform: scale(0); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+
+    .ct-success h3 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #111;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .ct-success p {
+      font-size: 0.9rem;
+      color: #888;
+      line-height: 1.65;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    /* ── SIDEBAR ── */
+    .ct-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      position: sticky;
+      top: 90px;
+    }
+
+    .ct-info-card {
+      background: #fff;
+      border: 1px solid #e8e8e8;
+      border-radius: 16px;
+      padding: 1.6rem;
+    }
+
+    .ct-info-label {
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #bbb;
+      margin-bottom: 1rem;
+    }
+
+    /* Contact methods */
+    .ct-contact-row {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid #f5f5f5;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .ct-contact-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .ct-contact-row:first-of-type { padding-top: 0; }
+
+    .ct-contact-row:hover .ct-contact-icon { background: #000; color: #fff; }
+
+    .ct-contact-icon {
+      width: 36px; height: 36px;
+      border-radius: 9px;
+      background: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      transition: all 0.2s;
+    }
+
+
+    .ct-contact-type {
+      font-size: 0.65rem;
+      color: #bbb;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 600;
+    }
+
+    .ct-contact-val {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #111;
+      margin-top: 0.1rem;
+    }
+
+    /* Response time card */
+    .ct-response-card {
+      background: #000;
+      border-radius: 16px;
+      padding: 1.6rem;
+      color: #fff;
+    }
+
+    .ct-response-label {
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 1rem;
+    }
+
+    .ct-response-time {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--accent);
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .ct-response-desc {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.5;
+    }
+
+    .ct-status-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .ct-status-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 6px #4ade80;
+      animation: ctPulse 2s ease-in-out infinite;
+    }
+
+    .ct-status-text {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* Social card */
+    .ct-social-row {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 0.8rem;
+    }
+
+    .ct-social-btn {
+      flex: 1;
+      padding: 0.6rem;
+      border: 1.5px solid #f0f0f0;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      background: #fafafa;
+    }
+
+    .ct-social-btn:hover {
+      border-color: #000;
+      background: #000;
+    }
+
+    .ct-social-btn:hover .ct-social-icon,
+    .ct-social-btn:hover .ct-social-name { color: #fff; }
+
+    .ct-social-icon {
+      font-size: 1rem;
+      color: #333;
+      transition: color 0.2s;
+    }
+
+    .ct-social-name {
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: #888;
+      transition: color 0.2s;
+    }
+
+    /* Platforms card */
+    .ct-platform-row {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.7rem 0;
+      border-bottom: 1px solid #f5f5f5;
+    }
+
+    .ct-platform-row:last-child { border-bottom: none; }
+
+    .ct-platform-icon {
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+    }
+
+    .ct-platform-name {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #111;
+      flex: 1;
+    }
+
+    .ct-platform-rating {
+      font-size: 0.72rem;
+      color: #f59e0b;
+      font-weight: 700;
+    }
+
+    /* ── FAQ ── */
+    .ct-faq {
+      margin-top: 4rem;
+    }
+
+    .ct-faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgba(255,255,255,0.06);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-top: 2rem;
+    }
+
+    .ct-faq-item {
+      background: #050505;
+      padding: 1.8rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .ct-faq-item:hover { background: #080808; }
+
+    .ct-faq-q {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 1rem;
+    }
+
+    .ct-faq-toggle {
+      color: var(--accent);
+      font-size: 1rem;
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+
+    .ct-faq-item.open .ct-faq-toggle { transform: rotate(45deg); }
+
+    .ct-faq-a {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.65;
+      display: none;
+    }
+
+    .ct-faq-item.open .ct-faq-a { display: block; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .ct-layout { grid-template-columns: 1fr; }
+      .ct-sidebar { position: static; }
+      .ct-faq-grid { grid-template-columns: 1fr; }
+      .ct-field-row { grid-template-columns: 1fr; }
+      .ct-service-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 540px) {
+      .ct-service-grid { grid-template-columns: 1fr 1fr; }
+      .ct-steps { gap: 0; }
+      .ct-step-label { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<gv-header page="contact"></gv-header>
+
+<main class="page">
+<main class="page">
+
+  <!-- ─── HERO ─── -->
+  <section class="section dark ct-hero reveal-on-scroll">
+    <div class="ct-hero-bg"></div>
+    <div class="container ct-hero-inner">
+      <div class="ct-eyebrow">Get in touch</div>
+      <h1>Let's build<br>something <em>great.</em></h1>
+      <div class="ct-hero-meta">
+        <div class="ct-meta-item">
+          <div class="ct-meta-dot"></div>
+          Currently accepting new projects
+        </div>
+        <div class="ct-meta-item">⚡ Response within 2–4 hours</div>
+        <div class="ct-meta-item">🌐 Available worldwide</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FORM + SIDEBAR ─── -->
+  <section class="section light reveal-on-scroll">
+    <div class="container">
+      <div class="ct-layout">
+
+        <!-- FORM -->
+        <div class="ct-form-wrap">
+
+          <!-- Step indicators -->
+          <div class="ct-steps" id="ctSteps">
+            <div class="ct-step active" data-step="1">
+              <div class="ct-step-circle">1</div>
+              <span class="ct-step-label">About You</span>
+            </div>
+            <div class="ct-step" data-step="2">
+              <div class="ct-step-circle">2</div>
+              <span class="ct-step-label">Your Project</span>
+            </div>
+            <div class="ct-step" data-step="3">
+              <div class="ct-step-circle">3</div>
+              <span class="ct-step-label">Details</span>
+            </div>
+          </div>
+
+          <div class="ct-form-card">
+
+            <!-- SUCCESS STATE -->
+            <div class="ct-success" id="ctSuccess">
+              <div class="ct-success-icon">✓</div>
+              <h3>Message sent!</h3>
+              <p>Thanks for reaching out. I'll review your project and get back to you within 2–4 hours.</p>
+            </div>
+
+            <!-- STEP 1 — About You -->
+            <div class="ct-form-panel active" id="ctPanel1">
+              <div class="ct-form-title">Tell me about yourself</div>
+              <div class="ct-form-subtitle">Step 1 of 3 — Let's start with the basics.</div>
+
+              <div class="ct-field-row">
+                <div class="ct-field">
+                  <label class="ct-label">First Name *</label>
+                  <input class="ct-input" type="text" id="ctFirstName" placeholder="Nilesh" required />
+                </div>
+                <div class="ct-field">
+                  <label class="ct-label">Last Name</label>
+                  <input class="ct-input" type="text" id="ctLastName" placeholder="Majumder" />
+                </div>
+              </div>
+
+              <div class="ct-field">
+                <label class="ct-label">Email Address *</label>
+                <input class="ct-input" type="email" id="ctEmail" placeholder="you@company.com" required />
+              </div>
+
+              <div class="ct-field">
+                <label class="ct-label">Company / Brand Name</label>
+                <input class="ct-input" type="text" id="ctCompany" placeholder="Your company or brand" />
+              </div>
+
+              <div class="ct-field">
+                <label class="ct-label">Where are you based?</label>
+                <input class="ct-input" type="text" id="ctLocation" placeholder="City, Country" />
+              </div>
+
+              <div class="ct-form-nav">
+                <span></span>
+                <button class="ct-btn-next" onclick="ctNextStep(2)">
+                  Next: Your Project →
+                </button>
+              </div>
+            </div>
+
+            <!-- STEP 2 — Service -->
+            <div class="ct-form-panel" id="ctPanel2">
+              <div class="ct-form-title">What do you need?</div>
+              <div class="ct-form-subtitle">Step 2 of 3 — Select all that apply.</div>
+
+              <div class="ct-field">
+                <label class="ct-label">Service Needed *</label>
+                <div class="ct-service-grid">
+                  <div class="ct-service-chip" onclick="ctToggleChip(this)">
+                    <span class="chip-icon">🎨</span>Brand Identity
+                  </div>
+                  <div class="ct-service-chip" onclick="ctToggleChip(this)">
+                    <span class="chip-icon">✨</span>Motion & Lottie
+                  </div>
+                  <div class="ct-service-chip" onclick="ctToggleChip(this)">
+                    <span class="chip-icon">🖥</span>3D Modeling
+                  </div>
+                  <div class="ct-service-chip" onclick="ctToggleChip(this)">
+                    <span class="chip-icon">🎬</span>Video Editing
+                  </div>
+                  <div class="ct-service-chip" onclick="ctToggleChip(this)">
+                    <span class="chip-icon">📄</span>Print & Brochure
+                  </div>
+                  <div class="ct-service-chip" onclick="ctToggleChip(this)">
+                    <span class="chip-icon">📱</span>Social Media
+                  </div>
+                  <div class="ct-service-chip" onclick="ctToggleChip(this)">
+                    <span class="chip-icon">✉</span>Email Signature
+                  </div>
+                  <div class="ct-service-chip" onclick="ctToggleChip(this)">
+                    <span class="chip-icon">🏛</span>Architecture
+                  </div>
+                </div>
+              </div>
+
+              <div class="ct-field" style="margin-top:1.4rem;">
+                <label class="ct-label">Budget Range</label>
+                <div class="ct-budget-options">
+                  <div class="ct-budget-pill" onclick="ctSelectBudget(this)">Under $500</div>
+                  <div class="ct-budget-pill" onclick="ctSelectBudget(this)">$500–$1,000</div>
+                  <div class="ct-budget-pill" onclick="ctSelectBudget(this)">$1,000–$5,000</div>
+                  <div class="ct-budget-pill" onclick="ctSelectBudget(this)">$5,000+</div>
+                  <div class="ct-budget-pill" onclick="ctSelectBudget(this)">Let's discuss</div>
+                </div>
+              </div>
+
+              <div class="ct-form-nav">
+                <button class="ct-btn-back" onclick="ctNextStep(1)">← Back</button>
+                <button class="ct-btn-next" onclick="ctNextStep(3)">Next: Details →</button>
+              </div>
+            </div>
+
+            <!-- STEP 3 — Details -->
+            <div class="ct-form-panel" id="ctPanel3">
+              <div class="ct-form-title">Tell me more</div>
+              <div class="ct-form-subtitle">Step 3 of 3 — The more detail, the better.</div>
+
+              <div class="ct-field">
+                <label class="ct-label">Project Description *</label>
+                <textarea class="ct-textarea" id="ctDetails" placeholder="Describe your project — what you need, any references you love, and what success looks like for you." rows="5"></textarea>
+              </div>
+
+              <div class="ct-field-row">
+                <div class="ct-field">
+                  <label class="ct-label">Timeline</label>
+                  <select class="ct-select" id="ctTimeline">
+                    <option value="">When do you need this?</option>
+                    <option>ASAP (within 1 week)</option>
+                    <option>2–4 weeks</option>
+                    <option>1–2 months</option>
+                    <option>Flexible</option>
+                  </select>
+                </div>
+                <div class="ct-field">
+                  <label class="ct-label">How did you find us?</label>
+                  <select class="ct-select" id="ctSource">
+                    <option value="">Select one</option>
+                    <option>Fiverr</option>
+                    <option>Upwork</option>
+                    <option>LinkedIn</option>
+                    <option>LottieFiles</option>
+                    <option>Google Search</option>
+                    <option>Referral</option>
+                    <option>Social Media</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="ct-field">
+                <label class="ct-label">Attach a reference or brief (optional)</label>
+                <input class="ct-input" type="url" id="ctRef" placeholder="Paste a Google Drive, Figma or Notion link" />
+              </div>
+
+              <div class="ct-form-nav">
+                <button class="ct-btn-back" onclick="ctNextStep(2)">← Back</button>
+                <button class="ct-btn-submit" onclick="ctSubmit()">
+                  Send Message ✓
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <div class="ct-sidebar">
+
+          <!-- Response time -->
+          <div class="ct-response-card">
+            <div class="ct-response-label">Average Response Time</div>
+            <div class="ct-response-time">2–4 hrs</div>
+            <div class="ct-response-desc">I personally review every inquiry and respond within a few hours — no automated replies, no waiting days.</div>
+            <div class="ct-status-row">
+              <div class="ct-status-dot"></div>
+              <div class="ct-status-text">Currently available for new projects</div>
+            </div>
+          </div>
+
+          <!-- Contact methods -->
+          <div class="ct-info-card">
+            <div class="ct-info-label">Direct Contact</div>
+
+            <a class="ct-contact-row" href="tel:+917029933095">
+              <div class="ct-contact-icon">📞</div>
+              <div class="ct-contact-body">
+                <div class="ct-contact-type">Phone</div>
+                <div class="ct-contact-val">+91 70299 33095</div>
+              </div>
+            </a>
+
+            <a class="ct-contact-row" href="mailto:graphyvector@gmail.com">
+              <div class="ct-contact-icon">✉</div>
+              <div class="ct-contact-body">
+                <div class="ct-contact-type">Email</div>
+                <div class="ct-contact-val">graphyvector@gmail.com</div>
+              </div>
+            </a>
+
+            <a class="ct-contact-row" href="https://www.linkedin.com/in/graphy-vector/" target="_blank">
+              <div class="ct-contact-icon">in</div>
+              <div class="ct-contact-body">
+                <div class="ct-contact-type">LinkedIn</div>
+                <div class="ct-contact-val">graphy-vector</div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Platforms -->
+          <div class="ct-info-card">
+            <div class="ct-info-label">Hire me on</div>
+
+            <div class="ct-platform-row">
+              <div class="ct-platform-icon" style="background:#1dbf73;">
+                <img src="./assets/icons/fiverr.svg" style="width:20px;" alt="Fiverr">
+              </div>
+              <div class="ct-platform-name">Fiverr</div>
+              <div class="ct-platform-rating">★ 5.0</div>
+            </div>
+
+            <div class="ct-platform-row">
+              <div class="ct-platform-icon" style="background:#6fda44;">
+                <img src="./assets/icons/upwork.svg" style="width:20px;" alt="Upwork">
+              </div>
+              <div class="ct-platform-name">Upwork</div>
+              <div class="ct-platform-rating">★ 5.0</div>
+            </div>
+          </div>
+
+          <!-- Social -->
+          <div class="ct-info-card">
+            <div class="ct-info-label">Follow our work</div>
+            <div class="ct-social-row">
+              <a class="ct-social-btn" href="https://www.behance.net/graphyvector" target="_blank">
+                <span class="ct-social-icon">Be</span>
+                <span class="ct-social-name">Behance</span>
+              </a>
+              <a class="ct-social-btn" href="https://www.instagram.com/graphy.vector/" target="_blank">
+                <span class="ct-social-icon">📸</span>
+                <span class="ct-social-name">Instagram</span>
+              </a>
+              <a class="ct-social-btn" href="https://www.linkedin.com/in/graphy-vector/" target="_blank">
+                <span class="ct-social-icon">in</span>
+                <span class="ct-social-name">LinkedIn</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ─── FAQ ─── -->
+      <div class="ct-faq">
+        <h2 style="font-size:1.6rem;font-weight:800;letter-spacing:-0.02em;color:#111;margin-bottom:0.3rem;">Common questions.</h2>
+        <p style="color:#999;font-size:0.88rem;">Everything you need to know before reaching out.</p>
+
+        <div class="ct-faq-grid">
+          <div class="ct-faq-item" onclick="ctToggleFaq(this)">
+            <div class="ct-faq-q">How fast do you respond? <span class="ct-faq-toggle">+</span></div>
+            <div class="ct-faq-a">I personally review every message and aim to respond within 2–4 hours during the day. For urgent projects, WhatsApp or a direct call is the fastest route.</div>
+          </div>
+          <div class="ct-faq-item" onclick="ctToggleFaq(this)">
+            <div class="ct-faq-q">Do you work with clients outside India? <span class="ct-faq-toggle">+</span></div>
+            <div class="ct-faq-a">Yes — the majority of my clients are international. I've worked with brands across the US, UK, UAE, Australia and Europe. All communication is in English and payments are handled internationally via Fiverr, Upwork or direct transfer.</div>
+          </div>
+          <div class="ct-faq-item" onclick="ctToggleFaq(this)">
+            <div class="ct-faq-q">What information should I prepare before contacting? <span class="ct-faq-toggle">+</span></div>
+            <div class="ct-faq-a">A brief description of what you need, any references or inspiration you love, your approximate budget and your deadline. The more detail you share upfront, the faster and more accurately I can respond with a proposal.</div>
+          </div>
+          <div class="ct-faq-item" onclick="ctToggleFaq(this)">
+            <div class="ct-faq-q">What's your typical project timeline? <span class="ct-faq-toggle">+</span></div>
+            <div class="ct-faq-a">It depends on scope — a logo or email signature can be done in 2–3 days, a brand identity system takes 6–8 weeks, and a full motion design project typically runs 2–4 weeks. I always share a clear timeline before starting.</div>
+          </div>
+          <div class="ct-faq-item" onclick="ctToggleFaq(this)">
+            <div class="ct-faq-q">Do you offer revisions? <span class="ct-faq-toggle">+</span></div>
+            <div class="ct-faq-a">Yes — every project includes at least 1–2 rounds of revisions depending on the scope. I'd rather iterate until it's right than deliver something you're not 100% happy with.</div>
+          </div>
+          <div class="ct-faq-item" onclick="ctToggleFaq(this)">
+            <div class="ct-faq-q">Can I see more work before contacting? <span class="ct-faq-toggle">+</span></div>
+            <div class="ct-faq-a">Absolutely — check out the Works section on this site, my Behance profile, LottieFiles page and Fiverr portfolio. If you want to see something specific (a certain style or niche), just mention it and I'll share relevant examples directly.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+<script>
+(function(){
+
+  /* ── MULTI-STEP FORM ── */
+  window.ctNextStep = function(step){
+    // Validate step 1
+    if(step === 2){
+      const email = document.getElementById('ctEmail');
+      const first = document.getElementById('ctFirstName');
+      if(!first.value.trim()){ first.focus(); first.style.borderColor='#f87171'; return; }
+      if(!email.value.trim() || !email.value.includes('@')){ email.focus(); email.style.borderColor='#f87171'; return; }
+      first.style.borderColor=''; email.style.borderColor='';
+    }
+    // Validate step 2
+    if(step === 3){
+      const selected = document.querySelectorAll('.ct-service-chip.selected');
+      if(!selected.length){
+        document.querySelector('.ct-service-grid').style.outline='2px solid #f87171';
+        document.querySelector('.ct-service-grid').style.outlineOffset='4px';
+        setTimeout(()=>{ document.querySelector('.ct-service-grid').style.outline=''; },1500);
+        return;
+      }
+    }
+
+    document.querySelectorAll('.ct-form-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('ctPanel' + step).classList.add('active');
+
+    // update step indicators
+    document.querySelectorAll('.ct-step').forEach(s => {
+      const n = parseInt(s.dataset.step);
+      s.classList.remove('active','done');
+      if(n < step) s.classList.add('done');
+      else if(n === step) s.classList.add('active');
+    });
+  };
+
+  window.ctToggleChip = function(el){
+    el.classList.toggle('selected');
+  };
+
+  window.ctSelectBudget = function(el){
+    document.querySelectorAll('.ct-budget-pill').forEach(p => p.classList.remove('selected'));
+    el.classList.add('selected');
+  };
+
+  window.ctToggleFaq = function(el){
+    const isOpen = el.classList.contains('open');
+    document.querySelectorAll('.ct-faq-item').forEach(i => i.classList.remove('open'));
+    if(!isOpen) el.classList.add('open');
+  };
+
+  window.ctSubmit = function(){
+    const details = document.getElementById('ctDetails');
+    if(!details.value.trim()){ details.focus(); details.style.borderColor='#f87171'; return; }
+
+    // Collect all data
+    const data = {
+      name: document.getElementById('ctFirstName').value + ' ' + document.getElementById('ctLastName').value,
+      email: document.getElementById('ctEmail').value,
+      company: document.getElementById('ctCompany').value,
+      location: document.getElementById('ctLocation').value,
+      services: [...document.querySelectorAll('.ct-service-chip.selected')].map(c => c.textContent.trim()).join(', '),
+      budget: document.querySelector('.ct-budget-pill.selected')?.textContent || 'Not specified',
+      details: details.value,
+      timeline: document.getElementById('ctTimeline').value,
+      source: document.getElementById('ctSource').value,
+      ref: document.getElementById('ctRef').value
+    };
+
+    console.log('Form submitted:', data);
+    // 👆 Connect to Formspree / Web3Forms here:
+    // fetch('https://formspree.io/f/YOUR_ID', { method:'POST', body: JSON.stringify(data), headers:{'Content-Type':'application/json'} })
+
+    // Show success
+    document.querySelector('.ct-steps').style.display = 'none';
+    document.querySelectorAll('.ct-form-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('ctSuccess').classList.add('show');
+  };
+
+})();
+</script>
+</main>
+
+<gv-footer></gv-footer>
+
+<script src="assets/js/components.js"></script>
+<script src="assets/js/script.js" defer></script>
+</body>
+</html>

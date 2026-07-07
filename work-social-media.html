@@ -1,0 +1,1739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Social Media Design & Strategy | Graphy Vector Studio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Graphy Vector Studio creates scroll-stopping social media ads, motion graphics and creative content for Instagram, TikTok, YouTube and LinkedIn that convert." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="./assets/Favicon/favicon-small.svg">
+  <link rel="icon" type="image/png" sizes="512x512" href="./assets/Favicon/favicon-big.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/Favicon/apple-touch-icon.png">
+  <meta name="theme-color" content="#000000">
+  <style>
+
+    /* ── HERO — full bleed cinematic ── */
+    .sm-hero {
+      min-height: 94vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* animated gradient noise bg */
+    .sm-hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(47,157,255,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 90% 80%, rgba(255,47,120,0.04) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 10% 60%, rgba(120,47,255,0.04) 0%, transparent 60%);
+      z-index: 0;
+    }
+
+    /* scrolling marquee headline behind hero */
+    .sm-hero-marquee-bg {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      transform: translateY(-50%);
+      font-size: clamp(6rem, 16vw, 14rem);
+      font-weight: 900;
+      color: rgba(255,255,255,0.02);
+      white-space: nowrap;
+      letter-spacing: -0.04em;
+      pointer-events: none;
+      z-index: 0;
+      animation: marquee-bg 18s linear infinite;
+    }
+
+    @keyframes marquee-bg {
+      0% { transform: translateY(-50%) translateX(0); }
+      100% { transform: translateY(-50%) translateX(-50%); }
+    }
+
+    .sm-hero-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .sm-hero-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .sm-hero-label::before {
+      content: '';
+      width: 28px;
+      height: 1px;
+      background: var(--accent);
+      display: inline-block;
+    }
+
+    .sm-hero h1 {
+      font-size: clamp(3.2rem, 7.5vw, 7rem);
+      font-weight: 900;
+      line-height: 0.92;
+      letter-spacing: -0.04em;
+      margin-bottom: 2.4rem;
+      max-width: 900px;
+    }
+
+    .sm-hero h1 em {
+      font-style: normal;
+      color: rgba(255,255,255,0.13);
+    }
+
+    .sm-hero-bottom {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .sm-hero-desc {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.5);
+      max-width: 500px;
+    }
+
+    .sm-hero-desc strong { color: #fff; }
+
+    .sm-hero-platforms {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      align-items: flex-end;
+    }
+
+    .sm-platform-pill {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.5);
+      transition: all 0.2s;
+    }
+
+    .sm-platform-pill:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ── STATS STRIP ── */
+    .sm-stats-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .sm-stat-item {
+      padding: 2.4rem 1.5rem;
+      border-right: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.5rem;
+    }
+
+    .sm-stat-item:last-child { border-right: none; }
+
+    .sm-stat-num {
+      font-size: 3.8rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: #fff;
+    }
+
+    .sm-stat-num span {
+      color: var(--accent);
+    }
+
+    .sm-stat-lbl {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.3);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      max-width: 140px;
+      letter-spacing: 0.1em;
+    }
+
+    /* ── WHAT WE CREATE ── */
+    .sm-what-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.05);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-top: 2.4rem;
+    }
+
+    .sm-what-item {
+      background: #000;
+      padding: 1.6rem 1.6rem;
+      position: relative;
+      transition: background 0.2s;
+    }
+
+    .sm-what-item:hover { background: #080808; }
+
+    .sm-what-num {
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      margin-bottom: 1rem;
+    }
+
+    .sm-what-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .sm-what-desc {
+      font-size: 0.86rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.65;
+    }
+
+    .sm-what-platforms {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .sm-what-platform {
+      font-size: 0.68rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* ── SHOWCASE GRID — mixed video + image ── */
+    .sm-showcase {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto;
+      gap: 0.8rem;
+      margin-top: 2rem;
+    }
+
+    .sm-item {
+      border-radius: 14px;
+      overflow: hidden;
+      position: relative;
+      background: #080808;
+      border: 1px solid rgba(255,255,255,0.05);
+      cursor: pointer;
+    }
+
+    .sm-item.tall { grid-row: span 2; }
+    .sm-item.wide { grid-column: span 2; }
+
+    .sm-item-inner {
+      width: 100%;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 1.5rem;
+      position: relative;
+    }
+
+    .sm-item.tall .sm-item-inner { min-height: 460px; }
+    .sm-item.wide .sm-item-inner { min-height: 240px; }
+
+    /* video items */
+    .sm-item video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.85;
+    }
+
+    /* image items */
+    .sm-item img.work-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* placeholder state */
+    .sm-ph {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .sm-ph-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(47,157,255,0.07);
+      border: 1px solid rgba(47,157,255,0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sm-ph-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: rgba(47,157,255,0.5);
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .sm-ph-label {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.2);
+      text-align: center;
+      letter-spacing: 0.06em;
+    }
+
+    /* tags */
+    .sm-item-tag {
+      position: absolute;
+      top: 0.9rem;
+      left: 0.9rem;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fff;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 999px;
+      padding: 0.25rem 0.7rem;
+      z-index: 2;
+    }
+
+    .sm-item-tag.video-tag { color: var(--accent); }
+
+    /* play button overlay for video */
+    .sm-play-btn {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .sm-item:hover .sm-play-btn { opacity: 1; }
+
+    .sm-play-circle {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sm-play-circle svg {
+      width: 20px;
+      height: 20px;
+      fill: #fff;
+      margin-left: 3px;
+    }
+
+    /* hover overlay info */
+    .sm-item-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1rem 1.2rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.25s;
+      z-index: 3;
+    }
+
+    .sm-item:hover .sm-item-overlay { opacity: 1; }
+
+    .sm-item-overlay-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .sm-item-overlay-sub {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 0.1rem;
+    }
+
+    /* ── PLATFORM SECTIONS ── */
+    .platform-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: #111;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-top: 2rem;
+    }
+
+    .platform-item {
+      background: #fff;
+      padding: 2.4rem 2rem;
+      position: relative;
+    }
+
+    .platform-icon-row {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .platform-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .pi-ig { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+    .pi-tt { background: #000; }
+    .pi-yt { background: #ff0000; }
+    .pi-li { background: #0077b5; }
+
+    .platform-name {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #111;
+    }
+
+    .platform-handle {
+      font-size: 0.75rem;
+      color: #aaa;
+    }
+
+    .platform-desc {
+      font-size: 0.86rem;
+      color: #555;
+      line-height: 1.65;
+      margin-bottom: 1rem;
+    }
+
+    .platform-formats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .platform-format-tag {
+      font-size: 0.7rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: #f0f0f0;
+      color: #555;
+      font-weight: 500;
+    }
+
+    /* ── WHY SCROLL-STOPPING ── */
+    .why-sm-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+
+    .why-sm-card {
+      padding: 2rem;
+      border-radius: var(--radius);
+      background: #f7f7f7;
+      border: 1px solid #ebebeb;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .why-sm-card::before {
+      content: attr(data-num);
+      position: absolute;
+      bottom: -1rem;
+      right: 0.5rem;
+      font-size: 5rem;
+      font-weight: 900;
+      color: rgba(0,0,0,0.04);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .why-sm-card h3 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #111;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .why-sm-card p {
+      font-size: 0.86rem;
+      color: #777;
+      line-height: 1.65;
+    }
+
+    .why-sm-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    /* ── TICKER ── */
+    .sm-ticker {
+      background: #fff;
+      border-top: 1px solid #e5e5e5;
+      border-bottom: 1px solid #e5e5e5;
+      padding: 1rem 0;
+      overflow: hidden;
+    }
+
+    .sm-ticker-track {
+      display: flex;
+      gap: 2.4rem;
+      white-space: nowrap;
+      animation: ticker-scroll 20s linear infinite;
+    }
+
+    .sm-ticker-track span {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #111;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .sm-ticker-track span::before {
+      content: '◆';
+      font-size: 0.45rem;
+      color: var(--accent);
+    }
+
+    @keyframes ticker-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── CTA ── */
+    .sm-cta {
+      position: relative;
+      overflow: hidden;
+      padding: 5rem 3rem;
+      border-radius: var(--radius-lg);
+      background: #000;
+      border: 1px solid rgba(255,255,255,0.07);
+      text-align: center;
+    }
+
+    .sm-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 60% at 30% 50%, rgba(47,157,255,0.05) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 70% 50%, rgba(255,47,120,0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .sm-cta h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .sm-cta p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.5);
+      max-width: 460px;
+      margin: 0 auto 2rem;
+      line-height: 1.7;
+      position: relative;
+    }
+
+    .sm-cta-btns {
+      display: flex;
+      gap: 0.8rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .sm-cta-price {
+      font-size: 0.76rem;
+      color: rgba(255,255,255,0.2);
+      margin-top: 1.2rem;
+      position: relative;
+    }
+
+    .sm-cta-price strong { color: var(--accent); }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .sm-hero h1 { font-size: 3rem; }
+      .sm-hero-bottom { grid-template-columns: 1fr; gap: 2rem; }
+      .sm-hero-platforms { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
+      .sm-stats-strip { grid-template-columns: repeat(2, 1fr); }
+      .sm-what-grid { grid-template-columns: repeat(2, 1fr); }
+      .sm-showcase { grid-template-columns: 1fr 1fr; }
+      .sm-item.tall { grid-row: span 1; }
+      .sm-item.wide { grid-column: span 2; }
+      .platform-grid { grid-template-columns: 1fr; }
+      .why-sm-grid { grid-template-columns: 1fr 1fr; }
+      .sm-cta { padding: 3rem 1.5rem; }
+    }
+
+    @media (max-width: 560px) {
+      .sm-showcase { grid-template-columns: 1fr; }
+      .sm-item.wide { grid-column: span 1; }
+      .why-sm-grid { grid-template-columns: 1fr; }
+      .sm-stats-strip { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<gv-header page="works"></gv-header>
+
+<main class="page">
+<main class="page">
+
+  <!-- ─── HERO ─── -->
+  <section class="section dark sm-hero reveal-on-scroll">
+    <div class="sm-hero-bg"></div>
+    <div class="sm-hero-marquee-bg">SCROLL · STOP · CONVERT · SCROLL · STOP · CONVERT · SCROLL · STOP · CONVERT · SCROLL · STOP · CONVERT ·</div>
+    <div class="container sm-hero-inner">
+      <div class="sm-hero-label">Social Media Design &amp; Strategy</div>
+      <h1>Make them<br>stop. <em>Look.</em><br>Convert.</h1>
+      <div class="sm-hero-bottom">
+        <p class="sm-hero-desc">
+          We create <strong>ads and motion content</strong> that compete in the most aggressive attention economy ever built — feeds where you have 0.3 seconds to stop a thumb and make someone feel something.
+        </p>
+        <div class="sm-hero-platforms">
+          <div class="sm-platform-pill">Instagram</div>
+          <div class="sm-platform-pill">TikTok</div>
+          <div class="sm-platform-pill">YouTube</div>
+          <div class="sm-platform-pill">LinkedIn</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── STATS ─── -->
+  <section class="section dark" style="padding:0;">
+    <div class="container" style="padding:0;max-width:100%;">
+      <div class="sm-stats-strip">
+        <div class="sm-stat-item">
+          <div class="sm-stat-num"><span class="count-up" data-target="0.3" data-decimals="1" data-suffix="s">0</span></div>
+          <div class="sm-stat-lbl">To stop a scroll</div>
+        </div>
+        <div class="sm-stat-item">
+          <div class="sm-stat-num"><span class="count-up" data-target="3" data-suffix="×">0</span></div>
+          <div class="sm-stat-lbl">Higher engagement with motion vs static</div>
+        </div>
+        <div class="sm-stat-item">
+          <div class="sm-stat-num"><span class="count-up" data-target="80" data-suffix="%">0</span></div>
+          <div class="sm-stat-lbl">Of buyers discover brands via social first</div>
+        </div>
+        <div class="sm-stat-item">
+          <div class="sm-stat-num"><span class="count-up" data-target="4" data-suffix="K">0</span></div>
+          <div class="sm-stat-lbl">Export quality on all video deliverables</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── WHAT WE CREATE ─── -->
+  <section class="section dark reveal-on-scroll" style="padding-top:2rem;padding-bottom:2rem;">
+    <div class="container">
+      <p class="eyebrow" style="margin-bottom:0.8rem;">What we create</p>
+      <h2 style="font-size:2rem;font-weight:800;letter-spacing:-0.03em;">Content built to<br>perform, not just look good.</h2>
+
+      <div class="sm-what-grid">
+        <div class="sm-what-item reveal-on-scroll">
+          <div class="sm-what-num">01</div>
+          <div class="sm-what-title">Scroll-Stopping Ad Creatives</div>
+          <p class="sm-what-desc">Static and animated ads designed around the first frame — because that's the only frame that earns the next one. Bold, on-brand, conversion-focused.</p>
+          <div class="sm-what-platforms">
+            <span class="sm-what-platform">Instagram</span>
+            <span class="sm-what-platform">TikTok</span>
+            <span class="sm-what-platform">YouTube</span>
+          </div>
+        </div>
+
+        <div class="sm-what-item reveal-on-scroll">
+          <div class="sm-what-num">02</div>
+          <div class="sm-what-title">Motion Graphics Ads</div>
+          <p class="sm-what-desc">Animated ads that move with purpose — product reveals, feature highlights and brand stories told in 6 to 30 seconds, optimized for sound-off viewing.</p>
+          <div class="sm-what-platforms">
+            <span class="sm-what-platform">Reels</span>
+            <span class="sm-what-platform">Shorts</span>
+            <span class="sm-what-platform">TikTok</span>
+          </div>
+        </div>
+
+        <div class="sm-what-item reveal-on-scroll">
+          <div class="sm-what-num">03</div>
+          <div class="sm-what-title">Product Launch Content</div>
+          <p class="sm-what-desc">Full launch suites — hero video, supporting statics, stories, countdowns and post-launch content packs. Everything designed to hit together on launch day.</p>
+          <div class="sm-what-platforms">
+            <span class="sm-what-platform">All Platforms</span>
+          </div>
+        </div>
+
+        <div class="sm-what-item reveal-on-scroll">
+          <div class="sm-what-num">04</div>
+          <div class="sm-what-title">LinkedIn B2B Content</div>
+          <p class="sm-what-desc">Thought leadership carousels, data visualization posts and brand awareness content designed for professionals who scroll with intent — not impulse.</p>
+          <div class="sm-what-platforms">
+            <span class="sm-what-platform">LinkedIn</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SHOWCASE — mixed grid ─── -->
+  <section class="section dark reveal-on-scroll" style="padding-top:0;">
+    <div class="container">
+      <h2 style="font-size:2rem;font-weight:800;letter-spacing:-0.03em;">Selected work.</h2>
+      <p style="color:rgba(255,255,255,0.4);font-size:0.88rem;margin-top:0.4rem;">Drop your ad videos and creatives in — grid is ready for both.</p>
+
+      <div class="sm-showcase">
+
+        <!-- TALL VIDEO — Instagram Reel -->
+        <div class="sm-item tall">
+          <span class="sm-item-tag video-tag">▶ Reel Ad</span>
+          <!--
+            TO ADD YOUR VIDEO:
+            <video src="./assets/vid/your-reel.mp4" autoplay muted loop playsinline></video>
+          -->
+          <div class="sm-item-inner">
+            <div class="sm-ph">
+              <div class="sm-ph-icon"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+              <div class="sm-ph-label">Instagram Reel Ad<br>9:16 · Motion</div>
+            </div>
+          </div>
+          <div class="sm-play-btn">
+            <div class="sm-play-circle"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          </div>
+          <div class="sm-item-overlay">
+            <div class="sm-item-overlay-title">Product Launch Reel</div>
+            <div class="sm-item-overlay-sub">Instagram · 15s · Motion Graphics</div>
+          </div>
+        </div>
+
+        <!-- Static ad creative -->
+        <div class="sm-item">
+          <span class="sm-item-tag">Static Ad</span>
+          <!--
+            TO ADD YOUR IMAGE:
+            <img class="work-img" src="./assets/img/your-ad.jpg" alt="Ad creative">
+          -->
+          <div class="sm-item-inner">
+            <div class="sm-ph">
+              <div class="sm-ph-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+              <div class="sm-ph-label">Static Ad Creative<br>1:1 · Feed Post</div>
+            </div>
+          </div>
+          <div class="sm-item-overlay">
+            <div class="sm-item-overlay-title">Brand Awareness Static</div>
+            <div class="sm-item-overlay-sub">Instagram Feed · 1080×1080</div>
+          </div>
+        </div>
+
+        <!-- Motion ad -->
+        <div class="sm-item">
+          <span class="sm-item-tag video-tag">▶ Motion Ad</span>
+          <div class="sm-item-inner">
+            <div class="sm-ph">
+              <div class="sm-ph-icon"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+              <div class="sm-ph-label">Motion Graphics Ad<br>1:1 · Animated</div>
+            </div>
+          </div>
+          <div class="sm-play-btn">
+            <div class="sm-play-circle"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          </div>
+          <div class="sm-item-overlay">
+            <div class="sm-item-overlay-title">Feature Highlight Ad</div>
+            <div class="sm-item-overlay-sub">Instagram · 6s Loop</div>
+          </div>
+        </div>
+
+        <!-- Wide YouTube thumbnail/banner -->
+        <div class="sm-item wide">
+          <span class="sm-item-tag">YouTube Ad</span>
+          <div class="sm-item-inner">
+            <div class="sm-ph">
+              <div class="sm-ph-icon"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="none"/></svg></div>
+              <div class="sm-ph-label">YouTube Pre-roll Ad · 16:9 · 30s</div>
+            </div>
+          </div>
+          <div class="sm-item-overlay">
+            <div class="sm-item-overlay-title">YouTube Pre-roll Campaign</div>
+            <div class="sm-item-overlay-sub">16:9 · 30s · Skippable</div>
+          </div>
+        </div>
+
+        <!-- TikTok vertical -->
+        <div class="sm-item">
+          <span class="sm-item-tag video-tag">▶ TikTok</span>
+          <div class="sm-item-inner">
+            <div class="sm-ph">
+              <div class="sm-ph-icon"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+              <div class="sm-ph-label">TikTok Ad<br>9:16 · 15s</div>
+            </div>
+          </div>
+          <div class="sm-play-btn">
+            <div class="sm-play-circle"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          </div>
+          <div class="sm-item-overlay">
+            <div class="sm-item-overlay-title">TikTok Spark Ad</div>
+            <div class="sm-item-overlay-sub">TikTok · 15s · Trending Format</div>
+          </div>
+        </div>
+
+        <!-- LinkedIn static -->
+        <div class="sm-item">
+          <span class="sm-item-tag">LinkedIn</span>
+          <div class="sm-item-inner">
+            <div class="sm-ph">
+              <div class="sm-ph-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+              <div class="sm-ph-label">LinkedIn Carousel<br>B2B Content</div>
+            </div>
+          </div>
+          <div class="sm-item-overlay">
+            <div class="sm-item-overlay-title">B2B Thought Leadership</div>
+            <div class="sm-item-overlay-sub">LinkedIn · 8-slide Carousel</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TICKER ─── -->
+  <div class="sm-ticker">
+    <div class="sm-ticker-track">
+      <span>Instagram Reels</span>
+      <span>TikTok Ads</span>
+      <span>YouTube Pre-roll</span>
+      <span>LinkedIn Carousels</span>
+      <span>Story Sequences</span>
+      <span>Motion Graphics</span>
+      <span>Product Launch Kits</span>
+      <span>Static Ad Creatives</span>
+      <span>Brand Awareness Campaigns</span>
+      <span>Instagram Reels</span>
+      <span>TikTok Ads</span>
+      <span>YouTube Pre-roll</span>
+      <span>LinkedIn Carousels</span>
+      <span>Story Sequences</span>
+      <span>Motion Graphics</span>
+      <span>Product Launch Kits</span>
+      <span>Static Ad Creatives</span>
+      <span>Brand Awareness Campaigns</span>
+    </div>
+  </div>
+
+  <!-- ─── MOBILE MOCKUP INTERACTIVE ─── -->
+  <section class="section dark reveal-on-scroll">
+    <div class="container">
+      <p class="eyebrow" style="margin-bottom:0.8rem;">Live Preview</p>
+      <h2 style="font-size:2rem;font-weight:800;letter-spacing:-0.03em;">Click a creative.<br>See it on the phone.</h2>
+      <p style="color:rgba(255,255,255,0.4);font-size:0.9rem;margin-top:0.5rem;margin-bottom:2.5rem;">Select any ad below to preview how it looks on mobile.</p>
+
+      <div class="mockup-layout">
+
+        <!-- LEFT: Creative selector cards -->
+        <div class="mockup-creatives">
+
+          <div class="mockup-card active" data-preview="reel" data-bg="#0a0a1a" data-label="Instagram Reel" data-sub="9:16 · Motion Graphics · 15s">
+            <div class="mockup-card-icon">▶</div>
+            <div class="mockup-card-body">
+              <div class="mockup-card-title">Product Reel Ad</div>
+              <div class="mockup-card-meta">Instagram · 9:16 · Motion</div>
+            </div>
+            <div class="mockup-card-platform ig">IG</div>
+          </div>
+
+          <div class="mockup-card" data-preview="static" data-bg="#111" data-label="Feed Post Ad" data-sub="1:1 · Static Creative · Conversion">
+            <div class="mockup-card-icon">🖼</div>
+            <div class="mockup-card-body">
+              <div class="mockup-card-title">Static Ad Creative</div>
+              <div class="mockup-card-meta">Instagram · 1:1 · Static</div>
+            </div>
+            <div class="mockup-card-platform ig">IG</div>
+          </div>
+
+          <div class="mockup-card" data-preview="tiktok" data-bg="#0d0d0d" data-label="TikTok Spark Ad" data-sub="9:16 · Native Format · 15s">
+            <div class="mockup-card-icon">▶</div>
+            <div class="mockup-card-body">
+              <div class="mockup-card-title">TikTok Spark Ad</div>
+              <div class="mockup-card-meta">TikTok · 9:16 · 15s</div>
+            </div>
+            <div class="mockup-card-platform tt">TT</div>
+          </div>
+
+          <div class="mockup-card" data-preview="linkedin" data-bg="#0a1929" data-label="LinkedIn Carousel" data-sub="1:1 · B2B · 8 slides">
+            <div class="mockup-card-icon">📊</div>
+            <div class="mockup-card-body">
+              <div class="mockup-card-title">LinkedIn Carousel</div>
+              <div class="mockup-card-meta">LinkedIn · B2B · 8 slides</div>
+            </div>
+            <div class="mockup-card-platform li">in</div>
+          </div>
+
+          <div class="mockup-card" data-preview="youtube" data-bg="#0d0000" data-label="YouTube Pre-roll" data-sub="16:9 · 30s · Skippable">
+            <div class="mockup-card-icon">▶</div>
+            <div class="mockup-card-body">
+              <div class="mockup-card-title">YouTube Pre-roll</div>
+              <div class="mockup-card-meta">YouTube · 16:9 · 30s</div>
+            </div>
+            <div class="mockup-card-platform yt">YT</div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT: Phone mockup -->
+        <div class="mockup-phone-wrap">
+          <div class="mockup-phone">
+            <!-- Phone shell -->
+            <div class="phone-shell">
+              <div class="phone-notch"></div>
+              <div class="phone-screen">
+                <!-- Screen content changes on card click -->
+                <div class="phone-screen-inner" id="phone-screen">
+
+                  <!-- Default: Instagram Reel view -->
+                  <div class="phone-content" id="preview-reel">
+                    <div class="phone-ig-ui">
+                      <div class="phone-ig-top">
+                        <div class="phone-ig-avatar"></div>
+                        <div class="phone-ig-username">graphy.vector<br><small>Sponsored</small></div>
+                        <div class="phone-ig-more">···</div>
+                      </div>
+                      <div class="phone-ig-media reel-bg">
+                        <div class="phone-reel-label">Your Reel Ad<br>goes here</div>
+                        <div class="phone-play-icon">▶</div>
+                      </div>
+                      <div class="phone-ig-actions">
+                        <span>♡</span><span>💬</span><span>➤</span>
+                      </div>
+                      <div class="phone-ig-caption"><strong>graphy.vector</strong> Motion that converts. See how we built this campaign ↗</div>
+                      <div class="phone-ig-cta-btn">Learn More</div>
+                    </div>
+                  </div>
+
+                  <!-- Static ad view -->
+                  <div class="phone-content hidden" id="preview-static">
+                    <div class="phone-ig-ui">
+                      <div class="phone-ig-top">
+                        <div class="phone-ig-avatar"></div>
+                        <div class="phone-ig-username">graphy.vector<br><small>Sponsored</small></div>
+                        <div class="phone-ig-more">···</div>
+                      </div>
+                      <div class="phone-ig-media static-bg">
+                        <div class="phone-static-label">Your Static<br>Ad Creative</div>
+                      </div>
+                      <div class="phone-ig-actions">
+                        <span>♡</span><span>💬</span><span>➤</span>
+                      </div>
+                      <div class="phone-ig-caption"><strong>graphy.vector</strong> Scroll-stopping design that drives real clicks.</div>
+                      <div class="phone-ig-cta-btn">Shop Now</div>
+                    </div>
+                  </div>
+
+                  <!-- TikTok view -->
+                  <div class="phone-content hidden" id="preview-tiktok">
+                    <div class="phone-tt-ui">
+                      <div class="phone-tt-media">
+                        <div class="phone-reel-label">Your TikTok<br>Ad here</div>
+                        <div class="phone-play-icon">▶</div>
+                      </div>
+                      <div class="phone-tt-right">
+                        <div class="phone-tt-avatar"></div>
+                        <div class="phone-tt-icon">♡<small>24K</small></div>
+                        <div class="phone-tt-icon">💬<small>1.2K</small></div>
+                        <div class="phone-tt-icon">➤<small>Share</small></div>
+                      </div>
+                      <div class="phone-tt-bottom">
+                        <div class="phone-tt-username">@graphy.vector · Sponsored</div>
+                        <div class="phone-tt-caption">Motion that stops thumbs 🎬 #design #ads</div>
+                        <div class="phone-tt-cta">Visit Website →</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- LinkedIn view -->
+                  <div class="phone-content hidden" id="preview-linkedin">
+                    <div class="phone-li-ui">
+                      <div class="phone-li-top">
+                        <div class="phone-li-avatar"></div>
+                        <div>
+                          <div class="phone-li-name">Graphy Vector Studio</div>
+                          <div class="phone-li-meta">Sponsored · 🌐</div>
+                        </div>
+                      </div>
+                      <div class="phone-li-copy">We help startups build brands that scale. Here's our 8-step framework →</div>
+                      <div class="phone-li-carousel">
+                        <div class="phone-li-slide active-slide">Slide 1<br><small>Brand Audit</small></div>
+                        <div class="phone-li-slide">Slide 2<br><small>Strategy</small></div>
+                        <div class="phone-li-slide">Slide 3<br><small>Design</small></div>
+                      </div>
+                      <div class="phone-li-dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span></div>
+                      <div class="phone-li-actions">👍 Like &nbsp; 💬 Comment &nbsp; ➤ Share</div>
+                    </div>
+                  </div>
+
+                  <!-- YouTube view -->
+                  <div class="phone-content hidden" id="preview-youtube">
+                    <div class="phone-yt-ui">
+                      <div class="phone-yt-media">
+                        <div class="phone-reel-label" style="font-size:0.7rem;">Your YouTube Ad<br>16:9 Format</div>
+                        <div class="phone-play-icon">▶</div>
+                        <div class="phone-yt-skip">Skip Ad in 5s →</div>
+                        <div class="phone-yt-bar"></div>
+                      </div>
+                      <div class="phone-yt-info">
+                        <div class="phone-yt-title">Why motion design converts better</div>
+                        <div class="phone-yt-channel">Graphy Vector Studio · Ad</div>
+                        <div class="phone-yt-cta-btn">Visit Website</div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <div class="phone-home-bar"></div>
+            </div>
+          </div>
+
+          <!-- Label below phone -->
+          <div class="phone-label-wrap">
+            <div class="phone-label-title" id="phone-label-title">Instagram Reel</div>
+            <div class="phone-label-sub" id="phone-label-sub">9:16 · Motion Graphics · 15s</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PLATFORM BREAKDOWN ─── -->
+  <section class="section light reveal-on-scroll">
+    <div class="container">
+      <p class="eyebrow" style="color:var(--accent);margin-bottom:0.8rem;">Platform breakdown</p>
+      <h2 style="font-size:2rem;font-weight:800;letter-spacing:-0.03em;color:#111;">We speak every<br>platform's language.</h2>
+
+      <div class="platform-grid">
+
+        <div class="platform-item reveal-on-scroll">
+          <div class="platform-icon-row">
+            <div class="platform-icon pi-ig">📸</div>
+            <div>
+              <div class="platform-name">Instagram</div>
+              <div class="platform-handle">Feed · Reels · Stories</div>
+            </div>
+          </div>
+          <p class="platform-desc">High-impact visuals and motion reels designed for the Instagram algorithm — vertical-first, thumb-stopping first frame, captions baked in for silent viewing.</p>
+          <div class="platform-formats">
+            <span class="platform-format-tag">1080×1080 Feed</span>
+            <span class="platform-format-tag">1080×1920 Reel</span>
+            <span class="platform-format-tag">Stories Sequence</span>
+            <span class="platform-format-tag">Carousel</span>
+          </div>
+        </div>
+
+        <div class="platform-item reveal-on-scroll">
+          <div class="platform-icon-row">
+            <div class="platform-icon pi-tt">🎵</div>
+            <div>
+              <div class="platform-name">TikTok</div>
+              <div class="platform-handle">In-Feed · Spark Ads · TopView</div>
+            </div>
+          </div>
+          <p class="platform-desc">Native-feeling content that doesn't look like an ad — trending formats, text overlays, fast cuts and motion that matches TikTok's energy without being cringe.</p>
+          <div class="platform-formats">
+            <span class="platform-format-tag">9:16 Vertical</span>
+            <span class="platform-format-tag">15s · 30s · 60s</span>
+            <span class="platform-format-tag">Spark Ad Format</span>
+          </div>
+        </div>
+
+        <div class="platform-item reveal-on-scroll">
+          <div class="platform-icon-row">
+            <div class="platform-icon pi-yt">▶</div>
+            <div>
+              <div class="platform-name">YouTube</div>
+              <div class="platform-handle">Pre-roll · Shorts · Bumper</div>
+            </div>
+          </div>
+          <p class="platform-desc">6-second bumpers that earn attention before skip, 15–30 second pre-rolls with a hook in the first 5 seconds, and Shorts designed to keep viewers on your channel.</p>
+          <div class="platform-formats">
+            <span class="platform-format-tag">16:9 Pre-roll</span>
+            <span class="platform-format-tag">6s Bumper</span>
+            <span class="platform-format-tag">YouTube Shorts</span>
+          </div>
+        </div>
+
+        <div class="platform-item reveal-on-scroll">
+          <div class="platform-icon-row">
+            <div class="platform-icon pi-li">in</div>
+            <div>
+              <div class="platform-name">LinkedIn</div>
+              <div class="platform-handle">Thought Leadership · B2B Ads</div>
+            </div>
+          </div>
+          <p class="platform-desc">Data-driven carousels, professional motion ads and branded content that positions your business as an authority — not just another company with a logo.</p>
+          <div class="platform-formats">
+            <span class="platform-format-tag">1:1 Sponsored</span>
+            <span class="platform-format-tag">Carousel Posts</span>
+            <span class="platform-format-tag">Video Ads</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── WHY SCROLL-STOPPING ─── -->
+  <section class="section light reveal-on-scroll" style="padding-top:0;">
+    <div class="container">
+      <h2 style="font-size:1.8rem;font-weight:800;letter-spacing:-0.03em;color:#111;">What makes our ads<br>actually stop the scroll.</h2>
+
+      <div class="why-sm-grid">
+        <div class="why-sm-card reveal-on-scroll" data-num="01">
+          <div class="why-sm-icon">⚡</div>
+          <h3>Hook in frame one</h3>
+          <p>We design the first frame like a billboard — because that's all you get before someone keeps scrolling. Movement, contrast and tension built into second zero.</p>
+        </div>
+        <div class="why-sm-card reveal-on-scroll" data-num="02">
+          <div class="why-sm-icon">🎯</div>
+          <h3>Platform-native formats</h3>
+          <p>Every ad is designed for its platform — not resized and crammed. TikTok content feels like TikTok. LinkedIn content feels like LinkedIn. No one-size-fits-all.</p>
+        </div>
+        <div class="why-sm-card reveal-on-scroll" data-num="03">
+          <div class="why-sm-icon">🔇</div>
+          <h3>Silent-first design</h3>
+          <p>85% of social video is watched without sound. We bake in captions, visual storytelling and kinetic typography so the message lands even on mute.</p>
+        </div>
+        <div class="why-sm-card reveal-on-scroll" data-num="04">
+          <div class="why-sm-icon">📐</div>
+          <h3>Brand system consistency</h3>
+          <p>Every ad feels like it came from the same world — same color language, same motion timing, same type hierarchy. Brand recognition compounds over time.</p>
+        </div>
+        <div class="why-sm-card reveal-on-scroll" data-num="05">
+          <div class="why-sm-icon">🎬</div>
+          <h3>Motion over static</h3>
+          <p>We default to motion because motion performs. Even a 3-second loop outperforms a static image on every major platform's algorithm.</p>
+        </div>
+        <div class="why-sm-card reveal-on-scroll" data-num="06">
+          <div class="why-sm-icon">📦</div>
+          <h3>Full content packs</h3>
+          <p>We don't deliver one video. We deliver a full-size pack — feed, story, reel, thumbnail — so you can run across all placements without extra requests.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA ─── -->
+  <section class="section dark reveal-on-scroll">
+    <div class="container">
+      <div class="sm-cta">
+        <h2>Ready to stop<br>the scroll?</h2>
+        <p>Tell us the platform, the product and the goal. We'll build content that actually performs.</p>
+        <div class="sm-cta-btns">
+          <a href="contact.html" class="btn primary">Start a Social Project</a>
+          <a href="works.html" class="btn ghost">Back to Works</a>
+        </div>
+        <p class="sm-cta-price">Projects typically start at <strong>$149</strong> — platform count and deliverables determine the final investment.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+
+  <style>
+    /* ── MOBILE MOCKUP SECTION ── */
+    .mockup-layout {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .mockup-creatives {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .mockup-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.2rem;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: #080808;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .mockup-card:hover {
+      border-color: rgba(47,157,255,0.3);
+      background: #0a0a0a;
+    }
+
+    .mockup-card.active {
+      border-color: var(--accent);
+      background: rgba(47,157,255,0.05);
+    }
+
+    .mockup-card-icon {
+      font-size: 1.2rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.04);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .mockup-card-body { flex: 1; }
+
+    .mockup-card-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .mockup-card-meta {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.35);
+      margin-top: 0.1rem;
+    }
+
+    .mockup-card-platform {
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      letter-spacing: 0.05em;
+      flex-shrink: 0;
+    }
+
+    .mockup-card-platform.ig { background: linear-gradient(135deg,#f09433,#cc2366); color: #fff; }
+    .mockup-card-platform.tt { background: #000; color: #fff; border: 1px solid #333; }
+    .mockup-card-platform.li { background: #0077b5; color: #fff; }
+    .mockup-card-platform.yt { background: #ff0000; color: #fff; }
+
+    /* ── PHONE SHELL ── */
+    .mockup-phone-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .mockup-phone {
+      width: 260px;
+      flex-shrink: 0;
+    }
+
+    .phone-shell {
+      width: 260px;
+      height: 520px;
+      background: #111;
+      border-radius: 40px;
+      border: 2px solid #2a2a2a;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.6), inset 0 0 0 1px rgba(255,255,255,0.04);
+    }
+
+    .phone-notch {
+      width: 80px;
+      height: 22px;
+      background: #111;
+      border-radius: 0 0 14px 14px;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      border: 1px solid #2a2a2a;
+      border-top: none;
+    }
+
+    .phone-screen {
+      position: absolute;
+      inset: 4px;
+      border-radius: 36px;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .phone-screen-inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .phone-home-bar {
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: rgba(255,255,255,0.25);
+      border-radius: 2px;
+      z-index: 10;
+    }
+
+    .phone-content {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      transition: opacity 0.3s ease;
+    }
+
+    .phone-content.hidden { display: none; }
+
+    /* ── INSTAGRAM UI ── */
+    .phone-ig-ui {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      background: #000;
+      padding-top: 24px;
+    }
+
+    .phone-ig-top {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.8rem;
+    }
+
+    .phone-ig-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg,#f09433,#cc2366);
+      flex-shrink: 0;
+    }
+
+    .phone-ig-username {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: #fff;
+      flex: 1;
+      line-height: 1.3;
+    }
+
+    .phone-ig-username small { color: #999; font-weight: 400; }
+
+    .phone-ig-more { color: #fff; font-size: 1rem; }
+
+    .phone-ig-media {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      min-height: 240px;
+    }
+
+    .reel-bg { background: linear-gradient(145deg,#0a0a2e,#1a0a2e); }
+    .static-bg { background: linear-gradient(145deg,#0a1a0a,#0a2a1a); }
+
+    .phone-reel-label {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      line-height: 1.5;
+      font-style: italic;
+    }
+
+    .phone-play-icon {
+      font-size: 2rem;
+      color: rgba(255,255,255,0.2);
+      margin-top: 0.5rem;
+    }
+
+    .phone-ig-actions {
+      display: flex;
+      gap: 1rem;
+      padding: 0.5rem 0.8rem;
+      font-size: 1rem;
+    }
+
+    .phone-ig-caption {
+      font-size: 0.6rem;
+      color: #ccc;
+      padding: 0 0.8rem;
+      line-height: 1.4;
+    }
+
+    .phone-ig-cta-btn {
+      margin: 0.5rem 0.8rem;
+      background: #fff;
+      color: #000;
+      border-radius: 6px;
+      font-size: 0.65rem;
+      font-weight: 800;
+      text-align: center;
+      padding: 0.4rem;
+    }
+
+    .phone-static-label {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      font-style: italic;
+    }
+
+    /* ── TIKTOK UI ── */
+    .phone-tt-ui {
+      position: relative;
+      height: 100%;
+      background: #000;
+      padding-top: 24px;
+    }
+
+    .phone-tt-media {
+      position: absolute;
+      inset: 24px 0 0 0;
+      background: linear-gradient(145deg,#0d0d0d,#1a0a1a);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .phone-tt-right {
+      position: absolute;
+      right: 0.5rem;
+      bottom: 5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .phone-tt-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg,#ff0050,#00f2ea);
+      margin-bottom: 0.5rem;
+    }
+
+    .phone-tt-icon {
+      font-size: 0.7rem;
+      color: #fff;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .phone-tt-icon small { font-size: 0.55rem; color: rgba(255,255,255,0.6); }
+
+    .phone-tt-bottom {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 0.8rem;
+      right: 3.5rem;
+    }
+
+    .phone-tt-username { font-size: 0.62rem; font-weight: 700; color: #fff; }
+    .phone-tt-caption { font-size: 0.58rem; color: rgba(255,255,255,0.7); margin-top: 0.2rem; }
+
+    .phone-tt-cta {
+      margin-top: 0.5rem;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 4px;
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: #fff;
+      padding: 0.3rem 0.5rem;
+      display: inline-block;
+    }
+
+    /* ── LINKEDIN UI ── */
+    .phone-li-ui {
+      height: 100%;
+      background: #1a1a2e;
+      padding: 1.5rem 0.8rem 0.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      overflow: hidden;
+    }
+
+    .phone-li-top { display: flex; align-items: center; gap: 0.5rem; }
+
+    .phone-li-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #0077b5;
+      flex-shrink: 0;
+    }
+
+    .phone-li-name { font-size: 0.62rem; font-weight: 700; color: #fff; }
+    .phone-li-meta { font-size: 0.55rem; color: rgba(255,255,255,0.4); }
+    .phone-li-copy { font-size: 0.6rem; color: rgba(255,255,255,0.7); line-height: 1.4; }
+
+    .phone-li-carousel {
+      display: flex;
+      gap: 0.4rem;
+      overflow: hidden;
+    }
+
+    .phone-li-slide {
+      flex: 0 0 calc(80%);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 0.8rem;
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.4;
+    }
+
+    .phone-li-slide small { font-weight: 400; color: rgba(255,255,255,0.5); font-size: 0.55rem; }
+
+    .phone-li-dots { display: flex; gap: 0.3rem; }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.2); }
+    .dot.active { background: #0077b5; }
+
+    .phone-li-actions { font-size: 0.55rem; color: rgba(255,255,255,0.4); margin-top: auto; }
+
+    /* ── YOUTUBE UI ── */
+    .phone-yt-ui {
+      height: 100%;
+      background: #0f0f0f;
+      display: flex;
+      flex-direction: column;
+      padding-top: 24px;
+    }
+
+    .phone-yt-media {
+      height: 55%;
+      background: linear-gradient(145deg,#1a0000,#0d0000);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .phone-yt-skip {
+      position: absolute;
+      bottom: 0.5rem;
+      right: 0.5rem;
+      font-size: 0.55rem;
+      color: rgba(255,255,255,0.5);
+      background: rgba(0,0,0,0.5);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+    }
+
+    .phone-yt-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: rgba(255,255,255,0.1);
+    }
+
+    .phone-yt-bar::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 30%;
+      height: 100%;
+      background: #ff0000;
+    }
+
+    .phone-yt-info {
+      padding: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .phone-yt-title { font-size: 0.65rem; font-weight: 700; color: #fff; }
+    .phone-yt-channel { font-size: 0.58rem; color: rgba(255,255,255,0.4); }
+
+    .phone-yt-cta-btn {
+      margin-top: 0.5rem;
+      background: #ff0000;
+      color: #fff;
+      border-radius: 4px;
+      font-size: 0.6rem;
+      font-weight: 800;
+      padding: 0.35rem 0.7rem;
+      display: inline-block;
+      width: fit-content;
+    }
+
+    /* Phone label */
+    .phone-label-wrap { text-align: center; }
+    .phone-label-title { font-size: 0.88rem; font-weight: 700; color: #fff; }
+    .phone-label-sub { font-size: 0.75rem; color: rgba(255,255,255,0.35); margin-top: 0.2rem; }
+
+    @media (max-width: 860px) {
+      .mockup-layout { grid-template-columns: 1fr; }
+      .mockup-phone-wrap { order: -1; }
+    }
+  </style>
+<script>
+(function(){
+
+  /* ── COUNT-UP ANIMATION ── */
+  function animateCount(el){
+    var target = parseFloat(el.dataset.target);
+    var decimals = parseInt(el.dataset.decimals || 0);
+    var suffix = el.dataset.suffix || '';
+    var duration = 1800;
+    var start = null;
+
+    function step(timestamp){
+      if(!start) start = timestamp;
+      var progress = Math.min((timestamp - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      var current = target * eased;
+      el.textContent = current.toFixed(decimals) + suffix;
+      if(progress < 1) requestAnimationFrame(step);
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  var countEls = document.querySelectorAll('.count-up');
+  var counted = false;
+
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting && !counted){
+        counted = true;
+        countEls.forEach(function(el){ animateCount(el); });
+      }
+    });
+  }, { threshold: 0.3 });
+
+  if(countEls.length){
+    observer.observe(countEls[0].closest('.sm-stats-strip'));
+  }
+
+  /* ── MOBILE MOCKUP SWITCHER ── */
+  var cards = document.querySelectorAll('.mockup-card');
+  var contents = document.querySelectorAll('.phone-content');
+  var labelTitle = document.getElementById('phone-label-title');
+  var labelSub = document.getElementById('phone-label-sub');
+
+  cards.forEach(function(card){
+    card.addEventListener('click', function(){
+      // remove active from all cards
+      cards.forEach(function(c){ c.classList.remove('active'); });
+      card.classList.add('active');
+
+      // hide all phone content
+      contents.forEach(function(c){ c.classList.add('hidden'); });
+
+      // show the right one
+      var target = document.getElementById('preview-' + card.dataset.preview);
+      if(target) target.classList.remove('hidden');
+
+      // update label
+      if(labelTitle) labelTitle.textContent = card.dataset.label;
+      if(labelSub) labelSub.textContent = card.dataset.sub;
+    });
+  });
+
+})();
+</script>
+</main>
+
+<gv-footer></gv-footer>
+
+<script src="assets/js/components.js"></script>
+<script src="assets/js/script.js" defer></script>
+</body>
+</html>
